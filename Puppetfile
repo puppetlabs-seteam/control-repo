@@ -9,6 +9,7 @@ forge "http://forge.puppetlabs.com"
 mod 'puppetlabs-ntp', '6.2.0'
 mod 'puppetlabs-powershell', '2.1.0'
 mod 'ayohrling-local_security_policy', '0.6.1'
+mod 'crayfishx-purge', '1.2.0'
 
 # Modules from Git
 # Examples: https://github.com/puppetlabs/r10k/blob/master/doc/puppetfile.mkd#examples
