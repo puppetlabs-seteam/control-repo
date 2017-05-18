@@ -1,4 +1,4 @@
-class profile::master::files::tomcat (
+class profile::app::puppet_master::files::tomcat (
   $srv_root = '/opt/tse-files',
 ) {
 

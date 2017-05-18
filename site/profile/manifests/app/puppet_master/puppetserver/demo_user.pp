@@ -1,4 +1,4 @@
-class profile::master::puppetserver::demo_user (
+class profile::app::puppet_master::puppetserver::demo_user (
   String $demo_username = 'demo',
   String $demo_password = 'puppetlabs',
   String $demo_password_hash = '$1$Fq9vkV1h$4oMRtIjjjAhi6XQVSH6.Y.', #puppetlabs
@@ -53,13 +53,9 @@ class profile::master::puppetserver::demo_user (
         'instance'    => '*',
         'object_type' => 'environment',
       },
-      { 'action'      => 'override_lifetime',
+      { 'action'      => 'run',
         'instance'    => '*',
-        'object_type' => 'tokens',
-      },
-      { 'action'      => 'use',
-        'instance'    => '*',
-        'object_type' => 'orchestration',
+        'object_type' => 'puppet_agent',
       },
       { 'action'      => 'view_data',
         'instance'    => '*',

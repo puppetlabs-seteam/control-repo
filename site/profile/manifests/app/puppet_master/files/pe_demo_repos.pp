@@ -1,4 +1,4 @@
-class profile::master::files::pe_demo_repos {
+class profile::app::puppet_master::files::pe_demo_repos {
   require profile::master::fileserver
 
   # Because the /opt/tse-files directory is loaded on persistent shared storage

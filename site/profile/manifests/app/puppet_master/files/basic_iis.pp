@@ -1,5 +1,5 @@
 # App files for profile::app::basic_iis
-class profile::master::files::basic_iis (
+class profile::app::puppet_master::files::basic_iis (
   $srv_root = '/opt/tse-files',
 ) {
 

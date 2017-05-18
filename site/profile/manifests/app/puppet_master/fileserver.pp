@@ -1,7 +1,7 @@
-class profile::master::fileserver {
+class profile::app::puppet_master::fileserver {
   include 'stdlib'
-  include 'apache'
   include 'profile::firewall'
+  include 'profile::apache'
 
   # Detect Vagrant
   case $::virtual {
@@ -17,7 +17,7 @@ class profile::master::fileserver {
 
   apache::vhost { 'tse-files':
     vhost_name    => '*',
-    port          => '80',
+    port          => '81',
     docroot       => '/opt/tse-files',
     priority      => '10',
     docroot_owner => $admin_file_owner,
@@ -25,7 +25,7 @@ class profile::master::fileserver {
   }
 
   firewall { '110 apache allow all':
-    dport  => '80',
+    dport  => '81',
     chain  => 'INPUT',
     proto  => 'tcp',
     action => 'accept',
