@@ -1,4 +1,4 @@
-class profile::master::files::oradb (
+class profile::app::puppet_master::files::oradb (
   $srv_root     = '/opt/tse-files',
   $download_src = 'https://s3.amazonaws.com/saleseng/files/oracle',
 )

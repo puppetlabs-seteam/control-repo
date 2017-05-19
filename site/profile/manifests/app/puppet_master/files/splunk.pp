@@ -1,4 +1,4 @@
-class profile::master::files::splunk (
+class profile::app::puppet_master::files::splunk (
   $srv_root = '/opt/tse-files',
 ) {
 
