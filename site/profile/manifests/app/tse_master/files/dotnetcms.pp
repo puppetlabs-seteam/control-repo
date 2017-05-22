@@ -1,4 +1,4 @@
-class profile::app::puppet_master::files::dotnetcms (
+class profile::app::tse_master::files::dotnetcms (
   $srv_root = '/opt/tse-files',
 ) {
 

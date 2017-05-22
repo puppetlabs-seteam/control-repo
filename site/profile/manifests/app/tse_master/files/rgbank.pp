@@ -1,4 +1,4 @@
-class profile::app::puppet_master::files::rgbank (
+class profile::app::tse_master::files::rgbank (
   $srv_root     = '/opt/tse-files',
   $download_src = 'https://s3.amazonaws.com/saleseng/files/demo',
   $rmt_file     = 'rgbank.tgz',

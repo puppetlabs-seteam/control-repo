@@ -1,4 +1,4 @@
-class profile::app::puppet_master::node_manager {
+class profile::app::tse_master::node_manager {
 
   $gitlab_server = 'gitlab.inf.puppet.vm'
   $jenkins_server = 'jenkins.inf.puppet.vm'

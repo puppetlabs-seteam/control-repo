@@ -1,4 +1,4 @@
-class profile::app::puppet_master::files::jdk (
+class profile::app::tse_master::files::jdk (
   $srv_root = '/opt/tse-files',
 ) {
   file { "${srv_root}/jdk":
