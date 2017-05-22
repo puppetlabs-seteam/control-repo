@@ -2,10 +2,10 @@
 # Amazon, and generally enables SE Team specific patterns dependent on master
 # capabilities.
 #
-class profile::master::puppetserver {
+class profile::app::puppetserver {
   include 'git'
-  contain 'profile::master::puppetserver::demo_user'
-  contain 'profile::master::puppetserver::deploy_user'
+  contain 'profile::app::puppet_master::puppetserver::demo_user'
+  contain 'profile::app::puppet_master::puppetserver::deploy_user'
 
   # Puppet master firewall rules
   Firewall {
