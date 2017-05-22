@@ -1,4 +1,4 @@
-class profile::app::puppet_master::puppetserver::demo_user (
+class profile::app::tse_master::puppetserver::demo_user (
   String $demo_username = 'demo',
   String $demo_password = 'puppetlabs',
   String $demo_password_hash = '$1$Fq9vkV1h$4oMRtIjjjAhi6XQVSH6.Y.', #puppetlabs

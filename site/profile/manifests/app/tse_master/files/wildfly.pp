@@ -1,4 +1,4 @@
-class profile::app::puppet_master::files::wildfly (
+class profile::app::tse_master::files::wildfly (
   $srv_root = '/opt/tse-files',
 ) {
 

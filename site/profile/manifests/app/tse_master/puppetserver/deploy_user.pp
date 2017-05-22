@@ -1,4 +1,4 @@
-class profile::app::puppet_master::puppetserver::deploy_user (
+class profile::app::tse_master::puppetserver::deploy_user (
   String $deploy_username = 'code_mgr_deploy_user',
   String $deploy_password = 'puppetlabs',
   String $deploy_key_dir = '/etc/puppetlabs/puppetserver/ssh',

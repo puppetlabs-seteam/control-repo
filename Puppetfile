@@ -58,7 +58,7 @@ mod 'thias-sysctl', '1.0.6'
 mod 'reidmv/unzip', '0.1.2'
 mod 'andulla/vsphere_conf', '0.0.9'
 mod 'biemond/wildfly', '2.0.3' # Wildfly / JBoss demo
-mod 'badgerious/windows_env', '2.3.0'
+mod 'puppet/windows_env', '2.3.0'
 mod 'puppet/windows_firewall', '1.1.0'
 mod 'cyberious/windows_java', '1.0.2'
 mod 'puppet/windowsfeature', '1.1.0'

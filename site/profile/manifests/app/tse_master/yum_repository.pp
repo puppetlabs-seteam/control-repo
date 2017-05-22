@@ -1,4 +1,4 @@
-class profile::app::puppet_master::yum_repository {
+class profile::app::tse_master::yum_repository {
   include local_yum_repo::dependencies
 
   $mirror_dirs = [

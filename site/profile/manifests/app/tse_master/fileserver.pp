@@ -1,4 +1,4 @@
-class profile::app::puppet_master::fileserver {
+class profile::app::tse_master::fileserver {
   include 'stdlib'
   include 'profile::firewall'
   include 'profile::apache'
