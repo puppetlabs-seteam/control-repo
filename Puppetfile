@@ -62,7 +62,7 @@ mod 'badgerious/windows_env', '2.3.0'
 mod 'puppet/windows_firewall', '1.1.0'
 mod 'cyberious/windows_java', '1.0.2'
 mod 'puppet/windowsfeature', '1.1.0'
-mod 'hunner/wordpress', '2.1.0'
+mod 'hunner/wordpress', '1.0.0'
 mod 'tse/winntp', '1.0.1'
 mod 'tse/time', '1.0.1'
 mod 'jriviere/windows_ad', '0.3.2'
@@ -75,16 +75,12 @@ mod 'puppet-splunk', '5.1.0'
 #  :git    => 'https://github.com/puppetlabs/puppetlabs-apache',
 #  :commit => '83401079053dca11d61945bd9beef9ecf7576cbf'
 
-mod 'tse_sqlserver',
-  :git => 'https://github.com/puppetlabs/tse-module-tse_sqlserver.git',
-  :ref => '1.0.4'
-mod 'sqlserver',
-  :git => 'git@github.com:puppetlabs/puppetlabs-sqlserver.git',
-  :ref => '1.2.0'
-mod 'sqlwebapp',
-  :git => 'git@github.com:puppetlabs/tse-module-sqlwebapp.git',
-  :ref => '1.0.0'
-
-#mod 'apache',
-#  :git    => 'https://github.com/puppetlabs/puppetlabs-apache',
-#  :branch => 'docs_experiment'
+#mod 'tse_sqlserver',
+#  :git => 'https://github.com/puppetlabs/tse-module-tse_sqlserver.git',
+#  :ref => '1.0.4'
+#mod 'sqlserver',
+#  :git => 'git@github.com:puppetlabs/puppetlabs-sqlserver.git',
+#  :ref => '1.2.0'
+#mod 'sqlwebapp',
+#  :git => 'git@github.com:puppetlabs/tse-module-sqlwebapp.git',
+#  :ref => '1.0.0'
