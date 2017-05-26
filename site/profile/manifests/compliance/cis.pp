@@ -4,7 +4,7 @@ class profile::compliance::cis {
     'RedHat': { include profile::compliance::cis::rhel }
     'Debian': { include profile::compliance::cis::debian }
     'windows': { include profile::compliance::cis::windows }
-    default: { notify { 'unsupported operating system' } }
+    default: { notify { 'unsupported operating system': } }
   }
 
 }
