@@ -35,7 +35,7 @@ class profile::app::puppet_tomcat::linux {
     notify => Tomcat::Service["plsample-tomcat${tomcat_major_version}"],
   }
 
-  $::tomcat_other_versions.each |String $version| {
+  $tomcat_other_versions.each |String $version| {
     service {"tomcat-plsample-tomcat${version}":
       ensure       => stopped,
       status       => "ps aux | grep \'catalina.base=/opt/apache-tomcat${version}\' | grep -v grep",
