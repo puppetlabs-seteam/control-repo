@@ -1,4 +1,6 @@
-class profile::platform::remote::rhel {
+class profile::platform::remote::rhel (
+  $root = 'yes',
+  ){
 
   include profile::compliance::corp_std::rhel_ssh
 

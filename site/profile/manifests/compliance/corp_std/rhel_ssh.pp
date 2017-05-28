@@ -13,7 +13,7 @@ class profile::compliance::corp_std::rhel_ssh {
 
   service { 'sshd':
     ensure    => 'running',
-    enable   => true,
+    enable    => true,
     subscribe => File['/etc/ssh/sshd_config'],
   }
 
