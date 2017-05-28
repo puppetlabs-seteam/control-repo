@@ -14,12 +14,12 @@ class profile::app::puppet_tomcat (
     '7': {
       $tomcat_version = '7.0.64'
       $catalina_dir = "/opt/apache-tomcat7"
-      $tomcat_other_versions = [ '6', '8']
+      $::tomcat_other_versions = [ '6', '8']
     }
     '8': {
       $tomcat_version = '8.0.26'
       $catalina_dir = "/opt/apache-tomcat8"
-      $tomcat_other_versions = [ '6', '7']
+      $::tomcat_other_versions = [ '6', '7']
     }
   }
 
