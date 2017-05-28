@@ -1,4 +1,6 @@
-class profile::compliance::corp_std::rhel_ssh {
+class profile::compliance::corp_std::rhel_ssh (
+  $root = 'yes',
+  ){
 
   file { '/etc/issue':
     ensure => file,
