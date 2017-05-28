@@ -1,6 +1,6 @@
 class profile::platform::remote::rhel {
 
-  include profile::compliance::linux::rhel_openssh
+  include profile::compliance::corp_std::rhel_ssh
 
   case $::operatingsystemmajrelease {
     '6': { $openssh_version = '5.3p1-112.el6_7' }
