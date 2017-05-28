@@ -46,6 +46,4 @@ class profile::app::puppet_tomcat::windows {
     source  => "http://${::puppet_server}:81/tomcat/plsample-${plsample_version}.war",
     require => Service["tomcat${tomcat_major_version}"],
   }
-  }
-
 }
