@@ -35,20 +35,20 @@ class profile::app::puppet_tomcat::linux {
     notify => Tomcat::Service["plsample-tomcat${tomcat_major_version}"],
   }
 
-  $tomcat_other_versions.each |String $version| {
-    service {"tomcat-plsample-tomcat${version}":
-      ensure       => stopped,
-      status       => "ps aux | grep \'catalina.base=/opt/apache-tomcat${version}\' | grep -v grep",
-      stop         => "su -s /bin/bash -c \'/opt/apache-tomcat${version}/bin/catalina.sh stop tomcat\'",
-      before       => File["/opt/apache-tomcat${version}"],
-    }
-    file {"/opt/apache-tomcat${version}":
-      ensure  => absent,
-      force   => true,
-      backup  => false,
-      before  => Tomcat::Service["plsample-tomcat${tomcat_major_version}"],
-    }
-  }
+#  $tomcat_other_versions.each |String $version| {
+#    service {"tomcat-plsample-tomcat${version}":
+#      ensure       => stopped,
+#      status       => "ps aux | grep \'catalina.base=/opt/apache-tomcat${version}\' | grep -v grep",
+#      stop         => "su -s /bin/bash -c \'/opt/apache-tomcat${version}/bin/catalina.sh stop tomcat\'",
+#      before       => File["/opt/apache-tomcat${version}"],
+#    }
+#    file {"/opt/apache-tomcat${version}":
+#      ensure  => absent,
+#      force   => true,
+#      backup  => false,
+#      before  => Tomcat::Service["plsample-tomcat${tomcat_major_version}"],
+#    }
+#  }
 
   tomcat::service { "plsample-tomcat${tomcat_major_version}":
     catalina_base => "${catalina_dir}",

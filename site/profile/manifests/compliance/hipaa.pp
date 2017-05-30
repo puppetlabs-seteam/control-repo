@@ -4,7 +4,6 @@ class profile::compliance::hipaa {
     'RedHat': { include profile::compliance::hipaa::rhel }
     'Debian': { include profile::compliance::hipaa::debian }
     'windows': { include profile::compliance::hipaa::windows }
-    default: { notify { 'unsupported operating system' } }
+    default: { notify { 'unsupported operating system': } }
   }
-
 }

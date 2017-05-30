@@ -19,14 +19,14 @@ class profile::app::puppet_tomcat::windows {
     before => Package["Apache Tomcat ${tomcat_major_version}.0 Tomcat${tomcat_major_version} (remove only)"],
   }
 
-  $tomcat_other_versions.each |String $version| {
-    exec { "remove tomcat ${version}":
-      command  => "\"C:/Program Files/Apache Software Foundation/Tomcat ${version}.0/Uninstall.exe\" /S -ServiceName=tomcat${version}",
-      unless   => "cmd.exe /c if exist \"C:\\Program Files\\Apache Software Foundation\\Tomcat ${version}.0\\Uninstall.exe\" (exit /b 1)",
-      path     => 'C:\windows\system32;C:\windows',
-      before   => Package["Apache Tomcat ${tomcat_major_version}.0 Tomcat${tomcat_major_version} (remove only)"],
-    }
-  }
+#  $tomcat_other_versions.each |String $version| {
+#    exec { "remove tomcat ${version}":
+#      command  => "\"C:/Program Files/Apache Software Foundation/Tomcat ${version}.0/Uninstall.exe\" /S -ServiceName=tomcat${version}",
+#      unless   => "cmd.exe /c if exist \"C:\\Program Files\\Apache Software Foundation\\Tomcat ${version}.0\\Uninstall.exe\" (exit /b 1)",
+#      path     => 'C:\windows\system32;C:\windows',
+#      before   => Package["Apache Tomcat ${tomcat_major_version}.0 Tomcat${tomcat_major_version} (remove only)"],
+#    }
+#  }
 
   package { "Apache Tomcat ${tomcat_major_version}.0 Tomcat${tomcat_major_version} (remove only)":
     ensure => present,
@@ -46,6 +46,4 @@ class profile::app::puppet_tomcat::windows {
     source  => "http://${::puppet_server}:81/tomcat/plsample-${plsample_version}.war",
     require => Service["tomcat${tomcat_major_version}"],
   }
-  }
-
 }
