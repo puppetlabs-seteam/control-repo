@@ -1,5 +1,7 @@
 class profile::platform::packages::windows {
 
+  require chocolatey
+
   # CORP PACKAGES
   Package {
     ensure   => installed,
