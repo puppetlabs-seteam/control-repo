@@ -33,6 +33,7 @@ mod 'puppetlabs/vcsrepo', '1.5.0'
 
 # Forge Community Modules
 
+mod 'crayfishx-firewalld', '3.1.4'
 mod 'puppet-archive', '1.3.0'
 mod 'garethr/docker', '5.3.0'
 mod 'trlinkin/domain_membership', '1.1.2'

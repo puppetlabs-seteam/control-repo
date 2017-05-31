@@ -7,4 +7,3 @@ class profile::platform::general::windows_users {
   }
 
 }
-w

@@ -11,5 +11,4 @@ class profile::platform::software::windows {
   package { 'notepadplusplus': }
   package { '7zip': }
   package { 'git': }
-
 }
