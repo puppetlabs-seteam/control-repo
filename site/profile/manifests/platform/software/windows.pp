@@ -1,8 +1,14 @@
-class profile::platform::windows {
+class profile::platform::software::windows {
 
-  include profile::platform::general::windows_users
-  include profile::platform::general::windows_regkeys
-  include profile::platform::packages::windows
-  include profile::platform::firewall::windows
+  require chocolatey
 
+  # CORP PACKAGES
+  Package {
+    ensure   => installed,
+    provider => chocolatey,
+  }
+
+  package { 'notepadplusplus': }
+  package { '7zip': }
+  package { 'git': }
 }
