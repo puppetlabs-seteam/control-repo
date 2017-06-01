@@ -1,0 +1,3 @@
+class profile::app::cloudshop {
+  
+}
