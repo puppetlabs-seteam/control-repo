@@ -1,2 +1,9 @@
-# Ensure users are absent. This removes any additional users on a local system, which are not needed or insecure.
+class profile::platform::general::windows {
 
+  # CUSTOM USERS
+  user { 'Puppet Demo':
+    ensure   => present,
+    groups   => ['Administrators'],
+  }
+
+}
