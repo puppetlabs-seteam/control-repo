@@ -1,7 +1,21 @@
-class profile::platform::rhel {
+class profile::platform::software::rhel {
 
-  include profile::platform::remote::rhel
-  include profile::platform::packages::rhel
-  include profile::platform::general::rhel_users
+  require git
+
+  $users = {
+    'root'  => '/root'
+  }
+
+  package { 'vim-enhanced':
+    ensure => installed,
+  }
+
+  $users.each |$user, $homedir| {
+    puppet_vim_env::install { "default vim for ${user}":
+      homedir     => $homedir,
+      owner       => $user,
+      colorscheme => 'elflord',
+    }
+  }
 
 }

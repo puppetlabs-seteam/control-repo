@@ -1,6 +1,8 @@
-class profile::compliance::corp_std::rhel_ssh (
+class profile::compliance::corp_std::rhel (
   $root = 'yes',
   ){
+
+  include profile::compliance::corp_std::linux_motd
 
   file { '/etc/issue':
     ensure => file,
