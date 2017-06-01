@@ -17,5 +17,4 @@ class profile::platform::software::rhel {
       colorscheme => 'elflord',
     }
   }
-
 }
