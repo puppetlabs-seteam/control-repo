@@ -1,6 +1,23 @@
-class profile::app::puppet_tomcat::windows {
+class profile::app::puppet_tomcat::windows inherits profile::app::puppet_tomcat {
 
-  include windows_java
+  file { 'c:/temp':
+    ensure => directory,
+    before => Remote_file['c:/temp/jre-8u131-windows-x64.exe'],
+  }
+
+  remote_file { 'c:/temp/jre-8u131-windows-x64.exe':
+    ensure => present,
+    source => "http://${::puppet_server}:81/jre/jre-8u131-windows-x64.exe",
+    #source => 'https://s3-us-west-2.amazonaws.com/tseteam/files/jre-8u131-windows-x64.exe',
+    before => Package['Java 8 Update 131 (64-bit)'],
+  }
+
+  package { 'Java 8 Update 131 (64-bit)':
+    ensure   => installed,
+    source   => 'c:/temp/jre-8u131-windows-x64.exe',
+    install_options => ['INSTALL_SILENT=Enable'],
+    before   => Remote_file["C:/apache-tomcat-${tomcat_version}.exe"],
+  }
 
   windows_firewall::exception { 'Tomcat':
     ensure       => present,
@@ -15,24 +32,24 @@ class profile::app::puppet_tomcat::windows {
 
   remote_file { "C:/apache-tomcat-${tomcat_version}.exe":
     ensure => present,
+    #source => "https://s3.amazonaws.com/saleseng/files/tomcat/apache-tomcat-8.0.44.exe",
     source => "http://${::puppet_server}:81/tomcat/apache-tomcat-${tomcat_version}.exe",
     before => Package["Apache Tomcat ${tomcat_major_version}.0 Tomcat${tomcat_major_version} (remove only)"],
   }
 
-#  $tomcat_other_versions.each |String $version| {
-#    exec { "remove tomcat ${version}":
-#      command  => "\"C:/Program Files/Apache Software Foundation/Tomcat ${version}.0/Uninstall.exe\" /S -ServiceName=tomcat${version}",
-#      unless   => "cmd.exe /c if exist \"C:\\Program Files\\Apache Software Foundation\\Tomcat ${version}.0\\Uninstall.exe\" (exit /b 1)",
-#      path     => 'C:\windows\system32;C:\windows',
-#      before   => Package["Apache Tomcat ${tomcat_major_version}.0 Tomcat${tomcat_major_version} (remove only)"],
-#    }
-#  }
+  $tomcat_other_versions.each |String $version| {
+    exec { "remove tomcat ${version}":
+      command  => "\"C:/Program Files/Apache Software Foundation/Tomcat ${version}.0/Uninstall.exe\" /S -ServiceName=tomcat${version}",
+      unless   => "cmd.exe /c if exist \"C:\\Program Files\\Apache Software Foundation\\Tomcat ${version}.0\\Uninstall.exe\" (exit /b 1)",
+      path     => 'C:\windows\system32;C:\windows',
+      before   => Package["Apache Tomcat ${tomcat_major_version}.0 Tomcat${tomcat_major_version} (remove only)"],
+    }
+  }
 
   package { "Apache Tomcat ${tomcat_major_version}.0 Tomcat${tomcat_major_version} (remove only)":
     ensure => present,
     source => "C:/apache-tomcat-${tomcat_version}.exe",
     install_options => ['/S'],
-    require => Class['windows_java'],
   }
 
   service { "tomcat${tomcat_major_version}":
@@ -43,6 +60,7 @@ class profile::app::puppet_tomcat::windows {
 
   remote_file { "C:/Program Files/Apache Software Foundation/Tomcat ${tomcat_major_version}.0/webapps/plsample-${plsample_version}.war":
     ensure  => latest,
+    #source  => "https://s3.amazonaws.com/saleseng/files/tomcat/sample-1.0.war",
     source  => "http://${::puppet_server}:81/tomcat/plsample-${plsample_version}.war",
     require => Service["tomcat${tomcat_major_version}"],
   }
