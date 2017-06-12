@@ -13,10 +13,10 @@ class profile::app::puppet_tomcat::windows inherits profile::app::puppet_tomcat 
   }
 
   package { 'Java 8 Update 131 (64-bit)':
-    ensure   => installed,
-    source   => 'c:/temp/jre-8u131-windows-x64.exe',
+    ensure          => installed,
+    source          => 'c:/temp/jre-8u131-windows-x64.exe',
     install_options => ['INSTALL_SILENT=Enable'],
-    before   => Remote_file["C:/apache-tomcat-${tomcat_version}.exe"],
+    before          => Remote_file["C:/apache-tomcat-${tomcat_version}.exe"],
   }
 
   windows_firewall::exception { 'Tomcat':
@@ -47,8 +47,8 @@ class profile::app::puppet_tomcat::windows inherits profile::app::puppet_tomcat 
   }
 
   package { "Apache Tomcat ${tomcat_major_version}.0 Tomcat${tomcat_major_version} (remove only)":
-    ensure => present,
-    source => "C:/apache-tomcat-${tomcat_version}.exe",
+    ensure          => present,
+    source          => "C:/apache-tomcat-${tomcat_version}.exe",
     install_options => ['/S'],
   }
 

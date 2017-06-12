@@ -1,7 +1,7 @@
 class profile::app::puppet_tomcat::linux inherits profile::app::puppet_tomcat {
 
   # tomcat starting takes 2-10 minutes currently due to /dev/random seed of entorpy. VM doesnt have much work
-  # hence no entropy. 
+  # hence no entropy.
 
   class { 'java':
     distribution => 'jre'
@@ -43,10 +43,10 @@ class profile::app::puppet_tomcat::linux inherits profile::app::puppet_tomcat {
 
   $tomcat_other_versions.each |String $version| {
     service {"tomcat-plsample-tomcat${version}":
-      ensure       => stopped,
-      status       => "ps aux | grep \'catalina.base=/opt/apache-tomcat${version}\' | grep -v grep",
-      stop         => "su -s /bin/bash -c \'/opt/apache-tomcat${version}/bin/catalina.sh stop tomcat\'",
-      before       => File["/opt/apache-tomcat${version}"],
+      ensure   => stopped,
+      status   => "ps aux | grep \'catalina.base=/opt/apache-tomcat${version}\' | grep -v grep",
+      stop     => "su -s /bin/bash -c \'/opt/apache-tomcat${version}/bin/catalina.sh stop tomcat\'",
+      before   => File["/opt/apache-tomcat${version}"],
     }
     file {"/opt/apache-tomcat${version}":
       ensure  => absent,
