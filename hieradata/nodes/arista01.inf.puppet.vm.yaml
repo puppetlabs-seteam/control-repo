@@ -1,0 +1,15 @@
+---
+
+profile::infrastructure::network::arista::interfaces:
+  "ethernet1":
+    ipaddress: "192.168.10.1/24"
+    mtu: "1600"
+  "ethernet2":
+    ipaddress: "192.168.11.1/24"
+    mtu: "1600"
+  "ethernet3":
+    ipaddress: "192.168.12.1/24"
+    mtu: "1600"
+  "ethernet4":
+    ipaddress: "192.168.13.1/24"
+    mtu: "1600"
