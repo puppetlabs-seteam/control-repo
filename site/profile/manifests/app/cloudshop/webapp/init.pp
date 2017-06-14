@@ -8,7 +8,6 @@ class profile::app::cloudshop::webapp::init (
   $docroot       = 'C:/inetpub/wwwroot',
   $file_source   = 'https://s3-us-west-2.amazonaws.com/tseteam/files/sqlwebapp',
 ) {
-  require profile::app::cloudshop::webapp::db
   require profile::app::cloudshop::webapp::iis
   file { "${docroot}/CloudShop":
     ensure  => directory,
