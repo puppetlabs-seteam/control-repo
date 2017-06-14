@@ -1,11 +1,11 @@
 #Class to install SQL Server, set its configuration, create an
 # instance, as well as a sample DB.
-class profile::app::cloudshop::sqlserver::sql (
+class profile::app::cloudshop::sqlserver::sql inherits profile::app::cloudshop::sqlserver (
   $source      = 'F:\\',
   $db_instance = 'MYINSTANCE',
   $sa_pass     = 'Password$123$',
 ) {
-  case $::tse_sqlserver::sqlserver_version {
+  case $sqlserver_version {
     '2012':  {
       $version_var  = 'MSSQL11'
     }
