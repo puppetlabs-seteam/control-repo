@@ -1,6 +1,6 @@
 # Main class that declares SQL, IISDB, and creates an
 # instance of the attachDB defined type.
-class profile::app::cloudshop::sqlserver::init (
+class profile::app::cloudshop::sqlserver (
   $sqlserver_version = '2014',
   $mount_iso = true,
 ) {
