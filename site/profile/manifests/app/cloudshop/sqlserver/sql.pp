@@ -4,8 +4,8 @@ class profile::app::cloudshop::sqlserver::sql (
   $source      = 'F:\\',
   $db_instance = 'MYINSTANCE',
   $sa_pass     = 'Password$123$',
-) inherits profile::app::cloudshop::sqlserver::init {
-  case $sqlserver_version {
+) {
+  case $profile::app::cloudshop::sqlserver::init::sqlserver_version {
     '2012':  {
       $version_var  = 'MSSQL11'
     }
