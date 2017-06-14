@@ -1,4 +1,4 @@
-class profile::app::cloudshop::webapp::init (
+class profile::app::cloudshop::webapp (
   $dbserver      = $::fqdn,
   $dbinstance    = 'MYINSTANCE',
   $dbpass        = 'Azure$123',
