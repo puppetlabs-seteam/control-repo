@@ -2,7 +2,7 @@
 # instance of the attachDB defined type.
 class profile::app::cloudshop::sqlserver::init (
   $sqlserver_version = '2014',
-  $mount_iso = false,
+  $mount_iso = true,
 ) {
 
   if $mount_iso {

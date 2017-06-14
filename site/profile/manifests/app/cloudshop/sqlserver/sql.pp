@@ -1,7 +1,7 @@
 #Class to install SQL Server, set its configuration, create an
 # instance, as well as a sample DB.
 class profile::app::cloudshop::sqlserver::sql (
-  $source      = 'C:\\programdata\\staging\\tse_sqlserver',
+  $source      = 'F:\\',
   $db_instance = 'MYINSTANCE',
   $sa_pass     = 'Password$123$',
 ) inherits profile::app::cloudshop::sqlserver::init {
