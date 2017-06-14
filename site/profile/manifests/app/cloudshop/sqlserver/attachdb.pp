@@ -8,7 +8,7 @@ define profile::app::cloudshop::sqlserver::attachdb (
   $owner         = 'CloudShop',
   $dbpass        = 'Azure$123',
   $file_source,
-) {
+) inherits profile::app::cloudshop::sqlserver::sql {
   case $profile::app::cloudshop::sqlserver::init::sqlserver_version {
     '2012':  {
       $data_path  = "C:\\Program Files\\Microsoft SQL Server\\MSSQL11.${$dbinstance}\\MSSQL\\DATA"
