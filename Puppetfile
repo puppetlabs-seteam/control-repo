@@ -30,6 +30,7 @@ mod 'puppetlabs/reboot', '1.2.1'
 mod 'puppetlabs/registry', '1.1.4'
 mod 'puppetlabs/tomcat', '1.7.0'
 mod 'puppetlabs/vcsrepo', '1.5.0'
+mod 'puppetlabs-sqlserver', '1.2.0'
 
 # Forge Community Modules
 
@@ -70,20 +71,9 @@ mod 'jriviere/windows_ad', '0.3.2'
 mod 'crayfishx-purge', '1.2.0'
 mod 'puppet-splunk', '5.1.0'
 mod 'jpadams-puppet_vim_env', '2.4.1'
-mod 'puppetlabs-sqlserver', '1.2.0'
 
 # Modules from Git
 # Examples: https://github.com/puppetlabs/r10k/blob/master/doc/puppetfile.mkd#examples
 #mod 'apache',
 #  :git    => 'https://github.com/puppetlabs/puppetlabs-apache',
 #  :commit => '83401079053dca11d61945bd9beef9ecf7576cbf'
-
-#mod 'tse_sqlserver',
-#  :git => 'https://github.com/puppetlabs/tse-module-tse_sqlserver.git',
-#  :ref => '1.0.4'
-#mod 'sqlserver',
-#  :git => 'git@github.com:puppetlabs/puppetlabs-sqlserver.git',
-#  :ref => '1.2.0'
-#mod 'sqlwebapp',
-#  :git => 'git@github.com:puppetlabs/tse-module-sqlwebapp.git',
-#  :ref => '1.0.0'
