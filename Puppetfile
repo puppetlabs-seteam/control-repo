@@ -80,9 +80,9 @@ mod 'jpadams-puppet_vim_env', '2.4.1'
 #mod 'tse_sqlserver',
 #  :git => 'https://github.com/puppetlabs/tse-module-tse_sqlserver.git',
 #  :ref => '1.0.4'
-#mod 'sqlserver',
-#  :git => 'git@github.com:puppetlabs/puppetlabs-sqlserver.git',
-#  :ref => '1.2.0'
+mod 'sqlserver',
+  :git => 'git@github.com:puppetlabs/puppetlabs-sqlserver.git',
+  :ref => '1.2.0'
 #mod 'sqlwebapp',
 #  :git => 'git@github.com:puppetlabs/tse-module-sqlwebapp.git',
 #  :ref => '1.0.0'
