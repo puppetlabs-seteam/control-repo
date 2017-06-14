@@ -36,7 +36,7 @@ define profile::app::cloudshop::sqlserver::attachdb (
   exec { "Change owner of ${title}":
     command     => "import-module \'${sqlps_path}\'; invoke-sqlcmd \"USE [${title}] ALTER AUTHORIZATION ON DATABASE::${title} TO ${owner};\" -QueryTimeout 3600 -username \'sa\' -password \'${profile::app::cloudshop::sqlserver::sql::sa_pass}\' -ServerInstance \'${::hostname}\\${dbinstance}\'",
     provider    => powershell,
-    onlyif      => "import-module \'${sqlps_path}\'; invoke-sqlcmd -Query \"select suser_sname(owner_sid) from sys.databases where [name] = \'${title}\';\" -ServerInstance \"$::hostname\\${dbinstance}\" | where-object \"Column1\" -eq \"${owner}\" | write-error",
+    unless      => "import-module \'${sqlps_path}\'; if(invoke-sqlcmd -Query \"select suser_sname(owner_sid) from sys.databases where [name] = \'${title}\';\" -ServerInstance \"$::hostname\\${dbinstance}\" | where-object \"Column1\" -eq \"${owner}\") { exit 0 } else { exit 1 }",
     subscribe   => Exec["Attach ${title}"],
   }
   sqlserver::login{ "${owner}":
