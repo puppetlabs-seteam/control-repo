@@ -8,7 +8,7 @@ define profile::app::cloudshop::sqlserver::attachdb (
   $owner         = 'CloudShop',
   $dbpass        = 'Azure$123',
   $file_source,
-) inherits profile::app::cloudshop::sqlserver::sql {
+) {
   case $profile::app::cloudshop::sqlserver::init::sqlserver_version {
     '2012':  {
       $data_path  = "C:\\Program Files\\Microsoft SQL Server\\MSSQL11.${$dbinstance}\\MSSQL\\DATA"
@@ -28,13 +28,13 @@ define profile::app::cloudshop::sqlserver::attachdb (
     subscribe => Staging::File[$zip_file],
   }
   exec { "Attach ${title}":
-    command     => "import-module \'${sqlps_path}\'; invoke-sqlcmd \"USE [master] CREATE DATABASE [${title}] ON (FILENAME = \'${data_path}\\${mdf_file}\'),(FILENAME = \'${data_path}\\${ldf_file}\') for ATTACH\" -QueryTimeout 3600  -username \'sa\' -password \'${::tse_sqlserver::sql::sa_pass}\' -ServerInstance \'${::hostname}\\${dbinstance}\'",
+    command     => "import-module \'${sqlps_path}\'; invoke-sqlcmd \"USE [master] CREATE DATABASE [${title}] ON (FILENAME = \'${data_path}\\${mdf_file}\'),(FILENAME = \'${data_path}\\${ldf_file}\') for ATTACH\" -QueryTimeout 3600  -username \'sa\' -password \'${profile::app::cloudshop::sqlserver::sql::sa_pass}\' -ServerInstance \'${::hostname}\\${dbinstance}\'",
     provider    => powershell,
     path        => $sqlps_path,
     onlyif      => "import-module \'${sqlps_path}\'; invoke-sqlcmd -Query \"select [name] from sys.databases where [name] = \'${title}\';\" -ServerInstance \"${::hostname}\\${dbinstance}\"| write-error",
   }
   exec { "Change owner of ${title}":
-    command     => "import-module \'${sqlps_path}\'; invoke-sqlcmd \"USE [${title}] ALTER AUTHORIZATION ON DATABASE::${title} TO ${owner};\" -QueryTimeout 3600 -username \'sa\' -password \'${::tse_sqlserver::sql::sa_pass}\' -ServerInstance \'${::hostname}\\${dbinstance}\'",
+    command     => "import-module \'${sqlps_path}\'; invoke-sqlcmd \"USE [${title}] ALTER AUTHORIZATION ON DATABASE::${title} TO ${owner};\" -QueryTimeout 3600 -username \'sa\' -password \'${profile::app::cloudshop::sqlserver::sql::sa_pass}\' -ServerInstance \'${::hostname}\\${dbinstance}\'",
     provider    => powershell,
     onlyif      => "import-module \'${sqlps_path}\'; invoke-sqlcmd -Query \"select suser_sname(owner_sid) from sys.databases where [name] = \'${title}\';\" -ServerInstance \"$::hostname\\${dbinstance}\" | where-object \"Column1\" -eq \"${owner}\" | write-error",
     subscribe   => Exec["Attach ${title}"],
