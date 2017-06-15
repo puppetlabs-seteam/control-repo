@@ -34,7 +34,6 @@ class profile::app::cloudshop::sqlserver::sql (
 
   windowsfeature { 'Net-Framework-Core':
     ensure => present,
-    require =>
   }
 
   sqlserver_instance{ $db_instance:
