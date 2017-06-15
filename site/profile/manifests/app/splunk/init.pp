@@ -1,5 +1,5 @@
 # splunk server module
-class profile::app::splunk::server (
+class profile::app::splunk (
   $purge_inputs    = false,
   $purge_outputs   = false,
   #$src_server      = 'master.inf.puppet.vm',
