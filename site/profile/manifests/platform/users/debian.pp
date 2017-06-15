@@ -1,4 +1,4 @@
-class profile::platform::general::rhel_users {
+class profile::platform::users::debian {
 
   user { 'PuppetSE':
     ensure           => 'present',

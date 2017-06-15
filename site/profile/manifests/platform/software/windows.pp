@@ -1,4 +1,4 @@
-class profile::platform::packages::windows {
+class profile::platform::software::windows {
 
   require chocolatey
 
@@ -11,5 +11,4 @@ class profile::platform::packages::windows {
   package { 'notepadplusplus': }
   package { '7zip': }
   package { 'git': }
-
 }
