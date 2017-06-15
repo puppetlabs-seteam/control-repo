@@ -28,13 +28,13 @@ class profile::app::cloudshop::sqlserver::sql (
   }
 
   service { 'wuauserv':
-    ensure => running,
     enable => true,
     before => Windowsfeature['Net-Framework-Core'],
   }
 
   windowsfeature { 'Net-Framework-Core':
     ensure => present,
+    require =>
   }
 
   sqlserver_instance{ $db_instance:
