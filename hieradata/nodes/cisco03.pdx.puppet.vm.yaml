@@ -1,0 +1,42 @@
+---
+
+profile::network::cisco_demo::vlans:
+  "200":
+    ensure: 'present'
+    shutdown: 'false'
+    state: 'active'
+    vlan_name: 'engineering-vlan'
+  "300":
+    ensure: 'present'
+    shutdown: 'false'
+    state: 'active'
+    vlan_name: 'research-vlan'
+  "300":
+    ensure: 'present'
+    shutdown: 'false'
+    state: 'active'
+    vlan_name: 'IT-vlan'
+
+profile::network::cisco_demo::interfaces:
+  "ethernet1/1":
+    ipaddress: "192.168.1.1"
+    netmask: "24"
+    mtu: "1600"
+    shutdown: false
+    switchport_mode: disabled
+    access_vlan: 1
+  "ethernet1/2":
+    shutdown: false
+    mtu: "1500"
+    switchport_mode: access
+    access_vlan: 200
+  "ethernet1/3":
+    shutdown: false
+    mtu: "1500"
+    switchport_mode: access
+    access_vlan: 200
+  "ethernet1/4":
+    shutdown: true
+    mtu: "1500"
+    switchport_mode: access
+    access_vlan: 300
