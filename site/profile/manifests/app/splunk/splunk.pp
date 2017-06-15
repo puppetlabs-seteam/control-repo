@@ -1,3 +1,4 @@
+# splunk server module
 class profile::app::splunk (
   $purge_inputs    = false,
   $purge_outputs   = false,
@@ -6,7 +7,7 @@ class profile::app::splunk (
   #$src_path        = 'splunk/files',
   $version         = '6.6.1',
   $build           = 'aeae3fe0c5af',
-  $src_root       = "https://www.splunk.com/bin/splunk/DownloadActivityServlet?architecture=x86_64&platform=linux&version=6.6.1&product=universalforwarder&filename=splunkforwarder-6.6.1-aeae3fe0c5af-linux-2.6-x86_64.rpm&wget=true"
+  $src_root        = 'https://www.splunk.com/bin/splunk/DownloadActivityServlet?architecture=x86_64&platform=linux&version=6.6.1&product=universalforwarder&filename=splunkforwarder-6.6.1-aeae3fe0c5af-linux-2.6-x86_64.rpm&wget=true'
 ) {
 
 
@@ -16,10 +17,10 @@ class profile::app::splunk (
 #  }
 
   class { 'splunk::params':
-    version              => $version,
-    build                => $build,
-    server               => $server,
-    src_root             => $src_root,
+    version  => $version,
+    build    => $build,
+    server   => $server,
+    src_root => $src_root,
   }
 
   class { 'splunk':
