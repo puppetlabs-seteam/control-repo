@@ -37,7 +37,7 @@ class profile::app::splunk::server (
     group            => 'pe-puppet',
   }
   
-  file { 'splunk-6.6.1-aeae3fe0c5af-linux-2.6-x86_64.rpm'
+  file { 'splunk-6.6.1-aeae3fe0c5af-linux-2.6-x86_64.rpm':
     ensure           => present,
     location         => '/opt/tse-files/splunk/files/linux',
     owner            => 'pe-puppet',
