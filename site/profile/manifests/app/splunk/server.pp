@@ -32,7 +32,7 @@ class profile::app::splunk::server (
   }
 
   file { [ '/opt/tse-files', '/opt/tse-files/splunk', '/opt/tse-files/splunk/files', '/opt/tse-files/splunk/files/linux' ] :
-    ensure           => present,
+    ensure           => directory,
   }
   
   file { '/opt/tse-files/splunk/files/linux/splunk-6.6.1-aeae3fe0c5af-linux-2.6-x86_64.rpm':
