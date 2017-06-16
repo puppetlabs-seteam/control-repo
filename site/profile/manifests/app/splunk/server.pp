@@ -7,7 +7,7 @@ class profile::app::splunk::server (
   #$src_path        = 'splunk/files',
   $version         = '6.6.1',
   $build           = 'aeae3fe0c5af',
-  $src_root        = 'https://www.splunk.com/bin/splunk/DownloadActivityServlet?architecture=x86_64&platform=linux&version=6.6.1&product=universalforwarder&filename=splunkforwarder-6.6.1-aeae3fe0c5af-linux-2.6-x86_64.rpm&wget=true'
+  $src_root        = "https://www.splunk.com/bin/splunk/DownloadActivityServlet?architecture=x86_64&platform=linux&version=6.6.1&product=universalforwarder&filename=splunkforwarder-6.6.1-aeae3fe0c5af-linux-2.6-x86_64.rpm&wget=true",
 ) {
 
 
