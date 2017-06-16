@@ -24,8 +24,6 @@ class profile::app::splunk::server (
     splunkd_port  => $splunkd_port,
   }
 
-#  class { 'splunk':
-#  }
-#
+include splunk
 
-  }
+}
