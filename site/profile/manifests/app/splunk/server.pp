@@ -26,4 +26,8 @@ class profile::app::splunk::server (
 
 include splunk
 
+  # Declare:
+    @@splunk_server { $::hostname:
+    }
+
 }
