@@ -9,7 +9,7 @@ class profile::app::splunk::server (
   $server             = 'monitor.inf.puppet.vm',
 ) {
 
-  $src_root = http://$file_host:81/$file_path,
+  $src_root = "http://$file_host:81/$file_path",
 
   class { 'splunk::params':
     version  => $version,
