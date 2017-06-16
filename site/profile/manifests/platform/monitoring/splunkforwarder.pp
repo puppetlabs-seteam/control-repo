@@ -10,6 +10,7 @@ class profile::platform::monitoring::splunkforwarder (
 
 include ::splunk::forwarder
 
-notify   => 'Splunk_server <<||>>',
-
+notify { 'Splunk_server <<||>>': }
+ 
+  
 }
