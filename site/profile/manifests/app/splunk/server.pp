@@ -31,17 +31,10 @@ class profile::app::splunk::server (
     purge_outputs => $purge_outputs,
   }
 
-  file { '/opt/tse-files' :
+  file { [ '/opt/tse-files', '/opt/tse-files/splunk', '/opt/tse-files/splunk/files', '/opt/tse-files/splunk/files/linux' :
     ensure           => directory,
   }
   
-  file { '/opt/tse-files/splunk' :
-    ensure           => directory,
-  }
-  
-  file { '/opt/tse-files/splunk/files' :
-    ensure           => directory,
-  }
 #  file { "/opt/tse-files/splunk/files/linux/splunk-6.6.1-aeae3fe0c5af-linux-2.6-x86_64.rpm":
 #    ensure           => present,
 #    owner            => 'pe-puppet',
