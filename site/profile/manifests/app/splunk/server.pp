@@ -10,7 +10,7 @@ class profile::app::splunk::server (
 ) {
 
   #potential for demo environment with the file server running on port 81
-  $src_root = "http://$file_host:81/$file_path"
+  #$src_root = "http://$file_host:81/$file_path"
   
   #potential for other environments, collecting the files from the puppet file server
   $src_root = "puppet:///linux/splunk-6.6.1-aeae3fe0c5af-linux-2.6-x86_64.rpm'
