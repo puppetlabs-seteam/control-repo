@@ -2,7 +2,7 @@ class profile::app::splunk::download_splunk_files (
   $srv_root = '/opt/tse-files',
 ) {
 
-  $dir_root   = "${srv_root}/demo_offline_splunk"
+  $dir_root   = "${srv_root}/"
   $version    = '6.6.1'
   $build      = 'aeae3fe0c5af'
   $src_root   = "http://download.splunk.com/releases/${version}"
