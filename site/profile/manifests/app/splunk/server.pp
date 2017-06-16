@@ -33,6 +33,7 @@ class profile::app::splunk::server (
 
   file { '/opt/tse-files/splunk/files/linux/':
     ensure           => directory,
+    recurse          => true,
     owner            => 'pe-puppet',
     group            => 'pe-puppet',
   }
