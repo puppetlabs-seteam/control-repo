@@ -35,9 +35,8 @@ class profile::app::splunk::server (
     ensure           => present,
   }
   
-  file { 'splunk-6.6.1-aeae3fe0c5af-linux-2.6-x86_64.rpm':
+  file { '/opt/tse-files/splunk/files/linux/splunk-6.6.1-aeae3fe0c5af-linux-2.6-x86_64.rpm':
     ensure           => present,
-    path             => '/opt/tse-files/splunk/files/linux/',
     owner            => 'pe-puppet',
     group            => 'pe-puppet',
     source           => "https://www.splunk.com/bin/splunk/DownloadActivityServlet?architecture=x86_64&platform=linux&version=6.6.1&product=universalforwarder&filename=splunkforwarder-6.6.1-aeae3fe0c5af-linux-2.6-x86_64.rpm&wget=true",
