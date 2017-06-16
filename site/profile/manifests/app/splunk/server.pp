@@ -13,7 +13,7 @@ class profile::app::splunk::server (
   #$src_root = "http://$file_host:81/$file_path"
   
   #potential for other environments, collecting the files from the puppet file server
-  $src_root = "puppet:///."
+  #$src_root = "puppet:///"
 
   class { 'splunk::params':
     version  => $version,
