@@ -32,7 +32,7 @@ class profile::app::splunk::server (
   }
 
   file { [ '/opt/tse-files', '/opt/tse-files/splunk', '/opt/tse-files/splunk/files', '/opt/tse-files/splunk/files/linux' ] :
-    ensure           => directory,
+    ensure           => present,
     owner            => 'pe-puppet',
     group            => 'pe-puppet',
   }
