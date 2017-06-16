@@ -37,7 +37,7 @@ class profile::app::splunk::server (
   
   file { 'splunk-6.6.1-aeae3fe0c5af-linux-2.6-x86_64.rpm' :
     ensure           => file,
-    path             => '/opt/tse-files/splunk/files/linux/',
+    path             => '/opt/tse-files/splunk/files/linux/splunk-6.6.1-aeae3fe0c5af-linux-2.6-x86_64.rpm',
     force            => true,
     source           => $package_source,
   }
