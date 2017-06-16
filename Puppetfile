@@ -72,7 +72,7 @@ mod 'tse/winntp', '1.0.1'
 mod 'tse/time', '1.0.1'
 mod 'jriviere/windows_ad', '0.3.2'
 mod 'crayfishx-purge', '1.2.0'
-mod 'puppet-splunk', '5.1.0'
+mod 'puppet-splunk', '6.0.0'
 mod 'jpadams-puppet_vim_env', '2.4.1'
 
 # Modules from Git
