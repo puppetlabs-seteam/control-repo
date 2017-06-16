@@ -3,9 +3,9 @@
 gitlab::package_ensure: '8.14.4-ce.0.el7'
 puppet_enterprise::profile::master::check_for_updates: false
 
-splunk::params::version:  "6.0"
-splunk::params::build:    "182037"
-splunk::params::src_root: "http://master.inf.puppet.vm/demo_offline_splunk"
+splunk::params::version:  "6.6.1"
+splunk::params::build:    "aeae3fe0c5af"
+splunk::params::src_root: "http://tseteam.s3.amazonaws.com/files"
 
 preserved_users:
   - 'pe-puppet'

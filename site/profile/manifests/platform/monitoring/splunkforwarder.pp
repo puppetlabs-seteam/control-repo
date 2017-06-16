@@ -5,9 +5,11 @@ class profile::platform::monitoring::splunkforwarder (
 
   class { '::splunk::params':
     server => $splunk_server,
+    src_root = "http://tseteam.s3.amazonaws.com/files",
 }
 
 include ::splunk::forwarder
 
+notify   => 'Splunk_server <<||>>',
 
 }
