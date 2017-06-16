@@ -4,8 +4,8 @@ class profile::app::splunk::server (
   $purge_outputs      = false,
   $version            = '6.6.1',
   $build              = 'aeae3fe0c5af',
-  $file_host          = 'master.inf.puppet.vm',
-  $file_path          = '/opt/tse-files/splunk/files/splunk/linux',
+  #$file_host          = 'master.inf.puppet.vm',
+  #$file_path          = '/opt/tse-files/splunk/files/splunk/linux',
   $server             = 'monitor.inf.puppet.vm',
 ) {
 
