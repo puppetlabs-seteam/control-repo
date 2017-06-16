@@ -22,9 +22,6 @@ class profile::app::splunk::server (
     src_root => $src_root,
     logging_port  => $logging_port,
     splunkd_port  => $splunkd_port,
-   # web_port      => $web_port,
-   # purge_inputs  => $purge_inputs,
-   # purge_outputs => $purge_outputs,
   }
 
 #  class { 'splunk':
