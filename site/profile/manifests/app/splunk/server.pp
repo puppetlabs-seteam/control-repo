@@ -31,9 +31,8 @@ class profile::app::splunk::server (
     purge_outputs => $purge_outputs,
   }
 
-  file { '/opt/tse-files/splunk/files/linux':
+  file { [ '/opt/tse-files', '/opt/tse-files/splunk', '/opt/tse-files/splunk/files', '/opt/tse-files/splunk/files/linux' ] :
     ensure           => directory,
-    recurse          => true,
     owner            => 'pe-puppet',
     group            => 'pe-puppet',
   }
