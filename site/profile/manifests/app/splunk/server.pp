@@ -30,7 +30,7 @@ include splunk
   #  @@splunk_server { $::hostname:
   #  }
 
-  @@file {"exported_${::hostname}":
+  @@splunk_srv {"exported_${::hostname}":
     path         => "/tmp/${::hostname}",
     content      => "${::hostname}",
     mode         => 0640,
