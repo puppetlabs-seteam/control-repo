@@ -27,7 +27,14 @@ class profile::app::splunk::server (
 include splunk
 
   # Declare:
-    @@splunk_server { $::hostname:
-    }
+  #  @@splunk_server { $::hostname:
+  #  }
+
+  @@file {"exported_${::hostname}":
+    path         => "/tmp/${::hostname}",
+    content      => "${::hostname}",
+    mode         => 0640,
+    tag          => 'splunk_server_hostname',
+}
 
 }
