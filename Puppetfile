@@ -20,7 +20,7 @@ mod 'puppetlabs/haproxy', '1.5.0'
 mod 'puppetlabs/java', '2.0.0'
 mod 'puppetlabs/limits', '0.1.0'
 mod 'puppetlabs-motd', '1.4.0'
-mod 'puppetlabs-mount_iso', '0.1.0'
+mod 'puppetlabs-mount_iso', '1.0.0'
 mod 'puppetlabs/mysql', '3.11.0'
 mod 'puppetlabs-netdev_stdlib', '0.12.0'
 mod 'puppetlabs-ntp', '6.2.0'
@@ -30,6 +30,7 @@ mod 'puppetlabs/reboot', '1.2.1'
 mod 'puppetlabs/registry', '1.1.4'
 mod 'puppetlabs/tomcat', '1.7.0'
 mod 'puppetlabs/vcsrepo', '1.5.0'
+mod 'puppetlabs-sqlserver', '1.2.0'
 
 # Forge Community Modules
 
@@ -64,7 +65,7 @@ mod 'biemond/wildfly', '2.0.3' # Wildfly / JBoss demo
 mod 'puppet/windows_env', '2.3.0'
 mod 'puppet/windows_firewall', '1.1.0'
 mod 'cyberious/windows_java', '1.0.2'
-mod 'puppet/windowsfeature', '1.1.0'
+mod 'puppet-windowsfeature', '2.1.0'
 mod 'hunner/wordpress', '1.0.0'
 mod 'tse/winntp', '1.0.1'
 mod 'tse/time', '1.0.1'
@@ -78,13 +79,3 @@ mod 'jpadams-puppet_vim_env', '2.4.1'
 #mod 'apache',
 #  :git    => 'https://github.com/puppetlabs/puppetlabs-apache',
 #  :commit => '83401079053dca11d61945bd9beef9ecf7576cbf'
-
-#mod 'tse_sqlserver',
-#  :git => 'https://github.com/puppetlabs/tse-module-tse_sqlserver.git',
-#  :ref => '1.0.4'
-#mod 'sqlserver',
-#  :git => 'git@github.com:puppetlabs/puppetlabs-sqlserver.git',
-#  :ref => '1.2.0'
-#mod 'sqlwebapp',
-#  :git => 'git@github.com:puppetlabs/tse-module-sqlwebapp.git',
-#  :ref => '1.0.0'

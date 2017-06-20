@@ -5,7 +5,7 @@ class profile::app::cloudshop::sqlserver::sql (
   $db_instance = 'MYINSTANCE',
   $sa_pass     = 'Password$123$',
 ) {
-  case $::tse_sqlserver::sqlserver_version {
+  case $profile::app::cloudshop::sqlserver::init::sqlserver_version {
     '2012':  {
       $version_var  = 'MSSQL11'
     }
@@ -31,7 +31,6 @@ class profile::app::cloudshop::sqlserver::sql (
   }
 
   service { 'wuauserv':
-    ensure => running,
     enable => true,
     before => Windowsfeature['Net-Framework-Core'],
   }
