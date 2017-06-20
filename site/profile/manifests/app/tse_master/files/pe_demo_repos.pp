@@ -13,10 +13,10 @@ class profile::app::tse_master::files::pe_demo_repos {
   # Creates and serves a tarball containing all of the git repositories used to
   # bootstrap the master. This will be consumed later by a gitlab server when
   # it is configured.
-  exec { "ensure repos tarball" :
-    cwd     => "/opt/puppetlabs",
-    command => "/bin/tar -czf /opt/pe-demo-repos.tar.gz repos",
-    creates => "/opt/pe-demo-repos.tar.gz",
+  exec { 'ensure repos tarball' :
+    cwd     => '/opt/puppetlabs',
+    command => '/bin/tar -czf /opt/pe-demo-repos.tar.gz repos',
+    creates => '/opt/pe-demo-repos.tar.gz',
   }
 
 }

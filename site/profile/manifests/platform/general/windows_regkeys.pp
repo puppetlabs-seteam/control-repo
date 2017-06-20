@@ -12,8 +12,8 @@ class profile::platform::general::windows_regkeys {
   }
 
   registry_value { 'HKEY_LOCAL_MACHINE\Software\Demonstration\value2':
-    type         => dword,
-    data         => '0xFFFFFFFF',
+    type => dword,
+    data => '0xFFFFFFFF',
   }
 
 }

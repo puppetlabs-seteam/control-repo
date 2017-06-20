@@ -1,7 +1,7 @@
 # @summary This profile installs unzip and git as part of the Windows baseline
-class profile::generic_webdemo::windows_baseline {
+class profile::platform::general::windows_baseline {
 
-  include chocolatey
+  include ::chocolatey
 
   package { 'unzip':
     ensure   => installed,

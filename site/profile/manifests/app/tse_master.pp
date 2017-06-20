@@ -58,7 +58,7 @@ class profile::app::tse_master {
     ensure => file,
     owner  => 'root',
     group  => 'root',
-    mode   => '755',
+    mode   => '0755',
     source => 'puppet:///modules/profile/puppet-code-commit',
   }
 

@@ -1,7 +1,7 @@
 class profile::platform::monitoring::nagios_server {
 
   if $facts['os']['family'] != 'redhat' {
-    fail("This class is only for EL family")
+    fail('This class is only for EL family')
   }
 
   require epel
@@ -9,7 +9,7 @@ class profile::platform::monitoring::nagios_server {
   require apache::mod::ssl
   require apache::mod::php
 
-  class { selinux:
+  class { 'selinux':
     mode => 'permissive',
     type => 'targeted',
   }
@@ -37,25 +37,25 @@ class profile::platform::monitoring::nagios_server {
   }
 
   file_line { 'nagios_host':
-    path => '/etc/nagios/nagios.cfg',
-    line => 'cfg_file=/etc/nagios/nagios_host.cfg',
+    path   => '/etc/nagios/nagios.cfg',
+    line   => 'cfg_file=/etc/nagios/nagios_host.cfg',
     notify => Service['nagios'],
   }
 
   file_line { 'nagios_service':
-    path => '/etc/nagios/nagios.cfg',
-    line => 'cfg_file=/etc/nagios/nagios_service.cfg',
+    path   => '/etc/nagios/nagios.cfg',
+    line   => 'cfg_file=/etc/nagios/nagios_service.cfg',
     notify => Service['nagios'],
   }
 
   file { '/etc/nagios/nagios_host.cfg':
-    ensure   => 'file',
-    mode     => '0644',
+    ensure => 'file',
+    mode   => '0644',
   }
 
   file { '/etc/nagios/nagios_service.cfg':
-    ensure   => 'file',
-    mode     => '0644',
+    ensure => 'file',
+    mode   => '0644',
   }
 
   service { 'nagios':
@@ -64,8 +64,8 @@ class profile::platform::monitoring::nagios_server {
     subscribe => File['/etc/httpd/conf.d/nagios.conf'],
   }
 
-  @@host { $fqdn:
-    ip => $ipaddress,
+  @@host { $::fqdn:
+    ip => $::ipaddress,
   }
 
   Host <<||>>

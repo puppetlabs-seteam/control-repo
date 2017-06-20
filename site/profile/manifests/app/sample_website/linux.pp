@@ -1,5 +1,5 @@
 #
-class profile::sample_website::linux (
+class profile::app::sample_website::linux (
     $doc_root,
     $webserver_port,
 ) {

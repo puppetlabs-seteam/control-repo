@@ -12,10 +12,10 @@ class profile::app::tse_master::puppetserver::demo_user (
 ) {
   # demo user's ssh keys
   file { $demo_key_dir:
-    ensure => directory,
-    owner  => $demo_username,
-    group  => $demo_username,
-    mode   => '0700',
+    ensure  => directory,
+    owner   => $demo_username,
+    group   => $demo_username,
+    mode    => '0700',
     require => File[$demo_home_dir],
   }
 
@@ -65,14 +65,14 @@ class profile::app::tse_master::puppetserver::demo_user (
   })
 
   exec { 'create demo user and role':
-    command => "/opt/puppetlabs/puppet/bin/ruby -e ${shellquote($ruby_mk_demo_user)}",
+    command => "/opt/puppetlabs/puppet/bin/ruby -e shellquote(${ruby_mk_demo_user})",
     creates => '/opt/puppetlabs/puppet/cache/tse_demo_user_created',
   }
 
   # The puppet-access command will create any needed directories and make root their owner. So for the demo and deploy users we have to run the command
   # first and then manage the ownership later so pe-puppet can read during template file() function evaluation.
   exec { "create ${demo_username} rbac token":
-    command => "/bin/echo ${shellquote($demo_password)} | \
+    command => "/bin/echo shellquote(${demo_password}) | \
                   /opt/puppetlabs/bin/puppet-access login \
                   --username ${demo_username} \
                   --service-url https://${clientcert}:4433/rbac-api \

@@ -8,13 +8,13 @@ class profile::compliance::hipaa::windows {
 
   # Ensure only known accounts are on the system, purge any unmanaged accounts otherwise.
   user { 'Local Admin 1':
-    ensure      => present,
-    groups      => ['Administrators'],
+    ensure => present,
+    groups => ['Administrators'],
   }
 
   user { 'Local Admin 2':
-    ensure      => present,
-    groups      => ['Administrators'],
+    ensure => present,
+    groups => ['Administrators'],
   }
 
   #Purge any unmanaged users.
@@ -32,16 +32,16 @@ class profile::compliance::hipaa::windows {
 
   # Set time limit for active but idle Remote Desktop Services sessions: 10 minutes
   registry_value { 'HKEY_LOCAL_MACHINE\Software\Policies\Microsoft\Windows NT\Terminal Services\MaxIdleTime':
-    type        => dword,
-    data        => '0x000927c0',
-    notify      => Reboot['after_run'],
+    type   => dword,
+    data   => '0x000927c0',
+    notify => Reboot['after_run'],
   }
 
   # Set time limit for disconnected sessions: 5 minutes
   registry_value { 'HKEY_LOCAL_MACHINE\Software\Policies\Microsoft\Windows NT\Terminal Services\MaxDisconnectionTime':
-    type        => dword,
-    data        => '0x000493e0',
-    notify      => Reboot['after_run'],
+    type   => dword,
+    data   => '0x000493e0',
+    notify => Reboot['after_run'],
   }
 
   # Reboot is required for registry keys above if they are remediated/altered.

@@ -1,2 +1,10 @@
 hieradata/nodes/example-puppet-master.yaml
+/modules
+/build
+/.tmp
+/.librarian
+*.swp
 .DS_Store
+/.bundle
+/.vagrant
+Gemfile.lock

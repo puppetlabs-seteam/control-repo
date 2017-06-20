@@ -66,12 +66,12 @@ class profile::app::tse_master::puppetserver::deploy_user (
   })
 
   exec { 'create deploy user and role':
-    command => "/opt/puppetlabs/puppet/bin/ruby -e ${shellquote($ruby_mk_deploy_user)}",
+    command => "/opt/puppetlabs/puppet/bin/ruby -e shellquote(${ruby_mk_deploy_user})",
     creates => '/opt/puppetlabs/puppet/cache/tse_deploy_user_created',
   }
 
   exec { "create ${deploy_username} rbac token":
-    command => "/bin/echo ${shellquote($deploy_password)} | \
+    command => "/bin/echo shellquote(${deploy_password}) | \
                  /opt/puppetlabs/bin/puppet-access login \
                  --username ${deploy_username} \
                  --service-url https://${clientcert}:4433/rbac-api \

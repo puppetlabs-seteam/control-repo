@@ -67,8 +67,8 @@ class profile::app::tse_master::files::tomcat (
     checksum => '2b909846f5c6beaaff9a4e6db0630e80',
   }
   remote_file { 'sample-1.2.war':
-    source => 'https://s3.amazonaws.com/saleseng/files/tomcat/sample-1.2.war',
-    path   => "${srv_root}/tomcat/plsample-1.2.war",
+    source   => 'https://s3.amazonaws.com/saleseng/files/tomcat/sample-1.2.war',
+    path     => "${srv_root}/tomcat/plsample-1.2.war",
     checksum => '92d5a7c06fd0fa03fb0d8f2742cb697d',
   }
 }

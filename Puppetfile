@@ -2,7 +2,7 @@ forge "http://forge.puppetlabs.com"
 
 # Modules from the Puppet Forge
 # Versions should be updated to be the latest at the time you start
-mod "puppetlabs/inifile", '1.5.0'
+mod 'puppetlabs/inifile', '1.6.0'
 mod "puppetlabs/stdlib", '4.17.0'
 mod 'puppetlabs-ciscopuppet', '1.7.0'
 mod "puppetlabs/concat", '4.0.0'
@@ -11,14 +11,12 @@ mod 'puppetlabs/apache', '1.11.0'
 mod 'puppetlabs/aws', '2.0.0'
 mod 'puppetlabs/azure', '1.1.1'
 mod 'puppetlabs-chocolatey', '2.0.2'
-mod 'puppetlabs/concat', '2.2.0'
 mod 'puppetlabs/dism', '1.2.0'
 mod 'puppetlabs/docker_platform', '2.2.1'
 mod 'puppetlabs/dsc', '1.3.0'
 mod 'puppetlabs/firewall', '1.8.2'
 mod 'puppetlabs/git', '0.5.0'
 mod 'puppetlabs/haproxy', '1.5.0'
-mod 'puppetlabs/inifile', '1.6.0'
 mod 'puppetlabs/java', '2.0.0'
 mod 'puppetlabs/limits', '0.1.0'
 mod 'puppetlabs-motd', '1.4.0'
