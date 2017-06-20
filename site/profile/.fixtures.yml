@@ -1,0 +1,32 @@
+fixtures:
+  symlinks:
+    profile: "#{source_dir}"
+  forge_modules:
+    stdlib:
+      repo: "puppetlabs/stdlib"
+      ref: "4.17.0"
+    apache:
+      repo: "puppetlabs/apache"
+      ref: "1.11.0"
+    firewall:
+      repo: "puppetlabs/firewall"
+      ref: "1.8.2"
+    git:
+      repo: "puppetlabs/git"
+      ref: "0.5.0"
+    firewalld:
+      repo: "crayfishx/firewalld"
+      ref: "3.1.4"
+    iis:
+      repo: "puppet/iis"
+      ref: "3.0.0"
+    windows_firewall:
+      repo: "puppet/windows_firewall"
+      ref: "1.1.0"
+    puppet_vim_env:
+      repo: "jpadams/puppet_vim_env"
+      ref: "2.4.1"
+    motd: "puppetlabs/motd"
+    ssh:
+      repo: "ghoneycutt/ssh"
+      ref: "3.52.0"
