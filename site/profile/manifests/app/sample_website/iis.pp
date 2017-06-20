@@ -1,5 +1,5 @@
 # @summary This profile installs IIS and turns off the default website
-class profile::iis {
+class profile::sample_website::iis {
 
   $iis_features = [
     'Web-Server',
