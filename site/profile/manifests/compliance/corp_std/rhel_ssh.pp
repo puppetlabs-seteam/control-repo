@@ -3,13 +3,13 @@ class profile::compliance::corp_std::rhel_ssh (
   ){
 
   file { '/etc/issue':
-    ensure => file,
+    ensure  => file,
     content => template('profile/openssh/banner.erb'),
   }
 
   # The $root parameter is being passed to the template to enable toggling of root logins
   file { '/etc/ssh/sshd_config':
-    ensure => file,
+    ensure  => file,
     content => template('profile/openssh/sshd_config.erb'),
   }
 

@@ -14,9 +14,9 @@ class example::wordpress {
     vhost_name => $::fqdn,
     port       => '80',
     docroot    => '/var/www/html',
-  } ->
+  }
 
-  class { '::wordpress':
+  -> class { '::wordpress':
     install_dir => '/var/www/html',
   }
 

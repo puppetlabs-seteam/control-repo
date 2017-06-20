@@ -12,14 +12,14 @@ class profile::app::tse_master::files::rgbank (
   file { $directories:
     ensure => directory,
     mode   => '0755',
-  } ->
+  }
 
-  remote_file { "${download_src}/${rmt_file}":
+  -> remote_file { "${download_src}/${rmt_file}":
     source => "${download_src}/${rmt_file}",
     path   => "${srv_root}/${local_dir}/${rmt_file}",
-  } ->
+  }
 
-  file { "${srv_root}/${local_dir}/${rmt_file}":
+  -> file { "${srv_root}/${local_dir}/${rmt_file}":
     mode    => '0644',
     require => [ File[$directories], Remote_file["${download_src}/${rmt_file}"] ]
   }

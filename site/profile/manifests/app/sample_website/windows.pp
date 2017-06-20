@@ -1,14 +1,13 @@
 #
-class profile::sample_website::windows (
+class profile::app::sample_website::windows (
     $doc_root,
     $webserver_port,
 ) {
-  require profile::iis
+  require ::profile::iis
 
   # configure iis
   iis::manage_app_pool {'sample_website':
     require => [
-      Windowsfeature[$iis_features],
       Iis::Manage_site['Default Web Site'],
     ],
   }
@@ -19,7 +18,6 @@ class profile::sample_website::windows (
     ip_address => '*',
     app_pool   => 'sample_website',
     require    => [
-      Windowsfeature[$iis_features],
       Iis::Manage_app_pool['sample_website']
     ],
   }
@@ -30,7 +28,7 @@ class profile::sample_website::windows (
     action       => 'Allow',
     enabled      => 'yes',
     protocol     => 'TCP',
-    local_port   => "${webserver_port}",
+    local_port   => $webserver_port,
     display_name => 'HTTP Inbound',
     description  => 'Inbound rule for HTTP Server',
   }

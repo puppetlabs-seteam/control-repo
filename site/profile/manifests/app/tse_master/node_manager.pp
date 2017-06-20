@@ -45,7 +45,7 @@ class profile::app::tse_master::node_manager {
     ensure               => 'present',
     classes              => {'puppet_enterprise::profile::agent' => {'package_inventory_enabled' => true}},
     environment          => 'production',
-    override_environment => 'false',
+    override_environment => false,
     parent               => 'All Nodes',
     rule                 => ['and', ['~', ['fact', 'aio_agent_version'], '.+']],
   }
@@ -55,7 +55,7 @@ class profile::app::tse_master::node_manager {
     environment          => 'production',
     override_environment => false,
     parent               => 'All Nodes',
-    rule                 => ['or', ['=', 'name', "${gitlab_server}"]],
+    rule                 => ['or', ['=', 'name', $gitlab_server]],
     classes              => {
       'profile::gitlab' => {},
     },
@@ -66,7 +66,7 @@ class profile::app::tse_master::node_manager {
     environment          => 'production',
     override_environment => false,
     parent               => 'All Nodes',
-    rule                 => ['or', ['=', 'name', "${jenkins_server}"]],
+    rule                 => ['or', ['=', 'name', $jenkins_server]],
     classes              => {
       'role::jenkins' => {},
     },
@@ -106,7 +106,7 @@ class profile::app::tse_master::node_manager {
     override_environment => false,
     parent               => 'PE Infrastructure',
     rule                 => ['and',
-      ['=', ['fact', 'is_admin'], 'true'],
+      ['=', ['fact', 'is_admin'], true],
       ['~', ['fact', 'aio_agent_version'], '.+'],
     ],
     classes              => {
