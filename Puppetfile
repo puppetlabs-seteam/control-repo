@@ -31,10 +31,10 @@ mod 'puppetlabs/registry', '1.1.4'
 mod 'puppetlabs/tomcat', '1.7.0'
 mod 'puppetlabs/vcsrepo', '1.5.0'
 mod 'puppetlabs-sqlserver', '1.2.0'
-#mod 'puppetlabs-iis', '4.0.0'
+mod 'puppetlabs-iis', '4.0.0'
 
 # Forge Community Modules
-mod 'puppet-iis', '3.0.0'
+
 mod 'crayfishx-firewalld', '3.1.4'
 mod 'puppet-archive', '1.3.0'
 mod 'garethr/docker', '5.3.0'
