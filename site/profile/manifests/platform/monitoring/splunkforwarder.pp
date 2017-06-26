@@ -6,9 +6,7 @@ class profile::platform::monitoring::splunkforwarder (
 if $splunk_server == undef {
   $splunk_nodes_query = 'resources[certname] {type = "Class" and title = "Splunk" }'
   $splunk_server = puppetdb_query($splunk_nodes_query)[0][certname]
-  notify {'$splunk_server':}
   }
-
 
   class { '::splunk::params':
     server   => $splunk_server,
