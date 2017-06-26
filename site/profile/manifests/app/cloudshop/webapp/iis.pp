@@ -43,4 +43,5 @@ class profile::app::cloudshop::webapp::iis {
   windowsfeature { $iis_features:
     ensure => present,
   }
+  
 }

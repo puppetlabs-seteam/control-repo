@@ -17,12 +17,6 @@ class profile::app::sample_website::windows (
   iis_site { $::fqdn:
     physicalpath    => $doc_root,
     applicationpool => 'sample_website',
-    bindings        => [
-      {
-        'protocol'             => 'http',
-        'bindinginformation'   => "*:${webserver_port}:",
-      },
-    ],
     require         => [
       Iis_application_pool['sample_website']
     ],
