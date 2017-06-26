@@ -8,6 +8,7 @@ class profile::app::sample_website::windows (
 
   # configure iis
   iis_application_pool { 'sample_website':
+    ensure  => 'present',
     require => [
       Iis_site['Default Web Site'],
     ],
