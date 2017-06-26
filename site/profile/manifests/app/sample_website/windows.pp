@@ -2,8 +2,9 @@
 class profile::app::sample_website::windows (
     $doc_root,
     $webserver_port,
+    $website_source_dir  = 'puppet:///modules/profile/sample_website',
 ) {
-  require ::profile::iis
+  require profile::app::sample_website::iis
 
   # configure iis
   iis::manage_app_pool {'sample_website':
@@ -33,9 +34,6 @@ class profile::app::sample_website::windows (
     description  => 'Inbound rule for HTTP Server',
   }
 
-  # deploy website
-  $website_source_dir  = lookup('website_source_dir')
-
   file { $website_source_dir:
     ensure  => directory,
     path    => $doc_root,
@@ -45,7 +43,7 @@ class profile::app::sample_website::windows (
 
   file { "${doc_root}/index.html":
     ensure  => file,
-    content => epp('profile/index.html.epp'),
+    content => epp('profile/sample_website/index.html.epp'),
   }
 
 }
