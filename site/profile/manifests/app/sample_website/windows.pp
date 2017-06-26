@@ -8,13 +8,13 @@ class profile::app::sample_website::windows (
 
   # configure iis
   iis_application_pool { 'sample_website':
-    ensure  => present,
     require => [
       Iis_site['Default Web Site'],
     ],
   }
 
   iis_site { $::fqdn:
+    ensure          => present,
     physicalpath    => $doc_root,
     applicationpool => 'sample_website',
     require         => [
