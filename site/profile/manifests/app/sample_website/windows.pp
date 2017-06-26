@@ -3,11 +3,13 @@ class profile::app::sample_website::windows (
     $webserver_port = '80',
     $website_source_dir  = 'puppet:///modules/profile/sample_website',
 ) {
+
   require profile::app::sample_website::iis
 
   # configure iis
   iis_application_pool { 'sample_website':
     require => [
+      Windowsfeature[$iis_features],
       Iis_site['Default Web Site'],
     ],
   }
@@ -17,10 +19,12 @@ class profile::app::sample_website::windows (
     applicationpool => 'sample_website',
     bindings        => [
       {
+        'protocol'             => 'http',
         'bindinginformation'   => "*:${webserver_port}:",
       },
     ],
     require         => [
+      Windowsfeature[$iis_features],
       Iis_application_pool['sample_website']
     ],
   }
