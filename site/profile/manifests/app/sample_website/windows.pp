@@ -6,18 +6,18 @@ class profile::app::sample_website::windows (
   require profile::app::sample_website::iis
 
   # configure iis
-  iis::manage_app_pool {'sample_website':
+  iis_application_pool { 'sample_website':
     require => [
-      Iis::Manage_site['Default Web Site'],
+      Iis_site['Default Web Site'],
     ],
   }
 
-  iis::site { $::fqdn:
-    site_path  => $doc_root,
-    port       => $webserver_port,
-    ip_address => '*',
-    app_pool   => 'sample_website',
-    require    => [
+  iis_site { $::fqdn:
+    path         => $doc_root,
+    port         => $webserver_port,
+    ip           => '*',
+    app_pool     => 'sample_website',
+    require      => [
       Iis::Manage_app_pool['sample_website']
     ],
   }
