@@ -1,6 +1,5 @@
-#
 class profile::app::sample_website::windows (
-    $doc_root = 'C:\inetpub\wwwroot\generic_website',
+    $doc_root = 'C:\\inetpub\\wwwroot\\generic_website',
     $webserver_port = '80',
     $website_source_dir  = 'puppet:///modules/profile/sample_website',
 ) {

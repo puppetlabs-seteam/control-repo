@@ -6,4 +6,5 @@ class profile::app::sample_website {
   elsif $::kernel == 'windows' {
     include profile::app::sample_website::windows
   }
+  
 }

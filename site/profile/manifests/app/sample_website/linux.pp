@@ -1,4 +1,3 @@
-#
 class profile::app::sample_website::linux (
     $doc_root = '/var/www/generic_website',
     $webserver_port = '80',
