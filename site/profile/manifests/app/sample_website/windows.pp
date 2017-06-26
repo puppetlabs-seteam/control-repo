@@ -9,7 +9,6 @@ class profile::app::sample_website::windows (
   # configure iis
   iis_application_pool { 'sample_website':
     require => [
-      Windowsfeature[$iis_features],
       Iis_site['Default Web Site'],
     ],
   }
@@ -24,7 +23,6 @@ class profile::app::sample_website::windows (
       },
     ],
     require         => [
-      Windowsfeature[$iis_features],
       Iis_application_pool['sample_website']
     ],
   }
