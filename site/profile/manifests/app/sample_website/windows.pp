@@ -1,5 +1,5 @@
 class profile::app::sample_website::windows (
-    $doc_root = 'C:\\inetpub\\wwwroot\\generic_website',
+    $doc_root = 'C:\\inetpub\\wwwroot\\sample_website',
     $webserver_port = '80',
     $website_source_dir  = 'puppet:///modules/profile/sample_website',
 ) {
@@ -8,7 +8,7 @@ class profile::app::sample_website::windows (
 
   # configure iis
   iis_application_pool { 'sample_website':
-    ensure  => 'present',
+    ensure  => present,
     require => [
       Iis_site['Default Web Site'],
     ],
