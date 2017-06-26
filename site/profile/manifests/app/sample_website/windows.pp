@@ -1,7 +1,7 @@
 #
 class profile::app::sample_website::windows (
-    $doc_root,
-    $webserver_port,
+    $doc_root = 'C:\inetpub\wwwroot\generic_website',
+    $webserver_port = '80',
     $website_source_dir  = 'puppet:///modules/profile/sample_website',
 ) {
   require profile::app::sample_website::iis
