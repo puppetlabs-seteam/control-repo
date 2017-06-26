@@ -1,6 +1,6 @@
 # Splunk Forwarder class
 class profile::platform::monitoring::splunkforwarder (
-  $splunk_server,
+  #$splunk_server,
 ){
 if $splunk_server == undef {
   $splunk_nodes_query = 'resources[certname] { type = "Class" and title = "Splunk" }'
