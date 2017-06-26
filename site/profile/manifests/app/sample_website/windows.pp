@@ -14,7 +14,7 @@ class profile::app::sample_website::windows (
   }
 
   iis_site { $::fqdn:
-    ensure          => present,
+    ensure          => 'started',
     physicalpath    => $doc_root,
     applicationpool => 'sample_website',
     require         => [
