@@ -12,7 +12,7 @@ class profile::app::sample_website::windows (
     ],
   }
 
-  iis::manage_site { $::fqdn:
+  iis::site { $::fqdn:
     site_path  => $doc_root,
     port       => $webserver_port,
     ip_address => '*',
