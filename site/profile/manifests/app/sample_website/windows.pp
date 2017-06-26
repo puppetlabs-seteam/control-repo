@@ -13,11 +13,14 @@ class profile::app::sample_website::windows (
   }
 
   iis_site { $::fqdn:
-    path         => $doc_root,
-    port         => $webserver_port,
-    ip           => '*',
-    app_pool     => 'sample_website',
-    require      => [
+    physicalpath    => $doc_root,
+    port            => $webserver_port,
+    bindings        => [
+      {
+        'bindinginformation'   => "*:${webserver_port}:",
+      },
+    ],
+    require         => [
       Iis_application_pool['sample_website']
     ],
   }
