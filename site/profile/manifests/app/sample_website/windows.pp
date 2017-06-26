@@ -18,7 +18,7 @@ class profile::app::sample_website::windows (
     ip           => '*',
     app_pool     => 'sample_website',
     require      => [
-      Iis::Manage_app_pool['sample_website']
+      Iis_application_pool['sample_website']
     ],
   }
 
