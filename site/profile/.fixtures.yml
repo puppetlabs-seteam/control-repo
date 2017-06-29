@@ -33,3 +33,6 @@ fixtures:
     chocolatey:
       repo: "puppetlabs/chocolatey"
       ref: "2.0.2"
+    registry:
+      repo: "puppetlabs/registry"
+      ref: "1.1.4"
