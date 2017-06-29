@@ -36,3 +36,6 @@ fixtures:
     registry:
       repo: "puppetlabs/registry"
       ref: "1.1.4"
+    powershell:
+      repo: "puppetlabs/powershell"
+      ref: "2.1.0"
