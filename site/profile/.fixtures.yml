@@ -30,3 +30,6 @@ fixtures:
     ssh:
       repo: "ghoneycutt/ssh"
       ref: "3.52.0"
+    chocolatey:
+      repo: "puppetlabs/chocolatey"
+      ref: "2.0.2"

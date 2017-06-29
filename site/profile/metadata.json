@@ -27,6 +27,12 @@
         "6",
         "7"
       ]
+    },
+    {
+      "operatingsystem": "windows",
+      "operatingsystemrelease": [
+        "2012 r2"
+      ]
     }
   ]
 }
