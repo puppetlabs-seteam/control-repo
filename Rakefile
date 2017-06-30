@@ -61,6 +61,7 @@ def spec_gen(create=false)
         puts "Class #{c} - Spec file already exists at #{spec_file}!" if create == true
       else
         if create == true
+          puts "Class #{c} - Creating... #{spec_file}!"
           File.open(spec_file, 'w') do |f|
             f.write evaluate_template('spec_template.rb.erb',binding)
           end
@@ -70,8 +71,8 @@ def spec_gen(create=false)
         end
       end
     end
-    return exit_code
   end
+  return exit_code
 end
 
 # Most of this logic was lifted from onceover (comments and all) - thank you!
