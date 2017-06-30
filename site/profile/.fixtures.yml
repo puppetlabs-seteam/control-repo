@@ -87,9 +87,9 @@ fixtures:
     vcsrepo:
       repo: puppetlabs-vcsrepo
       ref: 1.5.0
-    sqlserver:
-      repo: puppetlabs-sqlserver
-      ref: 1.2.0
+#    sqlserver:
+#      repo: puppetlabs-sqlserver
+#      ref: 1.2.0
     ssh:
       repo: ghoneycutt-ssh
       ref: 3.52.0
