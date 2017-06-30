@@ -3,6 +3,11 @@
 # capabilities.
 #
 class profile::app::tse_master {
+
+  if $::facts['kernel'] != 'Linux' {
+    fail('Unsupported OS!')
+  }
+
   include 'git'
   contain 'profile::app::tse_master::puppetserver::demo_user'
   contain 'profile::app::tse_master::puppetserver::deploy_user'

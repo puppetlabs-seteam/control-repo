@@ -43,9 +43,9 @@ def spec_gen(create=false)
   ['role','profile'].each do |m|
     # For role or profile, find all the classes
     classes = Array.new
-    Dir.glob("site/#{m}/**/*.pp").each do |f|
+    Dir.glob("site/#{m}/manifests/*/*.pp").each do |f|
       File.open(f).read.each_line do |l|
-        c = l.scan(/(\s+)?class\s+([a-zA-Z:_]+)\s+\{/)
+        c = l.scan(/(\s+)?class\s+([a-zA-Z:_]+)\s+[\{,\(]/)
         # Add this class to the classes array
         classes.push(c[0][1]) if !c.empty?
       end
