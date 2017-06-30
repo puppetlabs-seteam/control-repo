@@ -1,7 +1,7 @@
 ---
 fixtures:
   symlinks:
-    profile: "#{source_dir}"
+    role: "#{source_dir}"
   forge_modules:
     inifile:
       repo: puppetlabs-inifile
