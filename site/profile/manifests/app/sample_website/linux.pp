@@ -6,8 +6,6 @@ class profile::app::sample_website::linux (
 
   class {'::profile::app::webserver::apache':
     default_vhost  => false,
-    doc_root       => $doc_root,
-    webserver_port => $webserver_port,
   }
 
   include ::firewalld

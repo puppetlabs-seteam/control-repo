@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe 'profile::platform::baseline' do
+describe 'profile::app::tse_master' do
 
     SUPPORTED_OS.each do |os, facts|
       context "on #{os}" do
@@ -11,6 +11,7 @@ describe 'profile::platform::baseline' do
         context "without any parameters" do
           it { is_expected.to compile.with_all_deps }
         end
+
       end
     end
 

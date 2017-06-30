@@ -9,7 +9,7 @@ class profile::app::tse_master::puppetserver::deploy_user (
   # This include dependency is because of
   # File["${deploy_key_dir}/demo_id.rsa.pub"]. When that resource is cleaned up
   # we should be able to remove the include.
-  include profile::master::puppetserver::demo_user
+  include profile::app::tse_master::puppetserver::demo_user
 
   # deploy user's ssh keys
   file { $deploy_key_dir:
@@ -48,8 +48,8 @@ class profile::app::tse_master::puppetserver::deploy_user (
     owner   => 'pe-puppet',
     group   => 'pe-puppet',
     mode    => '0644',
-    source  => "${profile::master::puppetserver::demo_user::demo_key_file}.pub",
-    require => File["${profile::master::puppetserver::demo_user::demo_key_file}.pub"],
+    source  => "${profile::app::tse_master::puppetserver::demo_user::demo_key_file}.pub",
+    require => File["${profile::app::tse_master::puppetserver::demo_user::demo_key_file}.pub"],
   }
 
   $ruby_mk_deploy_user = epp('profile/create_user_role.rb.epp', {

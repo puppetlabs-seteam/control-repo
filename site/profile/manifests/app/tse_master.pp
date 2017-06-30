@@ -8,9 +8,9 @@ class profile::app::tse_master {
     fail('Unsupported OS!')
   }
 
-  include 'git'
-  contain 'profile::app::tse_master::puppetserver::demo_user'
-  contain 'profile::app::tse_master::puppetserver::deploy_user'
+  include ::git
+  contain ::profile::app::tse_master::puppetserver::demo_user
+  contain ::profile::app::tse_master::puppetserver::deploy_user
 
   # Puppet master firewall rules
   Firewall {
