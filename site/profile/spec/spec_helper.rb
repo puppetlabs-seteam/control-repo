@@ -32,6 +32,9 @@ else
   add_custom_fact :choco_install_path,  'C:\ProgramData\chocolatey'
   add_custom_fact :chocolateyversion,   '0.10.7'
   add_custom_fact :archive_windir,      'C:\ProgramData\staging'
+  add_custom_fact :staging_windir,      'C:\ProgramData\staging'
+  add_custom_fact :operatingsystemversion, 'Windows Server 2012 R2 Standard'
+  add_custom_fact :staging_http_get,     'powershell'
 end
 
 

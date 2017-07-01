@@ -30,7 +30,9 @@ mod 'puppetlabs/reboot', '1.2.1'
 mod 'puppetlabs/registry', '1.1.4'
 mod 'puppetlabs/tomcat', '1.7.0'
 mod 'puppetlabs/vcsrepo', '1.5.0'
-mod 'puppetlabs-sqlserver', '1.2.0'
+mod 'sqlserver',
+  :git => 'git@github.com:puppetlabs/puppetlabs-sqlserver.git',
+  :ref => '1.2.0'
 
 # Forge Community Modules
 mod 'ghoneycutt-ssh', '3.52.0'
@@ -45,7 +47,7 @@ mod 'aristanetworks-eos', '1.5.0'
 mod 'vshn/gitlab', '1.13.3'
 mod 'abrader/gms', '1.0.3'
 mod 'puppet-hiera', '3.0.0'
-mod 'puppet-iis', '3.0.0'
+mod 'puppet-iis', '2.0.2'
 mod 'rtyler/jenkins', '1.7.0'
 mod 'tse/local_yum_repo', '0.2.0'
 mod 'aristanetworks-netdev_stdlib_eos', '1.2.0'

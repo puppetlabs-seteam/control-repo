@@ -1,9 +1,9 @@
 class profile::platform::compliance::hipaa {
 
   case $::osfamily {
-    'windows': { include ::profile::compliance::hipaa::windows }
+    'windows': { include ::profile::platform::compliance::hipaa::windows }
     default: {
-      notify { 'unsupported operating system': }
+      fail('Unsupported OS')
     }
   }
 }

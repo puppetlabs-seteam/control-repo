@@ -1,5 +1,5 @@
 class profile::app::webserver::iis (
-  $default_website = true,
+  $default_website = 'present',
 ){
 
   $iis_features = [

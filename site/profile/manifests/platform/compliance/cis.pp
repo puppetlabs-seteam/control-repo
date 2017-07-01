@@ -1,9 +1,9 @@
 class profile::platform::compliance::cis {
 
   case $::osfamily {
-    'windows': { include ::profile::compliance::cis::windows }
+    'windows': { include ::profile::platform::compliance::cis::windows }
     default: {
-      notify { 'unsupported operating system': }
+      fail('Unsupported OS')
     }
   }
 
