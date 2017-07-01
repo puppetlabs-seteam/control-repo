@@ -1,5 +1,5 @@
 class profile::app::webserver::iis (
-  $default_website = 'present',
+  Boolean $default_website = true,
 ){
 
   if $::kernel != 'windows' {
@@ -18,8 +18,10 @@ class profile::app::webserver::iis (
     ensure => present,
   }
 
-  iis::manage_site { 'Default Web Site':
-    ensure => $default_website,
+  if $default_website != true {
+    iis::manage_site { 'Default Web Site':
+      ensure => 'absent',
+    }
   }
 
 }

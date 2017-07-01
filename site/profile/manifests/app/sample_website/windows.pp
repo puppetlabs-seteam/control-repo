@@ -5,7 +5,7 @@ class profile::app::sample_website::windows (
 ) {
 
   class{'::profile::app::webserver::iis':
-    default_website => 'absent',
+    default_website => false,
   }
 
   # configure iis
