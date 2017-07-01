@@ -2,6 +2,7 @@
 fixtures:
   symlinks:
     role: "#{source_dir}"
+    profile: "#{source_dir}/../profile"
   repositories:
     sqlserver:
       repo: git@github.com:puppetlabs/puppetlabs-sqlserver.git

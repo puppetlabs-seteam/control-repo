@@ -127,6 +127,14 @@ def build_fixtures(controlrepo,sourcemod)
     'dir'  => '"#{source_dir}"',
   }
 
+  # If this is role, we need a symlink for profile
+  if sourcemod == 'role'
+    symlinks << {
+      'name' => "profile",
+      'dir'  => '"#{source_dir}/../profile"',
+    }
+  end
+
   File.open("#{File.dirname(__FILE__)}/site/#{sourcemod}/.fixtures.yml",'w') do |f|
     f.write evaluate_template('fixtures.yml.erb',binding)
   end
