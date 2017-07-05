@@ -13,7 +13,7 @@ class profile::app::sample_website::iis {
     ensure => present,
   }
 
-  iis::manage_site { 'Default Web Site':
+  iis_site { 'Default Web Site':
     ensure => absent,
   }
 

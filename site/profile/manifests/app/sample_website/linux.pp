@@ -1,9 +1,10 @@
-#
 class profile::app::sample_website::linux (
-    $doc_root,
-    $webserver_port,
+    $doc_root = '/var/www/generic_website',
+    $webserver_port = '80',
+    $website_source_dir  = 'puppet:///modules/profile/sample_website',
 ) {
-  require profile::apache
+  
+  require profile::app::sample_website::apache
   include firewalld
 
   # configure apache
@@ -20,9 +21,6 @@ class profile::app::sample_website::linux (
     protocol => 'tcp',
   }
 
-  # deploy website
-  $website_source_dir  = lookup('website_source_dir')
-
   file { $website_source_dir:
     ensure  => directory,
     owner   => $::apache::user,
@@ -35,7 +33,7 @@ class profile::app::sample_website::linux (
 
   file { "${doc_root}/index.html":
     ensure  => file,
-    content => epp('profile/index.html.epp'),
+    content => epp('profile/sample_website/index.html.epp'),
   }
 
 }
