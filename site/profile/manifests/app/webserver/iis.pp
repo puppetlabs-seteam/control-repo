@@ -19,7 +19,7 @@ class profile::app::webserver::iis (
   }
 
   if $default_website != true {
-    iis::manage_site { 'Default Web Site':
+    iis_site { 'Default Web Site':
       ensure => 'absent',
     }
   }

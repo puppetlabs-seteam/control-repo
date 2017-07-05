@@ -9,19 +9,18 @@ class profile::app::sample_website::windows (
   }
 
   # configure iis
-  iis::manage_app_pool {'sample_website':
+  iis_application_pool {'sample_website':
     require => [
       Class['::profile::app::webserver::iis'],
     ],
   }
 
-  iis::manage_site { $::fqdn:
-    site_path  => $doc_root,
-    port       => $webserver_port,
-    ip_address => '*',
-    app_pool   => 'sample_website',
-    require    => [
-      Iis::Manage_app_pool['sample_website']
+  iis_site { 'sample_website':
+    ensure          => 'started',
+    physicalpath    => $doc_root,
+    applicationpool => $webserver_port,
+    require         => [
+      Iis_application_pool['sample_website']
     ],
   }
 

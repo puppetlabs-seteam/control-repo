@@ -74,8 +74,7 @@ def linux(){
         source ~/.bash_profile
         rbenv global 2.3.1
         bundle install
-        bundle exec rake spec_prep
-        bundle exec rake spec_standalone
+        bundle exec rake spec
       ''')
     }
   }
@@ -86,8 +85,7 @@ def windows(){
     ansiColor('xterm') {
       sh(script: '''
         bundle install
-        bundle exec rake spec_prep
-        bundle exec rake spec_standalone
+        bundle exec rake spec
       ''')
     }
   }
