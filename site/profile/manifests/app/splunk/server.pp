@@ -2,15 +2,11 @@
 class profile::app::splunk::server (
   $purge_inputs       = false,
   $purge_outputs      = false,
-  $version            = '6.6.1',
-  $build              = 'aeae3fe0c5af',
-  $server             = 'monitor.inf.puppet.vm',
+  $src_root           = ::splunk::params:src_root
 ) {
 
-  $src_root = 'http://tseteam.s3.amazonaws.com/files'
-
-  #potential for other environments, collecting the files from the puppet file server
-  #$src_root = "puppet:///"
+  #Currently the src_root = S3 bucket, set in Hiera.  This is an option for using the master file server.
+   #$src_root = "puppet:///<path to files> refer to splunk module documentation for proper folder structure"
 
   class { 'splunk::params':
     version      => $version,
@@ -20,6 +16,17 @@ class profile::app::splunk::server (
     logging_port => $logging_port,
     splunkd_port => $splunkd_port,
   }
+
+  # Exported resource for the IP of the Splunk Server.
+  # The idea is to export the server IP and use its value in the
+  # splunkforwarder manifest for setting the host value.
+  # A "poor persons" DNS fix.
+
+    @@host { $facts['fqdn'] :
+      comment      => 'Splunk Server',
+      ip           => $facts['ipaddress'],
+      tag          => 'splunkserver',
+    } 
 
 include splunk
 
