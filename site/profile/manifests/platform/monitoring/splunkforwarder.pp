@@ -16,7 +16,7 @@ class profile::platform::monitoring::splunkforwarder (
 
   class { '::splunk::params':
     server   => $_splunk_server,
-    src_root => 'splunk::params::src_root',
+    src_root => splunk::params::src_root,
   }
   # Splunkforwarder input setup.  This is just collecting the /var/log/messages
   # from each node and shipping its logs to the splunk server
@@ -34,5 +34,4 @@ class profile::platform::monitoring::splunkforwarder (
     value   => "${hostname}_audit",
     tag     => 'splunk_forwarder'
   }
-include ::splunk::forwarder
 }

@@ -1,8 +1,5 @@
 # splunk server module
 class profile::app::splunk::server (
-  $purge_inputs       = false,
-  $purge_outputs      = false,
-  $src_root           = ::splunk::params:src_root
 ) {
 
   #Currently the src_root = S3 bucket, set in Hiera.  This is an option for using the master file server.
@@ -12,7 +9,7 @@ class profile::app::splunk::server (
     version      => $version,
     build        => $build,
     server       => $server,
-    src_root     => $src_root,
+    src_root     => ::splunk::params:src_root,
     logging_port => $logging_port,
     splunkd_port => $splunkd_port,
   }
@@ -27,7 +24,4 @@ class profile::app::splunk::server (
       ip           => $facts['ipaddress'],
       tag          => 'splunkserver',
     } 
-
-include splunk
-
 }
