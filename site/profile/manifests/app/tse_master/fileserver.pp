@@ -1,6 +1,6 @@
 class profile::app::tse_master::fileserver {
   include 'stdlib'
-  include 'profile::firewall'
+  #include 'profile::firewall'
   include 'profile::apache'
 
   # Detect Vagrant
@@ -24,12 +24,12 @@ class profile::app::tse_master::fileserver {
     docroot_group => $admin_file_group,
   }
 
-  firewall { '110 apache allow all':
-    dport  => '81',
-    chain  => 'INPUT',
-    proto  => 'tcp',
-    action => 'accept',
-  }
+#  firewall { '110 apache allow all':
+#    dport  => '81',
+#    chain  => 'INPUT',
+#    proto  => 'tcp',
+#    action => 'accept',
+#  }
 
   # The *::finalize class includes some configuration that should be applied
   # after everything is up and fully operational. Some of this configuration is
