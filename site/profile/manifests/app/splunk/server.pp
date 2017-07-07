@@ -9,7 +9,7 @@ class profile::app::splunk::server (
     version      => $version,
     build        => $build,
     server       => $server,
-    src_root     => ::splunk::params:src_root,
+    src_root     => splunk::params:src_root,
     logging_port => $logging_port,
     splunkd_port => $splunkd_port,
   }
