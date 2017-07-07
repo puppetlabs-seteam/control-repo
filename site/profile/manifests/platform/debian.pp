@@ -1,4 +1,0 @@
-class profile::platform::debian {
-
-
-}

@@ -1,24 +1,26 @@
-#
 class profile::app::sample_website::windows (
-    $doc_root,
-    $webserver_port,
+  String $doc_root           = 'C:\inetpub\wwwroot\sample_website',
+  String $webserver_port    = '80',
+  String $website_source_dir = 'puppet:///modules/profile/app/sample_website'
 ) {
-  require ::profile::iis
+
+  class{'::profile::app::webserver::iis':
+    default_website => false,
+  }
 
   # configure iis
-  iis::manage_app_pool {'sample_website':
+  iis_application_pool {'sample_website':
     require => [
-      Iis::Manage_site['Default Web Site'],
+      Class['::profile::app::webserver::iis'],
     ],
   }
 
-  iis::manage_site { $::fqdn:
-    site_path  => $doc_root,
-    port       => $webserver_port,
-    ip_address => '*',
-    app_pool   => 'sample_website',
-    require    => [
-      Iis::Manage_app_pool['sample_website']
+  iis_site { 'sample_website':
+    ensure          => 'started',
+    physicalpath    => $doc_root,
+    applicationpool => $webserver_port,
+    require         => [
+      Iis_application_pool['sample_website']
     ],
   }
 
@@ -33,9 +35,6 @@ class profile::app::sample_website::windows (
     description  => 'Inbound rule for HTTP Server',
   }
 
-  # deploy website
-  $website_source_dir  = lookup('website_source_dir')
-
   file { $website_source_dir:
     ensure  => directory,
     path    => $doc_root,
@@ -45,7 +44,7 @@ class profile::app::sample_website::windows (
 
   file { "${doc_root}/index.html":
     ensure  => file,
-    content => epp('profile/index.html.epp'),
+    content => epp('profile/app/sample_website.html.epp'),
   }
 
 }

@@ -1,0 +1,210 @@
+---
+fixtures:
+  symlinks:
+    profile: "#{source_dir}"
+  repositories:
+    sqlserver:
+      repo: git@github.com:puppetlabs/puppetlabs-sqlserver.git
+      ref: 1.2.0
+  forge_modules:
+    inifile:
+      repo: puppetlabs-inifile
+      ref: 1.6.0
+    stdlib:
+      repo: puppetlabs-stdlib
+      ref: 4.17.0
+    ciscopuppet:
+      repo: puppetlabs-ciscopuppet
+      ref: 1.7.0
+    concat:
+      repo: puppetlabs-concat
+      ref: 4.0.0
+    acl:
+      repo: puppetlabs-acl
+      ref: 1.1.2
+    apache:
+      repo: puppetlabs-apache
+      ref: 1.11.0
+    aws:
+      repo: puppetlabs-aws
+      ref: 2.0.0
+    azure:
+      repo: puppetlabs-azure
+      ref: 1.1.1
+    chocolatey:
+      repo: puppetlabs-chocolatey
+      ref: 2.0.2
+    dism:
+      repo: puppetlabs-dism
+      ref: 1.2.0
+    docker_platform:
+      repo: puppetlabs-docker_platform
+      ref: 2.2.1
+    dsc:
+      repo: puppetlabs-dsc
+      ref: 1.3.0
+    firewall:
+      repo: puppetlabs-firewall
+      ref: 1.8.2
+    git:
+      repo: puppetlabs-git
+      ref: 0.5.0
+    haproxy:
+      repo: puppetlabs-haproxy
+      ref: 1.5.0
+    java:
+      repo: puppetlabs-java
+      ref: 2.0.0
+    limits:
+      repo: puppetlabs-limits
+      ref: 0.1.0
+    motd:
+      repo: puppetlabs-motd
+      ref: 1.4.0
+    mount_iso:
+      repo: puppetlabs-mount_iso
+      ref: 1.0.0
+    mysql:
+      repo: puppetlabs-mysql
+      ref: 3.11.0
+    netdev_stdlib:
+      repo: puppetlabs-netdev_stdlib
+      ref: 0.12.0
+    ntp:
+      repo: puppetlabs-ntp
+      ref: 6.2.0
+    powershell:
+      repo: puppetlabs-powershell
+      ref: 2.1.0
+    puppetserver_gem:
+      repo: puppetlabs-puppetserver_gem
+      ref: 1.0.0
+    reboot:
+      repo: puppetlabs-reboot
+      ref: 1.2.1
+    registry:
+      repo: puppetlabs-registry
+      ref: 1.1.4
+    tomcat:
+      repo: puppetlabs-tomcat
+      ref: 1.7.0
+    vcsrepo:
+      repo: puppetlabs-vcsrepo
+      ref: 1.5.0
+    ssh:
+      repo: ghoneycutt-ssh
+      ref: 3.52.0
+    firewalld:
+      repo: crayfishx-firewalld
+      ref: 3.1.4
+    archive:
+      repo: puppet-archive
+      ref: 1.3.0
+    docker:
+      repo: garethr-docker
+      ref: 5.3.0
+    domain_membership:
+      repo: trlinkin-domain_membership
+      ref: 1.1.2
+    dsc_collection:
+      repo: andulla-dsc_collection
+      ref: 0.2.3
+    echo:
+      repo: ipcrm-echo
+      ref: 0.1.3
+    epel:
+      repo: stahnma-epel
+      ref: 1.2.2
+    eos:
+      repo: aristanetworks-eos
+      ref: 1.5.0
+    gitlab:
+      repo: vshn-gitlab
+      ref: 1.13.3
+    gms:
+      repo: abrader-gms
+      ref: 1.0.3
+    hiera:
+      repo: puppet-hiera
+      ref: 3.0.0
+    iis:
+      repo: puppetlabs-iis
+      ref: 4.0.0
+    jenkins:
+      repo: rtyler-jenkins
+      ref: 1.7.0
+    local_yum_repo:
+      repo: tse-local_yum_repo
+      ref: 0.2.0
+    netdev_stdlib_eos:
+      repo: aristanetworks-netdev_stdlib_eos
+      ref: 1.2.0
+    node_manager:
+      repo: WhatsARanjit-node_manager
+      ref: 0.4.2
+    oradb:
+      repo: biemond-oradb
+      ref: 3.0.8
+    pget:
+      repo: cyberious-pget
+      ref: 1.1.0
+    rbac:
+      repo: pltraining-rbac
+      ref: 0.0.5
+    remote_file:
+      repo: lwf-remote_file
+      ref: 1.1.3
+    samba:
+      repo: ajjahn-samba
+      ref: 0.5.0
+    staging:
+      repo: puppet-staging
+      ref: 2.2.0
+    local_security_policy:
+      repo: ayohrling-local_security_policy
+      ref: 0.6.1
+    sysctl:
+      repo: thias-sysctl
+      ref: 1.0.6
+    unzip:
+      repo: reidmv-unzip
+      ref: 0.1.2
+    vsphere_conf:
+      repo: andulla-vsphere_conf
+      ref: 0.0.9
+    wildfly:
+      repo: biemond-wildfly
+      ref: 2.0.3
+    windows_env:
+      repo: puppet-windows_env
+      ref: 2.3.0
+    windows_firewall:
+      repo: puppet-windows_firewall
+      ref: 1.1.0
+    windows_java:
+      repo: cyberious-windows_java
+      ref: 1.0.2
+    windowsfeature:
+      repo: puppet-windowsfeature
+      ref: 2.1.0
+    wordpress:
+      repo: hunner-wordpress
+      ref: 1.0.0
+    winntp:
+      repo: tse-winntp
+      ref: 1.0.1
+    time:
+      repo: tse-time
+      ref: 1.0.1
+    windows_ad:
+      repo: jriviere-windows_ad
+      ref: 0.3.2
+    purge:
+      repo: crayfishx-purge
+      ref: 1.2.0
+    splunk:
+      repo: puppet-splunk
+      ref: 5.1.0
+    puppet_vim_env:
+      repo: jpadams-puppet_vim_env
+      ref: 2.4.1
