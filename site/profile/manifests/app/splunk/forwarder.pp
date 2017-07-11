@@ -8,7 +8,11 @@ class profile::app::splunk::forwarder (
 
   if $splunk_server == undef {
     $splunk_nodes_query = 'resources[certname] { type = "Class" and title = "Splunk" }'
-    $_splunk_server = puppetdb_query($splunk_nodes_query)[0][certname]
+    $_splunk_server_results = puppetdb_query($splunk_nodes_query)
+    if size($_splunk_server_results) == 0 {
+      fail('No splunk server provided as a param or found in query')
+    }
+    $_splunk_server = $splunk_server_results[0][certname]
     Host  <<| tag == 'splunkserver' |>>
   } else {
     $_splunk_server = $splunk_server
@@ -16,9 +20,8 @@ class profile::app::splunk::forwarder (
 
   class { '::splunk::params':
     server   => $_splunk_server,
-    src_root => splunk::params::src_root,
+    src_root => $splunk::params::src_root,
   }
-
   # Splunkforwarder input setup.  This is just collecting the /var/log/messages
   # from each node and shipping its logs to the splunk server
   @splunkforwarder_input { "${hostname}_messages" :
