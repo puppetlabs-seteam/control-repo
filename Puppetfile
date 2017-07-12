@@ -36,7 +36,6 @@ mod 'sqlserver',
 
 # Forge Community Modules
 mod 'ghoneycutt-ssh', '3.52.0'
-mod 'crayfishx-firewalld', '3.1.4'
 mod 'puppet-archive', '1.3.0'
 mod 'garethr/docker', '5.3.0'
 mod 'trlinkin/domain_membership', '1.1.2'
@@ -75,6 +74,7 @@ mod 'jriviere/windows_ad', '0.3.2'
 mod 'crayfishx-purge', '1.2.0'
 mod 'puppet-splunk', '5.1.0'
 mod 'jpadams-puppet_vim_env', '2.4.1'
+mod 'kschu91-gogs', '1.1.0'
 
 # Modules from Git
 # Examples: https://github.com/puppetlabs/r10k/blob/master/doc/puppetfile.mkd#examples

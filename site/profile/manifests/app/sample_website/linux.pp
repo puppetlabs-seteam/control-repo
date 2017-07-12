@@ -8,8 +8,6 @@ class profile::app::sample_website::linux (
     default_vhost  => false,
   }
 
-  include ::firewalld
-
   # configure apache
   apache::vhost { $::fqdn:
     port    => $webserver_port,
@@ -17,11 +15,10 @@ class profile::app::sample_website::linux (
     require => File[$doc_root],
   }
 
-  firewalld_port { 'Open port for web':
-    ensure   => present,
-    zone     => 'public',
-    port     => $webserver_port,
-    protocol => 'tcp',
+  firewall { '100 allow http and https access':
+    dport  => $webserver_port,
+    proto  => tcp,
+    action => accept,
   }
 
   file { $website_source_dir:
