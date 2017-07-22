@@ -27,8 +27,8 @@ group :system_tests do
   gem 'master_manipulator'
 end
 
-gem 'facter'
-gem 'puppet', '< 5.0.0' 
+gem 'facter', '2.4.6'
+gem 'puppet', '< 5.0.0'
 
 if File.exists? "#{__FILE__}.local"
   eval(File.read("#{__FILE__}.local"), binding)
