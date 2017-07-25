@@ -5,12 +5,15 @@ class profile::app::cloudshop::sqlserver::sql (
   $db_instance = 'MYINSTANCE',
   $sa_pass     = 'Password$123$',
 ) {
-  case $::tse_sqlserver::sqlserver_version {
+  case $profile::app::cloudshop::sqlserver::init::sqlserver_version {
     '2012':  {
       $version_var  = 'MSSQL11'
     }
     '2014':  {
       $version_var  = 'MSSQL12'
+    }
+    default: {
+      fail('Unknown SQL version!')
     }
   }
 
@@ -28,7 +31,6 @@ class profile::app::cloudshop::sqlserver::sql (
   }
 
   service { 'wuauserv':
-    ensure => running,
     enable => true,
     before => Windowsfeature['Net-Framework-Core'],
   }
@@ -65,7 +67,7 @@ class profile::app::cloudshop::sqlserver::sql (
     enabled      => 'yes',
     program      => 'C:\Program Files (x86)\Microsoft SQL Server\90\Shared\sqlbrowser.exe',
     display_name => 'MSSQL Browser',
-    description  => "MS SQL Server Browser Inbound Access, enabled by Puppet in $module_name",
+    description  => "MS SQL Server Browser Inbound Access, enabled by Puppet in ${module_name}",
   }
 
   windows_firewall::exception { 'Sqlserver access':
@@ -75,7 +77,7 @@ class profile::app::cloudshop::sqlserver::sql (
     enabled      => 'yes',
     program      => "C:\\Program Files\\Microsoft SQL Server\\${version_var}.${db_instance}\\MSSQL\\Binn\\sqlservr.exe",
     display_name => 'MSSQL Access',
-    description  => "MS SQL Server Inbound Access, enabled by Puppet in $module_name",
+    description  => "MS SQL Server Inbound Access, enabled by Puppet in ${module_name}",
   }
 
 }

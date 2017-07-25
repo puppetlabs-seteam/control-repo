@@ -1,7 +1,6 @@
 ---
-
-gitlab::package_ensure: '8.14.4-ce.0.el7'
 puppet_enterprise::profile::master::check_for_updates: false
+<<<<<<< HEAD
 
 splunk::params::version:     "6.6.1"
 splunk::params::build:       "aeae3fe0c5af"
@@ -120,3 +119,5 @@ tse_admins:
         FeyBNoyy/viw3EfN3fNk7g6cCGOqbNxj5OvMu8SqBOLjV8iMILSzaQ8BSXdd3Gd3ntc6j
         e3rcpL/KihTb5X1b+3yyB22ZtlhgX0DYTfN6Xpdy/EzG1tt6vpiBFE4jXGRgJ/C56yi0m
         j6lZZuvGTs2y9eU6rtaUaWoAlBbPHEBr08P jeremy@puppetlabs.com
+=======
+>>>>>>> a3ff02535da27a5b801fc991476a544a7706ac2f
