@@ -16,13 +16,21 @@ class profile::puppet::master::node_manager {
     refreshonly => true,
   }
 
-  node_group { 'PE Agent':
-    ensure               => 'present',
-    classes              => {'puppet_enterprise::profile::agent' => {'package_inventory_enabled' => true}},
-    environment          => 'production',
-    override_environment => false,
-    parent               => 'All Nodes',
-    rule                 => ['and', ['~', ['fact', 'aio_agent_version'], '.+']],
+  # Determine if package_inventory is a thing in this version, should be greater or equal to 2017.2
+  $base_ver  = split($::pe_server_version,'[.]')[0] + 0
+  $minor_ver = split($::pe_server_version,'[.]')[1] + 0
+
+  if $base_ver >= 2017 and $minor_ver >= 2 {
+
+    node_group { 'PE Agent':
+      ensure               => 'present',
+      classes              => {'puppet_enterprise::profile::agent' => {'package_inventory_enabled' => true}},
+      environment          => 'production',
+      override_environment => false,
+      parent               => 'All Nodes',
+      rule                 => ['and', ['~', ['fact', 'aio_agent_version'], '.+']],
+    }
+
   }
 
   node_group { 'role::master_server':
