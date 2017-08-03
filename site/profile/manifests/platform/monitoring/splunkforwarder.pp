@@ -26,7 +26,7 @@ class profile::platform::monitoring::splunkforwarder (
     value   => "${hostname}_messages",
     tag     => 'splunk_forwarder'
   }
-  
+
   # This is section forwards the system Audit log
   @splunkforwarder_input { "${hostname}_audit" :
     section => 'monitor:///var/log/audit/audit.log',
