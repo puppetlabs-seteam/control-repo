@@ -16,7 +16,7 @@ class profile::app::sample_website::windows (
   }
 
   iis_site { 'sample_website':
-    ensure          => started,
+    ensure          => 'started',
     physicalpath    => $doc_root,
     applicationpool => $webserver_port,
     require         => [
