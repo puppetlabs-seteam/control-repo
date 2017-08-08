@@ -1,6 +1,7 @@
 class profile::app::sample_website::windows (
   String $doc_root           = 'C:\inetpub\wwwroot\sample_website',
-  String $webserver_port    = '80',
+  String $apppool            = 'sample_website',
+  String $webserver_port     = '80',
   String $website_source_dir = 'puppet:///modules/profile/app/sample_website'
 ) {
 
@@ -18,7 +19,7 @@ class profile::app::sample_website::windows (
   iis_site { 'sample_website':
     ensure          => 'started',
     physicalpath    => $doc_root,
-    applicationpool => $webserver_port,
+    applicationpool => $apppool,
     require         => [
       Iis_application_pool['sample_website']
     ],
