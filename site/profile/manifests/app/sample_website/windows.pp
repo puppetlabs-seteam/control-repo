@@ -1,7 +1,6 @@
 class profile::app::sample_website::windows (
   String $doc_root           = 'C:\inetpub\wwwroot\sample_website',
   String $apppool            = 'sample_website',
-  String $webserver_port     = '80',
   String $website_source_dir = 'puppet:///modules/profile/app/sample_website'
 ) {
 
