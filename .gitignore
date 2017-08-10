@@ -20,3 +20,4 @@ junit
 log
 .yardoc
 coverage
+.fixtures.yml
