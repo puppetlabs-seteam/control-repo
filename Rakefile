@@ -4,6 +4,8 @@ require 'puppetlabs_spec_helper/rake_tasks'
 require 'ra10ke'
 require 'r10k/puppetfile'
 require 'erb'
+require 'json'
+require 'rest-client'
 
 PuppetSyntax.app_management = true
 PuppetLint.configuration.fail_on_warnings = true
@@ -18,13 +20,14 @@ PuppetLint::RakeTask.new :lint do | config |
 end
 
 
+Rake::Task[:spec_prep].enhance [:generate_fixtures]
+
 desc "Generate Fixtures files for role/profile"
 task :generate_fixtures do
-  ['role','profile'].each do |m|
-    build_fixtures(File.dirname(__FILE__),m)
-  end
+  print "Generating Fixtures..."
+  build_fixtures(File.dirname(__FILE__))
+  print "Done!\n"
 end
-
 
 desc "Generate spec tests for missing classes"
 task :generate_spec_tests do
@@ -36,7 +39,26 @@ task :check_for_spec_tests do
   exit spec_gen
 end
 
+desc "Show PE Only Modules"
+task :pe_only_mods do
+  puts get_pe_modules
+end
 
+def get_pe_modules
+  # Query Puppet Forge for the latest list of PE-only modules
+  # Thanks to dan-wittenberg for the original logic on this!
+  modules = {}
+
+  url="https://forgeapi.puppetlabs.com/v3/modules?module_groups=pe_only"
+  r = RestClient.get url, { :accept => 'application/json', :charset => 'utf-8' }
+
+  JSON.parse(r.force_encoding("UTF-8"))['results'].each do |x|
+    name = x['current_release']['metadata']['name'].gsub('/','-')
+    modules[name] = "git@github.com:puppetlabs/#{name}.git"
+  end
+
+  modules
+end
 
 def spec_gen(create=false)
   exit_code = 0
@@ -57,7 +79,7 @@ def spec_gen(create=false)
     # For each class, see if a spec file exists - using naming convention
     # <class>_<subclass>[_<subclass>_]_spec.rb
     classes.each do |c|
-      spec_file = "#{File.dirname(__FILE__)}/site/#{m}/spec/classes/#{c.split('::').join('_')}_spec.rb"
+      spec_file = "#{File.dirname(__FILE__)}/spec/classes/#{m}/#{c.split('::').join('_')}_spec.rb"
 
       # If no spec file exists, create a blank should compile test file
       if File.exists?(spec_file)
@@ -86,12 +108,14 @@ def evaluate_template(template_name,bind)
   ERB.new(template, nil, '-').result(bind)
 end
 
-def build_fixtures(controlrepo,sourcemod)
-
+def build_fixtures(controlrepo)
   # Load up the Puppetfile using R10k
   puppetfile = R10K::Puppetfile.new(controlrepo)
   fail 'Could not load Puppetfile' unless puppetfile.load
   modules = puppetfile.modules
+
+  # Store PE Only Mods list
+  pe_only = get_pe_modules
 
   # Iterate over everything and seperate it out for the sake of readability
   symlinks = []
@@ -108,12 +132,26 @@ def build_fixtures(controlrepo,sourcemod)
           'dir' => mod.expected_version[:path]
         }
       elsif mod.expected_version.is_a?(String)
-        # Set it up as a normal firge module
-        forge_modules << {
-          'name' => mod.name,
-          'repo' => mod.title,
-          'ref' => mod.expected_version
-        }
+
+        # Verify if this is a PE mod or not
+        # if it is a PE only module; we need to set it up as a git repo for fixtures b/c of license issues
+        if pe_only.keys.include?(mod.title.gsub('/','-'))
+          # Its PE Only
+          repositories << {
+            'name' => mod.name,
+            'repo' => mod.instance_variable_get(:@remote) =~ /\.git/ ? mod.instance_variable_get(:@remote) : pe_only[mod.title],
+            # ^^ This isn't perfect, as some of the repo names don't match - but its a start
+            'ref' => mod.expected_version
+          }
+        else
+          # Set it up as a normal forge module
+          forge_modules << {
+            'name' => mod.name,
+            'repo' => mod.title,
+            'ref' => mod.expected_version
+          }
+        end
+
       end
     elsif mod.is_a? R10K::Module::Git
       # Set it up as a git repo
@@ -126,19 +164,16 @@ def build_fixtures(controlrepo,sourcemod)
   end
 
   symlinks << {
-    'name' => "#{sourcemod}",
-    'dir'  => '"#{source_dir}"',
+    'name' => "profile",
+    'dir'  => '"#{source_dir}/site/profile"',
   }
 
-  # If this is role, we need a symlink for profile
-  if sourcemod == 'role'
-    symlinks << {
-      'name' => "profile",
-      'dir'  => '"#{source_dir}/../profile"',
-    }
-  end
+  symlinks << {
+    'name' => "role",
+    'dir'  => '"#{source_dir}/site/role"',
+  }
 
-  File.open("#{File.dirname(__FILE__)}/site/#{sourcemod}/.fixtures.yml",'w') do |f|
+  File.open("#{File.dirname(__FILE__)}/.fixtures.yml",'w') do |f|
     f.write evaluate_template('fixtures.yml.erb',binding)
   end
 end
