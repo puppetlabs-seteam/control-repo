@@ -1,4 +1,4 @@
-class profile::platform::baseline::general::windows::packages {
+class profile::platform::baseline::windows::packages {
 
   require ::chocolatey
 

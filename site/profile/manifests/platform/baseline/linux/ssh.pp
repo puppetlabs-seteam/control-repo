@@ -1,4 +1,4 @@
-class profile::platform::baseline::general::linux::ssh (
+class profile::platform::baseline::linux::ssh (
   String $permit_root_login = 'yes',
 ) {
 

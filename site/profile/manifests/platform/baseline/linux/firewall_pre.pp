@@ -1,4 +1,4 @@
-class profile::platform::baseline::general::linux::firewall_pre {
+class profile::platform::baseline::linux::firewall_pre {
 
   Firewall {
     require => undef,
