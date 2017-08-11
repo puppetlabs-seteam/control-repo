@@ -13,7 +13,7 @@ gem 'rubocop'
 gem 'rubocop-rspec'
 gem 'rest-client'
 gem 'facter', '2.4.6'
-gem 'r10k'
+gem 'r10k', '>= 2.5.5'
 
 group :development, :unit_tests do
   gem 'metadata-json-lint'

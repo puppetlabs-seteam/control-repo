@@ -1,4 +1,4 @@
-class profile::platform::baseline::general::linux::vim {
+class profile::platform::baseline::linux::vim {
 
   require ::git
 
