@@ -35,6 +35,27 @@ Rather then pushing your code and having to wait until the CI job fails... you c
 
 ### Testing
 
+#### Gimme a shortcut
+
+To run all tests together in one command, i.e. execute lint, syntax, r10k:syntax, check for missing spec tests, and launch rspec tests, you can run the following command:
+
+```
+bundle exec rake run_tests
+Executing Lint Test...
+  -> Success!
+Executing Syntax Test...
+  -> Success!
+Executing r10k(Puppetfile) Syntax Test...
+  -> Syntax OK
+Checking for missing spec tests...
+  -> No missing tests!
+Launching rspec tests...
+Generating Fixtures...Done!
+[...truncated...]
+```
+
+#### Run the commands individually
+
 From root of control-repo:
 
 ```

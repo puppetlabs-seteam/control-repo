@@ -22,6 +22,28 @@ end
 
 Rake::Task[:spec_prep].enhance [:generate_fixtures]
 
+desc "Run tests"
+task :run_tests do
+  print "Executing Lint Test...\n"
+  Rake::Task[:lint].execute
+  print "  -> Success!\n\n"
+
+  print "Executing Syntax Test...\n"
+  Rake::Task[:syntax].execute
+  print "  -> Success!\n\n"
+
+  print "Executing r10k(Puppetfile) Syntax Test...\n  -> "
+  Rake::Task['r10k:syntax'].execute
+  print "\n"
+
+  print "Checking for missing spec tests...\n"
+  Rake::Task[:check_for_spec_tests].execute
+  print "  -> No missing tests!\n\n"
+
+  print "Launching rspec tests...\n"
+  Rake::Task[:spec].execute
+end
+
 desc "Generate Fixtures files for role/profile"
 task :generate_fixtures do
   print "Generating Fixtures..."
@@ -31,12 +53,12 @@ end
 
 desc "Generate spec tests for missing classes"
 task :generate_spec_tests do
-  exit spec_gen(true)
+  spec_gen(true)
 end
 
 desc "Get spec test status"
 task :check_for_spec_tests do
-  exit spec_gen
+  spec_gen
 end
 
 desc "Show PE Only Modules"
@@ -97,7 +119,10 @@ def spec_gen(create=false)
       end
     end
   end
-  return exit_code
+
+  if exit_code != 0
+    raise(exit_code)
+  end
 end
 
 # Most of this logic was lifted from onceover (comments and all) - thank you!
