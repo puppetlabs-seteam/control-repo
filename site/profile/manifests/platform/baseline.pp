@@ -1,10 +1,15 @@
 class profile::platform::baseline (
-  $timeservers = ['0.pool.ntp.org','1.pool.ntp.org']
+  Boolean $orch_agent  = false,
+  Array   $timeservers = ['0.pool.ntp.org','1.pool.ntp.org']
 ){
 
   # Global
   class {'::time':
     servers => $timeservers,
+  }
+
+  class {'::profile::puppet::orch_agent':
+    ensure => $orch_agent,
   }
 
   # OS Specific
