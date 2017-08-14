@@ -23,9 +23,13 @@ class profile::platform::baseline::linux::motd {
     content => $message,
   }
 
-  file { '/etc/issue':
-    ensure  => file,
-    content => $message,
+  if !defined(File['/etc/issue']){
+
+    file { '/etc/issue':
+      ensure  => file,
+      content => $message,
+    }
+
   }
 
 }

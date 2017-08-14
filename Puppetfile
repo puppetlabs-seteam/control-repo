@@ -67,3 +67,6 @@ mod 'puppet-splunk', '5.1.0'
 mod 'jpadams-puppet_vim_env', '2.4.1'
 mod 'kschu91-gogs', '1.1.0'
 mod 'bodgit-rngd', '2.0.0'
+mod 'demo_cis',
+  :git => 'https://github.com/ipcrm/ipcrm-demo_cis.git',
+  :ref => 'dee17aa1cd6619290ed6657d8f70dbfcafbb3b08'
