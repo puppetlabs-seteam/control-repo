@@ -2,8 +2,10 @@ class profile::platform::baseline::linux::ssh (
   String $permit_root_login = 'yes',
 ) {
 
-  class{'::ssh':
-    permit_root_login => $permit_root_login,
+  if !defined(Class['ssh']){
+    class{'::ssh':
+      permit_root_login => $permit_root_login,
+    }
   }
 
   firewall { '100 ssh allow all':

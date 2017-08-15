@@ -1,4 +1,4 @@
-class profile::platform::baseline::linux::motd {
+class profile::platform::baseline::windows::motd {
   $motd = @("MOTD"/L)
     ===========================================================
 
@@ -19,17 +19,17 @@ class profile::platform::baseline::linux::motd {
   # Check if we have a hiera override for the MOTD, otherwise use the default
   $message = lookup('motd', String, 'first', $motd)
 
-  class { '::motd':
-    content => $message,
+  registry_value { '32:HKEY_LOCAL_MACHINE\Software\Microsoft\Windows\CurrentVersion\policies\system\legalnoticecaption':
+    ensure => present,
+    type   => string,
+    data   => 'Message of the day',
   }
 
-  if !defined(File['/etc/issue']){
-
-    file { '/etc/issue':
-      ensure  => file,
-      content => $message,
-    }
-
+  registry_value { '32:HKEY_LOCAL_MACHINE\Software\Microsoft\Windows\CurrentVersion\policies\system\legalnoticetext':
+    ensure => present,
+    type   => string,
+    data   => $message,
   }
 
 }
+

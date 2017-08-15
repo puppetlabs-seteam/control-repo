@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe 'profile::platform::baseline_cis' do
+describe 'profile::puppet::orch_agent' do
 
     SUPPORTED_OS.each do |os, facts|
       context "on #{os}" do
