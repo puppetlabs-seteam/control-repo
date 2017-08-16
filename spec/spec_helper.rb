@@ -28,6 +28,7 @@ if !Gem.win_platform?
   add_custom_fact :staging_http_get,    'curl'
   add_custom_fact :ssh_version,         'OpenSSH_6.6.1p1'
   add_custom_fact :ssh_version_numeric, '6.6.1'
+  add_custom_fact :gogs_version,        '0.11.19'
 else
   add_custom_fact :choco_install_path,  'C:\ProgramData\chocolatey'
   add_custom_fact :chocolateyversion,   '0.10.7'
