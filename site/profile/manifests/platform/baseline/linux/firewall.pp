@@ -7,9 +7,6 @@ class profile::platform::baseline::linux::firewall {
 
   class { ['::profile::platform::baseline::linux::firewall_pre', '::profile::platform::baseline::linux::firewall_post']: }
 
-  resources { 'firewall':
-    purge => true,
-  }
 
   include ::firewall
 
