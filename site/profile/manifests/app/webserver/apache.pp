@@ -10,4 +10,6 @@ class profile::app::webserver::apache (
     default_vhost => $default_vhost,
   }
 
+  contain ::profile::app::webserver::apache::php
+
 }

@@ -33,8 +33,9 @@ mod 'puppetlabs/vcsrepo', '1.5.0'
 mod 'puppetlabs/sqlserver', '1.2.0'
 
 # Forge Community Modules
+mod 'jfryman-selinux', '0.4.0'
 mod 'ghoneycutt-ssh', '3.52.0'
-mod 'puppet-archive', '1.3.0'
+mod 'camptocamp-archive', '0.9.0'
 mod 'garethr/docker', '5.3.0'
 mod 'trlinkin/domain_membership', '1.1.2'
 mod 'ipcrm/echo', '0.1.3'
@@ -69,9 +70,15 @@ mod 'gogs',
   :git => 'https://github.com/ipcrm/puppet-gogs.git',
   :ref => '59f7800ad3512cf371c47902996df0b927267805'
 
+mod 'mayflower-php', '3.4.1'
+mod 'puppet-nginx', '0.7.1'
 mod 'bodgit-rngd', '2.0.0'
 mod 'jonono-auditpol', '0.1.2'
 mod 'nexcess-auditd', '2.0.0'
 mod 'demo_cis',
   :git => 'https://github.com/ipcrm/ipcrm-demo_cis.git',
   :ref => 'dee17aa1cd6619290ed6657d8f70dbfcafbb3b08'
+
+mod 'rgbank',
+  :git => 'https://github.com/ipcrm/puppetlabs-rgbank.git',
+  :ref => 'master'
