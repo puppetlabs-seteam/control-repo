@@ -57,10 +57,14 @@ SimpleCov.start do
   ])
 end
 
+base_dir = File.dirname(File.expand_path(__FILE__))
+
 RSpec.configure do |c|
   # Readable test descriptions
   c.formatter = :documentation
   c.color     = true
+  c.manifest_dir    = File.join(base_dir, 'fixtures', 'modules', 'manifests')
+  c.manifest        = File.join(base_dir, 'fixtures', 'modules', 'manifests', 'site.pp')
 end
 
 
