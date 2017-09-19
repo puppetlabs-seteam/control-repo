@@ -198,6 +198,11 @@ def build_fixtures(controlrepo)
     'dir'  => '"#{source_dir}/site/role"',
   }
 
+  symlinks << {
+    'name' => "manifests",
+    'dir'  => '"#{source_dir}/manifests"',
+  }
+
   File.open("#{File.dirname(__FILE__)}/.fixtures.yml",'w') do |f|
     f.write evaluate_template('fixtures.yml.erb',binding)
   end
