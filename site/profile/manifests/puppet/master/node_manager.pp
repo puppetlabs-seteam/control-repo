@@ -54,7 +54,7 @@ class profile::puppet::master::node_manager {
     environment          => 'production',
     override_environment => false,
     parent               => 'All Nodes',
-    rule                 => ['or', ['=', 'kernel', 'windows']],
+    rule                 => ['and', ['=', ['fact', 'kernel'], 'windows']],
     classes              => {
       'profile::platform::baseline::windows::bootstrap' => {},
       'profile::platform::baseline::windows::firewall'  => {},
