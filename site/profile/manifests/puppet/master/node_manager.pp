@@ -49,4 +49,16 @@ class profile::puppet::master::node_manager {
     },
   }
 
+  node_group { 'Windows Servers':
+    ensure               => present,
+    environment          => 'production',
+    override_environment => false,
+    parent               => 'All Nodes',
+    rule                 => ['or', ['=', 'kernel', 'windows']],
+    classes              => {
+      'profile::platform::baseline::windows::bootstrap' => {},
+      'profile::platform::baseline::windows::firewall'  => {},
+    },
+  }
+
 }
