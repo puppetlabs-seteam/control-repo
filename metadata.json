@@ -29,6 +29,13 @@
       ]
     },
     {
+      "operatingsystem": "Ubuntu",
+      "operatingsystemrelease": [
+        "14.04",
+        "16.04"
+      ]
+    },
+    {
       "operatingsystem": "windows",
       "operatingsystemrelease": [
         "2012 r2"

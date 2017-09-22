@@ -1,6 +1,6 @@
 class profile::app::rgbank {
 
-  if $::kernel == 'windows' {
+  if $::osfamily != 'RedHat' {
     fail('Unsupported OS')
   }
 

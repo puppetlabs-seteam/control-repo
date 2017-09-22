@@ -15,7 +15,7 @@ describe 'profile::app::rgbank' do
           end
         end
 
-        if Gem.win_platform?
+        if facts[:osfamily] != 'RedHat'
           context "unsupported OS" do
             it { is_expected.to compile.and_raise_error(/Unsupported OS/)  }
           end
