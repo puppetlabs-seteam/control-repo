@@ -1,0 +1,34 @@
+{
+   "description": "Control Haproxy through the socket interface",
+   "input_method": "stdin",
+   "parameters": {
+     "action": {
+       "description": "The action to take",
+       "type": "Enum[command, get_stat, drain, add, drain_wait]"
+     },
+     "socket": {
+       "description": "The path to the unix socket",
+       "type": "String[1]"
+     },
+     "command": {
+       "description": "The command to run, required for command action",
+       "type": "Optional[String[1]]"
+     },
+     "backend": {
+       "description": "The backend to act on, required for get_stat, drain, add, or drain_wait",
+       "type": "Optional[String[1]]"
+     },
+     "server": {
+       "description": "The server to act on, required for get_stat, drain, add, or drain_wait",
+       "type": "Optional[String[1]]"
+     },
+     "stat": {
+       "description": "The stat to look up. Required for get_stat.",
+       "type": "Optional[String[1]]"
+     },
+     "timeout": {
+       "description": "How long to wait. Optional for drain_wait",
+       "type": "Optional[Integer]"
+     }
+   }
+ }

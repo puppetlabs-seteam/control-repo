@@ -42,7 +42,7 @@ mod 'trlinkin/domain_membership', '1.1.2'
 mod 'ipcrm/echo', '0.1.3'
 mod 'stahnma/epel', '1.2.2'
 mod 'aristanetworks-eos', '1.5.0'
-mod 'puppet-hiera', '3.0.0'
+mod 'puppet-hiera', '3.2.0'
 mod 'puppetlabs-iis', '4.0.0'
 mod 'rtyler/jenkins', '1.7.0'
 mod 'aristanetworks-netdev_stdlib_eos', '1.2.0'
@@ -81,4 +81,12 @@ mod 'demo_cis',
 
 mod 'rgbank',
   :git => 'https://github.com/ipcrm/puppetlabs-rgbank.git',
+  :ref => 'master'
+
+mod 'facter_task',
+  :git => 'git@github.com:ipcrm/puppetlabs-facter_task.git',
+  :ref => 'master'
+
+mod 'bolt',
+  :git => 'git@github.com:puppetlabs/bolt.git',
   :ref => 'master'

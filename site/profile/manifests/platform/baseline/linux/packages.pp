@@ -5,4 +5,8 @@ class profile::platform::baseline::linux::packages {
 
   ensure_packages($pkgs, {ensure => installed})
 
+  if $::osfamily == 'RedHat' {
+    include ::epel
+  }
+
 }

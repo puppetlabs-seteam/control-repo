@@ -8,6 +8,7 @@ require 'json'
 require 'rest-client'
 
 PuppetSyntax.app_management = true
+PuppetSyntax.exclude_paths = ["site/**/plans/*"]
 PuppetLint.configuration.fail_on_warnings = true
 PuppetLint.configuration.send('relative')
 PuppetLint.configuration.send('disable_140chars')

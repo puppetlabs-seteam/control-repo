@@ -1,0 +1,14 @@
+{
+   "description": "Test the health of a server",
+   "input_method": "stdin",
+   "parameters": {
+     "target": {
+       "description": "The server to act on.",
+       "type": "String[1]"
+     },
+     "port": {
+       "description": "The port to test on.",
+       "type": "Integer[1]"
+     }
+   }
+}
