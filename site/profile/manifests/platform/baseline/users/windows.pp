@@ -1,9 +1,10 @@
 class profile::platform::baseline::users::windows {
 
   # CUSTOM USERS
-  user { 'Puppet Demo':
-    ensure => present,
-    groups => ['Administrators'],
+  user { 'Sample Demo':
+    ensure   => present,
+    password => "Puppet4Life!",
+    groups   => ['Administrators'],
   }
 
 }
