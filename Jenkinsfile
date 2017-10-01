@@ -8,7 +8,7 @@ node('tse-control-repo') {
         ansiColor('xterm') {
           sh(script: '''
             export PATH=$PATH:$HOME/.rbenv/bin
-            rbenv global 2.3.1
+            rbenv local 2.3.1
             eval "$(rbenv init -)"
             bundle install
           ''')
@@ -19,7 +19,7 @@ node('tse-control-repo') {
         ansiColor('xterm') {
           sh(script: '''
             export PATH=$PATH:$HOME/.rbenv/bin
-            rbenv global 2.3.1
+            rbenv local 2.3.1
             eval "$(rbenv init -)"
             bundle exec rake lint
           ''')
@@ -30,7 +30,7 @@ node('tse-control-repo') {
         ansiColor('xterm') {
           sh(script: '''
             export PATH=$PATH:$HOME/.rbenv/bin
-            rbenv global 2.3.1
+            rbenv local 2.3.1
             eval "$(rbenv init -)"
             bundle exec rake syntax --verbose
           ''')
@@ -41,7 +41,7 @@ node('tse-control-repo') {
         ansiColor('xterm') {
           sh(script: '''
             export PATH=$PATH:$HOME/.rbenv/bin
-            rbenv global 2.3.1
+            rbenv local 2.3.1
             eval "$(rbenv init -)"
             bundle exec rake r10k:syntax
           ''')
@@ -52,7 +52,7 @@ node('tse-control-repo') {
         ansiColor('xterm') {
           sh(script: '''
             export PATH=$PATH:$HOME/.rbenv/bin
-            rbenv global 2.3.1
+            rbenv local 2.3.1
             eval "$(rbenv init -)"
             bundle exec rake check_for_spec_tests
           ''')
@@ -81,7 +81,7 @@ def linux(){
       sh(script: '''
         export PATH=$PATH:$HOME/.rbenv/bin:$HOME/.rbenv/shims
         echo $PATH
-        rbenv global 2.3.1
+        rbenv local 2.3.1
         gem install bundle
         bundle install
         bundle exec rake spec
