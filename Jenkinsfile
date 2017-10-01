@@ -17,7 +17,6 @@ node('tse-control-repo') {
         ansiColor('xterm') {
           sh(script: '''
             rbenv local 2.3.1
-            eval "$(rbenv init -)"
             bundle exec rake lint
           ''')
         }
@@ -27,7 +26,6 @@ node('tse-control-repo') {
         ansiColor('xterm') {
           sh(script: '''
             rbenv local 2.3.1
-            eval "$(rbenv init -)"
             bundle exec rake syntax --verbose
           ''')
         }
@@ -37,7 +35,6 @@ node('tse-control-repo') {
         ansiColor('xterm') {
           sh(script: '''
             rbenv local 2.3.1
-            eval "$(rbenv init -)"
             bundle exec rake r10k:syntax
           ''')
         }
@@ -47,7 +44,6 @@ node('tse-control-repo') {
         ansiColor('xterm') {
           sh(script: '''
             rbenv local 2.3.1
-            eval "$(rbenv init -)"
             bundle exec rake check_for_spec_tests
           ''')
         }
