@@ -9,6 +9,7 @@ node('tse-control-repo') {
           sh(script: '''
             export PATH=$PATH:$HOME/.rbenv/bin
             echo $PATH
+            which rbenv
             rbenv local 2.3.1
             eval "$(rbenv init -)"
             bundle install
