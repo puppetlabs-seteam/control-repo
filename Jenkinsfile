@@ -1,7 +1,7 @@
 #!groovy
 node('tse-control-repo') {
   sshagent (credentials: ['jenkins-seteam-ssh']) {
-    withEnv(['PATH+EXTRA=/usr/local/rbenv/shims:/usr/local/rbenv/bin:/usr/local/bin']) {
+    withEnv(['PATH+WHATEVER=/usr/local/rbenv/shims:/usr/local/rbenv/bin:/usr/local/bin']) {
       checkout scm
 
       stage('Setup'){
