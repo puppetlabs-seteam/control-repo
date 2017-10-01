@@ -1,7 +1,7 @@
 #!groovy
 node('tse-control-repo') {
   sshagent (credentials: ['jenkins-seteam-ssh']) {
-    withEnv(['RBENV_ROOT=/usr/local/rbenv','PATH+WHATEVER=/usr/local/rbenv']) {
+    withEnv(['RBENV_ROOT=/usr/local/rbenv','PATH+WHATEVER=/usr/local/rbenv/bin']) {
       checkout scm
 
       stage('Setup'){
@@ -70,7 +70,7 @@ stage('Run Spec Tests') {
 
 // functions
 def linux(){
-  withEnv(['PATH+EXTRA=/usr/local/bin']) {
+  withEnv(['RBENV_ROOT=/usr/local/rbenv','PATH+WHATEVER=/usr/local/rbenv/bin']) {
     ansiColor('xterm') {
       sh(script: '''
         rbenv local 2.3.1
