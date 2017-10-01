@@ -1,13 +1,12 @@
 #!groovy
 node('tse-control-repo') {
   sshagent (credentials: ['jenkins-seteam-ssh']) {
-    withEnv(['PATH+WHATEVER=/usr/local/rbenv/shims:/usr/local/rbenv/bin:/usr/local/bin']) {
+    withEnv(['RBENV_ROOT=/usr/local/rbenv','PATH+WHATEVER=/$RBENV_ROOT/bin:$PATH']) {
       checkout scm
 
       stage('Setup'){
         ansiColor('xterm') {
           sh(script: '''
-            export PATH=$PATH:$HOME/.rbenv/bin
             eval "$(rbenv init -)"
             bundle install
           ''')
