@@ -1,7 +1,7 @@
 #!groovy
 node('tse-control-repo') {
   sshagent (credentials: ['jenkins-seteam-ssh']) {
-    withEnv(['RBENV_ROOT=/usr/local/rbenv','PATH+WHATEVER=/$RBENV_ROOT/bin:$PATH']) {
+    withEnv(['RBENV_ROOT=/usr/local/rbenv','PATH+WHATEVER=/usr/local/rbenv']) {
       checkout scm
 
       stage('Setup'){
@@ -16,7 +16,6 @@ node('tse-control-repo') {
       stage('Lint Control Repo'){
         ansiColor('xterm') {
           sh(script: '''
-            export PATH=$PATH:$HOME/.rbenv/bin
             rbenv local 2.3.1
             eval "$(rbenv init -)"
             bundle exec rake lint
@@ -27,7 +26,6 @@ node('tse-control-repo') {
       stage('Syntax Check Control Repo'){
         ansiColor('xterm') {
           sh(script: '''
-            export PATH=$PATH:$HOME/.rbenv/bin
             rbenv local 2.3.1
             eval "$(rbenv init -)"
             bundle exec rake syntax --verbose
@@ -38,7 +36,6 @@ node('tse-control-repo') {
       stage('Validate Puppetfile in Control Repo'){
         ansiColor('xterm') {
           sh(script: '''
-            export PATH=$PATH:$HOME/.rbenv/bin
             rbenv local 2.3.1
             eval "$(rbenv init -)"
             bundle exec rake r10k:syntax
@@ -49,7 +46,6 @@ node('tse-control-repo') {
       stage('Validate Tests Exist'){
         ansiColor('xterm') {
           sh(script: '''
-            export PATH=$PATH:$HOME/.rbenv/bin
             rbenv local 2.3.1
             eval "$(rbenv init -)"
             bundle exec rake check_for_spec_tests
@@ -77,8 +73,6 @@ def linux(){
   withEnv(['PATH+EXTRA=/usr/local/bin']) {
     ansiColor('xterm') {
       sh(script: '''
-        export PATH=$PATH:$HOME/.rbenv/bin:$HOME/.rbenv/shims
-        echo $PATH
         rbenv local 2.3.1
         gem install bundle
         bundle install
