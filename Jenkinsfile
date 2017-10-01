@@ -16,7 +16,6 @@ node('tse-control-repo') {
       stage('Lint Control Repo'){
         ansiColor('xterm') {
           sh(script: '''
-            rbenv local 2.3.1
             bundle exec rake lint
           ''')
         }
@@ -25,7 +24,6 @@ node('tse-control-repo') {
       stage('Syntax Check Control Repo'){
         ansiColor('xterm') {
           sh(script: '''
-            rbenv local 2.3.1
             bundle exec rake syntax --verbose
           ''')
         }
@@ -34,7 +32,6 @@ node('tse-control-repo') {
       stage('Validate Puppetfile in Control Repo'){
         ansiColor('xterm') {
           sh(script: '''
-            rbenv local 2.3.1
             bundle exec rake r10k:syntax
           ''')
         }
@@ -43,7 +40,6 @@ node('tse-control-repo') {
       stage('Validate Tests Exist'){
         ansiColor('xterm') {
           sh(script: '''
-            rbenv local 2.3.1
             bundle exec rake check_for_spec_tests
           ''')
         }
@@ -66,7 +62,7 @@ stage('Run Spec Tests') {
 
 // functions
 def linux(){
-  withEnv(['RBENV_ROOT=/usr/local/rbenv','PATH+WHATEVER=/usr/local/rbenv/bin']) {
+  withEnv(['RBENV_ROOT=/usr/local/rbenv','PATH+WHATEVER=/usr/local/rbenv/bin:/usr/local/rbenv/shims']) {
     ansiColor('xterm') {
       sh(script: '''
         rbenv local 2.3.1
