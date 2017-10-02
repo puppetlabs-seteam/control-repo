@@ -1,7 +1,7 @@
 #!groovy
 node('tse-control-repo') {
   sshagent (credentials: ['jenkins-seteam-ssh']) {
-    withEnv(['RBENV_ROOT=/usr/local/rbenv','PATH+WHATEVER=/usr/local/rbenv/bin:/usr/local/rbenv/shims']) {
+    withEnv(['PATH+EXTRA=/usr/local/bin']) {
       checkout scm
 
       stage('Setup'){
@@ -16,6 +16,9 @@ node('tse-control-repo') {
       stage('Lint Control Repo'){
         ansiColor('xterm') {
           sh(script: '''
+            export PATH=$PATH:$HOME/.rbenv/bin
+            rbenv global 2.3.1
+            eval "$(rbenv init -)"
             bundle exec rake lint
           ''')
         }
@@ -24,6 +27,9 @@ node('tse-control-repo') {
       stage('Syntax Check Control Repo'){
         ansiColor('xterm') {
           sh(script: '''
+            export PATH=$PATH:$HOME/.rbenv/bin
+            rbenv global 2.3.1
+            eval "$(rbenv init -)"
             bundle exec rake syntax --verbose
           ''')
         }
@@ -32,6 +38,9 @@ node('tse-control-repo') {
       stage('Validate Puppetfile in Control Repo'){
         ansiColor('xterm') {
           sh(script: '''
+            export PATH=$PATH:$HOME/.rbenv/bin
+            rbenv global 2.3.1
+            eval "$(rbenv init -)"
             bundle exec rake r10k:syntax
           ''')
         }
@@ -40,6 +49,9 @@ node('tse-control-repo') {
       stage('Validate Tests Exist'){
         ansiColor('xterm') {
           sh(script: '''
+            export PATH=$PATH:$HOME/.rbenv/bin
+            rbenv global 2.3.1
+            eval "$(rbenv init -)"
             bundle exec rake check_for_spec_tests
           ''')
         }
@@ -62,10 +74,12 @@ stage('Run Spec Tests') {
 
 // functions
 def linux(){
-  withEnv(['RBENV_ROOT=/usr/local/rbenv','PATH+WHATEVER=/usr/local/rbenv/bin:/usr/local/rbenv/shims']) {
+  withEnv(['PATH+EXTRA=/usr/local/bin']) {
     ansiColor('xterm') {
       sh(script: '''
-        rbenv local 2.3.1
+        export PATH=$PATH:$HOME/.rbenv/bin:$HOME/.rbenv/shims
+        echo $PATH
+        rbenv global 2.3.1
         gem install bundle
         bundle install
         bundle exec rake spec
