@@ -2,7 +2,7 @@
 puppet_enterprise::profile::master::check_for_updates: false
 
 splunk::params::version:     "6.6.1"
-splunk::params::build:       "aeae3fe0c5af"
+#splunk::params::build:       "aeae3fe0c5af"
 #splunk::params::src_root:    "http://%{::puppet_server}:81/demo_offline_splunk"
 splunk::params::src_root:    "http://tseteam.s3.amazonaws.com/files"
 
