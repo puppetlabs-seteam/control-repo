@@ -1,8 +1,7 @@
 forge "http://forge.puppetlabs.com"
 
-mod: 'win_tomcat',
-  :git => 'https://github.com/tspeigner/win_tomcat.git'
-
+mod 'win_tomcat',
+  :git    => 'https://github.com/tspeigner/win_tomcat.git',
 
 
 # Modules from the Puppet Forge
