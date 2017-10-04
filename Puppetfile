@@ -35,8 +35,8 @@ mod 'puppetlabs/registry', '1.1.4'
 mod 'puppetlabs/tomcat', '1.7.0'
 mod 'puppetlabs/vcsrepo', '1.5.0'
 mod 'sqlserver',
-  :git => 'https://github.com/puppetlabs/puppetlabs-sqlserver.git',
-  :ref => '1.2.0'
+  :git => 'git@github.com:puppetlabs/puppetlabs-sqlserver.git',
+  :ref => '2.0.0'
 
 # Forge Community Modules
 mod 'ghoneycutt-ssh', '3.52.0'
