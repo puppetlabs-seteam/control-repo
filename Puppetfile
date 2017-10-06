@@ -67,6 +67,7 @@ mod 'jriviere/windows_ad', '0.3.2'
 mod 'crayfishx-purge', '1.2.0'
 mod 'puppet-splunk', '5.1.0'
 mod 'jpadams-puppet_vim_env', '2.3.0'
+mod 'stankevich-python', '1.18.2'
 mod 'gogs',
   :git => 'https://github.com/ipcrm/puppet-gogs.git',
   :ref => '59f7800ad3512cf371c47902996df0b927267805'
