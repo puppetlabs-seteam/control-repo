@@ -33,6 +33,7 @@ mod 'puppetlabs/tomcat', '1.7.0'
 mod 'puppetlabs/vcsrepo', '1.5.0'
 mod 'puppetlabs/sqlserver', '1.2.0'
 mod 'puppetlabs-apt', '4.1.0'
+mod 'puppetlabs-facter_task', '0.1.3'
 
 # Forge Community Modules
 mod 'jfryman-selinux', '0.4.0'
@@ -85,10 +86,6 @@ mod 'rgbank',
   :git => 'https://github.com/ipcrm/puppetlabs-rgbank.git',
   :ref => 'master'
 
-mod 'facter_task',
-  :git => 'git@github.com:ipcrm/puppetlabs-facter_task.git',
-  :ref => 'master'
-
 mod 'bolt',
-  :git => 'git@github.com:puppetlabs/bolt.git',
-  :ref => 'master'
+  :git => 'https://github.com/puppetlabs/bolt.git',
+  :ref => '0.5.1'
