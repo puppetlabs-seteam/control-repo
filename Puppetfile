@@ -2,6 +2,7 @@ forge "http://forge.puppetlabs.com"
 
 # Modules from the Puppet Forge
 # Versions should be updated to be the latest at the time you start
+mod 'puppetlabs/exec', '0.1.0'
 mod 'puppetlabs/inifile', '1.6.0'
 mod "puppetlabs/stdlib", '4.17.0'
 mod 'puppetlabs-ciscopuppet', '1.7.0'
@@ -42,7 +43,7 @@ mod 'trlinkin/domain_membership', '1.1.2'
 mod 'ipcrm/echo', '0.1.3'
 mod 'stahnma/epel', '1.2.2'
 mod 'aristanetworks-eos', '1.5.0'
-mod 'puppet-hiera', '3.0.0'
+mod 'puppet-hiera', '3.2.0'
 mod 'puppetlabs-iis', '4.0.0'
 mod 'rtyler/jenkins', '1.7.0'
 mod 'aristanetworks-netdev_stdlib_eos', '1.2.0'
@@ -67,6 +68,7 @@ mod 'jriviere/windows_ad', '0.3.2'
 mod 'crayfishx-purge', '1.2.0'
 mod 'puppet-splunk', '5.1.0'
 mod 'jpadams-puppet_vim_env', '2.3.0'
+mod 'stankevich-python', '1.18.2'
 mod 'gogs',
   :git => 'https://github.com/ipcrm/puppet-gogs.git',
   :ref => '59f7800ad3512cf371c47902996df0b927267805'
@@ -81,4 +83,12 @@ mod 'demo_cis',
 
 mod 'rgbank',
   :git => 'https://github.com/ipcrm/puppetlabs-rgbank.git',
+  :ref => 'master'
+
+mod 'facter_task',
+  :git => 'git@github.com:ipcrm/puppetlabs-facter_task.git',
+  :ref => 'master'
+
+mod 'bolt',
+  :git => 'git@github.com:puppetlabs/bolt.git',
   :ref => 'master'

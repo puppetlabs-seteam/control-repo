@@ -8,6 +8,7 @@ require 'json'
 require 'rest-client'
 
 PuppetSyntax.app_management = true
+PuppetSyntax.exclude_paths = ["site/**/plans/*"]
 PuppetLint.configuration.fail_on_warnings = true
 PuppetLint.configuration.send('relative')
 PuppetLint.configuration.send('disable_140chars')
@@ -89,7 +90,7 @@ def spec_gen(create=false)
     classes = Array.new
 
     pattern = 'site/profile/manifests/*/*.pp' if m == 'profile'
-    pattern = 'site/role/manifests/*.pp' if m == 'role'
+    pattern = 'site/role/manifests/*/*.pp' if m == 'role'
     Dir.glob("#{pattern}").each do |f|
       File.open(f).read.each_line do |l|
         c = l.scan(/(\s+)?class\s+([a-zA-Z:_]+)\s+[\{,\(]/)

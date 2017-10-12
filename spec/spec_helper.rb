@@ -11,6 +11,7 @@ add_custom_fact :pe_version, nil
 add_custom_fact :pe_server_version, '2017.2.1'
 add_custom_fact :puppet_server, 'master.test.com'
 add_custom_fact :networking, {'ip' => '127.0.0.1'}
+add_custom_fact :appenv, 'dev'
 add_custom_fact :memory, {
   "system" => {
     "used" => "7.37 GiB",
