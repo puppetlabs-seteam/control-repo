@@ -2,6 +2,7 @@ forge "http://forge.puppetlabs.com"
 
 # Modules from the Puppet Forge
 # Versions should be updated to be the latest at the time you start
+mod 'puppetlabs/exec', '0.1.0'
 mod 'puppetlabs/inifile', '1.6.0'
 mod "puppetlabs/stdlib", '4.17.0'
 mod 'puppetlabs-ciscopuppet', '1.7.0'

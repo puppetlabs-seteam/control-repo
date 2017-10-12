@@ -10,7 +10,8 @@ class profile::app::puppet_webapp::webhead::ubuntu (
 
 
   package {'apache2':
-    ensure => purged,
+    ensure   => purged,
+    provider => 'apt',
   }
 
   $_local_archive = basename($dist_file)
