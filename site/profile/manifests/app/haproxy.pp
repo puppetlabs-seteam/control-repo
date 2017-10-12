@@ -1,5 +1,9 @@
 class profile::app::haproxy {
 
+  if $::kernel == 'windows' {
+    fail('Unsupported OS')
+  }
+
   # Use at least 1.5 on all platforms
   if $::facts['os']['name'] == 'Ubuntu' {
 
