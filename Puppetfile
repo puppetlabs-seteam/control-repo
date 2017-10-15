@@ -80,7 +80,7 @@ mod 'jonono-auditpol', '0.1.2'
 mod 'nexcess-auditd', '2.0.0'
 mod 'demo_cis',
   :git => 'https://github.com/ipcrm/ipcrm-demo_cis.git',
-  :ref => 'dee17aa1cd6619290ed6657d8f70dbfcafbb3b08'
+  :ref => '4e6b63b577b9beae5a3cea88237faf11cb5990a0'
 
 mod 'rgbank',
   :git => 'https://github.com/ipcrm/puppetlabs-rgbank.git',
