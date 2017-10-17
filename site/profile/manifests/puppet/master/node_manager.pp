@@ -33,11 +33,18 @@ class profile::puppet::master::node_manager {
 
   }
 
-  node_group { 'role::master_server':
+  node_group { 'SE Demo Env Conf':
+      ensure               => 'present',
+      environment          => 'production',
+      override_environment => false,
+      parent               => 'All Nodes',
+  }
+
+  node_group { 'SE Puppet role::master_server':
     ensure               => present,
     environment          => 'production',
     override_environment => false,
-    parent               => 'All Nodes',
+    parent               => 'SE Demo Env Conf',
     rule                 => ['or', ['=', 'name', $::clientcert]],
     classes              => {
       'pe_repo::platform::el_6_x86_64'       => {},
@@ -49,11 +56,11 @@ class profile::puppet::master::node_manager {
     },
   }
 
-  node_group { 'Windows Servers':
+  node_group { 'Windows Bootstrap':
     ensure               => present,
     environment          => 'production',
     override_environment => false,
-    parent               => 'All Nodes',
+    parent               => 'SE Demo Env Conf',
     rule                 => ['and', ['=', ['fact', 'kernel'], 'windows']],
     classes              => {
       'profile::platform::baseline::windows::bootstrap' => {},
