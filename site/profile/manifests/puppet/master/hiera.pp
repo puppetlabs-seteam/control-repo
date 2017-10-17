@@ -40,8 +40,8 @@ class profile::puppet::master::hiera {
       eyaml_extension      => '.yaml',
       provider             => 'puppetserver_gem',
       merge_behavior       => 'deeper',
-      datadir              => '/etc/puppetlabs/code/environments/%{environment}/hieradata',
-      eyaml_datadir        => '/etc/puppetlabs/code/environments/%{environment}/hieradata',
+      datadir              => '/etc/puppetlabs/code/environments/%{environment}/data',
+      eyaml_datadir        => '/etc/puppetlabs/code/environments/%{environment}/data',
       notify               => Service['pe-puppetserver'],
       hierarchy            => [
         'nodes/%{fqdn}',
