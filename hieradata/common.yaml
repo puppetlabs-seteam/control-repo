@@ -1,2 +1,6 @@
 ---
 puppet_enterprise::profile::master::check_for_updates: false
+puppet_enterprise::profile::console::proxy::http_redirect::enable_http_redirect: false
+
+#PuppetDB TTL
+puppet_enterprise::profile::puppetdb::node_purge_ttl: "1s"
