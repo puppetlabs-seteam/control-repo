@@ -6,7 +6,7 @@ class profile::platform::baseline::linux::motd {
 
     Access  to  and  use of this server is  restricted to those
     activities expressly permitted by the system administration
-    staff. If you arre not sure if it is allowed, then DO NOT DO IT.
+    staff. If you are not sure if it is allowed, then DO NOT DO IT.
 
     ===========================================================
 
