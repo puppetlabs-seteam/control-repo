@@ -38,7 +38,7 @@ else
   add_custom_fact :staging_windir,         'C:\ProgramData\staging'
   add_custom_fact :operatingsystemversion, 'Windows Server 2012 R2 Standard'
   add_custom_fact :staging_http_get,       'powershell'
-  add_custom_fact :iis_version,            "8.5"
+  add_custom_fact :iis_version,            '8.5'
   add_custom_fact :powershell_version,     '5.1.14409'
 end
 
