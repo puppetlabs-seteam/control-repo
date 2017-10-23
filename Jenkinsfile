@@ -94,7 +94,6 @@ def windows(){
   withEnv(['MODULE_WORKING_DIR=C:/tmp']) {
     ansiColor('xterm') {
       sh(script: '''
-        rm -f Gemfile.lock
         bundle install
         bundle exec rake spec
       ''')
