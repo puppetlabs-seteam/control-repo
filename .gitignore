@@ -7,7 +7,6 @@ hieradata/nodes/example-puppet-master.yaml
 .DS_Store
 /.bundle
 /.vagrant
-Gemfile.lock
 .*.sw?
 pkg
 fixtures

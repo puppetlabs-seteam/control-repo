@@ -9,7 +9,7 @@ class profile::puppet::master::hiera {
 
   $global_yaml_level = {
     name      => 'Global Yaml Data',
-    data_hash => "yaml_data",
+    data_hash => 'yaml_data',
     datadir   => '/etc/puppetlabs/code/data',
     path      => 'global.yaml',
   }

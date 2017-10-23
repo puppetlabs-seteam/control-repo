@@ -10,7 +10,6 @@ node('tse-control-repo') {
             export PATH=$PATH:$HOME/.rbenv/bin
             rbenv global 2.3.1
             eval "$(rbenv init -)"
-            rm -f Gemfile.lock
             bundle install
           ''')
         }
@@ -84,7 +83,6 @@ def linux(){
         echo $PATH
         rbenv global 2.3.1
         gem install bundle
-        rm -f Gemfile.lock
         bundle install
         bundle exec rake spec
       ''')
@@ -96,7 +94,6 @@ def windows(){
   withEnv(['MODULE_WORKING_DIR=C:/tmp']) {
     ansiColor('xterm') {
       sh(script: '''
-        rm -f Gemfile.lock
         bundle install
         bundle exec rake spec
       ''')

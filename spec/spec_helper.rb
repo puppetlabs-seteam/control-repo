@@ -32,12 +32,14 @@ if !Gem.win_platform?
   add_custom_fact :jenkins_plugins, nil
   add_custom_fact :root_home, '/root'
 else
-  add_custom_fact :choco_install_path,  'C:\ProgramData\chocolatey'
-  add_custom_fact :chocolateyversion,   '0.10.7'
-  add_custom_fact :archive_windir,      'C:\ProgramData\staging'
-  add_custom_fact :staging_windir,      'C:\ProgramData\staging'
+  add_custom_fact :choco_install_path,     'C:\ProgramData\chocolatey'
+  add_custom_fact :chocolateyversion,      '0.10.7'
+  add_custom_fact :archive_windir,         'C:\ProgramData\staging'
+  add_custom_fact :staging_windir,         'C:\ProgramData\staging'
   add_custom_fact :operatingsystemversion, 'Windows Server 2012 R2 Standard'
-  add_custom_fact :staging_http_get,     'powershell'
+  add_custom_fact :staging_http_get,       'powershell'
+  add_custom_fact :iis_version,            '8.5'
+  add_custom_fact :powershell_version,     '5.1.14409'
 end
 
 

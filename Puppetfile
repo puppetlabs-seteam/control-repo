@@ -18,6 +18,7 @@ mod 'puppetlabs/dsc', '1.3.0'
 mod 'puppetlabs/firewall', '1.8.2'
 mod 'puppetlabs/git', '0.5.0'
 mod 'puppetlabs/haproxy', '1.5.0'
+mod 'puppetlabs-iis', '4.1.1'
 mod 'puppetlabs/java', '2.0.0'
 mod 'puppetlabs/limits', '0.1.0'
 mod 'puppetlabs-motd', '1.4.0'
@@ -45,7 +46,7 @@ mod 'ipcrm/echo', '0.1.3'
 mod 'stahnma/epel', '1.2.2'
 mod 'aristanetworks-eos', '1.5.0'
 mod 'puppet-hiera', '3.3.0'
-mod 'puppetlabs-iis', '4.0.0'
+
 mod 'rtyler/jenkins', '1.7.0'
 mod 'aristanetworks-netdev_stdlib_eos', '1.2.0'
 mod 'WhatsARanjit/node_manager', '0.4.2'
@@ -78,6 +79,10 @@ mod 'puppet-nginx', '0.7.1'
 mod 'bodgit-rngd', '2.0.0'
 mod 'jonono-auditpol', '0.1.2'
 mod 'nexcess-auditd', '2.0.0'
+
+mod 'tse-tse_facts',
+  :git => 'https://github.com/puppetlabs/tse-module-tse_facts.git'
+
 mod 'demo_cis',
   :git => 'https://github.com/ipcrm/ipcrm-demo_cis.git',
   :ref => '4e6b63b577b9beae5a3cea88237faf11cb5990a0'
