@@ -17,14 +17,14 @@ gem 'r10k', '>= 2.5.5'
 
 group :development, :unit_tests do
   gem 'metadata-json-lint'
-  gem 'puppet_facts'
+  gem 'rspec-puppet-facts', :git => 'https://github.com/mcanevet/rspec-puppet-facts.git',
+                      :ref => 'fe21de12108fbab0123bdc4db2365a29ea62f171'
   gem 'puppet-blacksmith', '>= 3.4.0'
   gem 'simplecov'
   gem 'simplecov-console'
   gem 'rspec-puppet', :git => 'https://github.com/rodjek/rspec-puppet.git',
                       :ref => 'eaba657a8e876c8c4a881a6d47df76cfdda62b3f'
   gem 'puppet-syntax', '>= 2.4.0'
-  gem 'rspec-puppet-facts'
   gem 'parallel_tests'
   gem 'json_pure', '<= 2.0.1' if RUBY_VERSION < '2.0.0'
 end
