@@ -47,7 +47,6 @@ mod 'stahnma/epel', '1.2.2'
 mod 'aristanetworks-eos', '1.5.0'
 mod 'puppet-hiera', '3.3.0'
 
-mod 'rtyler/jenkins', '1.7.0'
 mod 'aristanetworks-netdev_stdlib_eos', '1.2.0'
 mod 'WhatsARanjit/node_manager', '0.4.2'
 mod 'cyberious/pget', '1.1.0'
@@ -92,4 +91,8 @@ mod 'rgbank',
 
 mod 'bolt',
   :git => 'https://github.com/puppetlabs/bolt.git',
-  :ref => '0.5.1'
+  :ref => '0.6.0'
+
+mod 'jenkins',
+  :git => 'https://github.com/jenkinsci/puppet-jenkins.git',
+  :ref => '5ab2c8a8207f6351f59706255087c6eef32778d9'
