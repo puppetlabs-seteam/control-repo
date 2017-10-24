@@ -77,6 +77,8 @@ mod 'puppet-nginx', '0.7.1'
 mod 'bodgit-rngd', '2.0.0'
 mod 'jonono-auditpol', '0.1.2'
 mod 'nexcess-auditd', '2.0.0'
+mod 'jdowning-rbenv', '2.2.0'
+mod 'puppet-windows_env', '2.3.0'
 
 mod 'tse-tse_facts',
   :git => 'https://github.com/puppetlabs/tse-module-tse_facts.git'
