@@ -53,6 +53,7 @@ class profile::puppet::master::node_manager {
       'pe_repo::platform::ubuntu_1604_amd64' => {},
       'pe_repo::platform::windows_x86_64'    => {},
       'role::master_server'                  => {},
+      'profile::puppet::master::se_gitbook'  => {},
     },
   }
 
