@@ -100,3 +100,7 @@ mod 'bolt',
 mod 'jenkins',
   :git => 'https://github.com/jenkinsci/puppet-jenkins.git',
   :ref => '5ab2c8a8207f6351f59706255087c6eef32778d9'
+
+mod 'netstat',
+  :git => 'https://github.com/ipcrm/ipcrm-netstat.git',
+  :ref => 'master'
