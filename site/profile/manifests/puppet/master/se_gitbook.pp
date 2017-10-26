@@ -2,7 +2,7 @@ class profile::puppet::master::se_gitbook (
   $gitbook_port    = '4000',
   $gitbook_wwwroot = '/var/www/se_gitbook',
   $gitbook_source  = 'https://s3-us-west-2.amazonaws.com/tse-builds/gitbooks/',
-  $gitbook_release = 'sebook.tar',
+  $gitbook_release = pick_default($::gitbook_file,'sebook.tar'),
   $gitbook_local   = '/etc/gitbooks',
 ) {
 
@@ -28,12 +28,12 @@ class profile::puppet::master::se_gitbook (
   }
 
   archive { "${gitbook_local}/${gitbook_release}":
-    ensure        => present,
-    extract       => true,
-    extract_path  => "${$gitbook_wwwroot}",
-    source        => "${gitbook_local}/${gitbook_release}",
-    creates       => "${$gitbook_wwwroot}/index.html",
-    cleanup       => true,
+    ensure       => present,
+    extract      => true,
+    extract_path => "${$gitbook_wwwroot}",
+    source       => "${gitbook_local}/${gitbook_release}",
+    creates      => "${$gitbook_wwwroot}/index.html",
+    cleanup      => true,
   }
 
   apache::vhost { $::fqdn:
