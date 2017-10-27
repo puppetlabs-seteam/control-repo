@@ -7,6 +7,11 @@ class profile::app::rubydev::windows {
   $dev_packages = ['git','cmake']
   ensure_packages($dev_packages, { ensure => present })
 
+  reboot {'pre_ruby_install':
+    apply     => 'immediately',
+    subscribe => Package[$dev_packages],
+  }
+
   package {'ruby':
     ensure   => '2.3.1',
   }
