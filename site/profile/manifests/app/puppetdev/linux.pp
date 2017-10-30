@@ -1,4 +1,4 @@
-class profile::app::rubydev::linux {
+class profile::app::puppetdev::linux {
 
   $dev_packages = $::osfamily ? {
     'RedHat' => ['gcc','gcc-c++','openssl-devel','readline-devel','zlib-devel','cmake'],

@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe 'profile::app::rubydev' do
+describe 'profile::app::puppetdev' do
 
     SUPPORTED_OS.each do |os, facts|
       context "on #{os}" do

@@ -15,7 +15,7 @@ class profile::app::jenkins::slave (
         slave_groups => 'wheel',
       }
 
-      include ::profile::app::rubydev
+      include ::profile::app::puppetdev
     }
 
     'windows': {
@@ -26,7 +26,7 @@ class profile::app::jenkins::slave (
         labels    => 'tse-slave-windows',
       }
 
-      include ::profile::app::rubydev
+      include ::profile::app::puppetdev
     }
 
     default:{
