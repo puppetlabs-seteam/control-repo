@@ -1,4 +1,2 @@
 ---
 puppet_enterprise::profile::master::check_for_updates: false
-
-profile::app::jenkins::slave::master_url: 'http://10.32.161.26:8080/'
