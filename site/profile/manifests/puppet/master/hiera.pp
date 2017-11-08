@@ -1,18 +1,49 @@
 class profile::puppet::master::hiera {
-  $cmdpath = [
-    '/usr/local/sbin',
-    '/usr/local/bin',
-    '/usr/sbin',
-    '/usr/bin',
-    '/opt/puppetlabs/bin',
-    '/sbin',
-    '/opt/puppetlabs/puppet/bin'
-  ]
+  # Most Hiera configuration is handled by the environment's hiera.yaml. This
+  # configuration exists only to manage the global data layer.
 
-  #Check if puppetserver service is defined, if so manage restart after updating hiera
-  if defined(Service['pe-puppetserver']) {
-    class {'::hiera':
-      hierarchy       => [
+  $classifer_data_level = {
+    name      => 'Classifier Configuration Data',
+    data_hash => 'classifier_data',
+  }
+
+  $global_yaml_level = {
+    name      => 'Global Yaml Data',
+    data_hash => 'yaml_data',
+    datadir   => '/etc/puppetlabs/code/data',
+    path      => 'global.yaml',
+  }
+
+  # Include classifier in the hierarchy IF the PE version is new enough
+  $hiera5_hierarchy = (versioncmp($facts['pe_server_version'], '2017.3.0') >= 0) ? {
+    true  => [$classifer_data_level, $global_yaml_level],
+    false => [$global_yaml_level],
+  }
+
+  # Configure either Hiera 5 or Hiera 3 depending on the PE version
+  if (versioncmp($facts['pe_server_version'], '2017.2.1') >= 0) {
+    # PE 2017.2.1 introduced Hiera 5.
+    class { 'hiera':
+      hiera_version        => '5',
+      hierarchy            => $hiera5_hierarchy,
+      eyaml                => true,
+      manage_eyaml_package => true,
+      provider             => 'puppetserver_gem',
+    }
+
+  } else {
+    # Older versions of PE only support Hiera 3
+    class { 'hiera':
+      hiera_version        => '3',
+      eyaml                => true,
+      manage_eyaml_package => true,
+      eyaml_extension      => '.yaml',
+      provider             => 'puppetserver_gem',
+      merge_behavior       => 'deeper',
+      datadir              => '/etc/puppetlabs/code/environments/%{environment}/data',
+      eyaml_datadir        => '/etc/puppetlabs/code/environments/%{environment}/data',
+      notify               => Service['pe-puppetserver'],
+      hierarchy            => [
         'nodes/%{fqdn}',
         'location/%{location}/%{role}',
         'role/%{tier}/%{role}',
@@ -20,58 +51,8 @@ class profile::puppet::master::hiera {
         'location/%{location}',
         'common',
       ],
-      eyaml           => true,
-      logger          => 'console',
-      confdir         => '/etc/puppetlabs/puppet',
-      merge_behavior  => 'deeper',
-      datadir         => '/etc/puppetlabs/code/environments/%{environment}/hieradata',
-      eyaml_datadir   => '/etc/puppetlabs/code/environments/%{environment}/hieradata',
-      provider        => puppetserver_gem,
-      notify          => Service['pe-puppetserver'],
-      cmdpath         => $cmdpath,
-      eyaml_extension => '.yaml',
     }
-  }
-  else {
-    class {'::hiera':
-      hierarchy       => [
-        'nodes/%{fqdn}',
-        'location/%{location}/%{role}',
-        'role/%{tier}/%{role}',
-        'role/%{role}',
-        'location/%{location}',
-        'common',
-      ],
-      confdir         => '/etc/puppetlabs/puppet',
-      eyaml           => true,
-      logger          => 'console',
-      merge_behavior  => 'deeper',
-      datadir         => '/etc/puppetlabs/code/environments/%{environment}/hieradata',
-      eyaml_datadir   => '/etc/puppetlabs/code/environments/%{environment}/hieradata',
-      provider        => puppetserver_gem,
-      cmdpath         => $cmdpath,
-      eyaml_extension => '.yaml',
-    }
-  }
 
-# Ensure that eyaml keys that have been generated are put into the puppet fileserver hosted here
-
-  ensure_resource('file', '/opt/fileserver', { 'ensure' => 'directory', 'owner' => 'root', 'group' => 'root' })
-
-  file { '/opt/fileserver/eyaml':
-    ensure => 'directory',
-  }
-
-  file { '/opt/fileserver/eyaml/private_key.pkcs7.pem':
-    ensure  => present,
-    source  => '/etc/puppetlabs/puppet/keys/private_key.pkcs7.pem',
-    require => File['/opt/fileserver'],
-  }
-
-  file { '/opt/fileserver/eyaml/public_key.pkcs7.pem':
-    ensure  => present,
-    source  => '/etc/puppetlabs/puppet/keys/public_key.pkcs7.pem',
-    require => File['/opt/fileserver'],
   }
 
 }

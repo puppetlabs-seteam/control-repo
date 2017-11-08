@@ -1,0 +1,45 @@
+{
+  "name": "tse-control-repo",
+  "version": "0.0.1",
+  "author": "tse",
+  "summary": "TSE Control-Repo",
+  "license": "Apache-2.0",
+  "source": "https://github.com/puppetlabs-seteam/control-repo",
+  "project_page": "https://github.com/puppetlabs-seteam/control-repo",
+  "issues_url": "https://github.com/puppetlabs-seteam/control-repo/issues",
+  "dependencies": [
+    {
+      "name": "puppetlabs-stdlib",
+      "version_requirement": ">= 4.12.0"
+    }
+  ],
+  "operatingsystem_support": [
+    {
+      "operatingsystem": "RedHat",
+      "operatingsystemrelease": [
+        "6",
+        "7"
+      ]
+    },
+    {
+      "operatingsystem": "CentOS",
+      "operatingsystemrelease": [
+        "6",
+        "7"
+      ]
+    },
+    {
+      "operatingsystem": "Ubuntu",
+      "operatingsystemrelease": [
+        "14.04",
+        "16.04"
+      ]
+    },
+    {
+      "operatingsystem": "windows",
+      "operatingsystemrelease": [
+        "2012 R2"
+      ]
+    }
+  ]
+}

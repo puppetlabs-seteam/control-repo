@@ -1,7 +1,8 @@
 class profile::puppet::master::gogs {
   $secret_key = 'mysecretkey'
 
-  class {'gogs':
+  class {'::gogs':
+    version          => '0.11.19',
     app_ini          => {
       'APP_NAME' => 'TSE Demo Master Git Server',
       'RUN_USER' => 'git',

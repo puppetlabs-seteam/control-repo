@@ -2,7 +2,10 @@
 class profile::app::sample_website {
 
   case $::kernel {
-    'windows': { include profile::app::sample_website::windows }
+    'windows': {
+      if $::iis_version == "8.5" { include profile::app::sample_website::windows }
+      else { fail('Unsupported kernel detected') }
+    }
     'Linux':   { include profile::app::sample_website::linux   }
     default:   {
       fail('Unsupported kernel detected')
