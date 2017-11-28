@@ -7,6 +7,8 @@ node('tse-control-repo') {
       stage('Setup'){
         ansiColor('xterm') {
           sh(script: '''
+            export PATH=$PATH:$HOME/.rbenv/bin
+            rbenv global 2.3.1
             eval "$(rbenv init -)"
             bundle install
           ''')
