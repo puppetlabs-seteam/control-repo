@@ -1,4 +1,6 @@
 class profile::compliance::windows {
-  include profile::compliance::cis
-  include profile::compliance::hipaa
+
+  include profile::compliance::windows::cis
+  include profile::compliance::windows::hipaa
+
 }
