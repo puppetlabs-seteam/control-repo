@@ -3,6 +3,8 @@ forge "http://forge.puppetlabs.com"
 mod 'win_tomcat',
   :git    => 'https://github.com/tspeigner/win_tomcat.git'
 
+# David Nelson - CIS Security for Linux
+mod 'cohdjn-cisecurity', '0.6.1'
 
 # Modules from the Puppet Forge
 # Versions should be updated to be the latest at the time you start
