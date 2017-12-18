@@ -33,7 +33,8 @@ class profile::app::puppet_tomcat::linux (
   }
 
   tomcat::war { "plsample-${plsample_version}.war" :
-    war_source    => "https://s3.amazonaws.com/saleseng/files/tomcat/sample-1.0.war",
+    #war_source    => "https://s3.amazonaws.com/saleseng/files/tomcat/sample-1.0.war",
+    war_source    => "https://tomcat.apache.org/tomcat-6.0-doc/appdev/sample/sample.war",
     #war_source    => "http://${::puppet_server}:81/tomcat/plsample-${plsample_version}.war",
     catalina_base => $catalina_dir,
     notify        => File["${catalina_dir}/webapps/plsample"],
