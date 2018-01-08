@@ -16,11 +16,6 @@ PuppetLint.configuration.send('disable_class_inherits_from_params_class')
 PuppetLint.configuration.send('disable_documentation')
 PuppetLint.configuration.ignore_paths = ["spec/**/*.pp", "pkg/**/*.pp", "bundle/**/*", "vendor/**/*"]
 
-PuppetLint::RakeTask.new :lint do | config |
-  config.fix = true
-end
-
-
 Rake::Task[:spec_prep].enhance [:generate_fixtures]
 
 desc "Run tests"

@@ -6,17 +6,17 @@ class profile::puppet::master::se_gitbook (
   $gitbook_local   = '/etc/gitbooks',
 ) {
 
-  file { "${gitbook_local}":
+  file { $gitbook_local:
     ensure => directory,
     mode   => '0755',
   }
 
-  file { "${gitbook_wwwroot}":
+  file { $gitbook_wwwroot:
     ensure => directory,
     mode   => '0755',
   }
 
-  remote_file { "${gitbook_release}":
+  remote_file { $gitbook_release:
     source => "https://s3-us-west-2.amazonaws.com/tse-builds/gitbooks/${gitbook_release}",
     path   => "${gitbook_local}/${gitbook_release}",
   }
@@ -30,7 +30,7 @@ class profile::puppet::master::se_gitbook (
   archive { "${gitbook_local}/${gitbook_release}":
     ensure       => present,
     extract      => true,
-    extract_path => "${$gitbook_wwwroot}",
+    extract_path => $gitbook_wwwroot,
     source       => "${gitbook_local}/${gitbook_release}",
     creates      => "${$gitbook_wwwroot}/index.html",
     cleanup      => true,

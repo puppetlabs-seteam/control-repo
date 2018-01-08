@@ -1,0 +1,11 @@
+<!-- This file is managed by Puppet. -->
+<service>
+    <id>jenkins-slave</id>
+    <name>Jenkins Slave</name>
+    <description>This services runs a slave for the Jenkins continuous integration system.</description>
+    <env name="HOME" value="<%= @slave_home -%>"/>
+    <executable>C:\Program Files\Git\bin\bash.exe</executable>
+    <arguments>-c "java -Xrs <%= @client_jar_flag -%> <%= @mode_flag -%> <%= @executors_flag -%> <%= @ui_user_flag -%> <%= @ui_pass_flag -%> <%= @slave_alias_flag -%> <%= @master_url_flag -%> <%= @labels_flag -%> <%= @fs_root_flag -%> -disableSslVerification"</arguments>
+    <logmode>rotate</logmode>
+    <onfailure action="restart" />
+</service>
