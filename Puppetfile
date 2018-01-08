@@ -6,6 +6,9 @@ mod 'win_tomcat',
 # David Nelson - CIS Security for Linux
 mod 'cohdjn-cisecurity', '0.6.1'
 
+mod 'autosign_example',
+  :git => 'https://github.com/puppetlabs/puppet-vro-autosign_example'
+
 # Modules from the Puppet Forge
 # Versions should be updated to be the latest at the time you start
 mod 'puppetlabs/exec', '0.1.0'
