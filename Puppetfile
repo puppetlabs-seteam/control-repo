@@ -3,11 +3,10 @@ forge "http://forge.puppetlabs.com"
 mod 'win_tomcat',
   :git    => 'https://github.com/tspeigner/win_tomcat.git'
   
-mod 'tspy-code_deploy',
-  :git    => 'https://github.com/tspeigner/puppet-code_deploy.git'
+#mod 'tspy-code_deploy',
+#  :git    => 'https://github.com/tspeigner/puppet-code_deploy.git'
 
-mod 'nate-purge_node',
-  :git    => 'https://github.com/natemccurdy/puppet-purge_node.git'
+mod 'nate-purge_node', '1.1.1'
 
 # David Nelson - CIS Security for Linux
 mod 'cohdjn-cisecurity', '0.6.1'
