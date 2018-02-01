@@ -1,7 +1,7 @@
 forge "http://forge.puppetlabs.com"
 
-mod 'win_tomcat',
-  :git    => 'https://github.com/tspeigner/win_tomcat.git'
+#mod 'win_tomcat',
+#  :git    => 'https://github.com/tspeigner/win_tomcat.git'
   
 #mod 'code_deploy',
 #  :git    => 'https://github.com/tspeigner/puppet-code_deploy.git'
@@ -11,16 +11,16 @@ mod 'win_tomcat',
 # David Nelson - CIS Security for Linux
 mod 'cohdjn-cisecurity', '0.6.1'
 
-mod 'autosign_example',
-  :git => 'https://github.com/puppetlabs/puppet-vro-autosign_example'
+#mod 'autosign_example',
+#  :git => 'https://github.com/puppetlabs/puppet-vro-autosign_example'
 
 # Modules from the Puppet Forge
 # Versions should be updated to be the latest at the time you start
-mod 'puppetlabs/exec', '0.1.0'
+mod 'puppetlabs-exec', '0.1.0'
 mod 'puppetlabs-resource', '0.1.0'
 mod 'puppetlabs-service', '0.1.3'
-mod 'puppetlabs/inifile', '1.6.0'
-mod "puppetlabs/stdlib", '4.17.0'
+mod 'puppetlabs-inifile', '1.6.0'
+mod "puppetlabs-stdlib", '4.17.0'
 mod 'puppetlabs-ciscopuppet', '1.7.0'
 mod "puppetlabs/concat", '4.0.0'
 mod 'puppetlabs-acl', '2.0.1'
