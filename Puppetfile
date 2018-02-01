@@ -3,7 +3,7 @@ forge "http://forge.puppetlabs.com"
 mod 'win_tomcat',
   :git    => 'https://github.com/tspeigner/win_tomcat.git'
   
-#mod 'tspy-code_deploy',
+#mod 'code_deploy',
 #  :git    => 'https://github.com/tspeigner/puppet-code_deploy.git'
 
 mod 'nate-purge_node', '1.1.1'
