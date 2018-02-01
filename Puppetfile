@@ -6,7 +6,7 @@ mod 'win_tomcat',
 #mod 'code_deploy',
 #  :git    => 'https://github.com/tspeigner/puppet-code_deploy.git'
 
-mod 'nate-purge_node', '1.1.1'
+#mod 'nate-purge_node', '1.1.1'
 
 # David Nelson - CIS Security for Linux
 mod 'cohdjn-cisecurity', '0.6.1'
