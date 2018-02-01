@@ -2,6 +2,9 @@ forge "http://forge.puppetlabs.com"
 
 mod 'win_tomcat',
   :git    => 'https://github.com/tspeigner/win_tomcat.git'
+  
+mod 'puppet-code_deploy',
+  :git    => 'https://github.com/tspeigner/puppet-code_deploy.git'
 
 # David Nelson - CIS Security for Linux
 mod 'cohdjn-cisecurity', '0.6.1'
