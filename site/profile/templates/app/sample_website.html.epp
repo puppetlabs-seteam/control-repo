@@ -28,13 +28,7 @@
                 <%= $::memory[system][total] %>
             </p>
         </div>
-    </div>
-    
-    <div class="container">
-         <div class="blurb">
-          <img src="https://gph.is/1mwD5e0" height="159" width="200" />
-        </div>
-    </div>  
+    </div> 
 </body>
 
 </html>
