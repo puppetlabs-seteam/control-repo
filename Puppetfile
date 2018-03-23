@@ -1,5 +1,8 @@
 forge "http://forge.puppetlabs.com"
 
+mod 'module_installer'
+  git: 'https://github.com/tspeigner/puppet-module_installer.git'
+
 # Modules from the Puppet Forge
 # Versions should be updated to be the latest at the time you start
 mod 'puppetlabs/exec', '0.1.0'
