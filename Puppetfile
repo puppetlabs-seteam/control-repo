@@ -1,7 +1,5 @@
 forge "http://forge.puppetlabs.com"
 
-mod 'module_installer'
-  git: 'https://github.com/tspeigner/puppet-module_installer.git'
 
 # Modules from the Puppet Forge
 # Versions should be updated to be the latest at the time you start
@@ -86,6 +84,10 @@ mod 'nexcess-auditd', '2.0.0'
 mod 'jdowning-rbenv', '2.2.0'
 mod 'puppet-windows_env', '2.3.0'
 mod 'camptocamp-systemd', '1.1.0'
+
+
+mod 'module_installer',
+  git: 'https://github.com/tspeigner/puppet-module_installer.git'
 
 mod 'tse-tse_facts',
   :git => 'https://github.com/puppetlabs/tse-module-tse_facts.git'
