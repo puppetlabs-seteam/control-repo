@@ -86,10 +86,10 @@ mod 'puppet-windows_env', '2.3.0'
 mod 'camptocamp-systemd', '1.1.0'
 
 mod 'module_uninstaller',
-  git: 'https://github.com/tspeigner/puppet-module_uninstaller.git'
+  :git 'https://github.com/tspeigner/puppet-module_uninstaller.git'
 
 mod 'module_installer',
-  git: 'https://github.com/tspeigner/puppet-module_installer.git'
+  :git 'https://github.com/tspeigner/puppet-module_installer.git'
 
 mod 'tse-tse_facts',
   :git => 'https://github.com/puppetlabs/tse-module-tse_facts.git'
