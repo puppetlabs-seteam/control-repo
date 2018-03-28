@@ -86,7 +86,7 @@ mod 'puppet-windows_env', '2.3.0'
 mod 'camptocamp-systemd', '1.1.0'
 
 mod 'puppet_module',
-  :git => 'git@github.com:tspeigner/puppet_module.git'
+  :git => 'https://github.com/tspeigner/puppet_module.git'
 
 mod 'tse-tse_facts',
   :git => 'https://github.com/puppetlabs/tse-module-tse_facts.git'
