@@ -3,7 +3,7 @@ class example::dockerhost {
   require 'docker'
 
   file { '/tmp/DockerFile':
-    source => "puppet:///modules/example/DockerUbuntuApache",
+    source => 'puppet:///modules/example/DockerUbuntuApache',
   }
 
   docker::image { 'my_webserver':
