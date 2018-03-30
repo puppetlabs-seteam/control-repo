@@ -38,6 +38,8 @@ mod 'puppetlabs-apt', '4.1.0'
 mod 'puppetlabs-facter_task', '0.1.3'
 mod 'puppetlabs-docker', '1.0.1'
 mod 'puppetlabs-transition', '0.1.1'
+mod 'puppetlabs-distelli_agent', '0.1.0'
+mod 'maestrodev-wget', '1.7.3'
 
 # Forge Community Modules
 mod 'jfryman-selinux', '0.4.0'
@@ -101,6 +103,10 @@ mod 'bolt',
 mod 'jenkins',
   :git => 'https://github.com/jenkinsci/puppet-jenkins.git',
   :ref => '5ab2c8a8207f6351f59706255087c6eef32778d9'
+
+mod 'distelli',
+  :git => 'https://github.com/puppetlabs/puppetlabs-distelli_agent.git',
+  :ref => '2a33d3dd6ee7d9f580e61b189c4930ac1329e365'
 
 mod 'netstat',
   :git => 'https://github.com/ipcrm/ipcrm-netstat.git',
