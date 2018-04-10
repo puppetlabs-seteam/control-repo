@@ -18,7 +18,15 @@
               <img src="img/apple.png" height="128" width="128" />
             <% } -%>
             <h1>System Info </h1>
-            
+            <p>fqdn/certname:
+                <%= $::trusted[certname] %>
+            </p>
+            <p>ip address:
+                <%= $::networking[ip] %>
+            </p>
+            <p>total system memory:
+                <%= $::memory[system][total] %>
+            </p>
         </div>
     </div> 
 </body>
