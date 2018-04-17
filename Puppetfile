@@ -17,7 +17,6 @@ mod 'autosign_example',
 
 mod 'deployer',
   :git => 'https://github.com/tspeigner/puppet-deployer.git'
-=======
 
 # Modules from the Puppet Forge
 # Versions should be updated to be the latest at the time you start
