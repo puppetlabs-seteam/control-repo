@@ -3,6 +3,9 @@ forge "http://forge.puppetlabs.com"
 mod 'win_tomcat',
   :git    => 'https://github.com/tspeigner/win_tomcat.git'
 
+mod 'win_mysql',
+  :git    => 'https://github.com/tspeigner/tspeigner-win_tomcat.git'
+
 mod 'code_deploy',
   :git    => 'https://github.com/tspeigner/puppet-code_deploy.git'
 
@@ -17,7 +20,6 @@ mod 'deployer',
 
 # Modules from the Puppet Forge
 # Versions should be updated to be the latest at the time you start
-mod 'tspy-win_mysql', '0.1.2'
 mod 'tspy-code_deploy', '1.0.2'
 mod 'puppetlabs/exec', '0.1.0'
 mod 'puppetlabs-resource', '0.1.0'
