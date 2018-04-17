@@ -15,11 +15,9 @@ mod 'autosign_example',
 mod 'deployer',
   :git => 'https://github.com/tspeigner/puppet-deployer.git'
 
-mod 'win_mysql',
-  :git => 'https://github.com/tspeigner/tspeigner-win_mysql.git'
-
 # Modules from the Puppet Forge
 # Versions should be updated to be the latest at the time you start
+mod 'tspy-win_mysql', '0.1.2'
 mod 'tspy-code_deploy', '1.0.2'
 mod 'puppetlabs/exec', '0.1.0'
 mod 'puppetlabs-resource', '0.1.0'
