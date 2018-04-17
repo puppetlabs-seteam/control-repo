@@ -3,9 +3,6 @@ forge "http://forge.puppetlabs.com"
 mod 'win_tomcat',
   :git    => 'https://github.com/tspeigner/win_tomcat.git'
 
-mod 'win_mysql',
-  :git    => 'https://github.com/tspeigner/win_mysql.git'
-
 mod 'code_deploy',
   :git    => 'https://github.com/tspeigner/puppet-code_deploy.git'
 
@@ -17,6 +14,9 @@ mod 'autosign_example',
 
 mod 'deployer',
   :git => 'https://github.com/tspeigner/puppet-deployer.git'
+
+mod 'win_mysql',
+  :git => 'https://github.com/tspeigner/win_mysql.git'
 
 # Modules from the Puppet Forge
 # Versions should be updated to be the latest at the time you start
