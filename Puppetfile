@@ -4,7 +4,7 @@ mod 'win_tomcat',
   :git    => 'https://github.com/tspeigner/win_tomcat.git'
 
 mod 'win_mysql',
-  :git    => 'https://github.com/tspeigner/tspeigner-win_tomcat.git'
+  :git    => 'https://github.com/tspeigner/tspeigner-win_mysql.git'
 
 mod 'code_deploy',
   :git    => 'https://github.com/tspeigner/puppet-code_deploy.git'
