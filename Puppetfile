@@ -1,5 +1,7 @@
 forge "http://forge.puppetlabs.com"
 
+mod 'win_mysql',
+  :git => 'https://github.com/tspeigner/win_mysql.git'
 
 # Modules from the Puppet Forge
 # Versions should be updated to be the latest at the time you start
