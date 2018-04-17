@@ -3,6 +3,9 @@ forge "http://forge.puppetlabs.com"
 mod 'win_tomcat',
   :git    => 'https://github.com/tspeigner/win_tomcat.git'
 
+mod 'win_mysql',
+  :git    => 'https://github.com/tspeigner/win_mysql.git'
+
 mod 'code_deploy',
   :git    => 'https://github.com/tspeigner/puppet-code_deploy.git'
 
