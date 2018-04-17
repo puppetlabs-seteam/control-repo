@@ -17,9 +17,11 @@ mod 'autosign_example',
 
 mod 'deployer',
   :git => 'https://github.com/tspeigner/puppet-deployer.git'
+=======
 
 # Modules from the Puppet Forge
 # Versions should be updated to be the latest at the time you start
+mod 'tspy-code_deploy', '1.0.2'
 mod 'puppetlabs/exec', '0.1.0'
 mod 'puppetlabs-resource', '0.1.0'
 mod 'puppetlabs-service', '0.1.3'
@@ -104,6 +106,9 @@ mod 'nexcess-auditd', '2.0.0'
 mod 'jdowning-rbenv', '2.2.0'
 mod 'puppet-windows_env', '2.3.0'
 mod 'camptocamp-systemd', '1.1.0'
+
+mod 'puppet_module',
+  :git => 'https://github.com/tspeigner/puppet_module.git'
 
 mod 'tse-tse_facts',
   :git => 'https://github.com/puppetlabs/tse-module-tse_facts.git'
