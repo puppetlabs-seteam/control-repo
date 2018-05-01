@@ -2,6 +2,7 @@ class profile::app::puppet_tomcat::windows (
   String $plsample_version,
   String $tomcat_version,
   Array  $tomcat_other_versions,
+  Boolean $deploy_sample_app = true,
 ) {
 
   $tomcat_major_version = split($tomcat_version, '[.]')[0]
@@ -48,9 +49,14 @@ class profile::app::puppet_tomcat::windows (
     require => Package["Apache Tomcat ${tomcat_major_version}.0 Tomcat${tomcat_major_version} (remove only)"],
   }
 
-  remote_file { "C:/Program Files/Apache Software Foundation/Tomcat ${tomcat_major_version}.0/webapps/plsample-${plsample_version}.war":
-    ensure  => latest,
-    source  => "http://${::puppet_server}:81/tomcat/plsample-${plsample_version}.war",
-    require => Service["tomcat${tomcat_major_version}"],
+  if $deploy_sample_app == true {
+
+    remote_file {
+      "C:/Program Files/Apache Software Foundation/Tomcat ${tomcat_major_version}.0/webapps/plsample-${plsample_version}.war":
+      ensure  => latest,
+      source  => "http://${::puppet_server}:81/tomcat/plsample-${plsample_version}.war",
+      require => Service["tomcat${tomcat_major_version}"],
+    }
+
   }
 }
