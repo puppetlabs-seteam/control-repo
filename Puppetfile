@@ -47,7 +47,7 @@ mod 'ghoneycutt-ssh', '3.52.0'
 mod 'puppet-archive', '2.0.0'
 mod 'trlinkin/domain_membership', '1.1.2'
 mod 'ipcrm/echo', '0.1.3'
-mod 'stahnma/epel', '1.2.2'
+mod 'stahnma/epel', '1.3.0'
 mod 'aristanetworks-eos', '1.5.0'
 mod 'puppet-hiera', '3.3.0'
 
