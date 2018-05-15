@@ -19,7 +19,7 @@ group :development, :unit_tests do
   gem 'metadata-json-lint'
   gem 'rspec-puppet-facts', :git => 'https://github.com/mcanevet/rspec-puppet-facts.git',
                       :ref => 'fe21de12108fbab0123bdc4db2365a29ea62f171'
-  gem 'puppet-blacksmith', '>= 3.4.0'
+  gem 'puppet-blacksmith', '>= 4.1.2'
   gem 'simplecov'
   gem 'simplecov-console'
   gem 'rspec-puppet', :git => 'https://github.com/rodjek/rspec-puppet.git',

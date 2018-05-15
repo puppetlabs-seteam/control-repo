@@ -1,8 +1,13 @@
 class profile::app::sample_website::linux (
   String $doc_root = '/var/www/html',
   Integer $webserver_port = 80,
-  String $website_source_dir = 'puppet:///modules/profile/app/sample_website'
+  String $website_source_dir = 'puppet:///modules/profile/app/sample_website',
+  Boolean $enable_monitoring = false,
 ) {
+
+  if $enable_monitoring {
+    sensu::subscription { 'apache': }
+  }
 
   class {'::profile::app::webserver::apache':
     default_vhost  => false,
