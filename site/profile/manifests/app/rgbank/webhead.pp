@@ -1,5 +1,7 @@
 # rgbank webserver profile
-class profile::app::rgbank::webhead {
+class profile::app::rgbank::webhead(
+  $dbhost = 'localhost'
+) {
 
   class {'::profile::app::webserver::nginx':
     php => true,
