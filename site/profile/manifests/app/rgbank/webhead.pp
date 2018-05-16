@@ -1,6 +1,7 @@
+# rgbank webserver profile
 class profile::app::rgbank::webhead {
 
-  class{'::profile::app::webserver::nginx':
+  class {'::profile::app::webserver::nginx':
     php => true,
   }
 
@@ -12,5 +13,13 @@ class profile::app::rgbank::webhead {
   }
 
   include ::profile::app::db::mysql::client
+
+  rgbank::web {'default':
+      db_name     => 'rgbank-default',
+      db_host     => 'localhost',
+      db_user     => 'rgbank',
+      db_password => 'rgbank',
+      listen_port => 8888,
+    }
 
 }
