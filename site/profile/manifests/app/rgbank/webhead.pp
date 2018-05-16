@@ -17,6 +17,16 @@ class profile::app::rgbank::webhead(
 
   include ::profile::app::db::mysql::client
 
+  if $split {
+    @@haproxy::balancermember { $::fqdn:
+      listening_service => "rgbank-default",
+      server_names      => $::fqdn,
+      ipaddresses       => $::ipaddress,
+      ports             => 8888,
+      options           => 'check verify none',
+    }
+  }
+
   rgbank::web {'default':
     db_name     => 'rgbank-default',
     db_host     => 'localhost',
