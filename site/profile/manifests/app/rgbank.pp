@@ -6,6 +6,6 @@ class profile::app::rgbank {
 
   require ::profile::app::rgbank::db
   require ::profile::app::rgbank::webhead
-  require ::profile::app::rgbank::load
+  require ::profile::app::rgbank::lb
 
 }
