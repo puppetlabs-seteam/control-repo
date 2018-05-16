@@ -2,7 +2,7 @@
 # Server 2012. This will be useful for apps connecting to a database.
 class profile::app::cloudshop::webapp::iis {
 
-  if $::operatingsystemrelease >= 2016 {
+  if Integer($::operatingsystemrelease) >= 2016 {
     $app_server_features = [
       'WAS',
       'WAS-Process-Model',
