@@ -4,6 +4,8 @@ class profile::app::rgbank::webhead(
   $split  = false,
 ) {
 
+  include ::profile::platform::baseline
+
   class {'::profile::app::webserver::nginx':
     php => true,
   }

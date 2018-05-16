@@ -4,13 +4,15 @@ class profile::app::rgbank::load(
   $split = false,
 ) {
 
+  include ::profile::platform::baseline
+
   if $split {
     
     # we have a separate load balancer, 
     # collect exported haproxy balancermember resources
     
     Haproxy::balancermember <<| |>>
-    
+
     rgbank::load {'default':
       balancermembers => [ ],
     }

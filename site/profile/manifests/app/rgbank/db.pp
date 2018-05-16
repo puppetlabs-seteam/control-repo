@@ -1,6 +1,7 @@
 # rgbank database profile
 class profile::app::rgbank::db {
 
+  include ::profile::platform::baseline
   include ::profile::app::db::mysql::server
 
   rgbank::db {'default':
