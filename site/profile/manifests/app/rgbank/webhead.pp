@@ -1,5 +1,5 @@
 # rgbank webserver profile
-class profile::app::rgbank::webhead(
+class profile::app::rgbank::webhead (
   $dbhost = 'localhost',
   $split  = false,
 ) {

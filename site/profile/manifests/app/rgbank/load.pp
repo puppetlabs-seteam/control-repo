@@ -1,6 +1,6 @@
 # rgbank loadbalancer profile
 #
-class profile::app::rgbank::load(
+class profile::app::rgbank::load (
   $split = false,
 ) {
 
