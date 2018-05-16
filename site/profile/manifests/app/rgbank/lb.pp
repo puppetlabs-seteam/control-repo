@@ -11,7 +11,9 @@ class profile::app::rgbank::lb (
     # we have a separate load balancer, 
     # collect exported haproxy balancermember resources
     
-    Haproxy::balancermember <<| |>>
+    # include ::haproxy
+
+    Haproxy::Balancermember <<| |>>
 
     rgbank::load {'default':
       balancermembers => [ ],
