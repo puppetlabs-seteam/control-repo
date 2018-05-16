@@ -24,7 +24,7 @@ class profile::app::rgbank::webhead (
       listening_service => "rgbank-default",
       server_names      => $::fqdn,
       ipaddresses       => $::ipaddress,
-      ports             => 8888,
+      ports             => 8080,
       options           => 'check verify none',
     }
   }
@@ -34,7 +34,7 @@ class profile::app::rgbank::webhead (
     db_host     => $dbhost,
     db_user     => 'rgbank',
     db_password => 'rgbank',
-    listen_port => 8888,
+    listen_port => 8080,
   }
 
 }
