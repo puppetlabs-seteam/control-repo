@@ -31,7 +31,7 @@ class profile::app::rgbank::webhead(
 
   rgbank::web {'default':
     db_name     => 'rgbank-default',
-    db_host     => 'localhost',
+    db_host     => $dbhost,
     db_user     => 'rgbank',
     db_password => 'rgbank',
     listen_port => 8888,
