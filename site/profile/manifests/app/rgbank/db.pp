@@ -4,7 +4,17 @@ class profile::app::rgbank::db (
 ) {
 
   include ::profile::platform::baseline
-  include ::profile::app::db::mysql::server
+  
+  $override_options = $split ? {
+    true  =>  { 'mysqld' => { 'bind_address' => '0.0.0.0', }, },
+    false => undef,
+  }
+
+  notify { "override options: ${override_options}": }
+
+  class { ::profile::app::db::mysql::server:
+    override_options => $override_options,
+  }
 
   rgbank::db {'default':
     user     => 'rgbank',
