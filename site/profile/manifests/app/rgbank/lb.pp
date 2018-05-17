@@ -6,6 +6,11 @@ class profile::app::rgbank::lb (
 
   include ::profile::platform::baseline
 
+  class { 'selinux':
+    mode => 'permissive',
+    type => 'targeted',
+  }
+  
   if $split {
     
     # we have a separate load balancer, 
