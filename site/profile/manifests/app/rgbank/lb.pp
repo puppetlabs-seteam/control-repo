@@ -10,18 +10,39 @@ class profile::app::rgbank::lb (
     mode => 'permissive',
     type => 'targeted',
   }
-  
+
   if $split {
     
     # we have a separate load balancer, 
     # collect exported haproxy balancermember resources
-    
-    # include ::haproxy
 
     Haproxy::Balancermember <<| |>>
 
     rgbank::load {'default':
       balancermembers => [ ],
+    }
+
+    haproxy::listen { 'stats':
+      collect_exported => false,
+      ipaddress        => '0.0.0.0',
+      mode             => 'http',
+      ports            => '8080',
+      options          => {
+        'stats'  => [
+          'enable',
+          'uri /',
+          'show-legends',
+          'realm HAProxy\ Statistics',
+          'auth haproxy:haproxy',
+          'admin if TRUE',
+        ],
+      },
+    }
+
+    firewall { '8080 allow haproxy stats access':
+      dport  => [8080],
+      proto  => tcp,
+      action => accept,
     }
 
   } else {
