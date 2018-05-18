@@ -1,5 +1,5 @@
 class profile::app::cloudshop::webapp::init (
-  $dbserver      = $::fqdn,
+  $dbserver      = $::hostname, # on Windows / AWS. $::fqdn doesn't work
   $dbinstance    = 'MYINSTANCE',
   $dbpass        = 'Azure$123',
   $dbuser        = 'CloudShop',
