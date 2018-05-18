@@ -2,8 +2,6 @@
 class profile::app::rabbitmq {
 
   include packagecloud
-  include profile::app::redis
-
   packagecloud::repo { 'rabbitmq/rabbitmq-server':
     type    => 'rpm',
     require => Class['packagecloud']
@@ -15,14 +13,18 @@ class profile::app::rabbitmq {
   }
 
   class { 'rabbitmq':
-    require => [
-                Class['redis'],
-                Class['packagecloud'],
-              ],
+    package_ensure => 'latest',
+    repos_ensure   => true,
+    require        => [
+                        Class['::redis'],
+                        Class['packagecloud'],
+                        Package['erlang'],
+                      ],
   }
 
   package { 'erlang':
-    ensure => 'installed'
+    ensure  => 'latest',
+    require => Packagecloud::Repo['rabbitmq/erlang']
   }
 
 }

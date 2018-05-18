@@ -1,5 +1,8 @@
 # @summary This role installs sensu_server
 class role::sensu_server {
-  include ::profile::platform::baseline
-  include ::profile::app::sensu
+  class {'profile::platform::baseline':
+    enable_monitoring => false
+  }
+
+ include ::profile::app::sensu
 }

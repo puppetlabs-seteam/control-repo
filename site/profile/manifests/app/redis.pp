@@ -3,7 +3,8 @@ class profile::app::redis (
   String $bind,
 ){
 
-  class { 'redis':
+  class { '::redis':
     bind    => $bind,
+    require => Class['::epel']
   }
 }
