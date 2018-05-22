@@ -1,9 +1,9 @@
 #
 class profile::app::sensu::client (
-  String $rabbitmq_host,
-  String $rabbitmq_vhost,
   String $rabbitmq_user,
   String $rabbitmq_password,
+  String $rabbitmq_vhost,
+  String $rabbitmq_host,
   Array[String] $subscriptions,
 ){
 
