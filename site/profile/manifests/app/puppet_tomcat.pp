@@ -1,4 +1,5 @@
 class profile::app::puppet_tomcat (
+  Boolean $deploy_sample_app    = true,
   String  $plsample_version     = '1.0',
   String  $tomcat_major_version = '8',
 ) {
@@ -28,6 +29,7 @@ class profile::app::puppet_tomcat (
   if $::kernel == 'Linux' {
 
       class {'::profile::app::puppet_tomcat::linux':
+        deploy_sample_app     => $deploy_sample_app,
         plsample_version      => $plsample_version,
         tomcat_version        => $tomcat_version,
         catalina_dir          => $catalina_dir,
@@ -38,6 +40,7 @@ class profile::app::puppet_tomcat (
     elsif $::kernel == 'windows' {
 
       class {'::profile::app::puppet_tomcat::windows':
+        deploy_sample_app     => $deploy_sample_app,
         plsample_version      => $plsample_version,
         tomcat_version        => $tomcat_version,
         tomcat_other_versions => $tomcat_other_versions,

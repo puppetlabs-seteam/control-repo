@@ -3,7 +3,7 @@ class profile::app::cloudshop::webapp::db (
   $dbpass        = 'Azure$123',
   $dbuser        = 'CloudShop',
   $dbname        = 'AdventureWorks2012',
-  $dbserver      = $::fqdn,
+  $dbserver      = $::hostname, # $::fqdn doesn't work on Windows / AWS
   $file_source   = 'https://s3-us-west-2.amazonaws.com/tseteam/files/sqlwebapp',
 ){
   profile::app::cloudshop::sqlserver::attachdb { $dbname:
