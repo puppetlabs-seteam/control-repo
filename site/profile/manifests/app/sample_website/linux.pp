@@ -15,9 +15,14 @@ class profile::app::sample_website::linux (
 
   # configure apache
   apache::vhost { $::fqdn:
-    port    => $webserver_port,
-    docroot => $doc_root,
-    require => File[$doc_root],
+    port            => $webserver_port,
+    docroot         => $doc_root,
+    require         => File[$doc_root],
+    options         => ['-Indexes'],
+    error_documents => [
+      { 'error_code' => '404', 'document' => '/404.html' },
+      { 'error_code' => '403', 'document' => '/403.html' }
+    ],
   }
 
   firewall { '100 allow http and https access':
@@ -41,4 +46,13 @@ class profile::app::sample_website::linux (
     content => epp('profile/app/sample_website.html.epp'),
   }
 
+  file { "${doc_root}/403.html":
+    ensure  => file,
+    content => epp('profile/app/403.html.epp'),
+  }
+
+  file { "${doc_root}/404.html":
+    ensure  => file,
+    content => epp('profile/app/404.html.epp'),
+  }
 }
