@@ -7,7 +7,8 @@ class profile::app::cloudshop::sqlserver::mount (
   include profile::app::cloudshop::sqlserver::staging
 
   staging::file { $iso:
-    source => "${iso_source}/${iso}",
+    source  => "${iso_source}/${iso}",
+    timeout => 600, # default 300
   }
 
   $iso_path = "${::staging::path}/${module_name}/${iso}"
