@@ -6,7 +6,9 @@ class profile::app::sensu::client (
   String $rabbitmq_password,
   Array[String] $subscriptions,
 ){
+
   include profile::app::sensu::plugins
+  
   Host  <<| tag == 'sensu-server' |>>
 
   class { '::sensu':
