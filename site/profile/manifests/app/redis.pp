@@ -7,4 +7,10 @@ class profile::app::redis (
     bind    => $bind,
     require => Class['::epel']
   }
+
+  firewall { '6379 allow redis access':
+      dport  => '6379',
+      proto  => tcp,
+      action => accept,
+  }   
 }

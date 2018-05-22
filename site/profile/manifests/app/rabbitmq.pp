@@ -27,4 +27,10 @@ class profile::app::rabbitmq {
     require => Packagecloud::Repo['rabbitmq/erlang']
   }
 
+  firewall { '5672 allow rabbitmq access':
+      dport  => '5672',
+      proto  => tcp,
+      action => accept,
+  }  
+
 }
