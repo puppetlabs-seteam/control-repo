@@ -12,5 +12,5 @@ class profile::app::redis (
       dport  => '6379',
       proto  => tcp,
       action => accept,
-  }   
+  }
 }

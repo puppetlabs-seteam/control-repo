@@ -31,6 +31,6 @@ class profile::app::rabbitmq {
       dport  => '5672',
       proto  => tcp,
       action => accept,
-  }  
+  }
 
 }

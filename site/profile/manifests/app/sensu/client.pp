@@ -8,7 +8,7 @@ class profile::app::sensu::client (
 ){
 
   include profile::app::sensu::plugins
-  
+
   Host  <<| tag == 'sensu-server' |>>
 
   class { '::sensu':
