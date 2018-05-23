@@ -46,4 +46,18 @@ class profile::app::sensu::server (
     require              => Rabbitmq_user[$rabbitmq_user],
   }
 
+  class { '::uchiwa':
+    user         => $rabbitmq_user,
+    pass         => $rabbitmq_password,
+    port         => 3000,
+    install_repo => false,
+    require      => Class['::sensu']
+  }
+
+  firewall { '3000 allow Sensu Uchiwa access':
+      dport  => '3000',
+      proto  => tcp,
+      action => accept,
+  }  
+
 }

@@ -62,7 +62,3 @@ profile::app::sensu::plugins::plugin_list:
   - 'sensu-plugins-mailer'
   - 'sensu-plugins-dns'
   - 'sensu-plugins-hipchat'  
-
-profile::app::sensu::uchiwa::username: "%{alias('profile::app::sensu::server::rabbitmq_user')}"
-profile::app::sensu::uchiwa::password: "%{alias('profile::app::sensu::server::rabbitmq_password')}"
-profile::app::sensu::uchiwa::port: '3000'
