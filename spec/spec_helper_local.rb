@@ -1,3 +1,3 @@
 RSpec.configure do |c|
-  c.hiera_config = 'spec/fixtures/hiera/hiera.yaml'
+  c.hiera_config = 'hiera.yaml'
 end

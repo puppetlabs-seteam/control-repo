@@ -296,6 +296,10 @@ GEM
       os (~> 0.9)
       signet (~> 0.7)
     hiera (3.4.2)
+    hiera-eyaml (2.1.0)
+      highline (~> 1.6.19)
+      trollop (~> 2.0)
+    highline (1.6.21)
     hirb (0.7.3)
     hocon (1.2.5)
     http-cookie (1.0.3)
@@ -513,6 +517,7 @@ DEPENDENCIES
   beaker-puppet_install_helper
   beaker-rspec
   facter (= 2.4.6)
+  hiera-eyaml (~> 2.1)
   master_manipulator
   metadata-json-lint
   parallel_tests
