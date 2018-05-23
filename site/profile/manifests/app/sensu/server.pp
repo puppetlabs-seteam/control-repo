@@ -58,6 +58,6 @@ class profile::app::sensu::server (
       dport  => '3000',
       proto  => tcp,
       action => accept,
-  }  
+  }
 
 }
