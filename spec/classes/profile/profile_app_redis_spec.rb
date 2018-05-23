@@ -10,7 +10,7 @@ describe 'profile::app::redis' do
 
         if Gem.win_platform?
           context "unsupported OS" do
-            it { is_expected.to compile.and_raise_error(/Unsupported OS/)  }
+            it { is_expected.to compile.and_raise_error(/Error/)  }
           end
         elsif facts[:os]['name'] == 'Ubuntu'
           context "unsupported OS" do
