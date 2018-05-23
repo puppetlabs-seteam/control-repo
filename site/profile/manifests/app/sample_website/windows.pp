@@ -2,8 +2,13 @@ class profile::app::sample_website::windows (
   String $doc_root           = 'C:\inetpub\wwwroot\sample_website',
   String $webserver_port     = '80',
   String $apppool            = 'sample_website',
-  String $website_source_dir = 'puppet:///modules/profile/app/sample_website'
+  String $website_source_dir = 'puppet:///modules/profile/app/sample_website',
+  Boolean $enable_monitoring = false,
 ) {
+
+  if $enable_monitoring  {
+    sensu::subscription { 'iis': }
+  }
 
   class{'::profile::app::webserver::iis':
     default_website => false,

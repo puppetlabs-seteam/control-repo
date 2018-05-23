@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>404 Not Found Error</title>
+    <link rel="stylesheet" type="text/css" href="css/main.css">
+    <link rel="icon" type="image/x-icon" href="img/favicon.ico">
+</head>
+
+<body>
+    <div class="container">
+        <div class="blurb">
+          <% if $::kernel == 'windows' { -%>
+            <img src="img/windows.png" height="128" width="128" />
+          <% } elsif $::kernel == 'Linux' { -%>
+            <img src="img/tux.png" height="128" width="128" />
+            <% } elsif $::kernel == 'Darwin' { -%>
+              <img src="img/apple.png" height="128" width="128" />
+            <% } -%>
+            <h1 class="error">404 Not Found Error</h1>
+        </div>
+    </div>
+</body>
+
+</html>

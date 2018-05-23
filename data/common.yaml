@@ -1,2 +1,64 @@
 ---
 puppet_enterprise::profile::master::check_for_updates: false
+
+# flag for enabling general sensu monitoring for the node
+profile::platform::baseline::enable_monitoring: false
+
+# flag for enabling webserver monitoring via sensu
+profile::app::sample_website::linux::enable_monitoring: false
+profile::app::sample_website::windows::enable_monitoring: false
+
+profile::app::redis::bind: '127.0.0.1'
+
+profile::app::sensu::server::rabbitmq_host:  '127.0.0.1'
+profile::app::sensu::server::rabbitmq_user:  'admin'
+profile::app::sensu::server::rabbitmq_password: 'puppetlabs'
+profile::app::sensu::server::rabbitmq_vhost: '/sensu'
+profile::app::sensu::server::subscriptions: 
+  - "all"
+  - "sensu-server"
+  - "%{::kernel}"
+
+profile::app::sensu::client::rabbitmq_host:  'sensu-server.pdx.puppet.vm'
+profile::app::sensu::client::rabbitmq_user:  "%{alias('profile::app::sensu::server::rabbitmq_user')}"
+profile::app::sensu::client::rabbitmq_password: "%{alias('profile::app::sensu::server::rabbitmq_password')}"
+profile::app::sensu::client::rabbitmq_vhost: "%{alias('profile::app::sensu::server::rabbitmq_vhost')}"
+profile::app::sensu::client::subscriptions: 
+  - "all"
+  - "%{::kernel}"
+
+profile::app::sensu::handlers::mailer_from: 'sensu@puppet.com'
+profile::app::sensu::handlers::mailer_to:
+  - 'se-demo-svcs@puppet.com'
+
+profile::app::sensu::handlers::hipchat_url: 'https://api.hipchat.com'
+profile::app::sensu::handlers::hipchat_apikey: 'tb1mz4vQR0SGBlrAdaUkOOzWE9aFqCChHhTwISqh'
+profile::app::sensu::handlers::hipchat_room: 'seteam notification sandbox'
+profile::app::sensu::handlers::hipchat_from: 'beersy'
+profile::app::sensu::handlers::hipchat_message_template: |
+  <%=
+  [
+    "<b>Sensu:</b> #{@event['client']['name']} ",
+    @event["action"].eql?("resolve") ? "RESOLVED" : "ALERT",
+    "<br><b>event</b> - [#{event_name}]<br>",
+    "<b>command</b>: #{@event['check']['command']}<br>",
+    "<b>occurrences</b>: #{@event['occurrences']}<br><b>Output:</b>",
+    @event["check"]["notification"] || @event["check"]["output"],
+    "<br>",
+    playbook,
+  ].join
+  %>
+
+profile::app::sensu::plugins::plugin_list:
+  - 'sensu-plugins-http'
+  - 'sensu-plugins-rabbitmq'
+  - 'sensu-plugins-redis'
+  - 'sensu-plugins-disk-checks'
+  - 'sensu-plugins-load-checks'
+  - 'sensu-plugins-memory-checks'
+  - 'sensu-plugins-process-checks'
+  - 'sensu-plugins-hardware'
+  - 'sensu-plugins-ntp'
+  - 'sensu-plugins-mailer'
+  - 'sensu-plugins-dns'
+  - 'sensu-plugins-hipchat'  

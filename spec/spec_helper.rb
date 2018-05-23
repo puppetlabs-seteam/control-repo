@@ -3,6 +3,12 @@ require 'rspec-puppet-facts'
 require 'simplecov'
 require 'simplecov-console'
 
+begin
+  require 'spec_helper_local' if File.file?(File.join(File.dirname(__FILE__), 'spec_helper_local.rb'))
+rescue LoadError => loaderror
+  warn "Could not require spec_helper_local: #{loaderror.message}"
+end
+
 include RspecPuppetFacts
 
 # Custom Facts
@@ -31,6 +37,8 @@ if !Gem.win_platform?
   add_custom_fact :gogs_version,        '0.11.19'
   add_custom_fact :jenkins_plugins, nil
   add_custom_fact :root_home, '/root'
+  add_custom_fact :osreleasemaj,           '$::os.release.major'  
+  add_custom_fact :pygpgme_installed,           'true'  
 else
   add_custom_fact :choco_install_path,     'C:\ProgramData\chocolatey'
   add_custom_fact :chocolateyversion,      '0.10.7'
@@ -64,6 +72,7 @@ base_dir = File.dirname(File.expand_path(__FILE__))
 
 RSpec.configure do |c|
   # Readable test descriptions
+  c.warnings  = false  
   c.formatter = :documentation
   c.color     = true
   c.manifest_dir    = File.join(base_dir, 'fixtures', 'modules', 'manifests')

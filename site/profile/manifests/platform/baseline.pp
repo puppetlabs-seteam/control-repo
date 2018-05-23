@@ -1,6 +1,7 @@
 class profile::platform::baseline (
   Boolean $orch_agent  = false,
-  Array   $timeservers = ['0.pool.ntp.org','1.pool.ntp.org']
+  Array   $timeservers = ['0.pool.ntp.org','1.pool.ntp.org'],
+  Boolean $enable_monitoring = false,
 ){
 
   # Global
@@ -10,6 +11,11 @@ class profile::platform::baseline (
 
   class {'::profile::puppet::orch_agent':
     ensure => $orch_agent,
+  }
+
+  # add sensu client
+  if $enable_monitoring {
+    include ::profile::app::sensu::client
   }
 
   # OS Specific
