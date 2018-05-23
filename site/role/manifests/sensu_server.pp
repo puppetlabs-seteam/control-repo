@@ -4,5 +4,5 @@ class role::sensu_server {
     enable_monitoring => false
   }
 
-  include ::profile::app::sensu
+  include profile::app::sensu
 }

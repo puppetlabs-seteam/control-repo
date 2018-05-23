@@ -16,7 +16,6 @@ class profile::app::rabbitmq {
     package_ensure => 'latest',
     repos_ensure   => true,
     require        => [
-                        Class['::redis'],
                         Class['packagecloud'],
                         Package['erlang'],
                       ],

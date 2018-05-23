@@ -7,8 +7,8 @@ class profile::app::sensu::server (
   Array[String] $subscriptions,
 ){
 
-  include profile::app::rabbitmq
-  include profile::app::redis
+  include ::profile::app::rabbitmq
+  include ::profile::app::redis
 
   @@host { $facts['fqdn'] :
     ip           => $facts['ipaddress'],
