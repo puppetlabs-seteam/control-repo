@@ -4,9 +4,7 @@ class profile::app::sensu::uchiwa (
   String $password,
   String $port,
 ){
-  require ::profile::app::sensu::server
   class { '::uchiwa':
-    install_repo => false,
     user         => $username,
     pass         => $password,
     port         => $port,
