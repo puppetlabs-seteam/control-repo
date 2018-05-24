@@ -4,7 +4,7 @@ class profile::puppet::master {
     fail('Unsupported OS!')
   }
 
-  include ::profile::puppet::master::gogs
+  include ::profile::puppet::master::gitea
   include ::profile::puppet::master::autosign
   include ::profile::puppet::master::fileserver
   include ::profile::puppet::master::firewall

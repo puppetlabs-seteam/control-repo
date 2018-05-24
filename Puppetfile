@@ -74,9 +74,7 @@ mod 'crayfishx-purge', '1.2.0'
 mod 'puppet-splunk', '5.1.0'
 mod 'jpadams-puppet_vim_env', '2.3.0'
 mod 'stankevich-python', '1.18.2'
-mod 'gogs',
-  :git => 'https://github.com/ipcrm/puppet-gogs.git',
-  :ref => '59f7800ad3512cf371c47902996df0b927267805'
+mod 'kogitoapp-gitea', '1.0.4'
 mod 'mayflower-php', '3.4.2'
 mod 'puppet-nginx', '0.7.1'
 mod 'bodgit-rngd', '2.0.0'
