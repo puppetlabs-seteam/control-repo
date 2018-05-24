@@ -16,6 +16,13 @@ class profile::puppet::master {
     proto  => tcp,
     action => accept,
   }
+  
+  firewall { '100 allow Puppet code manager access':
+    dport  => '8170',
+    proto  => tcp,
+    action => accept,
+  }
+
 
   firewall { '100 allow Puppet orch access':
     dport  => '8142',
