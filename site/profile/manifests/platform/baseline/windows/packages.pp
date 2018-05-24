@@ -9,5 +9,6 @@ class profile::platform::baseline::windows::packages {
   package { '7zip': }
   package { 'git': }
   package { 'uniextract': }
+  package { 'firefox': }
 
 }
