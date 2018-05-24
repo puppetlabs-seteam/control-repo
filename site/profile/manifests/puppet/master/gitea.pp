@@ -11,6 +11,8 @@ class profile::puppet::master::gitea {
       group                  => 'git',
       home                   => '/home/git',
       version                => '1.4.1',
+      checksum               => 'd8cfa0d39da70497f1f75e519e4fee33e5ee7c0de88919bdfe46a8b0d38af851',
+      checksum_type          => 'sha256',
       installation_directory => '/opt/gitea',
       repository_root        => '/var/git',
       log_directory          => '/var/log/gitea',
