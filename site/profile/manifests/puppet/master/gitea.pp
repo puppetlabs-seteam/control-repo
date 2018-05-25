@@ -66,6 +66,9 @@ class profile::puppet::master::gitea {
         'session'    => {
           'PROVIDER' => 'file',
         },
+        'indexer'    => {
+          'REPO_INDEXER_ENABLED' => true,
+        },           
         'log'        => {
           'MODE'      => 'file',
           'LEVEL'     => 'info',
