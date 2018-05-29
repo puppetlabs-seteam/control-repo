@@ -12,6 +12,6 @@ node default {
   # Check if we've set the role for this node via trusted fact, pp_role.  If yes; include that role directly here.
   if !empty( $trusted['extensions']['pp_role'] ) {
     $role = $trusted['extensions']['pp_role']
-    include "${trusted['extensions']['pp_role']}"
+    #include "${trusted['extensions']['pp_role']}"
   }
 }
