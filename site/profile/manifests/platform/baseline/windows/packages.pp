@@ -10,6 +10,5 @@ class profile::platform::baseline::windows::packages {
   package { 'git': }
   package { 'uniextract': }
   package { 'firefox': }
-  package { 'chrome': }
 
 }
