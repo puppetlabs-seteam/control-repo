@@ -1,3 +1,4 @@
+# install and configure gitea
 class profile::puppet::master::gitea {
   $secret_key = 'mysecretkey'
   class { 'gitea':
@@ -68,7 +69,7 @@ class profile::puppet::master::gitea {
         },
         'indexer'    => {
           'REPO_INDEXER_ENABLED' => true,
-        },           
+        },
         'log'        => {
           'MODE'      => 'file',
           'LEVEL'     => 'info',
@@ -77,7 +78,7 @@ class profile::puppet::master::gitea {
         'webhook'    => {
           'SKIP_TLS_VERIFY' => true,
         },
-      }   
+      }
   }
 
   firewall{ '100 allow web connections':
