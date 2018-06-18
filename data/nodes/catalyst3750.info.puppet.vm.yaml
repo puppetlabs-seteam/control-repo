@@ -36,8 +36,7 @@ profile::infrastructure::network::ios::syslog_settings:
 #   command:          $command
 #   idempotent_regex: $regexp
 #
-    command:
-    idempotent_regex
+
 profile::infrastructure::network::ios::commands:
   
   # 1. manage hostname
