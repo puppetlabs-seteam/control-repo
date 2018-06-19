@@ -2,7 +2,6 @@
 # Demo profile for Cisco IOS devices
 # Tested on Catalyst 3750 and Catalyst 2960
 class profile::infrastructure::network::ios (
-  Hash $banner = {},
   Hash $network_dns = {},
   Hash $syslog_settings = {},
   Hash $syslog_servers = {},
@@ -13,7 +12,7 @@ class profile::infrastructure::network::ios (
 
   # banner 
   banner { 'default':
-    * => $banner,
+    motd => 'Welcome to IOS!',
   }
 
   # dns settings

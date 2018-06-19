@@ -1,9 +1,5 @@
 ---
 
-# manage banner
-profile::infrastructure::network::ios::banner:
-  motd: "Hello, I'm an IOS switch!"
-
 # manage DNS
 profile::infrastructure::network::ios::network_dns:
     ensure: 'present'
