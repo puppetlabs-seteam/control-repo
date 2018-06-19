@@ -351,7 +351,7 @@ GEM
     net-ssh (4.2.0)
     net-telnet (0.1.1)
     netrc (0.11.0)
-    nokogiri (1.8.1)
+    nokogiri (1.8.2)
       mini_portile2 (~> 2.3.0)
     oga (2.11)
       ast
