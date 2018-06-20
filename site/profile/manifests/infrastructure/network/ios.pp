@@ -23,8 +23,8 @@ class profile::infrastructure::network::ios (
   # Syslog server default configuration
   syslog_settings { 'default':
     enable           => true,
-    # monitor          => 6,
-    # console          => 6,
+    monitor          => 6,
+    console          => 6,
     source_interface => ['Vlan2000'],
   }
 

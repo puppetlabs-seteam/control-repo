@@ -3,6 +3,8 @@ class profile::infrastructure::network::device_manager(
   Hash $devices = {},
 ) {
 
+  include cisco_ios
+
   $defaults = {
     'port' => 22,
   }
