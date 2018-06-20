@@ -1,25 +1,5 @@
 ---
 
-# manage DNS
-profile::infrastructure::network::ios::network_dns:
-    ensure: 'present'
-    servers: ['1.1.1.1', '1.1.1.3']
-    domain: 'poc.com'
-    search: ['jim.com']
-
-# manage syslog
-profile::infrastructure::network::ios::syslog_servers:
-  '192.188.11.1':
-    ensure: present
-  '192.188.11.2':
-    ensure: present
-
-profile::infrastructure::network::ios::syslog_settings:
-    enable: true
-    monitor: 6
-    console: 6
-    source_interface: ['Vlan2000']
-
 # commands are supported in two ways:
 #
 # 1. simple syntax: idempotent_regex is equal to command

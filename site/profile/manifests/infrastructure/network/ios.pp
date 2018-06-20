@@ -2,22 +2,35 @@
 # Demo profile for Cisco IOS devices
 # Tested on Catalyst 3750 and Catalyst 2960
 class profile::infrastructure::network::ios (
-  Hash $network_dns = {},
-  Hash $syslog_settings = {},
-  Hash $syslog_servers = {},
   Hash $interfaces = {},
   Hash $vlans = {},
   Hash $commands = {},
 ) {
 
-  # banner 
+  # Manage banner 
   banner { 'default':
     motd => 'Welcome to IOS!',
   }
 
-  # dns settings
+  # Manage DNS
   network_dns { 'default':
-    * => $network_dns,
+    ensure  => 'present',
+    servers => ['1.1.1.1', '1.1.1.3'],
+    domain  => 'poc.com',
+    search  => ['jim.com'],
+  }
+
+  # Syslog server default configuration
+  syslog_settings { 'default':
+    enable           => true,
+    monitor          => 6,
+    console          => 6,
+    source_interface => ['Vlan2000'],
+  }
+
+  # Syslog servers
+  syslog_server { ['192.188.11.1','192.188.11.2']:
+    ensure => present,
   }
 
   # vlan configuration
@@ -47,17 +60,6 @@ class profile::infrastructure::network::ios (
     }
   }
 
-  # Syslog server configuration
-
-  syslog_settings { 'default':
-    * => $syslog_settings,
-  }
-
-  $syslog_servers.each | $syslog_server, $params | {
-    syslog_server {  $syslog_server:
-      * => $params,
-    }
-  }
 
   # Switch port configuration
 
