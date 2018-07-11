@@ -7,7 +7,7 @@ mod 'puppetlabs-resource', '0.1.0'
 mod 'puppetlabs-service', '0.1.3'
 mod 'puppetlabs/inifile', '1.6.0'
 mod "puppetlabs/stdlib", '4.25.1'
-mod 'puppetlabs-ciscopuppet', '1.7.0'
+mod 'puppetlabs-ciscopuppet', '1.9.0'
 mod 'puppetlabs/concat', '4.2.1'
 mod 'puppetlabs-acl', '2.0.1'
 mod 'puppetlabs/apache', '2.3.0'
@@ -121,7 +121,7 @@ mod 'netstat',
 mod 'puppetlabs-cisco_ios', '0.2.0'
 
 # dependency of cisco_ios
-mod 'puppetlabs-resource_api', '0.3.0'
+mod 'puppetlabs-resource_api', '0.2.0'
 
 # dependencies of device_manager
 mod 'puppetlabs-hocon', '1.0.0'
