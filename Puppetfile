@@ -121,7 +121,7 @@ mod 'netstat',
 mod 'puppetlabs-cisco_ios', '0.2.0'
 
 # dependency of cisco_ios
-mod 'puppetlabs-resource_api', '0.2.0'
+mod 'puppetlabs-resource_api', '0.3.0'
 
 # dependencies of device_manager
 mod 'puppetlabs-hocon', '1.0.0'
