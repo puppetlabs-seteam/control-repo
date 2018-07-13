@@ -12,7 +12,7 @@ class profile::app::rgbank::lb (
   }
 
   if $split {
-    
+
     # we have a separate load balancer, 
     # collect exported haproxy balancermember resources
 
@@ -46,7 +46,7 @@ class profile::app::rgbank::lb (
     }
 
   } else {
-    
+
     # our webhead is on the same node
     # configure with default settings
 

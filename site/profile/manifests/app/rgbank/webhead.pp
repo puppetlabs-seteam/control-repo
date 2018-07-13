@@ -21,7 +21,7 @@ class profile::app::rgbank::webhead (
 
   if $split {
     @@haproxy::balancermember { $::fqdn:
-      listening_service => "rgbank-default",
+      listening_service => 'rgbank-default',
       server_names      => $::fqdn,
       ipaddresses       => $::ipaddress,
       ports             => 8888,

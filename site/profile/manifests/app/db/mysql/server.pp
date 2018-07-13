@@ -7,7 +7,7 @@ class profile::app::db::mysql::server(
       fail('Unsupported OS')
     }
     default: {
-      class { ::mysql::server:
+      class { '::mysql::server':
         override_options => $override_options,
       }
       include ::mysql::client

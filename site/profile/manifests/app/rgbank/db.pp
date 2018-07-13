@@ -4,7 +4,7 @@ class profile::app::rgbank::db (
 ) {
 
   include ::profile::platform::baseline
-  
+
   $override_options = $split ? {
     true  =>  { 'mysqld' => { 'bind_address' => '0.0.0.0', }, },
     false => undef,
@@ -12,7 +12,7 @@ class profile::app::rgbank::db (
 
   notify { "override options: ${override_options}": }
 
-  class { ::profile::app::db::mysql::server:
+  class { '::profile::app::db::mysql::server':
     override_options => $override_options,
   }
 
