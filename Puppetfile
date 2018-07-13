@@ -7,7 +7,6 @@ mod 'puppetlabs-resource', '0.1.0'
 mod 'puppetlabs-service', '0.1.3'
 mod 'puppetlabs/inifile', '1.6.0'
 mod "puppetlabs/stdlib", '4.25.1'
-mod 'puppetlabs-ciscopuppet', '1.9.0'
 mod 'puppetlabs/concat', '4.2.1'
 mod 'puppetlabs-acl', '2.0.1'
 mod 'puppetlabs/apache', '2.3.0'
@@ -129,3 +128,7 @@ mod 'puppetlabs-hocon', '1.0.0'
 mod 'device_manager',
   :git    => 'https://github.com/puppetlabs/device_manager',
   :branch => 'master'
+
+mod 'puppetlabs-ciscopuppet',
+  :git    => 'https://github.com/cisco/cisco-network-puppet-module.git',
+  :branch => 'develop'
