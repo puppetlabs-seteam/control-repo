@@ -56,6 +56,10 @@ profile::infrastructure::network::ios::vlans:
     ensure: 'present'
     shutdown: false
     vlan_name: 'default'
+  "8":
+    ensure: 'present'
+    shutdown: false
+    vlan_name: 'VLAN0008'
   "200":
     ensure: 'present'
     shutdown: false
