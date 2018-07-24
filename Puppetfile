@@ -7,8 +7,7 @@ mod 'puppetlabs-resource', '0.1.0'
 mod 'puppetlabs-service', '0.1.3'
 mod 'puppetlabs/inifile', '1.6.0'
 mod "puppetlabs/stdlib", '4.25.1'
-mod 'puppetlabs-ciscopuppet', '1.7.0'
-mod "puppetlabs/concat", '4.0.0'
+mod 'puppetlabs/concat', '4.2.1'
 mod 'puppetlabs-acl', '2.0.1'
 mod 'puppetlabs/apache', '2.3.0'
 mod 'puppetlabs/aws', '2.0.0'
@@ -25,7 +24,7 @@ mod 'puppetlabs/limits', '0.1.0'
 mod 'puppetlabs-motd', '1.4.0'
 mod 'puppetlabs-mount_iso', '1.0.0'
 mod 'puppetlabs/mysql', '3.11.0'
-mod 'puppetlabs-netdev_stdlib', '0.12.0'
+mod 'puppetlabs-netdev_stdlib', '0.14.1'
 mod 'puppetlabs-ntp', '6.2.0'
 mod 'puppetlabs-powershell', '2.1.0'
 mod 'puppetlabs/puppetserver_gem', '1.0.0'
@@ -117,3 +116,19 @@ mod 'distelli',
 mod 'netstat',
   :git => 'https://github.com/ipcrm/ipcrm-netstat.git',
   :ref => 'master'
+
+mod 'puppetlabs-cisco_ios', '0.2.0'
+
+# dependency of cisco_ios
+mod 'puppetlabs-resource_api', '0.2.0'
+
+# dependencies of device_manager
+mod 'puppetlabs-hocon', '1.0.0'
+
+mod 'device_manager',
+  :git    => 'https://github.com/puppetlabs/device_manager',
+  :branch => 'master'
+
+mod 'puppetlabs-ciscopuppet',
+  :git    => 'https://github.com/cisco/cisco-network-puppet-module.git',
+  :branch => 'develop'

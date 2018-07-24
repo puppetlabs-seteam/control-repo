@@ -1,4 +1,4 @@
-class profile::infrastructure::network::cisco (
+class profile::infrastructure::network::nexus (
   Hash $interfaces = {},
   Hash $vlans = {},
 ) {

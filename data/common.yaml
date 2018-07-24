@@ -62,3 +62,10 @@ profile::app::sensu::plugins::plugin_list:
   - 'sensu-plugins-mailer'
   - 'sensu-plugins-dns'
   - 'sensu-plugins-hipchat'  
+
+profile::infrastructure::network::device_manager::devices:
+  catalyst2960.inf.puppet.vm:
+    address: '10.64.21.11'
+    username: 'admin'
+    password: 'ENC[PKCS7,MIIBiQYJKoZIhvcNAQcDoIIBejCCAXYCAQAxggEhMIIBHQIBADAFMAACAQEwDQYJKoZIhvcNAQEBBQAEggEAwOPLp8UgzQIi+hoeMbq38ok0+ItAhGILd9d6WgwwRZ8ZEINjtNgEBtBcfmLecyvURtBxoGPgVUEqrHQeRQpyDfjbBMENbCWlK9OOTuL0IdFMO5ixWU/GVUNNLJArCLt5uNFEhQUGA9wtU/WiNk19lAErO3GovTT/JosV0ZGikatW3pXihc91zYOIRE6WzPzIZzU2aUy9u7upWQxQvyf8sTKWn4BOMRQKrni4N+5l15c9cL9S0DVn/ujtu/VPQi/kqaZ72plsoSQWI71RfLDIru8e+sKsCZlupXdPWarPK2KYgdIAAUJy2aaXkwvwQF0ZR4JyAUM98jA8h3C2s6oIOzBMBgkqhkiG9w0BBwEwHQYJYIZIAWUDBAEqBBD6dP4kd2Um8HXjFAv2WlGngCC2ZgXUt1cxOm9KPyUb7BjQjfXao2MmAECmjojCHSHtYA==]'
+    enable_password: 'ENC[PKCS7,MIIBiQYJKoZIhvcNAQcDoIIBejCCAXYCAQAxggEhMIIBHQIBADAFMAACAQEwDQYJKoZIhvcNAQEBBQAEggEAwOPLp8UgzQIi+hoeMbq38ok0+ItAhGILd9d6WgwwRZ8ZEINjtNgEBtBcfmLecyvURtBxoGPgVUEqrHQeRQpyDfjbBMENbCWlK9OOTuL0IdFMO5ixWU/GVUNNLJArCLt5uNFEhQUGA9wtU/WiNk19lAErO3GovTT/JosV0ZGikatW3pXihc91zYOIRE6WzPzIZzU2aUy9u7upWQxQvyf8sTKWn4BOMRQKrni4N+5l15c9cL9S0DVn/ujtu/VPQi/kqaZ72plsoSQWI71RfLDIru8e+sKsCZlupXdPWarPK2KYgdIAAUJy2aaXkwvwQF0ZR4JyAUM98jA8h3C2s6oIOzBMBgkqhkiG9w0BBwEwHQYJYIZIAWUDBAEqBBD6dP4kd2Um8HXjFAv2WlGngCC2ZgXUt1cxOm9KPyUb7BjQjfXao2MmAECmjojCHSHtYA==]'

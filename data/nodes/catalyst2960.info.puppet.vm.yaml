@@ -1,0 +1,95 @@
+---
+
+# commands are supported in two ways:
+#
+# 1. simple syntax: idempotent_regex is equal to command
+#
+# command_name: $command
+#
+# 2. elaborate syntax: idempotent_regex can be speficied explicitly
+#
+# command_name:
+#   command:          $command
+#   idempotent_regex: $regexp
+#
+
+profile::infrastructure::network::ios::commands:
+  
+  # 1. manage hostname
+  hostname: 
+    command         : hostname cat-3750
+    idempotent_regex: hostname cat-3750
+  
+  # 2. manage user
+  user: username dimitri password 7 095D590C0B110E
+  
+  # manage aaa, caution, you can lock yourself out!
+  # need idempotent regex here to prevent matching with
+  # "no aaa new-model"
+  aaa-new-model:
+    command:          aaa new-model
+    idempotent_regex: '^aaa new-model'
+  #aaa: aaa authorization configuration default group tacacs+
+  #aaa-session: aaa session-id common
+  
+  # manage tacacs
+  tacacs1: tacacs-server host 192.168.10.1
+  tacacs2: tacacs-server host 192.168.10.2
+  no-directed-request: no tacacs-server directed-request
+  tacacs-key: tacacs-server key tacacs-KEY
+  
+  # 9. ACL configuration
+  acl:
+    command: |
+      no ip access-list extended test-acl
+      ip access-list extended test-acl
+       permit tcp 192.168.10.0 0.0.0.255 any eq 22 log
+       permit udp 192.168.10.0 0.0.0.255 any
+    multiline_regex: |
+      ip access-list extended test-acl
+       permit tcp 192.168.10.0 0.0.0.255 any eq 22 log
+       permit udp 192.168.10.0 0.0.0.255 any
+
+# Manage vlans
+profile::infrastructure::network::ios::vlans:
+  "1":
+    ensure: 'present'
+    shutdown: false
+    vlan_name: 'default'
+  "8":
+    ensure: 'present'
+    shutdown: false
+    vlan_name: 'VLAN0008'
+  "200":
+    ensure: 'present'
+    shutdown: false
+    vlan_name: 'engineering-vlan'
+    ipaddress: "192.168.2.1"
+    broadcast: "255.255.255.0"
+  "300":
+    ensure: 'present'
+    shutdown: false
+    vlan_name: 'research-vlan'
+  "400":
+    ensure: 'present'
+    shutdown: false
+    vlan_name: 'IT-vlan'
+    ipaddress: "192.168.3.1"
+    broadcast: "255.255.255.0"
+
+# Manage interfaces
+profile::infrastructure::network::ios::interfaces:
+  "Loopback1":
+    description: "Loopback Interface"
+  "GigabitEthernet1/0/1":
+    description: '101'
+    speed: '100m'
+  "GigabitEthernet1/0/2":
+    description: '102'
+    speed: '1g'
+  "GigabitEthernet1/0/3":
+    description: '103'
+    speed: '10m'
+  "GigabitEthernet1/0/4":
+    description: '104'
+    speed: '1g'
