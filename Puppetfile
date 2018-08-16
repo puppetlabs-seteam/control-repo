@@ -89,6 +89,7 @@ mod 'yelp-uchiwa', '2.0.0'
 mod 'computology-packagecloud', '0.3.2'
 mod 'herculesteam-augeasproviders_core', '2.1.4'
 mod 'herculesteam-augeasproviders_sysctl', '2.2.0'
+mod 'puppet-gitlab', '2.1.0'
 
 mod 'tse-tse_facts',
   :git => 'https://github.com/puppetlabs/tse-module-tse_facts.git'
