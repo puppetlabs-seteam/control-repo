@@ -1,5 +1,9 @@
 class profile::app::gitlab {
 
+  if ($facts[kernel] != 'Linux') {
+    fail('Unsupported OS')
+  }
+
   firewall { '100 allow gitlab https':
     proto  => 'tcp',
     dport  => '443',
