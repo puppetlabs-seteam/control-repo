@@ -1,4 +1,4 @@
-class role::master_server {
+class role::puppetmaster {
   include ::profile::platform::baseline
   include ::profile::puppet::master
 }
