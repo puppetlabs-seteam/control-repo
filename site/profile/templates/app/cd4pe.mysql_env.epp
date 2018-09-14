@@ -1,0 +1,8 @@
+<%- | String $db_name,
+      String $db_user,
+      String $db_pass,
+| -%>
+MYSQL_ROOT_PASSWORD=<%= $db_pass %>
+MYSQL_DATABASE=<%= $db_name %>
+MYSQL_USER=<%= $db_user %>
+MYSQL_PASSWORD=<%= $db_pass %>
