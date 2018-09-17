@@ -54,10 +54,15 @@ class profile::app::cd4pe (
 
   # TODO: Make this query work for non-vagrant machines; today only vagrant will work
   # - updated to work on AWS
+  #$master_server = $::settings::server
+  #$master_query = "facts[value]{ name in ["ipaddress_enp0s8",  "ipaddress_eth0"]
+  #  and certname = \"${master_server}\"}"
+  #$master_ip = puppetdb_query($master_query)[0]["value"]
   $master_server = $::settings::server
-  $master_query = "facts[value]{ name in ['ipaddress_enp0s8',  'ipaddress_eth0']
-    and certname = \'${master_server}\'}"
-  $master_ip = puppetdb_query($master_query)[0]['value']
+  $master_query = @("PQL")
+    facts[value]{ name in ["ipaddress_enp0s8", "ipaddress_eth0"] and
+    certname = "${master_server}" }
+    | PQL
 
   docker_network {'cd4pe':
     ensure => present,
