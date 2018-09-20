@@ -65,7 +65,7 @@ class profile::app::cd4pe (
   #$master_ip = puppetdb_query($master_server)[0]['value']
 
   notify { 'trusted_facts':
-    message => "$::server_ip"
+    message => "$serverip"
   }
 
   docker_network {'cd4pe':
