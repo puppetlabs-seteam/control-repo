@@ -62,10 +62,10 @@ class profile::app::cd4pe (
 
   #$master_query = "facts[value]{ name in ['ipaddress_enp0s8',  'ipaddress_eth0']
   #  and certname = \'${master_server}\'}"
-  $master_ip = puppetdb_query($master_server)[0]['value']
+  #$master_ip = puppetdb_query($master_server)[0]['value']
 
-  notify { 'master ip':
-    message => "$master_ip"
+  notify { 'trusted_facts':
+    message => "$::settings::trusted_server_facts"
   }
 
   docker_network {'cd4pe':
