@@ -64,6 +64,10 @@ class profile::app::cd4pe (
   #  and certname = \'${master_server}\'}"
   $master_ip = puppetdb_query($master_server)[0]['value']
 
+  notify { 'master ip':
+    message => "$master_ip"
+  }
+
   docker_network {'cd4pe':
     ensure => present,
   }
