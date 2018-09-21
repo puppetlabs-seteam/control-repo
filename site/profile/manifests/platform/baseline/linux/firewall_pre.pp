@@ -21,5 +21,12 @@ class profile::platform::baseline::linux::firewall_pre {
     state  => ['RELATED', 'ESTABLISHED'],
     action => 'accept',
   }
+  
+  firewall { '80 allow http and https access':
+    dport  => [80, 443],
+    proto  => tcp,
+    action => accept,
+  }
+
 
 }

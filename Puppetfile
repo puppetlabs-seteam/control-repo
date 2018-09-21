@@ -1,5 +1,7 @@
 forge "http://forge.puppetlabs.com"
 
+<<<<<<< HEAD
+=======
 mod 'win_tomcat',
   :git    => 'https://github.com/tspeigner/win_tomcat.git'
 
@@ -9,6 +11,7 @@ mod 'win_mysql',
 mod 'code_deploy',
   :git    => 'https://github.com/tspeigner/puppet-code_deploy.git'
 
+>>>>>>> 90093945ec37b03c799e0b2fa1900316364ec9f2
 # David Nelson - CIS Security for Linux
 mod 'cohdjn-cisecurity', '0.6.1'
 
@@ -21,7 +24,12 @@ mod 'deployer',
 # Modules from the Puppet Forge
 # Versions should be updated to be the latest at the time you start
 mod 'tspy-code_deploy', '1.0.2'
+<<<<<<< HEAD
+mod 'tspy-win_tomcat', '0.1.0'
+mod 'beersy-hiera_eyaml_setup', '0.1.2'
+=======
 mod 'tspy-win_apache', '0.1.2'
+>>>>>>> 90093945ec37b03c799e0b2fa1900316364ec9f2
 mod 'puppetlabs/exec', '0.1.0'
 mod 'puppetlabs-resource', '0.1.0'
 mod 'puppetlabs-service', '0.1.3'
