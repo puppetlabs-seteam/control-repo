@@ -1,40 +1,32 @@
 ---
-puppet_enterprise::profile::master::check_for_updates: false
+##
+# Hiera
+hiera::cmdpath:
+  - /opt/puppet/bin
+  - /usr/bin
+  - /usr/local/bin
+  - /opt/puppetlabs/puppet/lib/ruby/vendor_gems/bin
 
-# flag for enabling general sensu monitoring for the node
-profile::platform::baseline::enable_monitoring: false
+##
+# Redis
+profile::app::redis::bind: 127.0.0.1
 
-# flag for enabling webserver monitoring via sensu
+##
+# Sample Website
 profile::app::sample_website::linux::enable_monitoring: false
 profile::app::sample_website::windows::enable_monitoring: false
 
-profile::app::redis::bind: '127.0.0.1'
-
-profile::app::sensu::server::rabbitmq_host:  '127.0.0.1'
-profile::app::sensu::server::rabbitmq_user:  'admin'
-profile::app::sensu::server::rabbitmq_password: 'puppetlabs'
-profile::app::sensu::server::rabbitmq_vhost: '/sensu'
-profile::app::sensu::server::subscriptions: 
-  - "all"
-  - "sensu-server"
-  - "%{::kernel}"
-
-profile::app::sensu::client::rabbitmq_host:  'sensu-server.pdx.puppet.vm'
-profile::app::sensu::client::rabbitmq_user:  "%{alias('profile::app::sensu::server::rabbitmq_user')}"
+##
+# Sensu
+profile::app::sensu::client::rabbitmq_host: sensu-server.pdx.puppet.vm
 profile::app::sensu::client::rabbitmq_password: "%{alias('profile::app::sensu::server::rabbitmq_password')}"
+profile::app::sensu::client::rabbitmq_user: "%{alias('profile::app::sensu::server::rabbitmq_user')}"
 profile::app::sensu::client::rabbitmq_vhost: "%{alias('profile::app::sensu::server::rabbitmq_vhost')}"
-profile::app::sensu::client::subscriptions: 
-  - "all"
+profile::app::sensu::client::subscriptions:
+  - all
   - "%{::kernel}"
-
-profile::app::sensu::handlers::mailer_from: 'sensu@puppet.com'
-profile::app::sensu::handlers::mailer_to:
-  - 'se-demo-svcs@puppet.com'
-
-profile::app::sensu::handlers::hipchat_url: 'https://api.hipchat.com'
-profile::app::sensu::handlers::hipchat_apikey: 'tb1mz4vQR0SGBlrAdaUkOOzWE9aFqCChHhTwISqh'
-profile::app::sensu::handlers::hipchat_room: 'seteam notification sandbox'
-profile::app::sensu::handlers::hipchat_from: 'beersy'
+profile::app::sensu::handlers::hipchat_apikey: tb1mz4vQR0SGBlrAdaUkOOzWE9aFqCChHhTwISqh
+profile::app::sensu::handlers::hipchat_from: beersy
 profile::app::sensu::handlers::hipchat_message_template: |
   <%=
   [
@@ -48,24 +40,43 @@ profile::app::sensu::handlers::hipchat_message_template: |
     playbook,
   ].join
   %>
-
+profile::app::sensu::handlers::hipchat_room: seteam notification sandbox
+profile::app::sensu::handlers::hipchat_url: https://api.hipchat.com
+profile::app::sensu::handlers::mailer_from: sensu@puppet.com
+profile::app::sensu::handlers::mailer_to:
+  - se-demo-svcs@puppet.com
 profile::app::sensu::plugins::plugin_list:
-  - 'sensu-plugins-http'
-  - 'sensu-plugins-rabbitmq'
-  - 'sensu-plugins-redis'
-  - 'sensu-plugins-disk-checks'
-  - 'sensu-plugins-load-checks'
-  - 'sensu-plugins-memory-checks'
-  - 'sensu-plugins-process-checks'
-  - 'sensu-plugins-hardware'
-  - 'sensu-plugins-ntp'
-  - 'sensu-plugins-mailer'
-  - 'sensu-plugins-dns'
-  - 'sensu-plugins-hipchat'  
+  - sensu-plugins-http
+  - sensu-plugins-rabbitmq
+  - sensu-plugins-redis
+  - sensu-plugins-disk-checks
+  - sensu-plugins-load-checks
+  - sensu-plugins-memory-checks
+  - sensu-plugins-process-checks
+  - sensu-plugins-hardware
+  - sensu-plugins-ntp
+  - sensu-plugins-mailer
+  - sensu-plugins-dns
+  - sensu-plugins-hipchat
+profile::app::sensu::server::rabbitmq_host: 127.0.0.1
+profile::app::sensu::server::rabbitmq_password: puppetlabs
+profile::app::sensu::server::rabbitmq_user: admin
+profile::app::sensu::server::rabbitmq_vhost: "/sensu"
+profile::app::sensu::server::subscriptions:
+  - all
+  - sensu-server
+  - "%{::kernel}"
 
+##
+# Device Manager
 profile::infrastructure::network::device_manager::devices:
   catalyst2960.inf.puppet.vm:
-    address: '10.64.21.11'
-    username: 'admin'
-    password: 'ENC[PKCS7,MIIBiQYJKoZIhvcNAQcDoIIBejCCAXYCAQAxggEhMIIBHQIBADAFMAACAQEwDQYJKoZIhvcNAQEBBQAEggEAwOPLp8UgzQIi+hoeMbq38ok0+ItAhGILd9d6WgwwRZ8ZEINjtNgEBtBcfmLecyvURtBxoGPgVUEqrHQeRQpyDfjbBMENbCWlK9OOTuL0IdFMO5ixWU/GVUNNLJArCLt5uNFEhQUGA9wtU/WiNk19lAErO3GovTT/JosV0ZGikatW3pXihc91zYOIRE6WzPzIZzU2aUy9u7upWQxQvyf8sTKWn4BOMRQKrni4N+5l15c9cL9S0DVn/ujtu/VPQi/kqaZ72plsoSQWI71RfLDIru8e+sKsCZlupXdPWarPK2KYgdIAAUJy2aaXkwvwQF0ZR4JyAUM98jA8h3C2s6oIOzBMBgkqhkiG9w0BBwEwHQYJYIZIAWUDBAEqBBD6dP4kd2Um8HXjFAv2WlGngCC2ZgXUt1cxOm9KPyUb7BjQjfXao2MmAECmjojCHSHtYA==]'
-    enable_password: 'ENC[PKCS7,MIIBiQYJKoZIhvcNAQcDoIIBejCCAXYCAQAxggEhMIIBHQIBADAFMAACAQEwDQYJKoZIhvcNAQEBBQAEggEAwOPLp8UgzQIi+hoeMbq38ok0+ItAhGILd9d6WgwwRZ8ZEINjtNgEBtBcfmLecyvURtBxoGPgVUEqrHQeRQpyDfjbBMENbCWlK9OOTuL0IdFMO5ixWU/GVUNNLJArCLt5uNFEhQUGA9wtU/WiNk19lAErO3GovTT/JosV0ZGikatW3pXihc91zYOIRE6WzPzIZzU2aUy9u7upWQxQvyf8sTKWn4BOMRQKrni4N+5l15c9cL9S0DVn/ujtu/VPQi/kqaZ72plsoSQWI71RfLDIru8e+sKsCZlupXdPWarPK2KYgdIAAUJy2aaXkwvwQF0ZR4JyAUM98jA8h3C2s6oIOzBMBgkqhkiG9w0BBwEwHQYJYIZIAWUDBAEqBBD6dP4kd2Um8HXjFAv2WlGngCC2ZgXUt1cxOm9KPyUb7BjQjfXao2MmAECmjojCHSHtYA==]'
+    address: 10.64.21.11
+    username: admin
+    password: ENC[PKCS7,MIIBiQYJKoZIhvcNAQcDoIIBejCCAXYCAQAxggEhMIIBHQIBADAFMAACAQEwDQYJKoZIhvcNAQEBBQAEggEAwOPLp8UgzQIi+hoeMbq38ok0+ItAhGILd9d6WgwwRZ8ZEINjtNgEBtBcfmLecyvURtBxoGPgVUEqrHQeRQpyDfjbBMENbCWlK9OOTuL0IdFMO5ixWU/GVUNNLJArCLt5uNFEhQUGA9wtU/WiNk19lAErO3GovTT/JosV0ZGikatW3pXihc91zYOIRE6WzPzIZzU2aUy9u7upWQxQvyf8sTKWn4BOMRQKrni4N+5l15c9cL9S0DVn/ujtu/VPQi/kqaZ72plsoSQWI71RfLDIru8e+sKsCZlupXdPWarPK2KYgdIAAUJy2aaXkwvwQF0ZR4JyAUM98jA8h3C2s6oIOzBMBgkqhkiG9w0BBwEwHQYJYIZIAWUDBAEqBBD6dP4kd2Um8HXjFAv2WlGngCC2ZgXUt1cxOm9KPyUb7BjQjfXao2MmAECmjojCHSHtYA==]
+    enable_password: ENC[PKCS7,MIIBiQYJKoZIhvcNAQcDoIIBejCCAXYCAQAxggEhMIIBHQIBADAFMAACAQEwDQYJKoZIhvcNAQEBBQAEggEAwOPLp8UgzQIi+hoeMbq38ok0+ItAhGILd9d6WgwwRZ8ZEINjtNgEBtBcfmLecyvURtBxoGPgVUEqrHQeRQpyDfjbBMENbCWlK9OOTuL0IdFMO5ixWU/GVUNNLJArCLt5uNFEhQUGA9wtU/WiNk19lAErO3GovTT/JosV0ZGikatW3pXihc91zYOIRE6WzPzIZzU2aUy9u7upWQxQvyf8sTKWn4BOMRQKrni4N+5l15c9cL9S0DVn/ujtu/VPQi/kqaZ72plsoSQWI71RfLDIru8e+sKsCZlupXdPWarPK2KYgdIAAUJy2aaXkwvwQF0ZR4JyAUM98jA8h3C2s6oIOzBMBgkqhkiG9w0BBwEwHQYJYIZIAWUDBAEqBBD6dP4kd2Um8HXjFAv2WlGngCC2ZgXUt1cxOm9KPyUb7BjQjfXao2MmAECmjojCHSHtYA==]
+profile::platform::baseline::enable_monitoring: false
+
+##
+# Puppet Enterprise
+puppet_enterprise::profile::master::check_for_updates: false
