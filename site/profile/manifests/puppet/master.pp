@@ -11,40 +11,4 @@ class profile::puppet::master {
   include ::profile::puppet::master::hiera
   include ::profile::puppet::master::node_manager
 
-  firewall { '100 allow Puppet master access':
-    dport  => '8140',
-    proto  => tcp,
-    action => accept,
-  }
-
-  firewall { '100 allow Puppet orch access':
-    dport  => '8142',
-    proto  => tcp,
-    action => accept,
-  }
-
-  firewall { '100 allow Puppet client-tools access':
-    dport  => '8143',
-    proto  => tcp,
-    action => accept,
-  }
-
-  firewall { '100 allow ActiveMQ MCollective access':
-    dport  => '61614',
-    proto  => tcp,
-    action => accept,
-  }
-
-  firewall { '100 allow PE RBAC API access':
-    dport  => '4433',
-    proto  => tcp,
-    action => accept,
-  }
-
-  firewall { '100 allow PE Console access':
-      dport  => '443',
-      proto  => tcp,
-      action => accept,
-  }
-
 }
