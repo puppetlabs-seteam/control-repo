@@ -35,16 +35,24 @@ mod 'puppetlabs/vcsrepo', '1.5.0'
 mod 'puppetlabs/sqlserver', '1.2.0'
 mod 'puppetlabs-apt', '4.1.0'
 mod 'puppetlabs-facter_task', '0.1.3'
-mod 'puppetlabs-docker', '1.0.1'
+mod 'puppetlabs-docker', '3.0.0'
 mod 'puppetlabs-transition', '0.1.1'
 mod 'puppetlabs-gcc', '0.3.0'
-mod 'puppetlabs-distelli_agent', '0.1.0'
+mod 'puppetlabs-distelli_agent', '0.1.2'
+mod 'puppetlabs-hocon', '1.0.1'
+mod 'puppetlabs-puppet_authorization', '0.4.0'
+mod 'puppetlabs-cd4pe', '1.0.2'
+mod 'puppetlabs-resource_api', '1.0.0'
+mod 'puppetlabs-ciscopuppet', '1.10.0'
+mod 'puppetlabs-device_manager', '2.7.0'
+mod 'puppetlabs-cisco_ios', '0.2.0'
+mod 'puppetlabs-bolt_shim', '0.1.1'
 mod 'maestrodev-wget', '1.7.3'
 
 # Forge Community Modules
 mod 'jfryman-selinux', '0.4.0'
 mod 'ghoneycutt-ssh', '3.52.0'
-mod 'puppet-archive', '3.0.0'
+mod 'puppet-archive', '3.2.0'
 mod 'trlinkin/domain_membership', '1.1.2'
 mod 'ipcrm/echo', '0.1.5'
 mod 'stahnma/epel', '1.3.1'
@@ -89,6 +97,7 @@ mod 'yelp-uchiwa', '2.0.0'
 mod 'computology-packagecloud', '0.3.2'
 mod 'herculesteam-augeasproviders_core', '2.1.4'
 mod 'herculesteam-augeasproviders_sysctl', '2.2.0'
+mod 'puppetlabs-distelli_agent', '0.1.0'
 mod 'puppet-gitlab', '2.1.0'
 
 mod 'tse-tse_facts',
@@ -102,34 +111,10 @@ mod 'rgbank',
   :git => 'https://github.com/ipcrm/puppetlabs-rgbank.git',
   :ref => 'master'
 
-mod 'bolt',
-  :git => 'https://github.com/puppetlabs/bolt.git',
-  :ref => '0.6.0'
-
 mod 'jenkins',
   :git => 'https://github.com/jenkinsci/puppet-jenkins.git',
   :ref => '5ab2c8a8207f6351f59706255087c6eef32778d9'
 
-mod 'distelli',
-  :git => 'https://github.com/puppetlabs/puppetlabs-distelli_agent.git',
-  :ref => '2a33d3dd6ee7d9f580e61b189c4930ac1329e365'
-
 mod 'netstat',
   :git => 'https://github.com/ipcrm/ipcrm-netstat.git',
   :ref => 'master'
-
-mod 'puppetlabs-cisco_ios', '0.2.0'
-
-# dependency of cisco_ios
-mod 'puppetlabs-resource_api', '0.2.0'
-
-# dependencies of device_manager
-mod 'puppetlabs-hocon', '1.0.0'
-
-mod 'device_manager',
-  :git    => 'https://github.com/puppetlabs/device_manager',
-  :branch => 'master'
-
-mod 'puppetlabs-ciscopuppet',
-  :git    => 'https://github.com/cisco/cisco-network-puppet-module.git',
-  :branch => 'develop'
