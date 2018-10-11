@@ -2,6 +2,22 @@ forge "http://forge.puppetlabs.com"
 
 # Modules from the Puppet Forge
 # Versions should be updated to be the latest at the time you start
+mod 'puppetlabs-yumrepo_core', '1.0.1'
+mod 'puppetlabs-cron_core', '1.0.0'
+mod 'puppetlabs-mount_core', '1.0.2'
+mod 'puppetlabs-augeas_core', '1.0.3'
+mod 'puppetlabs-selinux_core', '1.0.1'
+mod 'puppetlabs-zone_core', '1.0.1'
+mod 'puppetlabs-host_core', '1.0.1'
+mod 'puppetlabs-sshkeys_core', '1.0.1'
+mod 'puppetlabs-k5login_core', '1.0.1'
+mod 'puppetlabs-macdslocal_core', '1.0.2'
+mod 'puppetlabs-maillist_core', '1.0.2'
+mod 'puppetlabs-mailalias_core', '1.0.4'
+mod 'puppetlabs-nagios_core', '1.0.2'
+
+
+
 mod 'puppetlabs/exec', '0.3.0'
 mod 'puppetlabs-resource', '0.1.0'
 mod 'puppetlabs-service', '0.1.3'

@@ -3,6 +3,13 @@ class profile::puppet::cd4pe (
 ) {
   include docker
 
+  cron { 'docker prune':
+    command => 'docker system prune -a | echo y',
+    user    => 'root',
+    hour    => 2,
+    minute  => 0,
+  }
+
   ['3306', '7000', '8000', '8080', '8081'].each |$port| {
     firewall { "100 allow cd4pe ${port}":
       proto  => 'tcp',
@@ -67,4 +74,3 @@ class profile::puppet::cd4pe (
     ],
   }
 }
-
