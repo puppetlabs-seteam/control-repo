@@ -15,7 +15,6 @@ mod 'puppetlabs-ciscopuppet', '1.10.0'
 mod 'puppetlabs-concat', '4.2.1'
 mod 'puppetlabs-device_manager', '2.7.0'
 mod 'puppetlabs-dism', '1.2.0'
-mod 'puppetlabs-distelli_agent', '0.1.2'
 mod 'puppetlabs-docker', '3.0.0'
 mod 'puppetlabs-dsc', '1.6.0'
 mod 'puppetlabs-exec', '0.3.0'
@@ -117,3 +116,8 @@ mod 'jenkins',
 mod 'netstat',
   :git => 'https://github.com/ipcrm/ipcrm-netstat.git',
   :ref => 'master'
+
+# This module is BROKEN from the Forge. Renaming it via git source.
+mod 'distelli',
+  :git => 'https://github.com/puppetlabs/puppetlabs-distelli_agent.git',
+  :tag => '0.1.2'
