@@ -43,6 +43,22 @@ class profile::puppet::cd4pe (
     ],
   }
 
+  docker_volume { 'data_s3':
+    ensure => present,
+  }
+
+  archive { 'bootstrap-cd4pe-artifactory-data_s3':
+    ensure       => present,
+    source       => 'puppet:///modules/profile/puppet/cd4pe/cd4pe-artifactory-data_s3.tar.gz',
+    path         => '/tmp/bootstrap-cd4pe-artifactory-data_s3.tar.gz',
+    extract_path => '/var/lib/docker/volumes/data_s3/_data',
+    creates      => '/var/lib/docker/volumes/data_s3/_data/etc',
+    extract      => true,
+    cleanup      => true,
+    require      => Docker_volume['data_s3'],
+    before       => Docker::Run['cd4pe-artifactory'],
+  }
+
   docker::run { 'cd4pe-artifactory':
     image   => 'docker.bintray.io/jfrog/artifactory-oss:5.8.3',
     net     => 'cd4pe-network',
