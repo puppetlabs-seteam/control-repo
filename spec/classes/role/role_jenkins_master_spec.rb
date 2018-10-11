@@ -2,7 +2,10 @@ require 'spec_helper'
 
 describe 'role::jenkins_master' do
 
-    SUPPORTED_OS.each do |os, facts|
+    SUPPORTED_OS.select do |k,v|
+      # Docker is supported on CentOS 7 or newer, and not CentOS 6
+      !k.to_s.match(/centos-6/)
+    end.each do |os, facts|
       context "on #{os}" do
         let(:facts) do
           facts
