@@ -3,6 +3,12 @@ class profile::puppet::cd4pe (
 ) {
   include docker
 
+  # Set this default because there seems to be a bug in puppetlabs/docker 3.0.0
+  # that makes it effectively required.
+  Docker::Run {
+    health_check_interval => 30,
+  }
+
   ['3306', '7000', '8000', '8080', '8081'].each |$port| {
     firewall { "100 allow cd4pe ${port}":
       proto  => 'tcp',
