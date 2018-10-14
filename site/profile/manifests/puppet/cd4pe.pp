@@ -3,11 +3,17 @@ class profile::puppet::cd4pe (
 ) {
   include docker
 
+  # Delete unused images so we dont run out of disk space
   cron { 'docker prune':
     command => 'docker system prune -a | echo y',
     user    => 'root',
     hour    => 2,
     minute  => 0,
+
+  # Set this default because there seems to be a bug in puppetlabs/docker 3.0.0
+  # that makes it effectively required.
+  Docker::Run {
+    health_check_interval => 30,
   }
 
   ['3306', '7000', '8000', '8080', '8081'].each |$port| {
