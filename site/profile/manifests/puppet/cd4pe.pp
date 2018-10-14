@@ -3,7 +3,7 @@ class profile::puppet::cd4pe (
 ) {
   include docker
 
-  # Delete unused images so we dont run out of disk space
+  # Delete unused images so we dont run out of disk space since we are using latest for CD4PE
   cron { 'docker prune':
     command => 'docker system prune -a | echo y',
     user    => 'root',
