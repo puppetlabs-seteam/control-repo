@@ -3,12 +3,13 @@ class profile::puppet::cd4pe (
 ) {
   include docker
 
-  # Delete unused images so we dont run out of disk space since we are using latest for CD4PE
+  # Delete unused images so we dont run out of disk space
   cron { 'docker prune':
     command => 'docker system prune -a | echo y',
     user    => 'root',
     hour    => 2,
     minute  => 0,
+  }
 
   # Set this default because there seems to be a bug in puppetlabs/docker 3.0.0
   # that makes it effectively required.
@@ -36,8 +37,8 @@ class profile::puppet::cd4pe (
     image_tag => '5.8.3',
   }
 
-  docker_network { 'cd4pe-network':
-    ensure      => 'present',
+  docker_network {'cd4pe-network':
+    ensure      => present,
     driver      => 'bridge',
     ipam_driver => 'default',
     subnet      => '172.18.0.0/16',
