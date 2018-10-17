@@ -16,6 +16,45 @@ class profile::puppet::master::node_manager {
     refreshonly => true,
   }
 
+  $environments = ['development', 'staging', 'production']
+
+  node_group { 'All Environments':
+    ensure               => present,
+    description          => 'Environment group parent and default',
+    environment          => $::default_environment,
+    override_environment => true,
+    parent               => 'All Nodes',
+    rule                 => ['and', ['~', 'name', '.*']],
+  }
+
+  node_group { 'Agent-specified environment':
+    ensure               => present,
+    description          => 'This environment group exists for unusual testing and development only. Expect it to be empty',
+    environment          => 'agent-specified',
+    override_environment => true,
+    parent               => 'All Environments',
+    rule                 => [ ],
+  }
+
+  $environments.each |$env| {
+    $title_env = capitalize($env)
+    node_group { "${title_env} environment":
+      ensure               => present,
+      environment          => $env,
+      override_environment => true,
+      parent               => 'All Environments',
+      rule                 => ['and', ['=', ['trusted', 'extensions', 'pp_environment'], $env]],
+    }
+    node_group { "${title_env} one-time run exception":
+      ensure               => present,
+      description          => "Allow ${env} nodes to request a different puppet environment for a one-time run",
+      environment          => 'agent-specified',
+      override_environment => true,
+      parent               => "${title_env} environment",
+      rule                 => ['and', ['~', ['fact', 'agent_specified_environment'], '.+']],
+    }
+  }
+
   # Determine if package_inventory is a thing in this version, should be greater or equal to 2017.2
   $base_ver  = split($::pe_server_version,'[.]')[0] + 0
   $minor_ver = split($::pe_server_version,'[.]')[1] + 0
@@ -52,8 +91,7 @@ class profile::puppet::master::node_manager {
       'pe_repo::platform::ubuntu_1404_amd64' => {},
       'pe_repo::platform::ubuntu_1604_amd64' => {},
       'pe_repo::platform::windows_x86_64'    => {},
-      'role::master_server'                  => {},
-      'profile::puppet::master::se_gitbook'  => {},
+      'role::seteam_puppet_master'           => {},
     },
   }
 

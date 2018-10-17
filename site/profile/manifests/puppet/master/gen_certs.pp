@@ -18,7 +18,7 @@ class profile::puppet::master::gen_certs (
 
   # Which certs to generate
   $new_certs = {
-    $cert_hostname                                         => $dns_alt_names,
+    $cert_hostname                                  => $dns_alt_names,
     'pe-internal-classifier'                        => [],
     'pe-internal-dashboard'                         => [],
     'pe-internal-mcollective-servers'               => [],

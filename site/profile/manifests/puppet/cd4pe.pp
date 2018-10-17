@@ -9,6 +9,7 @@ class profile::puppet::cd4pe (
     user    => 'root',
     hour    => 2,
     minute  => 0,
+  }
 
   # Set this default because there seems to be a bug in puppetlabs/docker 3.0.0
   # that makes it effectively required.
@@ -24,6 +25,14 @@ class profile::puppet::cd4pe (
     }
   }
 
+docker_network { 'my-net':
+  ensure   => present,
+  driver   => 'overlay',
+  subnet   => '192.168.1.0/24',
+  gateway  => '192.168.1.1',
+  ip_range => '192.168.1.4/32',
+}
+
   docker::image { $cd4pe_image:
     image_tag => 'latest',
   }
@@ -36,8 +45,8 @@ class profile::puppet::cd4pe (
     image_tag => '5.8.3',
   }
 
-  docker_network { 'cd4pe-network':
-    ensure      => 'present',
+  docker_network {'cd4pe-network':
+    ensure      => present,
     driver      => 'bridge',
     ipam_driver => 'default',
     subnet      => '172.18.0.0/16',
