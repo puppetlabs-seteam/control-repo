@@ -40,7 +40,7 @@ class profile::puppet::master::node_manager {
       parent               => 'All Nodes',
   }
 
-  node_group { 'SE Puppet role::master_server':
+  node_group { 'SE Puppet role::seteam_puppet_master':
     ensure               => present,
     environment          => 'production',
     override_environment => false,
@@ -52,7 +52,7 @@ class profile::puppet::master::node_manager {
       'pe_repo::platform::ubuntu_1404_amd64' => {},
       'pe_repo::platform::ubuntu_1604_amd64' => {},
       'pe_repo::platform::windows_x86_64'    => {},
-      'role::master_server'                  => {},
+      'role::seteam_puppet_master'           => {},
       'profile::puppet::master::se_gitbook'  => {},
     },
   }
