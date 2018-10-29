@@ -3,6 +3,12 @@ class profile::puppet::cd4pe (
 ) {
   include docker
 
+  # Set this default because there seems to be a bug in puppetlabs/docker 3.0.0
+  # that makes it effectively required.
+  Docker::Run {
+    health_check_interval => 30,
+  }
+
   ['3306', '7000', '8000', '8080', '8081'].each |$port| {
     firewall { "100 allow cd4pe ${port}":
       proto  => 'tcp',
@@ -41,6 +47,22 @@ class profile::puppet::cd4pe (
       'MYSQL_PASSWORD=puppetlabs',
       'MYSQL_USER=cd4pe',
     ],
+  }
+
+  docker_volume { 'data_s3':
+    ensure => present,
+  }
+
+  archive { 'bootstrap-cd4pe-artifactory-data_s3':
+    ensure       => present,
+    source       => 'puppet:///modules/profile/puppet/cd4pe/cd4pe-artifactory-data_s3.tar.gz',
+    path         => '/tmp/bootstrap-cd4pe-artifactory-data_s3.tar.gz',
+    extract_path => '/var/lib/docker/volumes/data_s3/_data',
+    creates      => '/var/lib/docker/volumes/data_s3/_data/etc',
+    extract      => true,
+    cleanup      => true,
+    require      => Docker_volume['data_s3'],
+    before       => Docker::Run['cd4pe-artifactory'],
   }
 
   docker::run { 'cd4pe-artifactory':

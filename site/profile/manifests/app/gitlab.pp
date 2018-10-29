@@ -1,13 +1,34 @@
-class profile::app::gitlab {
+class profile::app::gitlab (
+  Boolean $ssl = false,
+) {
 
   if ($facts[kernel] != 'Linux') {
     fail('Unsupported OS')
   }
 
-  firewall { '100 allow gitlab https':
+  case $ssl {
+    default, false: {
+      $protocol = 'http'
+      $port     = '80'
+    }
+    true: {
+      $protocol = 'https'
+      $port     = '443'
+    }
+  }
+
+  firewall { '100 allow gitlab':
     proto  => 'tcp',
-    dport  => '443',
+    dport  => $port,
     action => 'accept',
+  }
+
+  class { 'gitlab':
+    external_url => "${protocol}://${trusted[certname]}",
+    require      => [
+      File["/etc/gitlab/ssl/${trusted[certname]}.key"],
+      File["/etc/gitlab/ssl/${trusted[certname]}.key"],
+    ],
   }
 
   file { ['/etc/gitlab', '/etc/gitlab/ssl'] :
@@ -24,14 +45,6 @@ class profile::app::gitlab {
     ensure => file,
     source => "${::settings::certdir}/${trusted[certname]}.pem",
     notify => Exec['gitlab_reconfigure'],
-  }
-
-  class { 'gitlab':
-    external_url => "https://${trusted[certname]}",
-    require      => [
-      File["/etc/gitlab/ssl/${trusted[certname]}.key"],
-      File["/etc/gitlab/ssl/${trusted[certname]}.key"],
-    ],
   }
 
   contain gitlab
