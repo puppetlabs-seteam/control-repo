@@ -1,15 +1,11 @@
 forge "http://forge.puppetlabs.com"
 
-mod 'code_deploy',
-  :git    => 'https://github.com/tspeigner/puppet-code_deploy.git'
-
-# David Nelson - CIS Security for Linux
-mod 'cohdjn-cisecurity', '0.6.1'
 
 # Modules from the Puppet Forge
 # Versions should be updated to be the latest at the time you start
 mod 'tspy-code_deploy', '1.0.2'
 mod 'tspy-win_apache', '0.1.2'
+mod 'cohdjn-cisecurity', '0.6.1'
 mod 'puppetlabs-exec', '0.1.0'
 mod 'puppetlabs-resource', '0.1.0'
 mod 'puppetlabs-service', '0.1.3'
