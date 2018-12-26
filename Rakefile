@@ -6,7 +6,6 @@ require 'r10k/puppetfile'
 require 'erb'
 require 'json'
 require 'rest-client'
-require 'onceover/rake_tasks'
 
 PuppetSyntax.app_management = true
 PuppetSyntax.exclude_paths = ["site/**/plans/*"]

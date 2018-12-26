@@ -80,7 +80,3 @@ profile::platform::baseline::enable_monitoring: false
 ##
 # Puppet Enterprise
 puppet_enterprise::profile::master::check_for_updates: false
-
-profile::app::pipelines::agent::access_token: 'ENTER_VALUE'
-profile::app::pipelines::agent::secret_key: 'ENTER_VALUE'
-profile::app::pipelines::agent::download_url: 'http://ENTER_VALUE'

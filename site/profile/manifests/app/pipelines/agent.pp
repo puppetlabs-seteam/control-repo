@@ -1,7 +1,7 @@
 class profile::app::pipelines::agent (
-  String $access_token = 'fake',
-  String $secret_key = 'fake',
-  String $download_url = 'fake',
+  String $access_token,
+  String $secret_key,
+  String $download_url,
 ){
 
 #  if ($access_token == 'ENTER_VALUE') or ($access_token == 'fake'){

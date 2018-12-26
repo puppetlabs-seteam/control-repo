@@ -51,11 +51,6 @@ class profile::puppet::cd4pe_buildserver::windows
     mergemode => prepend,
   }
 
-#  exec { 'Install puppet dev gems':
-#    command  => 'gem install puppet rake r10k ra10ke puppet-lint rest-client puppetlabs_spec_helper onceover',
-#    provider => powershell,
-#    require  => Package['Puppet Development Kit']
-#  }
   $dev_packages = ['puppet','rake','r10k','ra10ke','puppet-lint','rest-client', 'puppetlabs_spec_helper']
   ensure_packages($dev_packages,{ensure => present,provider => system_gem,require  => Package['Puppet Development Kit']})
 
