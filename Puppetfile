@@ -33,6 +33,7 @@ mod 'puppetlabs-mount_iso', '1.0.0'
 mod 'puppetlabs-mysql', '3.11.0'
 mod 'puppetlabs-netdev_stdlib', '0.14.1'
 mod 'puppetlabs-ntp', '6.2.0'
+mod 'puppetlabs-pipelines', '1.0.0'
 mod 'puppetlabs-powershell', '2.1.0'
 mod 'puppetlabs-puppet_authorization', '0.4.0'
 mod 'puppetlabs-puppetserver_gem', '1.0.0'
@@ -68,7 +69,6 @@ mod 'herculesteam-augeasproviders_core', '2.1.4'
 mod 'herculesteam-augeasproviders_sysctl', '2.2.0'
 mod 'hunner-wordpress', '1.0.0'
 mod 'ipcrm-echo', '0.1.5'
-mod 'jdowning-rbenv', '2.2.0'
 mod 'jfryman-selinux', '0.4.0'
 mod 'jonono-auditpol', '0.1.2'
 mod 'jpadams-puppet_vim_env', '2.3.0'
@@ -97,6 +97,9 @@ mod 'trlinkin-domain_membership', '1.1.2'
 mod 'tse-time', '1.0.1'
 mod 'tse-winntp', '1.0.1'
 mod 'yelp-uchiwa', '2.0.0'
+mod 'abuxton-pdk', '0.2.0'
+mod 'jdowning-rbenv', '2.4.0'
+mod 'tkishel-system_gem', '1.1.1'
 
 mod 'tse-tse_facts',
   :git => 'https://github.com/puppetlabs/tse-module-tse_facts.git'
@@ -117,7 +120,3 @@ mod 'netstat',
   :git => 'https://github.com/ipcrm/ipcrm-netstat.git',
   :ref => 'master'
 
-# This module is BROKEN from the Forge. Renaming it via git source.
-mod 'distelli',
-  :git => 'https://github.com/puppetlabs/puppetlabs-distelli_agent.git',
-  :tag => '0.1.2'
