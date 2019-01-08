@@ -7,4 +7,4 @@ This is the control-repo used by the Puppet SE team.
 * [Contribute](docs/contribute.md)
 
 This is a test for CD4PE
-This is a test for CD4PE2
+
