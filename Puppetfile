@@ -48,6 +48,8 @@ mod 'puppetlabs-tomcat', '1.7.0'
 mod 'puppetlabs-transition', '0.1.1'
 mod 'puppetlabs-translate', '1.2.0'
 mod 'puppetlabs-vcsrepo', '1.5.0'
+mod 'puppetlabs-cd4pe', '1.1.0'
+mod 'puppetlabs-puppet_authorization', '0.5.0'
 
 # Forge Community Modules
 mod 'WhatsARanjit-node_manager', '0.7.1'
