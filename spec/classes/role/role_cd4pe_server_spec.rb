@@ -8,7 +8,9 @@ describe 'role::cd4pe_server' do
     end.each do |os, facts|
       context "on #{os}" do
         let(:facts) do
-          facts
+          facts.merge({
+            'serverip' => '1.1.1.1',
+          })
         end
 
         if Gem.win_platform?
