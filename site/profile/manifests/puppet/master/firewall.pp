@@ -14,7 +14,6 @@ class profile::puppet::master::firewall {
   firewall { '110 allow Puppet PCP Broker access':    dport => '8142';  }
   firewall { '110 allow Puppet Orchestrator access':  dport => '8143';  }
   firewall { '110 allow Code Manager access':         dport => '8170';  }
-  firewall { '110 allow MCollective/ActiveMQ access': dport => '61613'; }
 
 }
 
