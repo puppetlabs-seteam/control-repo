@@ -5,7 +5,7 @@ when /darwin/
   gem 'CFPropertyList'
 end
 
-gem 'puppet', '< 5.0.0'
+gem 'puppet', '< 6.0.0'
 gem 'puppetlabs_spec_helper'
 gem 'semantic_puppet'
 gem 'ra10ke'

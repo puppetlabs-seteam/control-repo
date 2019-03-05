@@ -21,7 +21,7 @@ GIT
 GEM
   remote: https://rubygems.org/
   specs:
-    CFPropertyList (3.0.0)
+    CFPropertyList (2.2.8)
     addressable (2.6.0)
       public_suffix (>= 2.0.2, < 4.0)
     ansi (1.5.0)
@@ -82,6 +82,8 @@ GEM
     domain_name (0.5.20180417)
       unf (>= 0.0.5, < 1.0.0)
     facter (2.4.6)
+    facter (2.4.6-universal-darwin)
+      CFPropertyList (~> 2.2.6)
     facterdb (0.6.0)
       facter
       jgrep
@@ -111,10 +113,9 @@ GEM
     inifile (3.0.0)
     jaro_winkler (1.5.2)
     jgrep (1.5.0)
-    json (2.1.0)
+    json (2.2.0)
     json-schema (2.8.1)
       addressable (>= 2.4)
-    json_pure (1.8.6)
     locale (2.1.2)
     log4r (1.1.10)
     master_manipulator (2.1.1)
@@ -132,7 +133,7 @@ GEM
     mime-types (3.2.2)
       mime-types-data (~> 3.2015)
     mime-types-data (3.2018.0812)
-    minitar (0.8)
+    minitar (0.6.1)
     minitest (5.11.3)
     mocha (1.8.0)
       metaclass (~> 0.0.1)
@@ -148,7 +149,7 @@ GEM
       ast
       ruby-ll (~> 2.1)
     open_uri_redirections (0.2.1)
-    parallel (1.13.0)
+    parallel (1.14.0)
     parallel_tests (2.28.0)
       parallel
     parser (2.6.0.0)
@@ -163,12 +164,19 @@ GEM
       pry (~> 0.10)
     psych (3.1.0)
     public_suffix (3.0.3)
-    puppet (4.10.12)
-      facter (> 2.0, < 4)
-      gettext-setup (>= 0.10, < 1)
-      hiera (>= 2.0, < 4)
-      json_pure (~> 1.8)
+    puppet (5.5.10)
+      facter (> 2.0.1, < 4)
+      fast_gettext (~> 1.1.2)
+      hiera (>= 3.2.1, < 4)
       locale (~> 2.1)
+      multi_json (~> 1.10)
+    puppet (5.5.10-universal-darwin)
+      CFPropertyList (~> 2.2)
+      facter (> 2.0.1, < 4)
+      fast_gettext (~> 1.1.2)
+      hiera (>= 3.2.1, < 4)
+      locale (~> 2.1)
+      multi_json (~> 1.10)
     puppet-blacksmith (4.1.2)
       rest-client (~> 2.0)
     puppet-lint (2.3.6)
@@ -186,7 +194,7 @@ GEM
       puppet-lint (~> 2.0)
       puppet-syntax (~> 2.0)
       rspec-puppet (~> 2.0)
-    r10k (3.1.0)
+    r10k (3.1.1)
       colored (= 1.2)
       cri (~> 2.15.1)
       gettext-setup (~> 0.24)
@@ -279,6 +287,8 @@ GEM
 
 PLATFORMS
   ruby
+  x86_64-darwin-15
+  x86_64-darwin-18
 
 DEPENDENCIES
   CFPropertyList
@@ -290,7 +300,7 @@ DEPENDENCIES
   master_manipulator
   metadata-json-lint
   parallel_tests
-  puppet (< 5.0.0)
+  puppet (< 6.0.0)
   puppet-blacksmith (>= 4.1.2)
   puppet-syntax (>= 2.4.0)
   puppetlabs_spec_helper
@@ -307,4 +317,4 @@ DEPENDENCIES
   simplecov-console
 
 BUNDLED WITH
-   2.0.1
+   1.17.2
