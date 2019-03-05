@@ -8,13 +8,17 @@ require 'json'
 require 'rest-client'
 
 PuppetSyntax.app_management = true
-PuppetSyntax.exclude_paths = ["site/**/plans/*"]
+PuppetSyntax.exclude_paths << ["site/**/plans/*"]
 PuppetLint.configuration.fail_on_warnings = true
 PuppetLint.configuration.send('relative')
 PuppetLint.configuration.send('disable_140chars')
 PuppetLint.configuration.send('disable_class_inherits_from_params_class')
 PuppetLint.configuration.send('disable_documentation')
-PuppetLint.configuration.ignore_paths = ["spec/**/*.pp", "pkg/**/*.pp", "bundle/**/*", "vendor/**/*"]
+PuppetLint.configuration.ignore_paths << ["spec/**/*.pp", "pkg/**/*.pp", "bundle/**/*", "vendor/**/*"]
+
+# This is necessary to deal with a vendored FastGettext in Puppet.
+# https://tickets.puppetlabs.com/browse/MODULES-6598
+FastGettext.default_text_domain = 'default-text-domain'
 
 Rake::Task[:spec_prep].enhance [:generate_fixtures]
 
