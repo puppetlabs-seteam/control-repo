@@ -67,9 +67,13 @@ stage('Run Spec Tests') {
     'linux::profile::spec': {
       runSpecTests('linux')
     },
-    'windows::profile::spec': {
-      runSpecTests('windows')
-    }
+    // Spec tests should not execute differently on Windows vs. Linux.
+    // There is therefore no reason to run the same test on multiple platforms.
+    // Windows executes *extremely slowly* due to inefficiency checking out 
+    // module dependencies, so it's quite costly to duplicate this test.
+    // 'windows::profile::spec': {
+    //   runSpecTests('windows')
+    // }
   )
 }
 
