@@ -99,7 +99,7 @@ These are rake jobs that automate a few simple tasks.
 
 **`bundle exec rake check_for_spec_tests`**:
 
-This rake job is used to validate that tests exist for all puppet code within `site/profile/manifests/*/*` and `site/role/manifests/*/*`.
+This rake job is used to validate that tests exist for all puppet code within `site-modules/profile/manifests/*/*` and `site-modules/role/manifests/*/*`.
 
 **`bundle exec rake generate_spec_tests`**:
 
