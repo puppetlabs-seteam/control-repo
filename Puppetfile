@@ -2,53 +2,53 @@ forge "http://forge.puppetlabs.com"
 
 # Modules from the Puppet Forge
 # Versions should be updated to be the latest at the time you start
-mod 'puppetlabs-splunk_hec', '0.4.1'
-mod 'puppetlabs-acl', '2.0.1'
-mod 'puppetlabs-apache', '2.3.0'
-mod 'puppetlabs-apt', '4.1.0'
+mod 'puppetlabs-acl', '2.1.0'
+mod 'puppetlabs-apache', '4.0.0'
+mod 'puppetlabs-apt', '6.3.0'
 mod 'puppetlabs-aws', '2.1.0'
 mod 'puppetlabs-azure', '1.3.1'
-mod 'puppetlabs-bolt_shim', '0.1.1'
+mod 'puppetlabs-bolt_shim', '0.3.0'
 mod 'puppetlabs-cd4pe', '1.2.3'
-mod 'puppetlabs-chocolatey', '2.0.2'
-mod 'puppetlabs-cisco_ios', '0.2.0'
-mod 'puppetlabs-ciscopuppet', '1.10.0'
-mod 'puppetlabs-concat', '4.2.1'
+mod 'puppetlabs-chocolatey', '3.3.0'
+mod 'puppetlabs-cisco_ios', '0.6.2'
+mod 'puppetlabs-ciscopuppet', '2.0.0'
+mod 'puppetlabs-concat', '5.3.0'
 mod 'puppetlabs-device_manager', '2.7.0'
-mod 'puppetlabs-dism', '1.2.0'
+mod 'puppetlabs-dism', '1.3.1'
 mod 'puppetlabs-docker', '3.5.0'
-mod 'puppetlabs-dsc', '1.6.0'
+mod 'puppetlabs-dsc', '1.8.0'
 mod 'puppetlabs-exec', '0.3.0'
-mod 'puppetlabs-facter_task', '0.1.3'
-mod 'puppetlabs-firewall', '1.14.0'
+mod 'puppetlabs-facter_task', '0.4.0'
+mod 'puppetlabs-firewall', '1.15.1'
 mod 'puppetlabs-gcc', '0.3.0'
 mod 'puppetlabs-git', '0.5.0'
-mod 'puppetlabs-haproxy', '1.5.0'
+mod 'puppetlabs-haproxy', '3.0.1'
 mod 'puppetlabs-hocon', '1.0.1'
 mod 'puppetlabs-iis', '4.5.0'
-mod 'puppetlabs-inifile', '1.6.0'
-mod 'puppetlabs-java', '2.0.0'
+mod 'puppetlabs-inifile', '2.5.0'
+mod 'puppetlabs-java', '3.3.0'
 mod 'puppetlabs-limits', '0.1.0'
-mod 'puppetlabs-motd', '1.4.0'
-mod 'puppetlabs-mount_iso', '1.0.0'
-mod 'puppetlabs-mysql', '3.11.0'
-mod 'puppetlabs-netdev_stdlib', '0.14.1'
-mod 'puppetlabs-ntp', '6.2.0'
+mod 'puppetlabs-motd', '2.1.2'
+mod 'puppetlabs-mount_iso', '2.0.0'
+mod 'puppetlabs-mysql', '8.0.0'
+mod 'puppetlabs-netdev_stdlib', '0.18.0'
+mod 'puppetlabs-ntp', '7.4.0'
 mod 'puppetlabs-pipelines', '1.0.0'
-mod 'puppetlabs-powershell', '2.1.0'
+mod 'puppetlabs-powershell', '2.2.0'
 mod 'puppetlabs-puppet_authorization', '0.5.0'
-mod 'puppetlabs-puppetserver_gem', '1.0.0'
-mod 'puppetlabs-reboot', '1.2.1'
-mod 'puppetlabs-registry', '1.1.4'
+mod 'puppetlabs-puppetserver_gem', '1.1.0'
+mod 'puppetlabs-reboot', '2.1.2'
+mod 'puppetlabs-registry', '2.1.0'
 mod 'puppetlabs-resource', '0.1.0'
 mod 'puppetlabs-resource_api', '1.0.0'
-mod 'puppetlabs-service', '0.1.3'
-mod 'puppetlabs-sqlserver', '1.2.0'
-mod 'puppetlabs-stdlib', '4.25.1'
-mod 'puppetlabs-tomcat', '1.7.0'
+mod 'puppetlabs-service', '0.5.0'
+mod 'puppetlabs-splunk_hec', '0.4.1'
+mod 'puppetlabs-sqlserver', '2.4.0'
+mod 'puppetlabs-stdlib', '5.2.0'
+mod 'puppetlabs-tomcat', '2.5.0'
 mod 'puppetlabs-transition', '0.1.1'
 mod 'puppetlabs-translate', '1.2.0'
-mod 'puppetlabs-vcsrepo', '1.5.0'
+mod 'puppetlabs-vcsrepo', '2.4.0'
 
 # Forge Community Modules
 mod 'WhatsARanjit-node_manager', '0.7.1'
@@ -108,7 +108,7 @@ mod 'splunk',
   :ref => '15ac2b35e9a7ec8545c538ffcff04eca31ede100'
 
 mod 'tse-tse_facts',
-  :git => 'https://github.com/puppetlabs/tse-module-tse_facts.git'
+  :git => 'https://github.com/puppetlabs/tse-module-tse_facts.git', :ref => "638abef"
 
 mod 'demo_cis',
   :git => 'https://github.com/ipcrm/ipcrm-demo_cis.git',
@@ -116,7 +116,7 @@ mod 'demo_cis',
 
 mod 'rgbank',
   :git => 'https://github.com/ipcrm/puppetlabs-rgbank.git',
-  :ref => 'master'
+  :ref => '1eee332'
 
 mod 'jenkins',
   :git => 'https://github.com/jenkinsci/puppet-jenkins.git',
