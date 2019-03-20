@@ -79,16 +79,16 @@ mod 'lwf-remote_file', '1.1.3'
 mod 'maestrodev-wget', '1.7.3'
 mod 'mayflower-php', '3.4.2'
 mod 'nexcess-auditd', '2.0.0'
-mod 'puppet-archive', '3.2.0'
-mod 'puppet-gitlab', '2.1.0'
-mod 'puppet-hiera', '3.3.0'
-mod 'puppet-nginx', '0.7.1'
-mod 'puppet-rabbitmq', '8.2.2'
+mod 'puppet-archive', '3.2.1'
+mod 'puppet-gitlab', '3.0.2'
+mod 'puppet-hiera', '3.3.4'
+mod 'puppet-nginx', '0.16.0'
+mod 'puppet-rabbitmq', '9.0.0'
 #mod 'puppet-splunk', '7.3.0'    # Can't use as 7.3.0 is broken 
 mod 'puppet-staging', '3.2.0'
-mod 'puppet-windows_env', '2.3.0'
-mod 'puppet-windows_firewall', '1.1.0'
-mod 'puppet-windowsfeature', '2.1.0'
+mod 'puppet-windows_env', '3.2.0'
+mod 'puppet-windows_firewall', '2.0.2'
+mod 'puppet-windowsfeature', '3.2.2'
 mod 'reidmv-unzip', '0.1.2'
 mod 'sensu-sensu', '2.52.0'
 mod 'stahnma-epel', '1.3.1'
@@ -120,7 +120,7 @@ mod 'rgbank',
 
 mod 'jenkins',
   :git => 'https://github.com/jenkinsci/puppet-jenkins.git',
-  :ref => '5ab2c8a8207f6351f59706255087c6eef32778d9'
+  :ref => '6886819'
 
 mod 'netstat',
   :git => 'https://github.com/ipcrm/ipcrm-netstat.git',
