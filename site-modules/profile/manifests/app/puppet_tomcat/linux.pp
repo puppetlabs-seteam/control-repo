@@ -31,13 +31,11 @@ class profile::app::puppet_tomcat::linux (
       source_strip_first_dir => true,
       catalina_base          => $catalina_dir,
       catalina_home          => $catalina_dir,
-      before                 => Tomcat::War["plsample-${plsample_version}.war"],
     }
 
     tomcat::war { "plsample-${plsample_version}.war" :
       war_source    => "http://${::puppet_server}:81/tomcat/plsample-${plsample_version}.war",
       catalina_base => $catalina_dir,
-      notify        => File["${catalina_dir}/webapps/plsample"],
     }
 
     file { "${catalina_dir}/webapps/plsample":
