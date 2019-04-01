@@ -1,5 +1,5 @@
 class profile::platform::baseline::linux::ssh (
-  String $permit_root_login = 'yes',
+  String $permit_root_login = 'no',
 ) {
 
   if !defined(Class['ssh']){
