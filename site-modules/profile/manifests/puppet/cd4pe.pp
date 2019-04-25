@@ -8,7 +8,6 @@ class profile::puppet::cd4pe (
     root_email       => 'noreply@puppet.com',
     root_password    => Sensitive('puppetlabs'),
     storage_provider => 'DISK',
-    require          => Class['cd4pe'],
   }
 }
 
