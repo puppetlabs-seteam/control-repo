@@ -84,7 +84,7 @@ mod 'puppet-gitlab', '2.1.0'
 mod 'puppet-hiera', '3.3.0'
 mod 'puppet-nginx', '0.7.1'
 mod 'puppet-rabbitmq', '8.2.2'
-mod 'puppet-splunk', '5.1.0'
+#mod 'puppet-splunk', '7.3.0'    # Can't use as 7.3.0 is broken 
 mod 'puppet-staging', '3.2.0'
 mod 'puppet-windows_env', '2.3.0'
 mod 'puppet-windows_firewall', '1.1.0'
@@ -101,6 +101,11 @@ mod 'yelp-uchiwa', '2.0.0'
 mod 'abuxton-pdk', '0.2.0'
 mod 'jdowning-rbenv', '2.4.0'
 mod 'tkishel-system_gem', '1.1.1'
+
+#replaces mod 'puppet-splunk', '7.3.0' until there is a newer release
+mod 'splunk',
+  :git    => 'https://github.com/voxpupuli/puppet-splunk.git',
+  :branch => 'master'
 
 mod 'tse-tse_facts',
   :git => 'https://github.com/puppetlabs/tse-module-tse_facts.git'
