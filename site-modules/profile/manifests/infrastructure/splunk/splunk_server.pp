@@ -11,7 +11,7 @@ class profile::infrastructure::splunk::splunk_server {
     version     => '7.2.5.1',
     build       => '962d9a8e1586',
     src_root    => 'https://download.splunk.com',
-    server      => $facts[fqdn],     #or replace with your servername
+    server      => $facts['fqdn'],     #or replace with your servername
     splunk_user => 'root'
   }
 
