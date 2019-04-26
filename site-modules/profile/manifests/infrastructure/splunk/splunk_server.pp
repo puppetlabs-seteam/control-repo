@@ -47,7 +47,7 @@ class profile::infrastructure::splunk::splunk_server {
   }
 
   archive { '/tmp/puppet-report-viewer_135.tgz':
-    source       => 'puppet:///profile/puppet/splunk/puppet-report-viewer_135.tgz',
+    source       => 'puppet:///modules/profile/puppet/splunk/puppet-report-viewer_135.tgz',
     extract      => true,
     extract_path => '/opt/splunk/etc/apps',
     creates      => '/opt/splunk/etc/apps/TA-puppet-report-viewer',
