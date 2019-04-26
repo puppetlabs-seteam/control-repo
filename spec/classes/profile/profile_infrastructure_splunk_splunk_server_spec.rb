@@ -9,7 +9,7 @@ describe 'profile::infrastructure::splunk::splunk_server' do
         end
 
         context "without any parameters" do
-          it { is_expected.to compile.with_all_deps }
+          it { is_expected.to compile }
         end
       end
     end
