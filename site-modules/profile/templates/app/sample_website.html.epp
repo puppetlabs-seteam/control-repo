@@ -28,7 +28,7 @@
                 <%= $::memory[system][total] %>
             </p>
         </div>
-    </div>
+    </div> 
 </body>
 
 </html>

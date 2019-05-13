@@ -1,0 +1,69 @@
+#NOTE NOTE NOTE -THIS IS A HACK AND ONLY TEMPORARY UNTIL THE NORMAL CLIENT BOOTSTRAP IS FIXED
+$ErrorActionPreference="Stop"
+function Download-File {
+    param ([string]$url,[string]$file)
+    Write-Host "Downloading $url to $file"
+    $downloader = new-object System.Net.WebClient
+    $downloader.Proxy.Credentials=[System.Net.CredentialCache]::DefaultNetworkCredentials;
+    $downloader.DownloadFile($url, $file)
+}
+
+$VERSION = "3.66.52"
+$INSTALL_PATH = Join-Path "$env:ProgramFiles" "Distelli"
+$arch = "Windows-$env:PROCESSOR_ARCHITECTURE"
+switch ($arch)
+    {
+        "Windows-x86" {$url="https://pfi-beta.k8s.puppet.net/download/client/3.66.52/Windows-x86"}
+        "Windows-AMD64" {$url="https://pfi-beta.k8s.puppet.net/download/client/3.66.52/Windows-AMD64"}
+    }
+if ($env:TEMP -eq $null) {
+  $env:TEMP = Join-Path "$env:SystemDrive" "temp"
+}
+$temp = Join-Path "$env:TEMP" "distelli-install"
+
+New-Item -Force -ItemType directory -Path $temp
+$temp_distelli = "c:\tmp\distelli.exe"
+
+
+Write-Host "    Installing Distelli Toolkit $VERSION ($arch)..."
+#Download-File "$url" "$temp_distelli"
+$rn_distelli_fname = ("distelli."+[System.IO.Path]::GetRandomFileName()+".exe")
+$rn_distelli = Join-Path $INSTALL_PATH $rn_distelli_fname
+$distelli = Join-Path $INSTALL_PATH "distelli.exe"
+$dagent = Join-Path $INSTALL_PATH "dagent.exe"
+$dtk = Join-Path $INSTALL_PATH "dtk.exe"
+New-Item -Force -ItemType directory -Path $INSTALL_PATH
+Copy-Item -Force $temp_distelli $rn_distelli
+$mach_path = [Environment]::GetEnvironmentVariable('Path','Machine')
+if ($($mach_path).ToLower().Contains($($INSTALL_PATH).ToLower()) -eq $false) {
+   [Environment]::SetEnvironmentVariable('Path',$mach_path+";"+$INSTALL_PATH,'Machine')
+}
+if (!(Test-Path $dagent)) {
+   & cmd /c mklink $dagent $distelli
+   if (!$?) {
+      Write-Error "Unable to make dagent symlink"
+   }
+}
+if (!(Test-Path $dtk)) {
+   & cmd /c mklink $dtk $distelli
+   if (!$?) {
+      Write-Error "Unable to make dtk symlink"
+   }
+}
+if (Test-Path $distelli) {
+   Remove-Item -Force $distelli
+}
+& cmd /c mklink $distelli $rn_distelli_fname
+if (!$?) {
+   Write-Error "Unable to make distelli symlink"
+}
+$ErrorActionPreference="SilentlyContinue"
+gci $INSTALL_PATH -include "distelli.*.exe" -recurse | foreach ($_) {if($_.name -ne $rn_distelli_fname){remove-item $_.fullname}}
+$ErrorActionPreference="Stop"
+& $distelli version > $null
+if (!$?) {
+    Write-Error "Something went wrong, please contact support@distelli.com"
+} else {
+    Write-Host "To install the agent, run:"
+    Write-Host "     ""$distelli"" agent install"
+}
