@@ -11,7 +11,9 @@ describe 'profile::puppet::splunk_hec' do
     SUPPORTED_OS.each do |os, facts|
       context "on #{os}" do
         let(:facts) do
-          facts
+          facts.merge({
+            :puppet_config => '/etc/puppetlabs/puppet/puppet.conf'
+          })
         end
 
         context "without any parameters" do

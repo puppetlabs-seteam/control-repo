@@ -72,7 +72,7 @@ mod 'hunner-wordpress', '1.0.0'
 mod 'ipcrm-echo', '0.1.6'
 mod 'puppet-selinux', '1.6.1'
 mod 'jonono-auditpol', '0.1.2'
-mod 'jpadams-puppet_vim_env', '2.4.1'
+mod 'jpadams-puppet_vim_env', '2.3.0' # There is a bug in 2.4.1
 mod 'jriviere-windows_ad', '0.3.2'
 mod 'kogitoapp-gitea', '1.0.4'
 mod 'lwf-remote_file', '1.1.3'
@@ -115,8 +115,8 @@ mod 'demo_cis',
   :ref => '4e6b63b'
 
 mod 'rgbank',
-  :git => 'https://github.com/ipcrm/puppetlabs-rgbank.git',
-  :ref => '1eee332'
+  :git => 'https://github.com/puppetlabs-seteam/puppetlabs-rgbank.git',
+  :ref => 'f00668d'
 
 mod 'jenkins',
   :git => 'https://github.com/jenkinsci/puppet-jenkins.git',
