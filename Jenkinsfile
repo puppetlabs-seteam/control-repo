@@ -88,6 +88,8 @@ def linux(){
         rbenv global 2.3.1
         gem install bundle
         bundle install
+        bundle exec rake spec_clean
+        bundle exec rake spec_clean_symlinks
         bundle exec rake spec
       ''')
     }
