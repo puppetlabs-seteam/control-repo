@@ -25,26 +25,22 @@ class profile::app::gitlab (
 
   class { 'gitlab':
     external_url => "${protocol}://${trusted[certname]}",
-    require      => [
-      File["/etc/gitlab/ssl/${trusted[certname]}.key"],
-      File["/etc/gitlab/ssl/${trusted[certname]}.key"],
-    ],
   }
 
-  file { ['/etc/gitlab', '/etc/gitlab/ssl'] :
+  file { '/etc/gitlab/ssl':
     ensure => directory,
   }
 
   file { "/etc/gitlab/ssl/${trusted[certname]}.key" :
     ensure => file,
     source => "${::settings::privatekeydir}/${trusted[certname]}.pem",
-    notify => Exec['gitlab_reconfigure'],
+    notify => Class['gitlab::service'],
   }
 
   file { "/etc/gitlab/ssl/${trusted[certname]}.crt" :
     ensure => file,
     source => "${::settings::certdir}/${trusted[certname]}.pem",
-    notify => Exec['gitlab_reconfigure'],
+    notify => Class['gitlab::service'],
   }
 
   contain gitlab

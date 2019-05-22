@@ -1,10 +1,12 @@
 # install and configure gitea
 class profile::puppet::master::gitea {
+  include git
+
   $secret_key = 'mysecretkey'
   class { 'gitea':
       package_ensure         => 'present',
       dependencies_ensure    => 'present',
-      dependencies           => ['curl', 'git', 'tar'],
+      dependencies           => ['curl', 'tar'],
       manage_user            => true,
       manage_group           => true,
       manage_home            => true,

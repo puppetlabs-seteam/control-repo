@@ -12,14 +12,14 @@ gem 'ra10ke'
 gem 'rubocop'
 gem 'rubocop-rspec'
 gem 'rest-client'
-gem 'facter', '2.4.6'
-gem 'r10k', '>= 2.5.5'
-gem 'hiera-eyaml', '~> 2.1'
+gem 'facter'
+gem 'r10k'
+gem 'hiera-eyaml'
 
 group :development, :unit_tests do
   gem 'metadata-json-lint'
   gem 'rspec-puppet-facts', :git => 'https://github.com/mcanevet/rspec-puppet-facts.git',
-                      :ref => 'fe21de12108fbab0123bdc4db2365a29ea62f171'
+                            :ref => 'fe21de12108fbab0123bdc4db2365a29ea62f171'
   gem 'puppet-blacksmith', '>= 4.1.2'
   gem 'simplecov'
   gem 'simplecov-console'
@@ -38,4 +38,3 @@ group :system_tests do
   gem 'beaker-puppet_install_helper'
   gem 'master_manipulator'
 end
-
