@@ -14,7 +14,7 @@ class profile::puppet::splunk_hec {
     setting           => 'reports',
     key_val_separator => '=',
     value             => 'puppetdb,splunk_hec',
-    path              => $facts['puppet_config'],
+    path              => $settings::config,
     notify            => Service['pe-puppetserver']
   }
 }
