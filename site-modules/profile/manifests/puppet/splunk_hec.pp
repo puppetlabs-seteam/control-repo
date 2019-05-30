@@ -42,7 +42,7 @@ if $splunk_server_fqdn {
   # resources
   class {'splunk_hec':
     server => $splunk_server_fqdn,                  # replace with your Splunk servername
-    token  => $splunk_token,  
+    token  => $splunk_hec_token,
   }
 }
 
