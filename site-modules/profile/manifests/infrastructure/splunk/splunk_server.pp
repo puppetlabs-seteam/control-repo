@@ -12,9 +12,14 @@
 class profile::infrastructure::splunk::splunk_server (
 Optional[String]  $splunk_server  = undef,
 ){
-  case $splunk_server = undef { 
-    $splunk_server_fqdn = $facts['fqdn']
-  } 
+  case $splunk_server {
+    undef: { 
+      $splunk_server_fqdn = $facts['fqdn']
+    }
+    default: {
+      $splunk_server_fqdn = $splunk_server
+    } 
+  }
 
 
 

@@ -1,5 +1,14 @@
 # Class: profile::puppet::splunk_hec
+
+# @summary Installs  Splunk hec and configures Puppet report processor for Splunk,
 #
+#
+# @example
+#   include profile::infrastructure::splunk::splunk_server
+#   
+# @param splunk_server
+#   Specifies a Splunk server if not specified used Fact[fqdn]
+#   setup to be referenced from another profile as `$profile::infrastructure::splunk::splunk_server::splunk_server_fqdn`
 #
 class profile::puppet::splunk_hec {
   # resources
