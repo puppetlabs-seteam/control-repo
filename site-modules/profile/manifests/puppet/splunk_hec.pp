@@ -49,7 +49,7 @@ if $splunk_server_fqdn {
     setting           => 'reports',
     key_val_separator => '=',
     value             => 'puppetdb,splunk_hec',
-    path              => $setting::config,
+    path              => $settings::config,
     notify            => Service['pe-puppetserver']
   }
 }
