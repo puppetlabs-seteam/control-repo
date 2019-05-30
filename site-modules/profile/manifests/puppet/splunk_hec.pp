@@ -39,7 +39,7 @@ class profile::puppet::splunk_hec(
     }
   }
 
-if $splunk_server_fqdn {
+if $splunk_server_fqdn != undef {
   # resources
   class {'splunk_hec':
     server => $splunk_server_fqdn,                  # replace with your Splunk servername
