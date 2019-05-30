@@ -38,6 +38,7 @@ class profile::puppet::splunk_hec(
       $splunk_server_fqdn = $splunk_server
     }
   }
+
 if $splunk_server_fqdn {
   # resources
   class {'splunk_hec':
