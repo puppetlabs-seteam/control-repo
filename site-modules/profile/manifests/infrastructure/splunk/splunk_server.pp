@@ -13,12 +13,12 @@ class profile::infrastructure::splunk::splunk_server (
 Optional[String]  $splunk_server  = undef,
 ){
   case $splunk_server {
-    undef: { 
+    undef: {
       $splunk_server_fqdn = $facts['fqdn']
     }
     default: {
       $splunk_server_fqdn = $splunk_server
-    } 
+    }
   }
 
 
@@ -32,7 +32,7 @@ Optional[String]  $splunk_server  = undef,
     version     => '7.2.5.1',
     build       => '962d9a8e1586',
     src_root    => 'https://download.splunk.com',
-    server      => $splunk_server_fqdn,     
+    server      => $splunk_server_fqdn,
     splunk_user => 'root'
   }
 
