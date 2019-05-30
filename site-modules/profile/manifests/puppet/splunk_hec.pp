@@ -16,10 +16,10 @@ class profile::puppet::splunk_hec(
 ) {
 
   case $splunk_server {
-    undef: { 
+    undef: {
       if defined_with_params(Class[splunk::params], {'server' => $facts['fqdn'] }) {
           $splunk_server_fqdn = $facts['fqdn']
-      } 
+      }
       else {
         $splunk_server_query = 'nodes[certname]{
           resources {
@@ -33,7 +33,7 @@ class profile::puppet::splunk_hec(
     }
     default: {
       $splunk_server_fqdn = $splunk_server
-    } 
+    }
   }
 if $splunk_server_fqdn {
   # resources
