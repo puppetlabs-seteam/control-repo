@@ -10,9 +10,12 @@
 #   Specifies a Splunk server if not specified used Fact[fqdn]
 #   setup to be referenced from another profile as `$profile::puppet::splunk_server_fqdn`
 #
+# @param splunk_hec_token   
+#   'bba862fd-c09c-43e1-90f7-87221f362296', # must match the value for splunk_input['hec_puppetsummary_token']
+#
 class profile::puppet::splunk_hec(
   Optional[String]  $splunk_server  = undef,
-  String            $splunk_token   = 'bba862fd-c09c-43e1-90f7-87221f362296',
+  String            $splunk_hec_token   = 'bba862fd-c09c-43e1-90f7-87221f362296', # must match the value for splunk_input['hec_puppetsummary_token']
 ) {
 
   case $splunk_server {
@@ -39,7 +42,7 @@ if $splunk_server_fqdn {
   # resources
   class {'splunk_hec':
     server => $splunk_server_fqdn,                  # replace with your Splunk servername
-    token  => $splunk_token,  # must match the value for splunk_input['hec_puppetsummary_token']
+    token  => $splunk_token,  
   }
 }
 

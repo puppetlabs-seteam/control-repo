@@ -11,6 +11,8 @@
 #
 class profile::infrastructure::splunk::splunk_server (
 Optional[String]  $splunk_server  = undef,
+String            $hec_puppetsummary_token   = 'bba862fd-c09c-43e1-90f7-87221f362296',  # needs to be a valid GUID, must match with the GUID you use on PE
+String            $hec_puppetsummary_token = '7dc49a8f-8f56-4095-9522-e5566f937cfc',    # needs to be a valid GUID, must match with the GUID you use on PE
 ){
   case $splunk_server {
     undef: {
@@ -103,7 +105,7 @@ Optional[String]  $splunk_server  = undef,
     context => 'apps/TA-puppet-report-viewer/local',
     section => 'http://puppet:summary',
     setting => 'token',
-    value   => 'bba862fd-c09c-43e1-90f7-87221f362296'    # needs to be a valid GUID, must match with the GUID you use on PE
+    value   => $hec_puppetsummary_token,
   }
 
   splunk_input { 'hec_puppetdetailed_enable':
@@ -122,7 +124,7 @@ Optional[String]  $splunk_server  = undef,
     context => 'apps/TA-puppet-report-viewer/local',
     section => 'http://puppet:detailed',
     setting => 'token',
-    value   => '7dc49a8f-8f56-4095-9522-e5566f937cfc'    # needs to be a valid GUID, must match with the GUID you use on PE
+    value   => $hec_puppetdetailed_token, 
   }
 
 }
