@@ -46,7 +46,7 @@ if $splunk_server_fqdn {
   }
 }
 
-  ini_setting { '[master:reports]':
+  ini_setting { 'master:reports':
     ensure            => present,
     section           => 'master',
     setting           => 'reports',
