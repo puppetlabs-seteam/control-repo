@@ -1,7 +1,23 @@
 # Class: profile::infrastructure::splunk::splunk_server
-# Installs and configure Splunk Enterprise Server
+# @summary Installs and configure Splunk Enterprise Server
 #
-class profile::infrastructure::splunk::splunk_server {
+#
+# @example
+#   include profile::infrastructure::splunk::splunk_server
+#   
+# @param splunk_server
+#   Specifies a Splunk server if not specified used Fact[fqdn]
+#   setup to be referenced from another profile as `$profile::infrastructure::splunk::splunk_server::splunk_server_fqdn`
+#
+class profile::infrastructure::splunk::splunk_server (
+Optional[String]  $splunk_server  = undef,
+){
+  case $splunk_server = undef { 
+    $splunk_server_fqdn = $facts['fqdn']
+  } 
+
+
+
   package { 'net-tools':
     ensure => 'present',
     before => Class['splunk']
@@ -11,7 +27,7 @@ class profile::infrastructure::splunk::splunk_server {
     version     => '7.2.5.1',
     build       => '962d9a8e1586',
     src_root    => 'https://download.splunk.com',
-    server      => $facts['fqdn'],     #or replace with your servername
+    server      => $splunk_server_fqdn,     
     splunk_user => 'root'
   }
 
