@@ -2,23 +2,17 @@
 # Installs and configure Splunk Enterprise Server
 #
 class profile::infrastructure::splunk::splunk_server {
-  package { 'net-tools':
-    ensure => 'present',
-    before => Class['splunk']
-  }
-
   class { 'splunk::params':
     version     => '7.2.5.1',
     build       => '962d9a8e1586',
     src_root    => 'https://download.splunk.com',
     server      => $facts['fqdn'],     #or replace with your servername
-    splunk_user => 'root'
   }
 
   #Install Splunk on standard web port 8000
   class { 'splunk::enterprise':
-    manage_password => true,
-    package_ensure  => 'latest'
+    manage_password  => true,
+    package_ensure   => 'latest'
   }
 
   class { 'firewall': }
@@ -57,51 +51,80 @@ class profile::infrastructure::splunk::splunk_server {
     notify       => Service['Splunkd']
   }
 
+  archive { '/tmp/puppet-tasks-actionable-alerts-for-splunk_101.tgz':
+    source       => 'puppet:///modules/profile/puppet/splunk/puppet-tasks-actionable-alerts-for-splunk_101.tgz',
+    extract      => true,
+    extract_path => '/opt/splunk/etc/apps',
+    creates      => '/opt/splunk/etc/apps/TA-puppet-tasks-actionable',
+    user         => 'splunk',
+    group        => 'splunk',
+    require      => Class['splunk'],
+    notify       => Service['Splunkd']
+  }
+
+  file { '/opt/splunk/etc/apps/splunk_httpinput/local':
+    ensure  => directory,
+    require => Class['splunk']
+  }
+
+  file { '/opt/splunk/etc/apps/TA-puppet-report-viewer/local':
+    ensure  => directory,
+    require => Archive['/tmp/puppet-report-viewer_135.tgz']
+  }
+
   splunk_input { 'http/disabled':
     context => 'apps/splunk_httpinput/local',
-    value   => 0
+    value   => 0,
+    require => File['/opt/splunk/etc/apps/splunk_httpinput/local']
   }
   splunk_input { 'http/enableSSL':
     context => 'apps/splunk_httpinput/local',
-    value   => 1
+    value   => 1,
+    require => File['/opt/splunk/etc/apps/splunk_httpinput/local']
   }
 
   splunk_input { 'hec_puppetsummary_enable':
     context => 'apps/TA-puppet-report-viewer/local',
     section => 'http://puppet:summary',
     setting => 'disabled',
-    value   => 0
+    value   => 0,
+    require => File['/opt/splunk/etc/apps/TA-puppet-report-viewer/local']
   }
   splunk_input { 'hec_puppetsummary_sourcetype':
     context => 'apps/TA-puppet-report-viewer/local',
     section => 'http://puppet:summary',
     setting => 'sourcetype',
-    value   => 'puppet:summary'
+    value   => 'puppet:summary',
+    require => File['/opt/splunk/etc/apps/TA-puppet-report-viewer/local']
   }
   splunk_input { 'hec_puppetsummary_token':
     context => 'apps/TA-puppet-report-viewer/local',
     section => 'http://puppet:summary',
     setting => 'token',
-    value   => 'bba862fd-c09c-43e1-90f7-87221f362296'    # needs to be a valid GUID, must match with the GUID you use on PE
+    value   => 'bba862fd-c09c-43e1-90f7-87221f362296',   # needs to be a valid GUID, must match with the GUID you use on PE
+    require => File['/opt/splunk/etc/apps/TA-puppet-report-viewer/local']
   }
 
   splunk_input { 'hec_puppetdetailed_enable':
     context => 'apps/TA-puppet-report-viewer/local',
     section => 'http://puppet:detailed',
     setting => 'disabled',
-    value   => 0
+    value   => 0,
+    require => File['/opt/splunk/etc/apps/TA-puppet-report-viewer/local']
   }
   splunk_input { 'hec_puppetdetailed_sourcetype':
     context => 'apps/TA-puppet-report-viewer/local',
     section => 'http://puppet:detailed',
     setting => 'sourcetype',
-    value   => 'puppet:detailed'
+    value   => 'puppet:detailed',
+    require => File['/opt/splunk/etc/apps/TA-puppet-report-viewer/local']
   }
   splunk_input { 'hec_puppetdetailed_token':
     context => 'apps/TA-puppet-report-viewer/local',
     section => 'http://puppet:detailed',
     setting => 'token',
-    value   => '7dc49a8f-8f56-4095-9522-e5566f937cfc'    # needs to be a valid GUID, must match with the GUID you use on PE
+    value   => '7dc49a8f-8f56-4095-9522-e5566f937cfc',   # needs to be a valid GUID, must match with the GUID you use on PE
+    require => File['/opt/splunk/etc/apps/TA-puppet-report-viewer/local']
   }
 
 }
