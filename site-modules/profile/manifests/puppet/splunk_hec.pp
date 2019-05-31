@@ -39,7 +39,8 @@ class profile::puppet::splunk_hec (
   }
 
   if $splunk_server_fqdn != undef and $splunk_server_fqdn != '' {
-  notice("Splunk server FQDN is: ${splunk_server_fqdn}")
+    notice("Splunk server FQDN is: ${splunk_server_fqdn}")
+  }
 
   # resources
   class {'splunk_hec':
