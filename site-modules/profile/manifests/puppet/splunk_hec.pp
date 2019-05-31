@@ -43,7 +43,7 @@ class profile::puppet::splunk_hec (
 
   # resources
   class {'splunk_hec':
-    server => $splunk_server_fqdn,                  
+    server => $splunk_server_fqdn,
     token  => $splunk_hec_token,
   }
 
