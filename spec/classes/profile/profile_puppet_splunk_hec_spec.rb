@@ -9,7 +9,9 @@ describe 'profile::puppet::splunk_hec' do
     end
 
     before(:each) do
-      Puppet::Parser::Functions.newfunction(:puppetdb_query, :type => :rvalue) { |_| [{"certname" : "foo.example.com"}] }
+      Puppet::Parser::Functions.newfunction(:puppetdb_query, :type => :rvalue) do |args|
+        [{'key' => 'certname','value'=> 'foo.example.com'}]
+      end
     end
 
     SUPPORTED_OS.each do |os, facts|
