@@ -69,62 +69,80 @@ String            $hec_puppetdetailed_token = '7dc49a8f-8f56-4095-9522-e5566f937
     value   => 1024
   }
 
-  archive { '/tmp/puppet-report-viewer_135.tgz':
-    source       => 'puppet:///modules/profile/puppet/splunk/puppet-report-viewer_135.tgz',
+  archive { '/tmp/puppet-tasks-actionable-alerts-for-splunk_101.tgz':
+    source       => 'puppet:///modules/profile/puppet/splunk/puppet-tasks-actionable-alerts-for-splunk_101.tgz',
     extract      => true,
     extract_path => '/opt/splunk/etc/apps',
-    creates      => '/opt/splunk/etc/apps/TA-puppet-report-viewer',
+    creates      => '/opt/splunk/etc/apps/TA-puppet-tasks-actionable',
     user         => 'splunk',
     group        => 'splunk',
     require      => Class['splunk'],
     notify       => Service['Splunkd']
   }
 
+  file { '/opt/splunk/etc/apps/splunk_httpinput/local':
+    ensure  => directory,
+    require => Class['splunk'],
+  }
+
+  file { '/opt/splunk/etc/apps/TA-puppet-report-viewer/local':
+    ensure  => directory,
+    require => Archive['/tmp/puppet-report-viewer_135.tgz']
+  }
+
   splunk_input { 'http/disabled':
     context => 'apps/splunk_httpinput/local',
-    value   => 0
+    value   => 0,
+    require => File['/opt/splunk/etc/apps/splunk_httpinput/local'],
   }
   splunk_input { 'http/enableSSL':
     context => 'apps/splunk_httpinput/local',
-    value   => 1
+    value   => 1,
+    require => File['/opt/splunk/etc/apps/splunk_httpinput/local'],
   }
 
   splunk_input { 'hec_puppetsummary_enable':
     context => 'apps/TA-puppet-report-viewer/local',
     section => 'http://puppet:summary',
     setting => 'disabled',
-    value   => 0
+    value   => 0,
+    require => File['/opt/splunk/etc/apps/splunk_httpinput/local'],
   }
   splunk_input { 'hec_puppetsummary_sourcetype':
     context => 'apps/TA-puppet-report-viewer/local',
     section => 'http://puppet:summary',
     setting => 'sourcetype',
-    value   => 'puppet:summary'
+    value   => 'puppet:summary',
+    require => File['/opt/splunk/etc/apps/splunk_httpinput/local'],
   }
   splunk_input { 'hec_puppetsummary_token':
     context => 'apps/TA-puppet-report-viewer/local',
     section => 'http://puppet:summary',
     setting => 'token',
     value   => $hec_puppetsummary_token,
+    require => File['/opt/splunk/etc/apps/splunk_httpinput/local'],
   }
 
   splunk_input { 'hec_puppetdetailed_enable':
     context => 'apps/TA-puppet-report-viewer/local',
     section => 'http://puppet:detailed',
     setting => 'disabled',
-    value   => 0
+    value   => 0,
+    require => File['/opt/splunk/etc/apps/splunk_httpinput/local'],
   }
   splunk_input { 'hec_puppetdetailed_sourcetype':
     context => 'apps/TA-puppet-report-viewer/local',
     section => 'http://puppet:detailed',
     setting => 'sourcetype',
-    value   => 'puppet:detailed'
+    value   => 'puppet:detailed',
+    require => File['/opt/splunk/etc/apps/splunk_httpinput/local'],
   }
   splunk_input { 'hec_puppetdetailed_token':
     context => 'apps/TA-puppet-report-viewer/local',
     section => 'http://puppet:detailed',
     setting => 'token',
     value   => $hec_puppetdetailed_token,
+    require => File['/opt/splunk/etc/apps/splunk_httpinput/local'],
   }
 
 }
