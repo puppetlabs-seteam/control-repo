@@ -105,7 +105,7 @@ mod 'tkishel-system_gem', '1.1.1'
 #replaces mod 'puppet-splunk', '7.3.0' until there is a newer release
 mod 'splunk',
   :git => 'https://github.com/voxpupuli/puppet-splunk.git',
-  :ref => '15ac2b35e9a7ec8545c538ffcff04eca31ede100'
+  :ref => '3324eeb6626646523a29b6fb89af757c4cc22113'
 
 mod 'tse-tse_facts',
   :git => 'https://github.com/puppetlabs/tse-module-tse_facts.git', :ref => "638abef"
