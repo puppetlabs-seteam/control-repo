@@ -3,16 +3,16 @@
 #
 class profile::infrastructure::splunk::splunk_server {
   class { 'splunk::params':
-    version     => '7.2.5.1',
-    build       => '962d9a8e1586',
-    src_root    => 'https://download.splunk.com',
-    server      => $facts['fqdn'],     #or replace with your servername
+    version  => '7.2.5.1',
+    build    => '962d9a8e1586',
+    src_root => 'https://download.splunk.com',
+    server   => $facts['fqdn'],     #or replace with your servername
   }
 
   #Install Splunk on standard web port 8000
   class { 'splunk::enterprise':
-    manage_password  => true,
-    package_ensure   => 'latest'
+    manage_password => true,
+    package_ensure  => 'latest'
   }
 
   class { 'firewall': }
@@ -37,7 +37,7 @@ class profile::infrastructure::splunk::splunk_server {
   ]
 
   splunk_indexes { $default_indexes:
-    value   => 1024
+    value => 1024
   }
 
   archive { '/tmp/puppet-report-viewer_135.tgz':
