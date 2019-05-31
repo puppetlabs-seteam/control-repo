@@ -1,12 +1,33 @@
 # Class: profile::infrastructure::splunk::splunk_server
-# Installs and configure Splunk Enterprise Server
+# @summary Installs and configure Splunk Enterprise Server
 #
-class profile::infrastructure::splunk::splunk_server {
+#
+# @example
+#   include profile::infrastructure::splunk::splunk_server
+#   
+# @param splunk_server
+#   Specifies a Splunk server if not specified used Fact[fqdn]
+#   setup to be referenced from another profile as `$profile::infrastructure::splunk::splunk_server::splunk_server_fqdn`
+#
+class profile::infrastructure::splunk::splunk_server (
+Optional[String]  $splunk_server  = undef,
+String            $hec_puppetsummary_token  = 'bba862fd-c09c-43e1-90f7-87221f362296', # needs to be a valid GUID, must match with the GUID you use on PE
+String            $hec_puppetdetailed_token = '7dc49a8f-8f56-4095-9522-e5566f937cfc', # needs to be a valid GUID, must match with the GUID you use on PE
+){
+  case $splunk_server {
+    undef: {
+      $splunk_server_fqdn = $facts['fqdn']
+    }
+    default: {
+      $splunk_server_fqdn = $splunk_server
+    }
+  }
+
   class { 'splunk::params':
     version  => '7.2.5.1',
     build    => '962d9a8e1586',
     src_root => 'https://download.splunk.com',
-    server   => $facts['fqdn'],     #or replace with your servername
+    server   => $splunk_server_fqdn,
   }
 
   #Install Splunk on standard web port 8000
@@ -101,7 +122,7 @@ class profile::infrastructure::splunk::splunk_server {
     context => 'apps/TA-puppet-report-viewer/local',
     section => 'http://puppet:summary',
     setting => 'token',
-    value   => 'bba862fd-c09c-43e1-90f7-87221f362296',   # needs to be a valid GUID, must match with the GUID you use on PE
+    value   => $hec_puppetsummary_token,
     require => File['/opt/splunk/etc/apps/TA-puppet-report-viewer/local']
   }
 
@@ -123,7 +144,7 @@ class profile::infrastructure::splunk::splunk_server {
     context => 'apps/TA-puppet-report-viewer/local',
     section => 'http://puppet:detailed',
     setting => 'token',
-    value   => '7dc49a8f-8f56-4095-9522-e5566f937cfc',   # needs to be a valid GUID, must match with the GUID you use on PE
+    value   => $hec_puppetdetailed_token,
     require => File['/opt/splunk/etc/apps/TA-puppet-report-viewer/local']
   }
 
