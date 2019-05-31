@@ -5,16 +5,16 @@
 #
 # @example
 #   include profile::puppet::splunk_hec
-#   
+#
 # @param splunk_server
 #   Specifies a Splunk server if not specified used Fact[fqdn]
 #   setup to be referenced from another profile as `$profile::puppet::splunk_server_fqdn`
 #
-# @param splunk_hec_token   
+# @param splunk_hec_token
 #   'bba862fd-c09c-43e1-90f7-87221f362296', # must match the value for splunk_input['hec_puppetsummary_token']
 #
 class profile::puppet::splunk_hec(
-  Optional[String]  $splunk_server  = undef,
+  Optional[String]  $splunk_server      = undef,
   String            $splunk_hec_token   = 'bba862fd-c09c-43e1-90f7-87221f362296', # must match the value for splunk_input['hec_puppetsummary_token']
 ) {
 
@@ -26,12 +26,13 @@ class profile::puppet::splunk_hec(
       else {
         $splunk_server_query = 'nodes[certname]{
           resources {
-            type = "Class" 
-            and 
-            title = "profile::infrastructure::splunk::splunk_server" 
+            type = "Class"
+            and
+            title = "profile::infrastructure::splunk::splunk_server"
             }
           }'
-        $splunk_server_fqdn = puppetdb_query($splunk_server_query).map |$value| { $value["certname"] }
+        $puppetdb_result = puppetdb_query($splunk_server_query).map |$value| { $value["certname"] }
+        $splunk_server_fqdn = String.new($puppetdb_result[0])
       }
     }
     default: {
@@ -39,10 +40,11 @@ class profile::puppet::splunk_hec(
     }
   }
 
-if $splunk_server_fqdn != undef {
+if $splunk_server_fqdn != undef and $splunk_server_fqdn != '' {
+notify{  "${splunk_server_fqdn} value" : }
   # resources
   class {'splunk_hec':
-    server => $splunk_server_fqdn,                  # replace with your Splunk servername
+    server => $splunk_server_fqdn,                  
     token  => $splunk_hec_token,
   }
 }
