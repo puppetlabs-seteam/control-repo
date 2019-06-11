@@ -20,8 +20,22 @@ describe 'profile::puppet::splunk_hec' do
       Puppet::Parser::Functions.newfunction(:puppetdb_query, :type => :rvalue) do |args|
         [{'key' => 'certname','value' => 'foo.example.com'}]
       end
+
+      node_group_value = {
+        "PE Master"=>{
+          "environment_trumps"=>false,
+          "parent"=>"00000000-0000-4000-8000-000000000000",
+          "name"=>"All Nodes",
+          "rule"=>["and", ["~", "name", ".*"]],
+          "variables"=>{}, "id"=>"00000000-0000-4000-8000-000000000000",
+          "environment"=>"production",
+          "classes"=>{},
+          "config_data"=>{}
+        }
+      }
+
       Puppet::Parser::Functions.newfunction(:node_groups, :type => :rvalue) do |args|
-        [{'key' => 'PE Master','value' => {'key' => 'classes','value' => {} } }]
+        node_group_value
       end        
     end
 
