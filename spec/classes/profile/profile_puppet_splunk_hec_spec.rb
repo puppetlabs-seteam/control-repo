@@ -5,6 +5,14 @@ describe 'profile::puppet::splunk_hec' do
       # This mocks the Service[pe-puppetserver] resource so that the class may be tested
       'service { "pe-puppetserver":
         ensure => running
+      }
+      define pe_ini_setting (
+        $ensure = present,
+        $path,
+        $section,
+        $setting,
+        $value,
+      ) {
       }'
     end
 
