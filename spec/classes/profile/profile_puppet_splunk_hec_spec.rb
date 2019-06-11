@@ -18,8 +18,11 @@ describe 'profile::puppet::splunk_hec' do
 
     before(:each) do
       Puppet::Parser::Functions.newfunction(:puppetdb_query, :type => :rvalue) do |args|
-        [{'key' => 'certname','value'=> 'foo.example.com'}]
+        [{'key' => 'certname','value' => 'foo.example.com'}]
       end
+      Puppet::Parser::Functions.newfunction(:node_groups, :type => :rvalue) do |args|
+        [{'key' => 'PE Master','value' => {'key' => 'classes','value' => {} } }]
+      end        
     end
 
     SUPPORTED_OS.each do |os, facts|
