@@ -1,7 +1,7 @@
 class profile::platform::baseline::windows::packages {
 
   Package {
-    ensure   => installed,
+    ensure   => 'present',
     provider => chocolatey,
   }
 
