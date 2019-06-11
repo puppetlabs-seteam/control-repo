@@ -42,7 +42,7 @@ mod 'puppetlabs-registry', '2.1.0'
 mod 'puppetlabs-resource', '0.1.0'
 mod 'puppetlabs-resource_api', '1.0.0'
 mod 'puppetlabs-service', '0.5.0'
-mod 'puppetlabs-splunk_hec', '0.4.1'
+#mod 'puppetlabs-splunk_hec', '0.4.1' # Can't use 0.4.1 as Report Viewer 1.5.1 needs newer code
 mod 'puppetlabs-sqlserver', '2.4.0'
 mod 'puppetlabs-stdlib', '5.2.0'
 mod 'puppetlabs-tomcat', '2.5.0'
@@ -106,6 +106,11 @@ mod 'tkishel-system_gem', '1.1.1'
 mod 'splunk',
   :git => 'https://github.com/voxpupuli/puppet-splunk.git',
   :ref => '3324eeb6626646523a29b6fb89af757c4cc22113'
+
+#replaces mod 'puppetlabs-splunk_hec', '0.4.1' until there is a newer release (needed for Report Viewer 1.5.1)
+mod 'splunk_hec',
+  :git => 'https://github.com/puppetlabs/puppetlabs-splunk_hec.git',
+  :ref => '099bfdd559a85d605469ddd9472789017027eb8f'
 
 mod 'tse-tse_facts',
   :git => 'https://github.com/puppetlabs/tse-module-tse_facts.git', :ref => "638abef"
