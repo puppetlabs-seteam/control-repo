@@ -44,17 +44,20 @@ class profile::puppet::splunk_hec (
 
   # resources
   class {'splunk_hec':
-    server => $splunk_server_fqdn,
-    token  => $splunk_hec_token,
+    url            => "https://${splunk_server_fqdn}:8088/services/collector",
+    token          => $splunk_hec_token,
+    enable_reports => true
   }
 
-  ini_setting { '[master:reports]':
-    ensure            => present,
-    section           => 'master',
-    setting           => 'reports',
-    key_val_separator => '=',
-    value             => 'puppetdb,splunk_hec',
-    path              => $settings::config,
-    notify            => Service['pe-puppetserver']
+  $current_pe_master_classes = node_groups('PE Master')['PE Master']['classes']
+
+  $class_attribs_to_add = {
+    'puppet_enterprise::profile::master' => { 'facts_terminus' => 'splunk_hec' }
   }
+
+  node_group { 'PE Master':
+    classes => deep_merge($current_pe_master_classes, $class_attribs_to_add),
+    notify  => Service['pe-puppetserver']
+  }
+
 }

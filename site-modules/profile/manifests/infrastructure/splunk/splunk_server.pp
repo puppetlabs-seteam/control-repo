@@ -61,8 +61,8 @@ String            $hec_puppetdetailed_token = '7dc49a8f-8f56-4095-9522-e5566f937
     value => 1024
   }
 
-  archive { '/tmp/puppet-report-viewer_135.tgz':
-    source       => 'puppet:///modules/profile/puppet/splunk/puppet-report-viewer_135.tgz',
+  archive { '/tmp/puppet-report-viewer_151.tgz':
+    source       => 'puppet:///modules/profile/puppet/splunk/puppet-report-viewer_151.tgz',
     extract      => true,
     extract_path => '/opt/splunk/etc/apps',
     creates      => '/opt/splunk/etc/apps/TA-puppet-report-viewer',
@@ -90,7 +90,7 @@ String            $hec_puppetdetailed_token = '7dc49a8f-8f56-4095-9522-e5566f937
 
   file { '/opt/splunk/etc/apps/TA-puppet-report-viewer/local':
     ensure  => directory,
-    require => Archive['/tmp/puppet-report-viewer_135.tgz']
+    require => Archive['/tmp/puppet-report-viewer_151.tgz']
   }
 
   splunk_input { 'http/disabled':
