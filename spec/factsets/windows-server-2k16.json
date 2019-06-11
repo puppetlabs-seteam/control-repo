@@ -1,0 +1,378 @@
+{
+  "name": "ec2amaz-p5qapib.eu-west-2.compute.internal",
+  "values": {
+    "ad_domain": "WORKGROUP",
+    "aio_agent_build": "6.4.2",
+    "aio_agent_version": "6.4.2",
+    "architecture": "x64",
+    "archive_windir": "C:\\ProgramData\\staging",
+    "choco_install_path": "C:\\ProgramData\\chocolatey",
+    "choco_temp_dir": "C:\\Users\\Administrator\\AppData\\Local\\Temp",
+    "chocolateyversion": "0.10.13",
+    "common_appdata": "C:\\ProgramData",
+    "datacenter": "unknown",
+    "dhcp_servers": {
+      "Ethernet": "10.170.0.1",
+      "system": "10.170.0.1"
+    },
+    "dmi": {
+      "manufacturer": "Xen",
+      "product": {
+        "name": "HVM domU",
+        "serial_number": "ec2af3e8-4459-8eae-3d77-ad227991f5ad",
+        "uuid": "EC2AF3E8-4459-8EAE-3D77-AD227991F5AD"
+      }
+    },
+    "docker_program_data_path": "C:\\ProgramData",
+    "docker_program_files_path": "C:\\Program Files",
+    "docker_systemroot": "C:\\Windows",
+    "docker_user_temp_path": "C:\\Users\\ADMINI~1\\AppData\\Local\\Temp",
+    "domain": "eu-west-2.compute.internal",
+    "ec2_metadata": {
+      "ami-id": "ami-0c24bfa0ed865474a",
+      "ami-launch-index": "0",
+      "ami-manifest-path": "(unknown)",
+      "block-device-mapping": {
+        "ami": "/dev/sda1",
+        "ephemeral0": "xvdca",
+        "ephemeral1": "xvdcb",
+        "ephemeral10": "xvdck",
+        "ephemeral11": "xvdcl",
+        "ephemeral12": "xvdcm",
+        "ephemeral13": "xvdcn",
+        "ephemeral14": "xvdco",
+        "ephemeral15": "xvdcp",
+        "ephemeral16": "xvdcq",
+        "ephemeral17": "xvdcr",
+        "ephemeral18": "xvdcs",
+        "ephemeral19": "xvdct",
+        "ephemeral2": "xvdcc",
+        "ephemeral20": "xvdcu",
+        "ephemeral21": "xvdcv",
+        "ephemeral22": "xvdcw",
+        "ephemeral23": "xvdcx",
+        "ephemeral24": "xvdcy",
+        "ephemeral25": "xvdcz",
+        "ephemeral3": "xvdcd",
+        "ephemeral4": "xvdce",
+        "ephemeral5": "xvdcf",
+        "ephemeral6": "xvdcg",
+        "ephemeral7": "xvdch",
+        "ephemeral8": "xvdci",
+        "ephemeral9": "xvdcj",
+        "root": "/dev/sda1"
+      },
+      "events": {
+        "maintenance": {
+          "history": "[]",
+          "scheduled": "[]"
+        }
+      },
+      "hostname": "ip-10-170-0-157.eu-west-2.compute.internal",
+      "identity-credentials": {
+        "ec2": {
+          "info": "{\n  \"Code\" : \"Success\",\n  \"LastUpdated\" : \"2019-06-11T09:03:39Z\",\n  \"AccountId\" : \"051431149377\"\n}"
+        }
+      },
+      "instance-action": "none",
+      "instance-id": "i-0a73c19aa62bc4a52",
+      "instance-type": "t2.medium",
+      "local-hostname": "ip-10-170-0-157.eu-west-2.compute.internal",
+      "local-ipv4": "10.170.0.157",
+      "mac": "0a:03:b6:73:83:22",
+      "metrics": {
+        "vhostmd": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>"
+      },
+      "network": {
+        "interfaces": {
+          "macs": {
+            "0a:03:b6:73:83:22": {
+              "device-number": "0",
+              "interface-id": "eni-065f87978f536cd77",
+              "ipv4-associations": {
+                "35.177.91.116": "10.170.0.157"
+              },
+              "local-hostname": "ip-10-170-0-157.eu-west-2.compute.internal",
+              "local-ipv4s": "10.170.0.157",
+              "mac": "0a:03:b6:73:83:22",
+              "owner-id": "051431149377",
+              "public-hostname": "ec2-35-177-91-116.eu-west-2.compute.amazonaws.com",
+              "public-ipv4s": "35.177.91.116",
+              "security-group-ids": "sg-0853a9889ee628b02",
+              "security-groups": "dylan-lmsinstance-securitygroup",
+              "subnet-id": "subnet-0f860018cf3fde68d",
+              "subnet-ipv4-cidr-block": "10.170.0.0/24",
+              "vpc-id": "vpc-0f37c454b552d2b69",
+              "vpc-ipv4-cidr-block": "10.170.0.0/16",
+              "vpc-ipv4-cidr-blocks": "10.170.0.0/16"
+            }
+          }
+        }
+      },
+      "placement": {
+        "availability-zone": "eu-west-2b"
+      },
+      "profile": "windows-hvm",
+      "public-hostname": "ec2-35-177-91-116.eu-west-2.compute.amazonaws.com",
+      "public-ipv4": "35.177.91.116",
+      "public-keys": {
+        "0": {
+          "openssh-key": "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQCsVJXTqTROaG6TA9NlsTiYRwcJgYOBMdWOz8PW+xBwBN2FYwFJMsPQI2jlpJMivQIr94V2YiPZtGj3yqbeLvRYIo4qDCKchoUNNZMWZQvUZeeBKl9NvJ/YhlscMO918PsvkQmctJNLzhjaSOFEPvgdvjv3hpmw0kP1hFWrrfATR5QkXkg8qQ+qSNDNFVurtpUkoRt4+JFATk72mOyr3a/9iNLP9O1Yc82f9gZHboxsk1x7HSxQm5vC1fLsEQdJ0ZzF/L72DBbyUG9XObMxGHH3YtoHP+0zXhVDXt6QQoqLlt+7MFiTBZejwcIzY4UMUivEx3hwsfN+EnI1PREB8aO7 student"
+        }
+      },
+      "reservation-id": "r-01667c2b89710c2ba",
+      "security-groups": "dylan-lmsinstance-securitygroup",
+      "services": {
+        "domain": "amazonaws.com",
+        "partition": "aws"
+      }
+    },
+    "ec2_userdata": "<powershell>\n# Create a hosts entry so we can resolve puppet.classroom.puppet.com\n$puppet_server = \"puppet.classroom.puppet.com\"\n$host_entry = \"10.170.0.188 $puppet_server puppet\"\n$host_entry | Out-File -FilePath C:\\Windows\\System32\\Drivers\\etc\\hosts -Append -Encoding ascii\n\n$gitlab_host_entry = \"10.170.0.86 gitlab.classroom.puppet.com gitlab gitlab.puppet.vm\"\n$gitlab_host_entry | Out-File -FilePath C:\\Windows\\System32\\Drivers\\etc\\hosts -Append -Encoding ascii\n\n# Write out what the agent name should be for future use\n$agent_certname = \"dylanwin0.classroom.puppet.com\"\n$agent_certname | Out-File -FilePath C:\\agentname.txt -Encoding ascii\n\n\n$install_script = @'\n[Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12\n[Net.ServicePointManager]::ServerCertificateValidationCallback = {$true};\n$webClient = New-Object System.Net.WebClient;\n$webClient.DownloadFile('https://puppet.classroom.puppet.com:8140/packages/current/install.ps1', 'install.ps1')\nC:\\windows\\system32\\install.ps1 \"main:certname=dylanwin0.classroom.puppet.com\"\n'@\n\n$install_script | Out-File -FilePath C:\\Users\\Administrator\\install_pe_agent.ps1\n</powershell>\n",
+    "env_windows_installdir": "C:\\Program Files\\Puppet Labs\\Puppet",
+    "fact_json": "true",
+    "fact_ruby": "True",
+    "fact_yaml": true,
+    "facterversion": "3.13.2",
+    "fqdn": "EC2AMAZ-P5QAPIB.eu-west-2.compute.internal",
+    "git_exec_path": "C:/Program Files/Git/mingw64/libexec/git-core",
+    "git_html_path": "C:/Program Files/Git/mingw64/share/doc/git-doc",
+    "git_version": "2.21.0.windows.1",
+    "hardwareisa": "x64",
+    "hardwaremodel": "x86_64",
+    "hostname": "EC2AMAZ-P5QAPIB",
+    "hypervisors": {
+      "hyperv": {
+      }
+    },
+    "id": "EC2AMAZ-P5QAPIB\\Administrator",
+    "identity": {
+      "privileged": true,
+      "user": "EC2AMAZ-P5QAPIB\\Administrator"
+    },
+    "interfaces": "Ethernet",
+    "ipaddress": "10.170.0.157",
+    "ipaddress6": "fe80::c8fb:ac3d:cfb:5794%3",
+    "ipaddress6_Ethernet": "fe80::c8fb:ac3d:cfb:5794%3",
+    "ipaddress_Ethernet": "10.170.0.157",
+    "is_pe": false,
+    "is_virtual": true,
+    "kernel": "windows",
+    "kernelmajversion": "10.0",
+    "kernelrelease": "10.0.14393",
+    "kernelversion": "10.0.14393",
+    "macaddress": "0A:03:B6:73:83:22",
+    "macaddress_Ethernet": "0A:03:B6:73:83:22",
+    "manufacturer": "Xen",
+    "memory": {
+      "system": {
+        "available": "2.44 GiB",
+        "available_bytes": 2624196608,
+        "capacity": "38.89%",
+        "total": "4.00 GiB",
+        "total_bytes": 4294557696,
+        "used": "1.56 GiB",
+        "used_bytes": 1670361088
+      }
+    },
+    "memoryfree": "2.44 GiB",
+    "memoryfree_mb": 2502.62890625,
+    "memorysize": "4.00 GiB",
+    "memorysize_mb": 4095.609375,
+    "mtu_Ethernet": 9001,
+    "mysql_server_id": 48189666,
+    "netmask": "255.255.255.0",
+    "netmask6": "ffff:ffff:ffff:ffff::",
+    "netmask6_Ethernet": "ffff:ffff:ffff:ffff::",
+    "netmask_Ethernet": "255.255.255.0",
+    "network": "10.170.0.0",
+    "network6": "fe80::%3",
+    "network6_Ethernet": "fe80::%3",
+    "network_Ethernet": "10.170.0.0",
+    "networking": {
+      "dhcp": "10.170.0.1",
+      "domain": "eu-west-2.compute.internal",
+      "fqdn": "EC2AMAZ-P5QAPIB.eu-west-2.compute.internal",
+      "hostname": "EC2AMAZ-P5QAPIB",
+      "interfaces": {
+        "Ethernet": {
+          "bindings": [
+            {
+              "address": "10.170.0.157",
+              "netmask": "255.255.255.0",
+              "network": "10.170.0.0"
+            }
+          ],
+          "bindings6": [
+            {
+              "address": "fe80::c8fb:ac3d:cfb:5794%3",
+              "netmask": "ffff:ffff:ffff:ffff::",
+              "network": "fe80::%3"
+            }
+          ],
+          "dhcp": "10.170.0.1",
+          "ip": "10.170.0.157",
+          "ip6": "fe80::c8fb:ac3d:cfb:5794%3",
+          "mac": "0A:03:B6:73:83:22",
+          "mtu": 9001,
+          "netmask": "255.255.255.0",
+          "netmask6": "ffff:ffff:ffff:ffff::",
+          "network": "10.170.0.0",
+          "network6": "fe80::%3"
+        }
+      },
+      "ip": "10.170.0.157",
+      "ip6": "fe80::c8fb:ac3d:cfb:5794%3",
+      "mac": "0A:03:B6:73:83:22",
+      "mtu": 9001,
+      "netmask": "255.255.255.0",
+      "netmask6": "ffff:ffff:ffff:ffff::",
+      "network": "10.170.0.0",
+      "network6": "fe80::%3",
+      "primary": "Ethernet"
+    },
+    "operatingsystem": "windows",
+    "operatingsystemmajrelease": "2016",
+    "operatingsystemrelease": "2016",
+    "os": {
+      "architecture": "x64",
+      "family": "windows",
+      "hardware": "x86_64",
+      "name": "windows",
+      "release": {
+        "full": "2016",
+        "major": "2016"
+      },
+      "windows": {
+        "system32": "C:\\Windows\\system32"
+      }
+    },
+    "osfamily": "windows",
+    "osreleasemaj": "2016",
+    "package_provider": "windows",
+    "path": "C:/Program Files/Puppet Labs/Puppet/puppet/lib/ruby/vendor_ruby/../../../bin;C:/Program Files/Puppet Labs/Puppet/puppet/lib/ruby/vendor_ruby/../../../../puppet/bin;C:\\Program Files\\Puppet Labs\\Puppet\\puppet\\bin;C:\\Program Files\\Puppet Labs\\Puppet\\bin;C:\\Windows\\system32;C:\\Windows;C:\\Windows\\System32\\Wbem;C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\;C:\\Program Files\\Amazon\\cfn-bootstrap\\;C:\\ProgramData\\chocolatey\\bin;C:\\Program Files\\Git\\cmd;C:\\Program Files\\Microsoft VS Code\\bin;C:\\Program Files\\Puppet Labs\\Puppet\\bin;C:\\Users\\Administrator\\AppData\\Local\\Microsoft\\WindowsApps",
+    "pe_concat_basedir": "C:/ProgramData/PuppetLabs/puppet/cache/pe_concat",
+    "physicalprocessorcount": 1,
+    "pipelines_env": {
+      "ProgramFiles": "C:\\Program Files",
+      "SystemDrive": "C:"
+    },
+    "platform_symlink_writable": false,
+    "powershell_version": "5.1.14393.0",
+    "powershell_version_major": "5",
+    "powershell_version_minor": "1",
+    "processor0": "Intel(R) Xeon(R) CPU E5-2686 v4 @ 2.30GHz",
+    "processorcount": 2,
+    "processors": {
+      "count": 2,
+      "isa": "x64",
+      "models": [
+        "Intel(R) Xeon(R) CPU E5-2686 v4 @ 2.30GHz"
+      ],
+      "physicalcount": 1
+    },
+    "productname": "HVM domU",
+    "puppet_environmentpath": "C:/ProgramData/PuppetLabs/code/environments",
+    "puppet_files_dir_present": false,
+    "puppet_inventory_metadata": {
+      "packages": {
+        "collection_enabled": false,
+        "last_collection_time": "0.0s"
+      }
+    },
+    "puppet_server": "puppet.classroom.puppet.com",
+    "puppet_settings_confdir": "C:/ProgramData/PuppetLabs",
+    "puppet_settings_deviceconfig": "C:/ProgramData/PuppetLabs/puppet/etc/device.conf",
+    "puppet_vardir": "C:/ProgramData/PuppetLabs/puppet/cache",
+    "puppetversion": "6.4.2",
+    "pygpgme_installed": "true",
+    "ruby": {
+      "platform": "x64-mingw32",
+      "sitedir": "C:/Program Files/Puppet Labs/Puppet/puppet/lib/ruby/site_ruby/2.5.0",
+      "version": "2.5.3"
+    },
+    "rubyplatform": "x64-mingw32",
+    "rubysitedir": "C:/Program Files/Puppet Labs/Puppet/puppet/lib/ruby/site_ruby/2.5.0",
+    "rubyversion": "2.5.3",
+    "serialnumber": "ec2af3e8-4459-8eae-3d77-ad227991f5ad",
+    "service_provider": "windows",
+    "sqlserver_features": {
+      "SQL_2012": [
+
+      ],
+      "SQL_2014": [
+
+      ],
+      "SQL_2016": [
+
+      ],
+      "SQL_2017": [
+
+      ],
+      "SQL_2019": [
+
+      ]
+    },
+    "sqlserver_instances": {
+      "SQL_2012": {
+      },
+      "SQL_2014": {
+      },
+      "SQL_2016": {
+      },
+      "SQL_2017": {
+      },
+      "SQL_2019": {
+      }
+    },
+    "staging_http_get": "powershell",
+    "staging_windir": "C:\\ProgramData\\staging",
+    "system32": "C:\\Windows\\system32",
+    "system_uptime": {
+      "days": 0,
+      "hours": 16,
+      "seconds": 60312,
+      "uptime": "16:45 hours"
+    },
+    "text_fact": "true",
+    "timezone": "Coordinated Universal Time",
+    "uptime": "16:45 hours",
+    "uptime_days": 0,
+    "uptime_hours": 16,
+    "uptime_seconds": 60312,
+    "uuid": "EC2AF3E8-4459-8EAE-3D77-AD227991F5AD",
+    "vcsrepo_svn_ver": "",
+    "virtual": "xen",
+    "windows_env": {
+      "ALLUSERSPROFILE": "C:\\ProgramData",
+      "APPDATA": "C:\\Users\\Administrator\\AppData\\Roaming",
+      "COMMONPROGRAMFILES": "C:\\Program Files\\Common Files",
+      "COMMONPROGRAMFILES(X86)": "C:\\Program Files (x86)\\Common Files",
+      "HOME": "C:/Users/Administrator",
+      "HOMEDRIVE": "C:",
+      "HOMEPATH": "\\Users\\Administrator",
+      "LOCALAPPDATA": "C:\\Users\\Administrator\\AppData\\Local",
+      "PATHEXT": ".COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC;.CPL",
+      "PROCESSOR_IDENTIFIER": "Intel64 Family 6 Model 79 Stepping 1, GenuineIntel",
+      "PROCESSOR_LEVEL": "6",
+      "PROCESSOR_REVISION": "4f01",
+      "PROGRAMDATA": "C:\\ProgramData",
+      "PROGRAMFILES": "C:\\Program Files",
+      "PROGRAMFILES(X86)": "C:\\Program Files (x86)",
+      "PSMODULEPATH": "C:\\Users\\Administrator\\Documents\\WindowsPowerShell\\Modules;C:\\Program Files\\WindowsPowerShell\\Modules;C:\\Windows\\system32\\WindowsPowerShell\\v1.0\\Modules;C:\\Program Files (x86)\\AWS Tools\\PowerShell\\",
+      "PUBLIC": "C:\\Users\\Public",
+      "SYSTEMDRIVE": "C:",
+      "SYSTEMROOT": "C:\\Windows",
+      "TEMP": "C:\\Users\\ADMINI~1\\AppData\\Local\\Temp",
+      "TMP": "C:\\Users\\ADMINI~1\\AppData\\Local\\Temp",
+      "USERPROFILE": "C:\\Users\\Administrator",
+      "WINDIR": "C:\\Windows"
+    },
+    "windows_features": "FileAndStorage-Services, Storage-Services, NET-Framework-45-Features, NET-Framework-45-Core, NET-WCF-Services45, NET-WCF-TCP-PortSharing45, FS-SMB1, Windows-Defender-Features, Windows-Defender, Windows-Defender-Gui, PowerShellRoot, PowerShell, PowerShell-ISE, WoW64-Support",
+    "windows_java_temp": "C:\\Users\\ADMINI~1\\AppData\\Local\\Temp",
+    "clientcert": "ec2amaz-p5qapib.eu-west-2.compute.internal",
+    "clientversion": "6.4.2",
+    "clientnoop": false
+  },
+  "timestamp": "2019-06-11T09:34:36.967104000+00:00",
+  "expiration": "2019-06-11T10:04:36.967487000+00:00"
+}

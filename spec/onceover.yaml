@@ -1,0 +1,70 @@
+# Classes to be tested
+classes:
+  - role::jenkins_slave
+  - role::sample_website
+  - role::rgbank_standalone
+  - role::git_server
+  - role::puppet_webapp::lb
+  - role::puppet_webapp::webhead
+  - role::puppet_tomcat
+  - role::seteam_puppet_master
+  - role::cloudshop
+  - role::cd4pe_buildserver
+  - role::sensu_server
+  - role::jenkins_master
+  - role::cd4pe_server
+  - role::puppet_master
+
+# Nodes to tests classes on, this refers to a 'factset' or 'nodeset'
+# depending on whether you are running 'spec' or 'acceptance' tests
+nodes:
+  - centos-7
+  - windows-server-2k16
+
+# You can group classes here to save typing
+class_groups:
+  windows_roles:
+    - role::cloudshop
+  unix_roles:
+    - role::cd4pe_server
+    - role::git_server
+    - role::jenkins_master
+    - role::puppet_webapp::lb
+    - role::puppet_webapp::webhead
+    - role::puppet_master
+
+  either_roles:
+    - role::jenkins_slave
+    - role::sample_website
+    - role::rgbank_standalone
+    - role::puppet_tomcat
+    - role::seteam_puppet_master
+    - role::cd4pe_buildserver
+    - role::sensu_server
+
+# You can group nodes here to save typing
+# We have created a 'non_windows_nodes' group because we can't
+# give you Windows vagrant boxes to test with because licensing,
+# we can give you fact sets though so go crazy with spec testing!
+node_groups:
+  windows_nodes:
+    - windows-server-2k16
+  unix_nodes:
+    include: 'all_nodes'
+    exclude: 'windows_nodes'
+
+test_matrix:
+  - windows_nodes:
+      classes: 'windows_roles'
+      tests: 'spec'
+  - unix_nodes: 
+      classes: 'unix_roles'
+      tests: 'spec'
+  - all_nodes:
+      classes: 'either_roles'
+      tests: 'spec'
+
+functions:
+  puppetdb_query:
+    type: rvalue
+    returns: []

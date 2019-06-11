@@ -20,3 +20,4 @@ log
 .yardoc
 coverage
 .fixtures.yml
+.onceover
