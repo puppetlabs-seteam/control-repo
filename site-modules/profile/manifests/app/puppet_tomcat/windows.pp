@@ -14,10 +14,10 @@ class profile::app::puppet_tomcat::windows (
   windows_firewall::exception { 'Tomcat':
     ensure       => present,
     direction    => 'in',
-    action       => 'Allow',
-    enabled      => 'yes',
+    action       => 'allow',
+    enabled      => true,
     protocol     => 'TCP',
-    local_port   => '8080',
+    local_port   => 8080,
     display_name => 'Apache Tomcat Port',
     description  => 'Inbound rule for Tomcat',
   }
