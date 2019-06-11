@@ -44,17 +44,9 @@ class profile::puppet::splunk_hec (
 
   # resources
   class {'splunk_hec':
-    server => $splunk_server_fqdn,
-    token  => $splunk_hec_token,
+    url            => $splunk_server_fqdn,
+    token          => $splunk_hec_token,
+    enable_reports => true
   }
 
-  ini_setting { '[master:reports]':
-    ensure            => present,
-    section           => 'master',
-    setting           => 'reports',
-    key_val_separator => '=',
-    value             => 'puppetdb,splunk_hec',
-    path              => $settings::config,
-    notify            => Service['pe-puppetserver']
-  }
 }
