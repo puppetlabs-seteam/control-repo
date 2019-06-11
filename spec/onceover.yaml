@@ -32,15 +32,15 @@ class_groups:
     - role::puppet_webapp::lb
     - role::puppet_webapp::webhead
     - role::puppet_master
+    - role::rgbank_standalone
+    - role::sensu_server
+    - role::jenkins_slave
+    - role::seteam_puppet_master
 
   either_roles:
-    - role::jenkins_slave
     - role::sample_website
-    - role::rgbank_standalone
-    - role::puppet_tomcat
-    - role::seteam_puppet_master
     - role::cd4pe_buildserver
-    - role::sensu_server
+    - role::puppet_tomcat
 
 # You can group nodes here to save typing
 # We have created a 'non_windows_nodes' group because we can't
@@ -66,5 +66,6 @@ test_matrix:
 
 functions:
   puppetdb_query:
-    type: rvalue
-    returns: []
+    returns:
+      - facts:
+          fqdn: 'something'

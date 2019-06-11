@@ -431,6 +431,7 @@
     "path": "/sbin:/bin:/usr/sbin:/usr/bin:/usr/local/bin:/opt/puppetlabs/pdk/private/ruby/2.4.4/bin:/opt/puppetlabs/bin",
     "pe_concat_basedir": "/opt/puppetlabs/puppet/cache/pe_concat",
     "pe_razor_server_version": "package pe-razor-server is not installed",
+    "pe_server_version": "2019.1",
     "physicalprocessorcount": 1,
     "platform_symlink_writable": true,
     "platform_tag": "el-7-x86_64",
