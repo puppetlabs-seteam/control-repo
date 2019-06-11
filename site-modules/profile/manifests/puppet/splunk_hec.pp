@@ -44,7 +44,7 @@ class profile::puppet::splunk_hec (
 
   # resources
   class {'splunk_hec':
-    url            => $splunk_server_fqdn,
+    url            => "https://${splunk_server_fqdn}:8088/services/collector",
     token          => $splunk_hec_token,
     enable_reports => true
   }
