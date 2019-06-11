@@ -49,4 +49,15 @@ class profile::puppet::splunk_hec (
     enable_reports => true
   }
 
+  $current_pe_master_classes = node_groups('PE Master')['PE Master']['classes']
+
+  $class_attribs_to_add = {
+    'puppet_enterprise::profile::master' => { 'facts_terminus' => 'splunk_hec' }
+  }
+
+  node_group { 'PE Master':
+    classes => deep_merge($current_pe_master_classes, $class_attribs_to_add),
+    notify  => Service['pe-puppetserver']
+  }
+
 }
