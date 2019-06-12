@@ -48,33 +48,18 @@ node('tse-control-repo') {
         }
       }
 
-      stage('Validate Tests Exist'){
+      stage('Run Onceover'){
         ansiColor('xterm') {
           sh(script: '''
             export PATH=$PATH:$HOME/.rbenv/bin
             rbenv global 2.3.1
             eval "$(rbenv init -)"
-            bundle exec rake check_for_spec_tests
+            bundle exec onceover run spec --force --parallel
           ''')
         }
       }
     }
   }
-}
-
-stage('Run Spec Tests') {
-  parallel(
-    'linux::profile::spec': {
-      runSpecTests('linux')
-    },
-    // Spec tests should not execute differently on Windows vs. Linux.
-    // There is therefore no reason to run the same test on multiple platforms.
-    // Windows executes *extremely slowly* due to inefficiency checking out 
-    // module dependencies, so it's quite costly to duplicate this test.
-    // 'windows::profile::spec': {
-    //   runSpecTests('windows')
-    // }
-  )
 }
 
 
@@ -101,15 +86,6 @@ def windows(){
         bundle install
         bundle exec rake spec
       ''')
-    }
-  }
-}
-
-def runSpecTests(def platform){
-  node('tse-slave-' + platform) {
-    sshagent (credentials: ['jenkins-seteam-ssh']) {
-      checkout scm
-      "$platform"()
     }
   }
 }
