@@ -1,29 +1,6 @@
-PATH
-  remote: /Users/dylan/git/onceover
-  specs:
-    onceover (3.13.3)
-      backticks (>= 1.0.2)
-      colored (~> 1.2)
-      cri (>= 2.6)
-      deep_merge (>= 1.0.0)
-      git
-      json (>= 1.8.2)
-      logging (>= 2.0.0)
-      parallel_tests (>= 2.0.0)
-      puppet (>= 3.4.0)
-      puppetlabs_spec_helper (>= 0.4.0)
-      r10k (>= 2.1.0)
-      rake (>= 10.0.0)
-      rspec (>= 3.0.0)
-      rspec-puppet (>= 2.4.0)
-      rspec_junit_formatter (>= 0.2.0)
-      table_print (>= 1.0.0)
-      versionomy (>= 0.5.0)
-
 GEM
   remote: https://rubygems.org/
   specs:
-    CFPropertyList (2.3.6)
     backticks (1.0.2)
     blockenspiel (0.5.0)
     coderay (1.1.2)
@@ -32,8 +9,6 @@ GEM
     deep_merge (1.2.1)
     diff-lcs (1.3)
     facter (2.5.1)
-    facter (2.5.1-universal-darwin)
-      CFPropertyList (~> 2.2)
     faraday (0.13.1)
       multipart-post (>= 1.2, < 3)
     faraday_middleware (0.12.2)
@@ -64,6 +39,24 @@ GEM
       metaclass (~> 0.0.1)
     multi_json (1.13.1)
     multipart-post (2.1.1)
+    onceover (3.13.3)
+      backticks (>= 1.0.2)
+      colored (~> 1.2)
+      cri (>= 2.6)
+      deep_merge (>= 1.0.0)
+      git
+      json (>= 1.8.2)
+      logging (>= 2.0.0)
+      parallel_tests (>= 2.0.0)
+      puppet (>= 3.4.0)
+      puppetlabs_spec_helper (>= 0.4.0)
+      r10k (>= 2.1.0)
+      rake (>= 10.0.0)
+      rspec (>= 3.0.0)
+      rspec-puppet (>= 2.4.0)
+      rspec_junit_formatter (>= 0.2.0)
+      table_print (>= 1.0.0)
+      versionomy (>= 0.5.0)
     parallel (1.17.0)
     parallel_tests (2.29.0)
       parallel
@@ -72,16 +65,6 @@ GEM
       coderay (~> 1.1.0)
       method_source (~> 0.9.0)
     puppet (6.4.2)
-      facter (> 2.0.1, < 4)
-      fast_gettext (~> 1.1.2)
-      hiera (>= 3.2.1, < 4)
-      httpclient (~> 2.8)
-      locale (~> 2.1)
-      multi_json (~> 1.10)
-      puppet-resource_api (~> 1.5)
-      semantic_puppet (~> 1.0)
-    puppet (6.4.2-universal-darwin)
-      CFPropertyList (~> 2.2)
       facter (> 2.0.1, < 4)
       fast_gettext (~> 1.1.2)
       hiera (>= 3.2.1, < 4)
@@ -144,7 +127,7 @@ PLATFORMS
   x86_64-darwin-18
 
 DEPENDENCIES
-  onceover!
+  onceover
   pry
 
 BUNDLED WITH
