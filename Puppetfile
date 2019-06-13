@@ -42,7 +42,7 @@ mod 'puppetlabs-registry', '2.1.0'
 mod 'puppetlabs-resource', '0.1.0'
 mod 'puppetlabs-resource_api', '1.0.0'
 mod 'puppetlabs-service', '0.5.0'
-mod 'puppetlabs-splunk_hec', '0.5.0'
+#mod 'puppetlabs-splunk_hec', '0.5.0'
 mod 'puppetlabs-sqlserver', '2.4.0'
 mod 'puppetlabs-stdlib', '5.2.0'
 mod 'puppetlabs-tomcat', '2.5.0'
@@ -102,6 +102,11 @@ mod 'yelp-uchiwa', '2.1.0'
 mod 'abuxton-pdk', '0.2.0'
 mod 'jdowning-rbenv', '2.4.0'
 mod 'tkishel-system_gem', '1.1.1'
+
+#replaces mod 'puppetlabs-splunk_hec', '0.5.0' until there is a newer release
+mod 'splunk_hec',
+  :git => 'https://github.com/mrzarquon/puppetlabs-splunk_hec.git',
+  :branch => 'pie_81_cd4pe_support'
 
 #replaces mod 'puppet-splunk', '7.3.0' until there is a newer release
 mod 'splunk',
