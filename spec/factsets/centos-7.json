@@ -1,0 +1,554 @@
+{
+  "name": "dylannix0.classroom.puppet.com",
+  "values": {
+    "aio_agent_build": "6.4.2",
+    "aio_agent_version": "6.4.2",
+    "architecture": "x86_64",
+    "augeas": {
+      "version": "1.11.0"
+    },
+    "augeasversion": "1.11.0",
+    "bios_release_date": "08/24/2006",
+    "bios_vendor": "Xen",
+    "bios_version": "4.2.amazon",
+    "blockdevice_xvda_size": 16106127360,
+    "blockdevices": "xvda",
+    "chassistype": "Other",
+    "cis_1_1_1_1": "fail",
+    "cis_1_1_1_2": "fail",
+    "cis_1_1_1_3": "fail",
+    "cis_1_1_1_4": "fail",
+    "cis_1_1_1_5": "fail",
+    "cis_1_1_1_6": "fail",
+    "cis_1_1_1_7": "fail",
+    "cis_1_1_1_8": "fail",
+    "cis_1_5_1": "fail",
+    "cis_1_5_3": "pass",
+    "cis_1_5_4": "pass",
+    "cis_1_7_1_1": "pass",
+    "cis_1_7_1_2": "fail",
+    "cis_1_7_1_3": "fail",
+    "cis_1_7_1_4": "pass",
+    "cis_1_7_1_5": "pass",
+    "cis_1_7_1_6": "pass",
+    "cis_5_2_1": "pass",
+    "cis_5_2_10": "fail",
+    "cis_5_2_11": "fail",
+    "cis_5_2_12": "fail",
+    "cis_5_2_13": "fail",
+    "cis_5_2_14": "fail",
+    "cis_5_2_15": "fail",
+    "cis_5_2_2": "fail",
+    "cis_5_2_3": "fail",
+    "cis_5_2_4": "fail",
+    "cis_5_2_5": "fail",
+    "cis_5_2_6": "fail",
+    "cis_5_2_7": "fail",
+    "cis_5_2_8": "fail",
+    "cis_5_2_9": "fail",
+    "datacenter": "unknown",
+    "dhcp_servers": {
+      "eth0": "10.170.0.1",
+      "system": "10.170.0.1"
+    },
+    "disks": {
+      "xvda": {
+        "size": "15.00 GiB",
+        "size_bytes": 16106127360
+      }
+    },
+    "dmi": {
+      "bios": {
+        "release_date": "08/24/2006",
+        "vendor": "Xen",
+        "version": "4.2.amazon"
+      },
+      "chassis": {
+        "type": "Other"
+      },
+      "manufacturer": "Xen",
+      "product": {
+        "name": "HVM domU",
+        "serial_number": "ec214653-2984-b138-27e7-14b219cc49f3",
+        "uuid": "EC214653-2984-B138-27E7-14B219CC49F3"
+      }
+    },
+    "domain": "classroom.puppet.com",
+    "ec2_metadata": {
+      "ami-id": "ami-0b6215e05125362c0",
+      "ami-launch-index": "0",
+      "ami-manifest-path": "(unknown)",
+      "block-device-mapping": {
+        "ami": "/dev/sda1",
+        "root": "/dev/sda1"
+      },
+      "events": {
+        "maintenance": {
+          "history": "[]",
+          "scheduled": "[]"
+        }
+      },
+      "hostname": "ip-10-170-0-235.eu-west-2.compute.internal",
+      "identity-credentials": {
+        "ec2": {
+          "info": "{\n  \"Code\" : \"Success\",\n  \"LastUpdated\" : \"2019-06-11T08:36:53Z\",\n  \"AccountId\" : \"051431149377\"\n}"
+        }
+      },
+      "instance-action": "none",
+      "instance-id": "i-0ab4f555f75cf8535",
+      "instance-type": "t2.micro",
+      "local-hostname": "ip-10-170-0-235.eu-west-2.compute.internal",
+      "local-ipv4": "10.170.0.235",
+      "mac": "0a:ee:80:5b:42:0e",
+      "metrics": {
+        "vhostmd": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>"
+      },
+      "network": {
+        "interfaces": {
+          "macs": {
+            "0a:ee:80:5b:42:0e": {
+              "device-number": "0",
+              "interface-id": "eni-0920b20ef952a8ee6",
+              "ipv4-associations": {
+                "52.56.194.182": "10.170.0.235"
+              },
+              "local-hostname": "ip-10-170-0-235.eu-west-2.compute.internal",
+              "local-ipv4s": "10.170.0.235",
+              "mac": "0a:ee:80:5b:42:0e",
+              "owner-id": "051431149377",
+              "public-hostname": "ec2-52-56-194-182.eu-west-2.compute.amazonaws.com",
+              "public-ipv4s": "52.56.194.182",
+              "security-group-ids": "sg-0853a9889ee628b02",
+              "security-groups": "dylan-lmsinstance-securitygroup",
+              "subnet-id": "subnet-0f860018cf3fde68d",
+              "subnet-ipv4-cidr-block": "10.170.0.0/24",
+              "vpc-id": "vpc-0f37c454b552d2b69",
+              "vpc-ipv4-cidr-block": "10.170.0.0/16",
+              "vpc-ipv4-cidr-blocks": "10.170.0.0/16"
+            }
+          }
+        }
+      },
+      "placement": {
+        "availability-zone": "eu-west-2b"
+      },
+      "product-codes": "aw0evgkw8e5c1q413zgy5pjce",
+      "profile": "default-hvm",
+      "public-hostname": "ec2-52-56-194-182.eu-west-2.compute.amazonaws.com",
+      "public-ipv4": "52.56.194.182",
+      "public-keys": {
+        "0": {
+          "openssh-key": "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQCsVJXTqTROaG6TA9NlsTiYRwcJgYOBMdWOz8PW+xBwBN2FYwFJMsPQI2jlpJMivQIr94V2YiPZtGj3yqbeLvRYIo4qDCKchoUNNZMWZQvUZeeBKl9NvJ/YhlscMO918PsvkQmctJNLzhjaSOFEPvgdvjv3hpmw0kP1hFWrrfATR5QkXkg8qQ+qSNDNFVurtpUkoRt4+JFATk72mOyr3a/9iNLP9O1Yc82f9gZHboxsk1x7HSxQm5vC1fLsEQdJ0ZzF/L72DBbyUG9XObMxGHH3YtoHP+0zXhVDXt6QQoqLlt+7MFiTBZejwcIzY4UMUivEx3hwsfN+EnI1PREB8aO7 student"
+        }
+      },
+      "reservation-id": "r-0351401d6071f09cb",
+      "security-groups": "dylan-lmsinstance-securitygroup",
+      "services": {
+        "domain": "amazonaws.com",
+        "partition": "aws"
+      }
+    },
+    "ec2_userdata": "#!/bin/bash\nexec > >(tee /var/log/user-data.log|logger -t user-data -s 2>/dev/console) 2>&1\n# Write out new agent name for later use\necho \"dylannix0.classroom.puppet.com\" > /etc/default/agentname\n\n# Create hosts entry so we can resolve master\necho \"10.170.0.188 puppet.classroom.puppet.com puppet\" >> /etc/hosts\necho \"10.170.0.86 gitlab.classroom.puppet.com gitlab gitlab.puppet.vm\" >> /etc/hosts\n\n# Update Hostname TRAINTECH-7159\nhostnamectl set-hostname dylannix0.classroom.puppet.com\n\n# Install required utils\nyum install -y curl\n\n# Create the installer script\ncat << EOF > /home/centos/install_pe_agent.sh\ncurl -k \"https://puppet.classroom.puppet.com:8140/packages/current/install.bash\" | sudo bash -s agent:certname=dylannix0.classroom.puppet.com\nEOF\n",
+    "fact_json": "true",
+    "fact_ruby": "True",
+    "fact_yaml": true,
+    "facterversion": "3.13.2",
+    "filesystems": "xfs",
+    "fips_enabled": false,
+    "fqdn": "dylannix0.classroom.puppet.com",
+    "gid": "root",
+    "git_exec_path": "/usr/libexec/git-core",
+    "git_html_path": "/usr/share/doc/git-1.8.3.1",
+    "git_version": "1.8.3.1",
+    "hardwareisa": "x86_64",
+    "hardwaremodel": "x86_64",
+    "homedir": "/root",
+    "hostname": "dylannix0",
+    "hypervisors": {
+      "xen": {
+        "context": "hvm",
+        "privileged": false
+      }
+    },
+    "id": "root",
+    "identity": {
+      "gid": 0,
+      "group": "root",
+      "privileged": true,
+      "uid": 0,
+      "user": "root"
+    },
+    "interfaces": "eth0,lo",
+    "ip6tables_version": "1.4.21",
+    "ipaddress": "10.170.0.235",
+    "ipaddress6": "fe80::8ee:80ff:fe5b:420e",
+    "ipaddress6_eth0": "fe80::8ee:80ff:fe5b:420e",
+    "ipaddress6_lo": "::1",
+    "ipaddress_eth0": "10.170.0.235",
+    "ipaddress_lo": "127.0.0.1",
+    "iptables_version": "1.4.21",
+    "is_pe": false,
+    "is_virtual": true,
+    "jenkins_plugins": "",
+    "kernel": "Linux",
+    "kernelmajversion": "3.10",
+    "kernelrelease": "3.10.0-957.10.1.el7.x86_64",
+    "kernelversion": "3.10.0",
+    "load_averages": {
+      "15m": 0.1,
+      "1m": 0.69,
+      "5m": 0.17
+    },
+    "macaddress": "0a:ee:80:5b:42:0e",
+    "macaddress_eth0": "0a:ee:80:5b:42:0e",
+    "manufacturer": "Xen",
+    "memory": {
+      "system": {
+        "available": "567.80 MiB",
+        "available_bytes": 595382272,
+        "capacity": "42.61%",
+        "total": "989.45 MiB",
+        "total_bytes": 1037508608,
+        "used": "421.64 MiB",
+        "used_bytes": 442126336
+      }
+    },
+    "memoryfree": "567.80 MiB",
+    "memoryfree_mb": 567.80078125,
+    "memorysize": "989.45 MiB",
+    "memorysize_mb": 989.4453125,
+    "mountpoints": {
+      "/": {
+        "available": "12.71 GiB",
+        "available_bytes": 13651755008,
+        "capacity": "15.18%",
+        "device": "/dev/xvda1",
+        "filesystem": "xfs",
+        "options": [
+          "rw",
+          "seclabel",
+          "relatime",
+          "attr2",
+          "inode64",
+          "noquota"
+        ],
+        "size": "14.99 GiB",
+        "size_bytes": 16094572544,
+        "used": "2.28 GiB",
+        "used_bytes": 2442817536
+      },
+      "/dev/shm": {
+        "available": "494.72 MiB",
+        "available_bytes": 518754304,
+        "capacity": "0%",
+        "device": "tmpfs",
+        "filesystem": "tmpfs",
+        "options": [
+          "rw",
+          "seclabel",
+          "nosuid",
+          "nodev"
+        ],
+        "size": "494.72 MiB",
+        "size_bytes": 518754304,
+        "used": "0 bytes",
+        "used_bytes": 0
+      },
+      "/run": {
+        "available": "481.91 MiB",
+        "available_bytes": 505315328,
+        "capacity": "2.59%",
+        "device": "tmpfs",
+        "filesystem": "tmpfs",
+        "options": [
+          "rw",
+          "seclabel",
+          "nosuid",
+          "nodev",
+          "mode=755"
+        ],
+        "size": "494.72 MiB",
+        "size_bytes": 518754304,
+        "used": "12.82 MiB",
+        "used_bytes": 13438976
+      },
+      "/run/user/1000": {
+        "available": "98.95 MiB",
+        "available_bytes": 103751680,
+        "capacity": "0%",
+        "device": "tmpfs",
+        "filesystem": "tmpfs",
+        "options": [
+          "rw",
+          "seclabel",
+          "nosuid",
+          "nodev",
+          "relatime",
+          "size=101320k",
+          "mode=700",
+          "uid=1000",
+          "gid=1000"
+        ],
+        "size": "98.95 MiB",
+        "size_bytes": 103751680,
+        "used": "0 bytes",
+        "used_bytes": 0
+      },
+      "/sys/fs/cgroup": {
+        "available": "494.72 MiB",
+        "available_bytes": 518754304,
+        "capacity": "0%",
+        "device": "tmpfs",
+        "filesystem": "tmpfs",
+        "options": [
+          "ro",
+          "seclabel",
+          "nosuid",
+          "nodev",
+          "noexec",
+          "mode=755"
+        ],
+        "size": "494.72 MiB",
+        "size_bytes": 518754304,
+        "used": "0 bytes",
+        "used_bytes": 0
+      }
+    },
+    "mtu_eth0": 9001,
+    "mtu_lo": 65536,
+    "mysql_server_id": 33931406,
+    "netmask": "255.255.255.0",
+    "netmask6": "ffff:ffff:ffff:ffff::",
+    "netmask6_eth0": "ffff:ffff:ffff:ffff::",
+    "netmask6_lo": "ffff:ffff:ffff:ffff:ffff:ffff:ffff:ffff",
+    "netmask_eth0": "255.255.255.0",
+    "netmask_lo": "255.0.0.0",
+    "network": "10.170.0.0",
+    "network6": "fe80::",
+    "network6_eth0": "fe80::",
+    "network6_lo": "::1",
+    "network_eth0": "10.170.0.0",
+    "network_lo": "127.0.0.0",
+    "networking": {
+      "dhcp": "10.170.0.1",
+      "domain": "classroom.puppet.com",
+      "fqdn": "dylannix0.classroom.puppet.com",
+      "hostname": "dylannix0",
+      "interfaces": {
+        "eth0": {
+          "bindings": [
+            {
+              "address": "10.170.0.235",
+              "netmask": "255.255.255.0",
+              "network": "10.170.0.0"
+            }
+          ],
+          "bindings6": [
+            {
+              "address": "fe80::8ee:80ff:fe5b:420e",
+              "netmask": "ffff:ffff:ffff:ffff::",
+              "network": "fe80::"
+            }
+          ],
+          "dhcp": "10.170.0.1",
+          "ip": "10.170.0.235",
+          "ip6": "fe80::8ee:80ff:fe5b:420e",
+          "mac": "0a:ee:80:5b:42:0e",
+          "mtu": 9001,
+          "netmask": "255.255.255.0",
+          "netmask6": "ffff:ffff:ffff:ffff::",
+          "network": "10.170.0.0",
+          "network6": "fe80::"
+        },
+        "lo": {
+          "bindings": [
+            {
+              "address": "127.0.0.1",
+              "netmask": "255.0.0.0",
+              "network": "127.0.0.0"
+            }
+          ],
+          "bindings6": [
+            {
+              "address": "::1",
+              "netmask": "ffff:ffff:ffff:ffff:ffff:ffff:ffff:ffff",
+              "network": "::1"
+            }
+          ],
+          "ip": "127.0.0.1",
+          "ip6": "::1",
+          "mtu": 65536,
+          "netmask": "255.0.0.0",
+          "netmask6": "ffff:ffff:ffff:ffff:ffff:ffff:ffff:ffff",
+          "network": "127.0.0.0",
+          "network6": "::1"
+        }
+      },
+      "ip": "10.170.0.235",
+      "ip6": "fe80::8ee:80ff:fe5b:420e",
+      "mac": "0a:ee:80:5b:42:0e",
+      "mtu": 9001,
+      "netmask": "255.255.255.0",
+      "netmask6": "ffff:ffff:ffff:ffff::",
+      "network": "10.170.0.0",
+      "network6": "fe80::",
+      "primary": "eth0"
+    },
+    "operatingsystem": "CentOS",
+    "operatingsystemmajrelease": "7",
+    "operatingsystemrelease": "7.6.1810",
+    "os": {
+      "architecture": "x86_64",
+      "family": "RedHat",
+      "hardware": "x86_64",
+      "name": "CentOS",
+      "release": {
+        "full": "7.6.1810",
+        "major": "7",
+        "minor": "6"
+      },
+      "selinux": {
+        "config_mode": "enforcing",
+        "config_policy": "targeted",
+        "current_mode": "enforcing",
+        "enabled": true,
+        "enforced": true,
+        "policy_version": "31"
+      }
+    },
+    "osfamily": "RedHat",
+    "osreleasemaj": "7",
+    "package_provider": "yum",
+    "partitions": {
+      "/dev/xvda1": {
+        "filesystem": "xfs",
+        "mount": "/",
+        "size": "15.00 GiB",
+        "size_bytes": 16105061888,
+        "uuid": "8c1540fa-e2b4-407d-bcd1-59848a73e463"
+      }
+    },
+    "path": "/sbin:/bin:/usr/sbin:/usr/bin:/usr/local/bin:/opt/puppetlabs/pdk/private/ruby/2.4.4/bin:/opt/puppetlabs/bin",
+    "pe_concat_basedir": "/opt/puppetlabs/puppet/cache/pe_concat",
+    "pe_razor_server_version": "package pe-razor-server is not installed",
+    "pe_server_version": "2019.1",
+    "physicalprocessorcount": 1,
+    "platform_symlink_writable": true,
+    "platform_tag": "el-7-x86_64",
+    "powershell_version": 0,
+    "processor0": "Intel(R) Xeon(R) CPU E5-2676 v3 @ 2.40GHz",
+    "processorcount": 1,
+    "processors": {
+      "count": 1,
+      "isa": "x86_64",
+      "models": [
+        "Intel(R) Xeon(R) CPU E5-2676 v3 @ 2.40GHz"
+      ],
+      "physicalcount": 1
+    },
+    "productname": "HVM domU",
+    "puppet_environmentpath": "/etc/puppetlabs/code/environments",
+    "puppet_files_dir_present": false,
+    "puppet_inventory_metadata": {
+      "packages": {
+        "collection_enabled": false,
+        "last_collection_time": "0.0s"
+      }
+    },
+    "puppet_server": "puppet.classroom.puppet.com",
+    "puppet_settings_confdir": "/etc/puppetlabs",
+    "puppet_settings_deviceconfig": "/etc/puppetlabs/puppet/device.conf",
+    "puppet_vardir": "/opt/puppetlabs/puppet/cache",
+    "puppetversion": "6.4.2",
+    "pygpgme_installed": "true",
+    "python2_release": "2.7",
+    "python2_version": "2.7.5",
+    "python_release": "2.7",
+    "python_version": "2.7.5",
+    "root_home": "/root",
+    "ruby": {
+      "platform": "x86_64-linux",
+      "sitedir": "/opt/puppetlabs/puppet/lib/ruby/site_ruby/2.5.0",
+      "version": "2.5.3"
+    },
+    "rubyplatform": "x86_64-linux",
+    "rubysitedir": "/opt/puppetlabs/puppet/lib/ruby/site_ruby/2.5.0",
+    "rubyversion": "2.5.3",
+    "selinux": true,
+    "selinux_config_mode": "enforcing",
+    "selinux_config_policy": "targeted",
+    "selinux_current_mode": "enforcing",
+    "selinux_enforced": true,
+    "selinux_policyversion": "31",
+    "selinux_semanage_is_python3": false,
+    "serialnumber": "ec214653-2984-b138-27e7-14b219cc49f3",
+    "service_provider": "systemd",
+    "should_install_shiro_ini": true,
+    "ssh": {
+      "ecdsa": {
+        "fingerprints": {
+          "sha1": "SSHFP 3 1 8f3bb6b08b9d1efbd9ad325d33901f2b2635a867",
+          "sha256": "SSHFP 3 2 e6afd809c13ccaf8d06fe0e1b27ae263f5070d516019dcd584998d8939eb2b0f"
+        },
+        "key": "AAAAE2VjZHNhLXNoYTItbmlzdHAyNTYAAAAIbmlzdHAyNTYAAABBBD3oFOlIRA8t7peOhPYWOCrpqgFrN7nJD+ZOQJy7eTmcbgtrLaopiIXo0bdERrkYSRz2aqpumRvf+E5VOkwh7tQ=",
+        "type": "ecdsa-sha2-nistp256"
+      },
+      "ed25519": {
+        "fingerprints": {
+          "sha1": "SSHFP 4 1 8744ab96221ae95ff7110437d982cae29ce659c3",
+          "sha256": "SSHFP 4 2 89ce65be3e2cae3f62875b5080a057307fbfaa98107ae904aa5ccb8beef148ac"
+        },
+        "key": "AAAAC3NzaC1lZDI1NTE5AAAAIOEf5L7oN5S/oB36kGEAOG1HTRp0SalPJc+is0914e8F",
+        "type": "ssh-ed25519"
+      },
+      "rsa": {
+        "fingerprints": {
+          "sha1": "SSHFP 1 1 1401bd49b5dac7960cb3b3651e31aa84af7a9502",
+          "sha256": "SSHFP 1 2 5c13e9572caf1a7d0fe849b7cb73be760d08d8cd2c73230302e42af90626bffc"
+        },
+        "key": "AAAAB3NzaC1yc2EAAAADAQABAAABAQCinTBxzBefzw/ok8Yfwwwfd46rwcmcAIOnPwX84vcXQ8esB1o6TdB6mDUVkDB2d697dzMAywkzX6/EakJB5E/wLd+kuac5FMWvo72pseKRcsWM1BanVTKmnIkxUQEPiwVZWabJcmcVpK4+DsNch9BYsMr/NynFY4QmBtDMRcwn4Hyv3fygMCQtfYq4XHzbbybtKp76kZmRDDjD5R4GkToVNBqsYtEkM6ajgdWBaWD/oFZuYOqca33jQwPgsFKIZLu8hOov5hEBKLZJ0Je/X3Nis6cPXvj5Wo8iqLHowhSddg7qdaH5hTkref+Gbr5DLFTvIkIZcjN7lEh+v1rzdMlZ",
+        "type": "ssh-rsa"
+      }
+    },
+    "ssh_version": "OpenSSH_7.4p1",
+    "ssh_version_numeric": "7.4",
+    "sshecdsakey": "AAAAE2VjZHNhLXNoYTItbmlzdHAyNTYAAAAIbmlzdHAyNTYAAABBBD3oFOlIRA8t7peOhPYWOCrpqgFrN7nJD+ZOQJy7eTmcbgtrLaopiIXo0bdERrkYSRz2aqpumRvf+E5VOkwh7tQ=",
+    "sshed25519key": "AAAAC3NzaC1lZDI1NTE5AAAAIOEf5L7oN5S/oB36kGEAOG1HTRp0SalPJc+is0914e8F",
+    "sshfp_ecdsa": "SSHFP 3 1 8f3bb6b08b9d1efbd9ad325d33901f2b2635a867\nSSHFP 3 2 e6afd809c13ccaf8d06fe0e1b27ae263f5070d516019dcd584998d8939eb2b0f",
+    "sshfp_ed25519": "SSHFP 4 1 8744ab96221ae95ff7110437d982cae29ce659c3\nSSHFP 4 2 89ce65be3e2cae3f62875b5080a057307fbfaa98107ae904aa5ccb8beef148ac",
+    "sshfp_rsa": "SSHFP 1 1 1401bd49b5dac7960cb3b3651e31aa84af7a9502\nSSHFP 1 2 5c13e9572caf1a7d0fe849b7cb73be760d08d8cd2c73230302e42af90626bffc",
+    "sshrsakey": "AAAAB3NzaC1yc2EAAAADAQABAAABAQCinTBxzBefzw/ok8Yfwwwfd46rwcmcAIOnPwX84vcXQ8esB1o6TdB6mDUVkDB2d697dzMAywkzX6/EakJB5E/wLd+kuac5FMWvo72pseKRcsWM1BanVTKmnIkxUQEPiwVZWabJcmcVpK4+DsNch9BYsMr/NynFY4QmBtDMRcwn4Hyv3fygMCQtfYq4XHzbbybtKp76kZmRDDjD5R4GkToVNBqsYtEkM6ajgdWBaWD/oFZuYOqca33jQwPgsFKIZLu8hOov5hEBKLZJ0Je/X3Nis6cPXvj5Wo8iqLHowhSddg7qdaH5hTkref+Gbr5DLFTvIkIZcjN7lEh+v1rzdMlZ",
+    "staging_http_get": "curl",
+    "system_uptime": {
+      "days": 0,
+      "hours": 16,
+      "seconds": 60603,
+      "uptime": "16:50 hours"
+    },
+    "systemd": true,
+    "systemd_internal_services": {
+      "systemd-bootchart.service": "disabled",
+      "systemd-nspawn@.service": "disabled",
+      "systemd-readahead-collect.service": "enabled",
+      "systemd-readahead-done.service": "indirect",
+      "systemd-readahead-drop.service": "enabled",
+      "systemd-readahead-replay.service": "enabled"
+    },
+    "systemd_version": "219",
+    "text_fact": "true",
+    "timezone": "UTC",
+    "uptime": "16:50 hours",
+    "uptime_days": 0,
+    "uptime_hours": 16,
+    "uptime_seconds": 60603,
+    "uuid": "EC214653-2984-B138-27E7-14B219CC49F3",
+    "vcsrepo_svn_ver": "",
+    "virtual": "xenhvm",
+    "windows_java_temp": "\\tmp",
+    "clientcert": "dylannix0.classroom.puppet.com",
+    "clientversion": "6.4.2",
+    "clientnoop": false
+  },
+  "timestamp": "2019-06-11T09:37:07.899868167+00:00",
+  "expiration": "2019-06-11T10:07:07.900295822+00:00"
+}

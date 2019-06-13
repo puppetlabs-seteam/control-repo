@@ -1,92 +1,19 @@
-GIT
-  remote: https://github.com/mcanevet/rspec-puppet-facts.git
-  revision: fe21de12108fbab0123bdc4db2365a29ea62f171
-  ref: fe21de12108fbab0123bdc4db2365a29ea62f171
-  specs:
-    rspec-puppet-facts (1.8.0)
-      facter
-      facterdb (>= 0.3.0)
-      json
-      mcollective-client
-      puppet
-
-GIT
-  remote: https://github.com/rodjek/rspec-puppet.git
-  revision: eaba657a8e876c8c4a881a6d47df76cfdda62b3f
-  ref: eaba657a8e876c8c4a881a6d47df76cfdda62b3f
-  specs:
-    rspec-puppet (2.5.0)
-      rspec
-
 GEM
   remote: https://rubygems.org/
   specs:
     CFPropertyList (2.3.6)
-    addressable (2.6.0)
-      public_suffix (>= 2.0.2, < 4.0)
-    ansi (1.5.0)
-    ast (2.4.0)
-    beaker (4.6.0)
-      beaker-hostgenerator
-      hocon (~> 1.0)
-      in-parallel (~> 0.1)
-      inifile (~> 3.0)
-      minitar (~> 0.6)
-      minitest (~> 5.4)
-      net-scp (~> 1.2)
-      net-ssh (~> 4.0)
-      open_uri_redirections (~> 0.2.1)
-      pry-byebug (~> 3.4.2)
-      rb-readline (~> 0.5.3)
-      rsync (~> 1.0.9)
-      stringify-hash (~> 0.0)
-      thor (~> 0.19)
-    beaker-abs (0.5.0)
-    beaker-answers (0.25.0)
-      hocon (~> 1.0)
-      require_all (~> 1.3.2)
-      stringify-hash (~> 0.0.0)
-    beaker-hostgenerator (1.1.26)
-      deep_merge (~> 1.0)
-      stringify-hash (~> 0.0.0)
-    beaker-pe (2.0.6)
-      beaker (~> 4.0)
-      beaker-abs
-      beaker-answers (~> 0.0)
-      beaker-puppet (~> 1.0)
-      beaker-vmpooler (~> 1.0)
-      stringify-hash (~> 0.0.0)
-    beaker-puppet (1.16.0)
-      beaker (~> 4.1)
-      in-parallel (~> 0.1)
-      oga
-      stringify-hash (~> 0.0.0)
-    beaker-puppet_install_helper (0.9.7)
-      beaker (~> 4.0)
-      beaker-pe (~> 2.0)
-    beaker-rspec (6.2.4)
-      beaker (> 3.0)
-      rspec (~> 3.0)
-      serverspec (~> 2)
-      specinfra (~> 2)
-    beaker-vmpooler (1.3.1)
-      stringify-hash (~> 0.0.0)
-    byebug (9.0.6)
+    backticks (1.0.2)
+    blockenspiel (0.5.0)
     coderay (1.1.2)
     colored (1.2)
-    cri (2.15.3)
-      colored (~> 1.2)
+    cri (2.15.6)
     deep_merge (1.2.1)
     diff-lcs (1.3)
-    docile (1.3.1)
     domain_name (0.5.20180417)
       unf (>= 0.0.5, < 1.0.0)
     facter (2.5.1)
     facter (2.5.1-universal-darwin)
       CFPropertyList (~> 2.2)
-    facterdb (0.6.0)
-      facter
-      jgrep
     faraday (0.13.1)
       multipart-post (>= 1.2, < 3)
     faraday_middleware (0.12.2)
@@ -101,85 +28,76 @@ GEM
       locale
     git (1.5.0)
     hiera (3.5.0)
-    hiera-eyaml (3.0.0)
-      highline (~> 1.6.19)
-      optimist
-    highline (1.6.21)
-    hirb (0.7.3)
     hocon (1.2.5)
     http-cookie (1.0.3)
       domain_name (~> 0.5)
-    in-parallel (0.1.17)
-    inifile (3.0.0)
-    jaro_winkler (1.5.2)
-    jgrep (1.5.0)
+    httpclient (2.8.3)
     json (2.2.0)
-    json-schema (2.8.1)
-      addressable (>= 2.4)
+    little-plugger (1.1.4)
     locale (2.1.2)
     log4r (1.1.10)
-    master_manipulator (2.1.1)
-      beaker (>= 2.7.0)
-      multi_json
-    mcollective-client (2.12.4)
-      json
-      stomp
-      systemu
+    logging (2.2.2)
+      little-plugger (~> 1.1)
+      multi_json (~> 1.10)
     metaclass (0.0.4)
-    metadata-json-lint (2.2.0)
-      json-schema (~> 2.8)
-      spdx-licenses (~> 1.0)
     method_source (0.9.2)
     mime-types (3.2.2)
       mime-types-data (~> 3.2015)
-    mime-types-data (3.2018.0812)
+    mime-types-data (3.2019.0331)
     minitar (0.8)
-    minitest (5.11.3)
     mocha (1.8.0)
       metaclass (~> 0.0.1)
     molinillo (0.6.6)
     multi_json (1.13.1)
-    multipart-post (2.0.0)
-    net-scp (1.2.1)
-      net-ssh (>= 2.6.5)
-    net-ssh (4.2.0)
-    net-telnet (0.1.1)
+    multipart-post (2.1.1)
     netrc (0.11.0)
-    oga (2.15)
-      ast
-      ruby-ll (~> 2.1)
-    open_uri_redirections (0.2.1)
-    optimist (3.0.0)
-    parallel (1.14.0)
-    parallel_tests (2.28.0)
+    onceover (3.13.4)
+      backticks (>= 1.0.2)
+      colored (~> 1.2)
+      cri (>= 2.6)
+      deep_merge (>= 1.0.0)
+      git
+      json (>= 1.8.2)
+      logging (>= 2.0.0)
+      parallel_tests (>= 2.0.0)
+      puppet (>= 3.4.0)
+      puppetlabs_spec_helper (>= 0.4.0)
+      r10k (>= 2.1.0)
+      rake (>= 10.0.0)
+      rspec (>= 3.0.0)
+      rspec-puppet (>= 2.4.0)
+      rspec_junit_formatter (>= 0.2.0)
+      table_print (>= 1.0.0)
+      versionomy (>= 0.5.0)
+    parallel (1.17.0)
+    parallel_tests (2.29.1)
       parallel
-    parser (2.6.2.0)
-      ast (~> 2.4.0)
     pathspec (0.2.1)
     pry (0.12.2)
       coderay (~> 1.1.0)
       method_source (~> 0.9.0)
-    pry-byebug (3.4.3)
-      byebug (>= 9.0, < 9.1)
-      pry (~> 0.10)
-    psych (3.1.0)
-    public_suffix (3.0.3)
-    puppet (5.5.10)
+    puppet (6.4.2)
       facter (> 2.0.1, < 4)
       fast_gettext (~> 1.1.2)
       hiera (>= 3.2.1, < 4)
+      httpclient (~> 2.8)
       locale (~> 2.1)
       multi_json (~> 1.10)
-    puppet (5.5.10-universal-darwin)
+      puppet-resource_api (~> 1.5)
+      semantic_puppet (~> 1.0)
+    puppet (6.4.2-universal-darwin)
       CFPropertyList (~> 2.2)
       facter (> 2.0.1, < 4)
       fast_gettext (~> 1.1.2)
       hiera (>= 3.2.1, < 4)
+      httpclient (~> 2.8)
       locale (~> 2.1)
       multi_json (~> 1.10)
-    puppet-blacksmith (4.1.2)
-      rest-client (~> 2.0)
+      puppet-resource_api (~> 1.5)
+      semantic_puppet (~> 1.0)
     puppet-lint (2.3.6)
+    puppet-resource_api (1.8.3)
+      hocon (>= 1.0)
     puppet-syntax (2.4.3)
       rake
     puppet_forge (2.2.9)
@@ -188,15 +106,15 @@ GEM
       gettext-setup (~> 0.11)
       minitar
       semantic_puppet (~> 1.0)
-    puppetlabs_spec_helper (2.13.1)
+    puppetlabs_spec_helper (2.14.1)
       mocha (~> 1.0)
       pathspec (~> 0.2.1)
       puppet-lint (~> 2.0)
       puppet-syntax (~> 2.0)
       rspec-puppet (~> 2.0)
-    r10k (3.1.1)
+    r10k (3.3.0)
       colored (= 1.2)
-      cri (~> 2.15.1)
+      cri (= 2.15.6)
       gettext-setup (~> 0.24)
       log4r (= 1.1.10)
       multi_json (~> 1.10)
@@ -208,10 +126,7 @@ GEM
       rake
       semverse (~> 2.0)
       solve
-    rainbow (3.0.0)
     rake (12.3.2)
-    rb-readline (0.5.5)
-    require_all (1.3.3)
     rest-client (2.0.2)
       http-cookie (>= 1.0.2, < 2.0)
       mime-types (>= 1.16, < 4.0)
@@ -222,66 +137,29 @@ GEM
       rspec-mocks (~> 3.8.0)
     rspec-core (3.8.0)
       rspec-support (~> 3.8.0)
-    rspec-expectations (3.8.2)
+    rspec-expectations (3.8.4)
       diff-lcs (>= 1.2.0, < 2.0)
       rspec-support (~> 3.8.0)
-    rspec-its (1.2.0)
-      rspec-core (>= 3.0.0)
-      rspec-expectations (>= 3.0.0)
-    rspec-mocks (3.8.0)
+    rspec-mocks (3.8.1)
       diff-lcs (>= 1.2.0, < 2.0)
       rspec-support (~> 3.8.0)
-    rspec-support (3.8.0)
-    rsync (1.0.9)
-    rubocop (0.66.0)
-      jaro_winkler (~> 1.5.1)
-      parallel (~> 1.10)
-      parser (>= 2.5, != 2.5.1.1)
-      psych (>= 3.1.0)
-      rainbow (>= 2.2.2, < 4.0)
-      ruby-progressbar (~> 1.7)
-      unicode-display_width (>= 1.4.0, < 1.6)
-    rubocop-rspec (1.32.0)
-      rubocop (>= 0.60.0)
-    ruby-ll (2.1.2)
-      ansi
-      ast
-    ruby-progressbar (1.10.0)
+    rspec-puppet (2.7.5)
+      rspec
+    rspec-support (3.8.2)
+    rspec_junit_formatter (0.4.1)
+      rspec-core (>= 2, < 4, != 2.12.0)
     semantic_puppet (1.0.2)
     semverse (2.0.0)
-    serverspec (2.41.3)
-      multi_json
-      rspec (~> 3.0)
-      rspec-its
-      specinfra (~> 2.72)
-    sfl (2.3)
-    simplecov (0.16.1)
-      docile (~> 1.1)
-      json (>= 1.8, < 3)
-      simplecov-html (~> 0.10.0)
-    simplecov-console (0.4.2)
-      ansi
-      hirb
-      simplecov
-    simplecov-html (0.10.2)
     solve (4.0.2)
       molinillo (~> 0.6)
       semverse (>= 1.1, < 4.0)
-    spdx-licenses (1.2.0)
-    specinfra (2.76.9)
-      net-scp
-      net-ssh (>= 2.7)
-      net-telnet (= 0.1.1)
-      sfl
-    stomp (1.4.8)
-    stringify-hash (0.0.2)
-    systemu (2.6.5)
+    table_print (1.5.6)
     text (1.3.1)
-    thor (0.20.3)
     unf (0.1.4)
       unf_ext
-    unf_ext (0.0.7.5)
-    unicode-display_width (1.5.0)
+    unf_ext (0.0.7.6)
+    versionomy (0.5.0)
+      blockenspiel (~> 0.5)
 
 PLATFORMS
   ruby
@@ -289,30 +167,10 @@ PLATFORMS
   x86_64-darwin-18
 
 DEPENDENCIES
-  CFPropertyList
-  beaker (>= 3.16.0)
-  beaker-puppet_install_helper
-  beaker-rspec
-  facter
-  hiera-eyaml
-  master_manipulator
-  metadata-json-lint
-  parallel_tests
-  puppet (< 6.0.0)
-  puppet-blacksmith (>= 4.1.2)
-  puppet-syntax (>= 2.4.0)
-  puppetlabs_spec_helper
-  r10k
+  onceover
+  pry
   ra10ke
   rest-client
-  rspec-puppet!
-  rspec-puppet-facts!
-  rubocop
-  rubocop-rspec
-  semantic_puppet
-  serverspec
-  simplecov
-  simplecov-console
 
 BUNDLED WITH
-   1.17.2
+   1.17.3

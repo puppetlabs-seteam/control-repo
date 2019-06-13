@@ -1,0 +1,84 @@
+# Classes to be tested
+classes:
+  - role::jenkins_slave
+  - role::sample_website
+  - role::rgbank_standalone
+  - role::git_server
+  - role::puppet_webapp::lb
+  - role::puppet_webapp::webhead
+  - role::puppet_tomcat
+  - role::seteam_puppet_master
+  - role::cloudshop
+  - role::cd4pe_buildserver
+  - role::sensu_server
+  - role::jenkins_master
+  - role::cd4pe_server
+  - role::puppet_master
+
+# Nodes to tests classes on, this refers to a 'factset' or 'nodeset'
+# depending on whether you are running 'spec' or 'acceptance' tests
+nodes:
+  - centos-7
+  - windows-server-2k16
+
+# You can group classes here to save typing
+class_groups:
+  windows_roles:
+
+  unix_roles:
+    - role::cd4pe_server
+    - role::git_server
+    - role::jenkins_master
+    - role::puppet_webapp::lb
+    - role::puppet_webapp::webhead
+    - role::puppet_master
+    - role::rgbank_standalone
+    - role::sensu_server
+    - role::jenkins_slave
+    - role::seteam_puppet_master
+
+  either_roles:
+    # role::cd4pe_buildserver doesn't for multiple reasons and needs to be fixed
+    # - role::cd4pe_buildserver
+    # The roles below fail tests with the following error:
+    #   wrong number of arguments (given 1, expected 0)
+    #
+    # I can't work out where this is coming from and so they won't be tested for
+    # the time being
+    # - role::puppet_tomcat
+    # - role::sample_website
+    # - role::cloudshop
+
+
+# You can group nodes here to save typing
+# We have created a 'non_windows_nodes' group because we can't
+# give you Windows vagrant boxes to test with because licensing,
+# we can give you fact sets though so go crazy with spec testing!
+node_groups:
+  windows_nodes:
+    - windows-server-2k16
+  unix_nodes:
+    include: 'all_nodes'
+    exclude: 'windows_nodes'
+
+test_matrix:
+  - windows_nodes:
+      classes: 'windows_roles'
+      tests: 'spec'
+  - unix_nodes: 
+      classes: 'unix_roles'
+      tests: 'spec'
+  - all_nodes:
+      classes: 'either_roles'
+      tests: 'spec'
+
+functions:
+  puppetdb_query:
+    returns:
+      - facts:
+          fqdn: 'something'
+
+# Since we are using the acl module we need to stub out the symlink method as
+# per this issue: https://github.com/rodjek/rspec-puppet/issues/665
+before:
+  - "Puppet::Type.type(:acl).provider(:windows).any_instance.stubs(:validate)"

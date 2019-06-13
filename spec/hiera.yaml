@@ -1,0 +1,15 @@
+---
+version: 5
+defaults:
+  datadir: ../data
+  data_hash: yaml_data
+
+hierarchy:
+  - name: 'Environment data'
+    paths:
+      - 'nodes/%{::fqdn}.yaml'
+      - 'location/%{::location}/%{::role}.yaml'
+      - 'role/%{::tier}/%{::role}.yaml'
+      - 'role/%{::role}.yaml'
+      - 'location/%{::location}.yaml'
+      - 'common.yaml'
