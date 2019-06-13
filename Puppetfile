@@ -106,7 +106,7 @@ mod 'tkishel-system_gem', '1.1.1'
 #replaces mod 'puppetlabs-splunk_hec', '0.5.0' until there is a newer release
 mod 'splunk_hec',
   :git => 'https://github.com/mrzarquon/puppetlabs-splunk_hec.git',
-  :branch => 'pie_81_cd4pe_support'
+  :ref => '93bdc3b96587c673fcee21c945e626b639400a69'
 
 #replaces mod 'puppet-splunk', '7.3.0' until there is a newer release
 mod 'splunk',
