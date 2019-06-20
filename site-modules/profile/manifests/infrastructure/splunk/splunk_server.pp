@@ -83,6 +83,11 @@ String            $hec_puppetdetailed_token = '7dc49a8f-8f56-4095-9522-e5566f937
     notify            =>  Class['splunk::enterprise::service'],
   }
 
+  splunk::addon { 'slack_alerts':
+    splunkbase_source => 'puppet:///modules/profile/puppet/splunk/slack-notification-alert_203.tgz',
+    notify            =>  Class['splunk::enterprise::service'],
+  }
+
   file { '/opt/splunk/etc/apps/splunk_httpinput/local':
     ensure  => directory,
     require => Class['splunk']
