@@ -32,8 +32,8 @@ String            $hec_puppetdetailed_token = '7dc49a8f-8f56-4095-9522-e5566f937
 
   #Install Splunk on standard web port 8000
   class { 'splunk::enterprise':
-    manage_password => true,
-    package_ensure  => 'latest'
+    seed_password  => true,
+    package_ensure => 'latest'
   }
 
   class { 'firewall': }
@@ -103,12 +103,18 @@ String            $hec_puppetdetailed_token = '7dc49a8f-8f56-4095-9522-e5566f937
     value   => 1,
   }
 
-  file { '/opt/splunk/etc/apps/TA-puppet-report-viewer/local/savedsearches.conf':
-    ensure  => present,
-    replace => false,
-    source  => 'puppet:///modules/profile/puppet/splunk/savedsearches.conf',
-    require => Splunk::Addon['TA-puppet-report-viewer'],
-    notify  => Class['splunk::enterprise::service'],
+  file {
+    default:
+      ensure  => present,
+      require => Splunk::Addon['TA-puppet-report-viewer'],
+      notify  => Class['splunk::enterprise::service']
+    ;
+    '/opt/splunk/etc/apps/TA-puppet-report-viewer/local/savedsearches.conf':
+      replace => false,
+      source  => 'puppet:///modules/profile/puppet/splunk/localsavedsearches.conf',
+    ;
+    '/opt/splunk/etc/apps/TA-puppet-report-viewer/default/savedsearches.conf':
+      source  => 'puppet:///modules/profile/puppet/splunk/defaultsavedsearches.conf',
   }
 
 }
