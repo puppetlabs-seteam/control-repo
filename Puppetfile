@@ -52,6 +52,7 @@ mod 'puppetlabs-vcsrepo', '2.4.0'
 
 # Forge Community Modules
 mod 'WhatsARanjit-node_manager', '0.7.1'
+mod 'WhatsARanjit-diskspace', '0.2.0'
 mod 'ajjahn-samba', '0.5.0'
 mod 'andulla-vsphere_conf', '0.0.9'
 mod 'puppet-redis', '4.0.0'

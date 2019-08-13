@@ -62,7 +62,7 @@ String            $hec_puppetdetailed_token = '7dc49a8f-8f56-4095-9522-e5566f937
   }
 
   splunk::addon { 'TA-puppet-report-viewer':
-    splunkbase_source => 'puppet:///modules/profile/puppet/splunk/puppet-report-viewer_151.tgz',
+    splunkbase_source => 'puppet:///modules/profile/puppet/splunk/puppet-report-viewer_200.tgz',
     notify            =>  Class['splunk::enterprise::service'],
     inputs            => {
       'http://puppet:summary'  => {
@@ -78,14 +78,12 @@ String            $hec_puppetdetailed_token = '7dc49a8f-8f56-4095-9522-e5566f937
     },
   }
 
-  splunk::addon { 'TA-puppet-tasks-actionable':
-    splunkbase_source => 'puppet:///modules/profile/puppet/splunk/puppet-tasks-actionable-alerts-for-splunk_101.tgz',
-    notify            =>  Class['splunk::enterprise::service'],
-  }
-
-  splunk::addon { 'slack_alerts':
-    splunkbase_source => 'puppet:///modules/profile/puppet/splunk/slack-notification-alert_203.tgz',
-    notify            =>  Class['splunk::enterprise::service'],
+  splunk::addon {
+    default:
+      notify            =>  Class['splunk::enterprise::service'],
+    ;
+    'slack_alerts':
+      splunkbase_source => 'puppet:///modules/profile/puppet/splunk/slack-notification-alert_203.tgz',
   }
 
   file { '/opt/splunk/etc/apps/splunk_httpinput/local':
@@ -93,15 +91,24 @@ String            $hec_puppetdetailed_token = '7dc49a8f-8f56-4095-9522-e5566f937
     require => Class['splunk']
   }
 
-  splunk_input { 'http/disabled':
-    context => 'apps/splunk_httpinput/local',
+  splunk_input {
+    default:
+      context => 'apps/splunk_httpinput/local',
+      require => File['/opt/splunk/etc/apps/splunk_httpinput/local']
+    ;
+    'http/disabled':
     value   => 0,
-    require => File['/opt/splunk/etc/apps/splunk_httpinput/local']
-  }
-  splunk_input { 'http/enableSSL':
-    context => 'apps/splunk_httpinput/local',
+    ;
+    'http/enableSSL':
     value   => 1,
-    require => File['/opt/splunk/etc/apps/splunk_httpinput/local']
+  }
+
+  file { '/opt/splunk/etc/apps/TA-puppet-report-viewer/local/savedsearches.conf':
+    ensure  => present,
+    replace => false,
+    source  => 'puppet:///modules/profile/puppet/splunk/savedsearches.conf',
+    require => Splunk::Addon['TA-puppet-report-viewer'],
+    notify  => Class['splunk::enterprise::service'],
   }
 
 }
