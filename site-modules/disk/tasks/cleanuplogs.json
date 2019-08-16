@@ -1,0 +1,14 @@
+{
+  "description": "Cleans up any logfiles older than x days.",
+  "implementations": [
+    {"name": "cleanuplogs_linux.sh", "requirements": ["shell"]},
+    {"name": "cleanuplogs_windows.ps1", "requirements": ["powershell"]}
+  ],
+  "parameters": {
+    "days": {
+      "description": "How many days old the logfiles need to be to qualify for cleanup. Defaults to 7 days if not specified.",
+      "type": "Optional[Integer[0,3650]]",
+      "sensitive": false
+    }
+  }
+}

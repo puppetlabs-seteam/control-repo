@@ -1,0 +1,13 @@
+{
+  "name": "Cleanup Logs Linux",
+  "description": "Cleans up any logfiles older than x days on Linux targets.",
+  "private": true,
+  "input_method": "environment",
+  "parameters": {
+    "days": {
+      "description": "How many days old the logfiles need to be to qualify for cleanup. Defaults to 7 days if not specified.",
+      "type": "Optional[Integer[0,3650]]",
+      "sensitive": false
+    }
+  }
+}
