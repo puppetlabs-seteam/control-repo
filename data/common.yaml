@@ -1,4 +1,8 @@
 ---
+lookup_options:
+  '^cd4pe::root_config::root_password$':
+    convert_to: 'Sensitive'
+
 ##
 # Hiera
 hiera::cmdpath:
@@ -83,3 +87,8 @@ profile::platform::baseline::enable_monitoring: false
 ##
 # Puppet Enterprise
 puppet_enterprise::profile::master::check_for_updates: false
+
+##
+# Continous Delivery for Puppet Enterprise (CD4PE)
+cd4pe::root_config::root_email: 'no-reply@puppet.com'
+cd4pe::root_config::root_password: 'puppetlabs'
