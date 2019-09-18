@@ -125,7 +125,7 @@ mod 'demo_cis',
 
 mod 'rgbank',
     git: 'https://github.com/puppetlabs-seteam/puppetlabs-rgbank.git',
-    ref: 'f00668d'
+    branch: :control_branch
 
 mod 'jenkins',
     git: 'https://github.com/jenkinsci/puppet-jenkins.git',
