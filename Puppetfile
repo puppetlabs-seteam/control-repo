@@ -1,3 +1,4 @@
+#
 forge 'http://forge.puppetlabs.com'
 
 def default_branch(default)
