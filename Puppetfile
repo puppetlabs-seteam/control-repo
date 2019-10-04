@@ -123,7 +123,7 @@ mod 'puppetlabs-host_core', '1.0.2'
 # replaces mod 'puppet-splunk', '7.3.0' until there is a newer release
 mod 'splunk',
     git: 'https://github.com/voxpupuli/puppet-splunk.git',
-    ref: 'e9500e74f8d1d0f32dd0e68f8cba1662256c39be'
+    ref: 'master'
 
 mod 'tse-tse_facts',
     git: 'https://github.com/puppetlabs/tse-module-tse_facts.git',
