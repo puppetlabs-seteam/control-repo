@@ -1,0 +1,6 @@
+{
+    "name": "Hydra CD4PE to 3.x from 2.18.3",
+    "description": "This task will update the hydra environment to CD4PE 3.x from 2.18.3. \nIt is meant to be run against puppet.classroom.puppet.com only.\nOnce run, the CD4PE instance will show a 503 error for a few moments while it refreshes the container.",
+    "private": true,
+    "input_method": "environment"
+}
