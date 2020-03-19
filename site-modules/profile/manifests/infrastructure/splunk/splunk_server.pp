@@ -24,8 +24,8 @@ String            $hec_puppetdetailed_token = '7dc49a8f-8f56-4095-9522-e5566f937
   }
 
   class { 'splunk::params':
-    version  => '7.2.5.1',
-    build    => '962d9a8e1586',
+    version  => '8.0.2.1',
+    build    => 'f002026bad55',
     src_root => 'https://download.splunk.com',
     server   => $splunk_server_fqdn,
   }
