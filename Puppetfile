@@ -97,7 +97,7 @@ mod 'puppet-gitlab', '3.0.2'
 mod 'puppet-hiera', '3.3.4'
 mod 'puppet-nginx', '0.16.0'
 mod 'puppet-rabbitmq', '9.0.0'
-# mod 'puppet-splunk', '7.3.0'    # Can't use as 7.3.0 is broken
+mod 'puppet-splunk', '8.0.0'
 mod 'puppet-staging', '3.2.0'
 mod 'puppet-windows_env', '3.2.0'
 mod 'puppet-windows_firewall', '2.0.2'
@@ -119,11 +119,6 @@ mod 'puppetlabs-sshkeys_core', '1.0.2'
 mod 'puppetlabs-selinux_core', '1.0.2'
 mod 'puppetlabs-augeas_core', '1.0.4'
 mod 'puppetlabs-host_core', '1.0.2'
-
-# replaces mod 'puppet-splunk', '7.3.0' until there is a newer release
-mod 'splunk',
-    git: 'https://github.com/voxpupuli/puppet-splunk.git',
-    ref: 'master'
 
 mod 'tse-tse_facts',
     git: 'https://github.com/puppetlabs/tse-module-tse_facts.git',
