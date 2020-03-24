@@ -1,3 +1,4 @@
+#
 forge 'http://forge.puppetlabs.com'
 
 def default_branch(default)
@@ -28,7 +29,7 @@ mod 'puppetlabs-docker', '3.5.0'
 mod 'puppetlabs-dsc', '1.8.0'
 mod 'puppetlabs-exec', '0.3.0'
 mod 'puppetlabs-facter_task', '0.4.0'
-mod 'puppetlabs-firewall', '1.15.1'
+mod 'puppetlabs-firewall', '2.1.0'
 mod 'puppetlabs-gcc', '0.3.0'
 mod 'puppetlabs-git', '0.5.0'
 mod 'puppetlabs-haproxy', '3.0.1'
@@ -96,7 +97,7 @@ mod 'puppet-gitlab', '3.0.2'
 mod 'puppet-hiera', '3.3.4'
 mod 'puppet-nginx', '0.16.0'
 mod 'puppet-rabbitmq', '9.0.0'
-# mod 'puppet-splunk', '7.3.0'    # Can't use as 7.3.0 is broken
+mod 'puppet-splunk', '8.0.0'
 mod 'puppet-staging', '3.2.0'
 mod 'puppet-windows_env', '3.2.0'
 mod 'puppet-windows_firewall', '2.0.2'
@@ -118,11 +119,6 @@ mod 'puppetlabs-sshkeys_core', '1.0.2'
 mod 'puppetlabs-selinux_core', '1.0.2'
 mod 'puppetlabs-augeas_core', '1.0.4'
 mod 'puppetlabs-host_core', '1.0.2'
-
-# replaces mod 'puppet-splunk', '7.3.0' until there is a newer release
-mod 'splunk',
-    git: 'https://github.com/voxpupuli/puppet-splunk.git',
-    ref: 'e9500e74f8d1d0f32dd0e68f8cba1662256c39be'
 
 mod 'tse-tse_facts',
     git: 'https://github.com/puppetlabs/tse-module-tse_facts.git',

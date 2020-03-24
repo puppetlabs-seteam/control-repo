@@ -12,6 +12,14 @@ hiera::cmdpath:
   - /usr/bin
   - /usr/local/bin
   - /opt/puppetlabs/puppet/lib/ruby/vendor_gems/bin
+  
+## 
+# Enable Package Inventory by default
+puppet_enterprise::profile::agent::package_inventory_enabled: true
+
+## 
+# Enable Package Inventory by default
+puppet_enterprise::profile::agent::package_inventory_enabled: true
 
 ##
 # Redis
