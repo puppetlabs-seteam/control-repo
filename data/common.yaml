@@ -17,10 +17,6 @@ hiera::cmdpath:
 # Enable Package Inventory by default
 puppet_enterprise::profile::agent::package_inventory_enabled: true
 
-## 
-# Enable Package Inventory by default
-puppet_enterprise::profile::agent::package_inventory_enabled: true
-
 ##
 # Redis
 profile::app::redis::bind: 127.0.0.1
