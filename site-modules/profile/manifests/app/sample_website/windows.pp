@@ -27,8 +27,8 @@ class profile::app::sample_website::windows (
     applicationpool => $apppool,
     bindings  => [
       {
-        'bindinginformation'   => "*:$webserver_port:",
-        'protocol'   => 'http',
+        'bindinginformation'    => "*:$webserver_port:",
+        'protocol'              => 'http',
       },
     ],
     require         => [
