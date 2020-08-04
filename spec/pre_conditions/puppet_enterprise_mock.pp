@@ -2,7 +2,11 @@
 # resources for tests
 
 function pe_compiling_server_version() {
-  '2019.1.1'
+  '2019.2.2'
+}
+
+function pe_build_version() {
+  '2019.2.2'
 }
 
 class puppet_enterprise::packages { }
