@@ -120,6 +120,8 @@ mod 'trlinkin-domain_membership', '1.1.2'
 mod 'tse-time', '1.0.1'
 mod 'tse-winntp', '1.0.1'
 mod 'yelp-uchiwa', '2.1.0'
+mod 'puppet-staging', '3.2.0' # for the CloudShop app
+
 
 mod 'demo_cis',
     git: 'https://github.com/ipcrm/ipcrm-demo_cis.git',
