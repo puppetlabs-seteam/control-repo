@@ -120,8 +120,13 @@ mod 'trlinkin-domain_membership', '1.1.2'
 mod 'tse-time', '1.0.1'
 mod 'tse-winntp', '1.0.1'
 mod 'yelp-uchiwa', '2.1.0'
-mod 'puppet-staging', '3.2.0' # for the CloudShop app
 
+# Re-added 'puppet-staging' module to enable the existing CloudShop app code to work, 
+# as it provides a good demo for the SQLServer module (a popular customer ask).
+# TODO: Replace this module with the 'archive' module (already included in this Puppefile)
+# Note, the manifests in profile/manifests/app/cloudshop/sqlserver/ must be refactored to the 
+# incorporate the archive module syntax. Better option might be to move CloudShop App to its own Repo.
+mod 'puppet-staging', '3.2.0' 
 
 mod 'demo_cis',
     git: 'https://github.com/ipcrm/ipcrm-demo_cis.git',
