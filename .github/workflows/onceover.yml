@@ -1,0 +1,25 @@
+# This github action workflow runs Onceover on PRs and Commits to master
+name: Test roles with Onceover
+
+on:
+  push:
+    branches:  
+    - 'master'
+  pull_request:
+    branches:  
+    - 'master'
+
+jobs:
+  onceover:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@master
+    - name: Set up Ruby 2.5
+      uses: actions/setup-ruby@v1
+      with:
+        ruby-version: 2.5
+    - name: Run Onceover
+      run: |
+        gem install bundler
+        bundle install --jobs 4 --retry 3
+        bundle exec onceover run spec --force --parallel
