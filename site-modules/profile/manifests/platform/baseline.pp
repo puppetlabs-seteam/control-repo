@@ -13,6 +13,10 @@ class profile::platform::baseline (
     ensure => $orch_agent,
   }
 
+  service { 'puppet':
+    ensure => 'running'
+  }
+
   # add sensu client
   if $enable_monitoring {
     include ::profile::app::sensu::client
