@@ -1,0 +1,31 @@
+# This github action workflow runs Onceover and syntax checks on PRs and pushes to mater
+name: Test repo
+
+on:
+  push:
+    branches:  
+    - 'master'
+  pull_request:
+    branches:  
+    - 'master'
+
+jobs:
+  run_checks:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@master
+    - name: Set up Ruby 2.5
+      uses: actions/setup-ruby@v1
+      with:
+        ruby-version: 2.5
+    - name: Install bundler and gems
+      run: |
+        gem install bundler -v 1.17.3
+        bundle install --jobs 4 --retry 3
+    - name: Run sytax check
+      run: bundle exec rake syntax
+    - name: Run Onceover
+      run: bundle exec onceover run spec --force --parallel --format documentation
+    - name: Run Rubocop
+      # run: rake rubocop
+      run: bundle exec rubocop site-modules/deployments/**/*.rb
