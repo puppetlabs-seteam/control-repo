@@ -18,6 +18,7 @@ jobs:
       uses: actions/setup-ruby@v1
       with:
         ruby-version: 2.5
+    - name: Install bundler and gems
       run: |
         gem install bundler -v 1.17.3
         bundle install --jobs 4 --retry 3
