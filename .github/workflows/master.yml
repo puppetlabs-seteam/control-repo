@@ -22,10 +22,10 @@ jobs:
       run: |
         gem install bundler -v 1.17.3
         bundle install --jobs 4 --retry 3
-    - name: Run Onceover
-      run: bundle exec onceover run spec --force --parallel
-    - name: Run Rubocop
+    - name: Run sytax check
       run: bundle exec rake syntax
+    - name: Run Onceover
+      run: bundle exec onceover run spec --force --parallel --format documentation
     - name: Run Rubocop
       # run: rake rubocop
-      run: bundle exec rubocop bundle exec rubocop site-modules/deployments/**/*.rb
+      run: bundle exec rubocop site-modules/deployments/**/*.rb

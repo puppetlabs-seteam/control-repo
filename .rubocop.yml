@@ -3,9 +3,8 @@ require:
 - rubocop-rspec
 - rubocop-i18n
 AllCops:
-  NewCops: enable
   DisplayCopNames: true
-  TargetRubyVersion: '2.5'
+  TargetRubyVersion: '2.1'
   Include:
   - "./**/*.rb"
   Exclude:
@@ -19,10 +18,9 @@ AllCops:
   - "**/Puppetfile"
   - "**/Vagrantfile"
   - "**/Guardfile"
-Layout/LineLength:
+Metrics/LineLength:
   Description: People have wide screens, use them.
   Max: 200
-  Enabled: true
 GetText:
   Enabled: false
 GetText/DecorateString:
@@ -70,35 +68,13 @@ Style/TrailingCommaInArguments:
   Description: Prefer always trailing comma on multiline argument lists. This makes
     diffs, and re-ordering nicer.
   EnforcedStyleForMultiline: comma
-Style/TrailingCommaInArrayLiteral:
-  Description: Prefer always trailing comma on multiline literals. This makes diffs,
-    and re-ordering nicer.
-  EnforcedStyleForMultiline: comma
-Style/TrailingCommaInHashLiteral:
+Style/TrailingCommaInLiteral:
   Description: Prefer always trailing comma on multiline literals. This makes diffs,
     and re-ordering nicer.
   EnforcedStyleForMultiline: comma
 Style/SymbolArray:
   Description: Using percent style obscures symbolic intent of array's contents.
   EnforcedStyle: brackets
-Lint/ScriptPermission:
-  Enabled: false
-Style/NestedTernaryOperator:
-  Enabled: false
-Layout/EmptyLines:
-  Enabled: false
-Layout/EmptyLineBetweenDefs:
-  Enabled: false
-Naming/PredicateName:
-  Enabled: false
-Lint/UnusedBlockArgument:
-  Enabled: false
-Style/Semicolon:
-  Enabled: false
-Style/MultilineIfModifier:
-  Enabled: false
-Style/EachWithObject:
-  Enabled: false
 RSpec/MessageSpies:
   EnforcedStyle: receive
 Style/Documentation:
@@ -121,7 +97,7 @@ GetText/DecorateStringFormattingUsingPercent:
   Enabled: false
 Layout/EndOfLine:
   Enabled: false
-Layout/HeredocIndentation:
+Layout/IndentHeredoc:
   Enabled: false
 Metrics/AbcSize:
   Enabled: false
