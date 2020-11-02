@@ -12,3 +12,6 @@ node default {
     }
   }
 }
+
+# Uncomment the line below to enable ServiceNow Node Classification
+# include servicenow_cmdb_integration::classification
