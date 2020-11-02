@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'net/http'
 require 'uri'
 require 'json'
@@ -19,16 +21,16 @@ Puppet::Functions.create_function(:'deployments::servicenow_change_request') do
     # Map facts to populate when auto-creating CI's
     fact_map = {
       # PuppetDB fact => ServiceNow CI field
-      'fqdn'                   => 'fqdn',
-      'domain'                 => 'dns_domain',
-      'serialnumber'           => 'serial_number',
+      'fqdn' => 'fqdn',
+      'domain' => 'dns_domain',
+      'serialnumber' => 'serial_number',
       'operatingsystemrelease' => 'os_version',
       'physicalprocessorcount' => 'cpu_count',
-      'processorcount'         => 'cpu_core_count',
-      'processors.models.0'    => 'cpu_type',
-      'memorysize_mb'          => 'ram',
-      'is_virtual'             => 'virtual',
-      'macaddress'             => 'mac_address',
+      'processorcount' => 'cpu_core_count',
+      'processors.models.0' => 'cpu_type',
+      'memorysize_mb' => 'ram',
+      'is_virtual' => 'virtual',
+      'macaddress' => 'mac_address',
     }
 
     # First, we need to create a new ServiceNow Change Request
@@ -159,7 +161,7 @@ Puppet::Functions.create_function(:'deployments::servicenow_change_request') do
     # Update Change Request with additional info, and start the approval process
     change_req_url = "#{endpoint}/api/sn_chg_rest/v1/change/normal/#{changereq['result']['sys_id']['value']}?state=assess"
     payload = {
-      'risk_impact_analysis' => ia_url + "\n" + report['log'],
+      'risk_impact_analysis' => "#{ia_url}\n#{report['log']}",
       'assignment_group' => assignment_group_sys_id,
       'close_notes' => closenotes.to_json,
     }

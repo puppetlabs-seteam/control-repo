@@ -8,11 +8,11 @@ Puppet::Functions.create_function(:'deployments::report_impacted_nodes') do
   end
 
   def add2log(content)
-    print(content + "\n")
+    print("#{content}\n")
     @report['log'] = if @report['log'] == ''
                        content
                      else
-                       @report['log'] + "\n" + content
+                       "#{@report['log']}\n#{content}"
                      end
   end
 
@@ -31,8 +31,8 @@ Puppet::Functions.create_function(:'deployments::report_impacted_nodes') do
     ia_report['IA_nodes_impacted'] = impacted_nodes['rows'].count
     compile_failures = 0
     compile_success = 0
-    add2log('  Impact Analysis Environment Report: ' + ia_report['IA_environment'])
-    add2log('   Analysis status: ' + ia_report['IA_state'])
+    add2log("  Impact Analysis Environment Report: #{ia_report['IA_environment']}")
+    add2log("   Analysis status: #{ia_report['IA_state']}")
     unless impacted_nodes['rows'].count.zero?
       add2log('   Affected Node Report: ')
     end
@@ -40,15 +40,14 @@ Puppet::Functions.create_function(:'deployments::report_impacted_nodes') do
     impacted_nodes['rows'].each do |node_result|
       ia_report['IA_node_reports'][node_result['certnameLowercase']] = {}
       if node_result.key?('compileFailed')
-        add2log('    Node ' + node_result['certnameLowercase'] + ': Failed compilation')
+        add2log("    Node #{node_result['certnameLowercase']}: Failed compilation")
         compile_failures += 1
         ia_report['IA_node_reports'][node_result['certnameLowercase']]['Compilation'] = 'FAILED'
         bln_safe_report = false
       else
-        add2log('    Node ' + node_result['certnameLowercase'] + ' resources: ' +
-          node_result['resourcesAdded'].count.to_s + ' added, ' +
-          node_result['resourcesModified'].count.to_s + ' modified, ' +
-          node_result['resourcesRemoved'].count.to_s + ' removed.')
+        # rubocop:disable Layout/LineLength
+        add2log("    Node #{node_result['certnameLowercase']} resources: #{node_result['resourcesAdded'].count} added, #{node_result['resourcesModified'].count} modified, #{node_result['resourcesRemoved'].count} removed.")
+        # rubocop:enable Layout/LineLength
         compile_success += 1
         ia_report['IA_node_reports'][node_result['certnameLowercase']]['compilation'] = 'SUCCESS'
         ia_report['IA_node_reports'][node_result['certnameLowercase']]['resourcesAdded'] = node_result['resourcesAdded'].count.to_i

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 Puppet::Functions.create_function(:'deployments::report_scm_data') do
   dispatch :report_scm_data do
     required_param 'Hash', :pipeline
