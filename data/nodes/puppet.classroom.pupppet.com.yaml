@@ -1,0 +1,8 @@
+---
+# Credentials for ServiceNow Reporting Integration
+servicenow_reporting_integration::event_management::user: 'admin'
+servicenow_reporting_integration::event_management::password: 'puppetlabs'
+
+# Credentials for ServiceNow Reporting Integration
+servicenow_cmdb_integration::user: 'admin'
+servicenow_cmdb_integration::password: 'puppetlabs'
