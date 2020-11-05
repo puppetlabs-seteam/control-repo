@@ -4,8 +4,8 @@ class profile::platform::baseline::windows::packages {
     provider => chocolatey,
   }
 
-  $packages = [ 'notepadplusplus', '7zip', 'git', 'uniextract' ]
-  package { $packages:
+  $predefined_packages = [ 'notepadplusplus', '7zip', 'git', 'uniextract' ]
+  package { $predefined_packages:
     ensure => present
   }
 
