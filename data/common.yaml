@@ -4,6 +4,10 @@ lookup_options:
     convert_to: 'Sensitive'
   '^cd4pe::root_config::ssl_server_private_key$':
     convert_to: 'Sensitive'
+  '^servicenow_reporting_integration::event_management::password$':
+    convert_to: 'Sensitive'
+  '^servicenow_reporting_integration::event_management::oauth_token$':
+    convert_to: 'Sensitive'
 
 ##
 # Hiera
