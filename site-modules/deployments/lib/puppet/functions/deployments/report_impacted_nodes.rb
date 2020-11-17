@@ -39,7 +39,7 @@ Puppet::Functions.create_function(:'deployments::report_impacted_nodes') do
     bln_safe_report = ia_report['IA_state'] == 'DONE'
     impacted_nodes['rows'].each do |node_result|
       ia_report['IA_node_reports'][node_result['certnameLowercase']] = {}
-      if node_result.key?('compileFailed')
+      if node_result.fetch('compileFailed', false)
         add2log("    Node #{node_result['certnameLowercase']}: Failed compilation")
         compile_failures += 1
         ia_report['IA_node_reports'][node_result['certnameLowercase']]['Compilation'] = 'FAILED'
