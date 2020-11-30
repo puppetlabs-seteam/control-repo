@@ -33,8 +33,6 @@ class_groups:
     - role::seteam_puppet_master
 
   either_roles:
-    # role::cd4pe_buildserver doesn't for multiple reasons and needs to be fixed
-    # - role::cd4pe_buildserver
     # The roles below fail tests with the following error:
     #   wrong number of arguments (given 1, expected 0)
     #

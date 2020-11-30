@@ -74,7 +74,7 @@ mod 'aristanetworks-netdev_stdlib_eos', '1.2.0'
 #mod 'ayohrling-local_security_policy', '0.6.3'
 #mod 'biemond-wildfly', '2.3.2'  # Needs updated to support stdlib 6.5.0
 mod 'bodgit-rngd', '2.0.3'
-#mod 'camptocamp-systemd', '2.10.0'
+mod 'camptocamp-systemd', '2.10.0'
 mod 'computology-packagecloud', '0.3.2'
 mod 'crayfishx-purge', '1.2.1'
 #mod 'cyberious-windows_java', '1.0.2' # Doesn't appear to be referenced anywhere
