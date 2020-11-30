@@ -34,7 +34,7 @@ mod 'puppetlabs-hocon', '1.1.0'
 mod 'puppetlabs-iis', '7.1.0'
 mod 'puppetlabs-inifile', '4.3.0'
 mod 'puppetlabs-java', '6.3.0'
-mod 'puppetlabs-limits', '0.1.0'
+mod 'saz-limits', '3.0.4' # Replaces puppetlabs-limits 0.1.0
 mod 'puppetlabs-motd', '4.2.0'
 mod 'puppetlabs-mount_iso', '3.0.0' # Needs updated to support powershell 4.0.0
 mod 'puppetlabs-mysql', '10.7.1'
@@ -104,7 +104,7 @@ mod 'puppet-rabbitmq', '10.2.0'
 mod 'puppet-redis', '6.1.0'
 mod 'puppet-selinux', '3.2.0'
 mod 'puppet-splunk', '8.0.0'
-mod 'puppet-wget', '2.0.1'
+#mod 'puppet-wget', '2.0.1' 3 # Deprecated for puppetlabs-archive, and doesn't appear to be used anywhere
 mod 'puppet-windows_env', '4.0.1'
 mod 'puppet-windows_firewall', '3.0.0'
 mod 'puppet-windowsfeature', '3.2.2'
