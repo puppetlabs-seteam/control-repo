@@ -21,7 +21,6 @@ mod 'puppetlabs-cisco_ios', '1.3.0'
 mod 'puppetlabs-ciscopuppet', '2.1.0'
 mod 'puppetlabs-comply', '1.0.0'
 mod 'puppetlabs-concat', '6.2.0'
-mod 'puppetlabs-comply', '0.9.0'
 mod 'puppetlabs-device_manager', '3.0.1'
 mod 'puppetlabs-dism', '1.3.1'
 mod 'puppetlabs-docker', '3.12.1' # Needs updated to support powershell 4.0.0,reboot >3
