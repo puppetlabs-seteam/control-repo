@@ -1,5 +1,3 @@
-# frozen_string_literal: true
-
 Puppet::Functions.create_function(:'deployments::get_running_stage') do
   def get_running_stage # rubocop:disable Style/AccessorMethodName
     ENV.each do |env_var|

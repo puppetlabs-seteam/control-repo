@@ -1,7 +1,6 @@
-# frozen_string_literal: true
-
 require 'net/http'
 require 'uri'
+require 'cgi'
 require 'json'
 
 Puppet::Functions.create_function(:'deployments::servicenow_change_request') do
@@ -11,13 +10,14 @@ Puppet::Functions.create_function(:'deployments::servicenow_change_request') do
     required_param 'String',  :password
     required_param 'Hash',    :report
     required_param 'String',  :ia_url
-    required_param 'Integer', :promote_to_stage
+    required_param 'String',  :promote_to_stage_name
+    required_param 'Integer', :promote_to_stage_id
     required_param 'String',  :assignment_group
     required_param 'String',  :connection_alias
     required_param 'Boolean', :auto_create_ci
   end
 
-  def servicenow_change_request(endpoint, username, password, report, ia_url, promote_to_stage, assignment_group, connection_alias, auto_create_ci)
+  def servicenow_change_request(endpoint, username, password, report, ia_url, promote_to_stage_name, promote_to_stage_id, assignment_group, connection_alias, auto_create_ci)
     # Map facts to populate when auto-creating CI's
     fact_map = {
       # PuppetDB fact => ServiceNow CI field
@@ -34,8 +34,9 @@ Puppet::Functions.create_function(:'deployments::servicenow_change_request') do
     }
 
     # First, we need to create a new ServiceNow Change Request
-    description = "Puppet%20-%20Automated%20Change%20Request%20for%20promoting%20commit%20#{report['scm']['commit'][0, 7]}%20('#{report['scm']['description']}')%20to%20stage%20#{promote_to_stage}"
-    short_description = "Puppet%20Code%20-%20'#{report['scm']['description']}'%20to%20stage%20#{promote_to_stage}"
+    descr = "Puppet - Automated Change Request for promoting commit #{report['scm']['commit'][0, 7]} ('#{report['scm']['description']}') to stage '#{promote_to_stage_name}'"
+    description = CGI.escape(descr).gsub(%r{\+}, '%20')
+    short_description = CGI.escape("Puppet Code - '#{report['scm']['description']}' to stage '#{promote_to_stage_name}'").gsub(%r{\+}, '%20')
     request_uri = "#{endpoint}/api/sn_chg_rest/v1/change/normal?category=Puppet%20Code&short_description=#{short_description}&description=#{description}"
     request_response = make_request(request_uri, :post, username, password)
     raise Puppet::Error, "Received unexpected response from the ServiceNow endpoint: #{request_response.code} #{request_response.body}" unless request_response.is_a?(Net::HTTPSuccess)
@@ -137,7 +138,7 @@ Puppet::Functions.create_function(:'deployments::servicenow_change_request') do
     closenotes['workspace']       = report['build']['owner']
     closenotes['repoName']        = report['build']['repo_name']
     closenotes['repoType']        = report['build']['repo_type']
-    closenotes['promoteToStage']  = promote_to_stage
+    closenotes['promoteToStage']  = promote_to_stage_id
     closenotes['scm_branch']      = report['scm']['branch']
     closenotes['connection']      = connection_alias
     bln_ia_safe_verdict = true
@@ -160,11 +161,15 @@ Puppet::Functions.create_function(:'deployments::servicenow_change_request') do
 
     # Update Change Request with additional info, and start the approval process
     change_req_url = "#{endpoint}/api/sn_chg_rest/v1/change/normal/#{changereq['result']['sys_id']['value']}?state=assess"
-    payload = {
-      'risk_impact_analysis' => "#{ia_url}\n#{report['log']}",
-      'assignment_group' => assignment_group_sys_id,
-      'close_notes' => closenotes.to_json,
-    }
+    payload = {}.tap do |data|
+      data[:risk_impact_analysis] = ia_url + "\n" + report['log'] # rubocop:disable Style/StringConcatenation
+      data[:assignment_group] = assignment_group_sys_id
+      data[:close_notes] = closenotes.to_json
+      data[:priority] = 3.0                           # 1.0 = Critical / 2.0 = High / 3.0 = Moderate / 4.0 = Low
+      data[:impact] = bln_ia_safe_verdict ? 3.0 : 2.0 # 1.0 = High / 2.0 = Medium / 3.0 = Low
+      data[:risk] = bln_ia_safe_verdict ? 4.0 : 2.0   # 2.0 = High / 3.0 = Medium / 4.0 = Low
+    end
+
     change_req_url_res = make_request(change_req_url, :patch, username, password, payload)
     raise Puppet::Error, "Received unexpected response from the ServiceNow endpoint: #{change_req_url_res.code} #{change_req_url_res.body}" unless change_req_url_res.is_a?(Net::HTTPSuccess)
   end
@@ -209,8 +214,6 @@ Puppet::Functions.create_function(:'deployments::servicenow_change_request') do
       end
 
       case response
-      when Net::HTTPSuccess, Net::HTTPRedirection
-        return response
       when Net::HTTPInternalServerError
         if attempts < max_attempts # rubocop:disable Style/GuardClause
           Puppet.debug("Received #{response} error from #{uri.host}, attempting to retry. (Attempt #{attempts} of #{max_attempts})")
@@ -218,7 +221,7 @@ Puppet::Functions.create_function(:'deployments::servicenow_change_request') do
         else
           raise Puppet::Error, "Received #{attempts} server error responses from the ServiceNow endpoint at #{uri.host}: #{response.code} #{response.body}"
         end
-      else
+      else # Covers Net::HTTPSuccess, Net::HTTPRedirection
         return response
       end
     end

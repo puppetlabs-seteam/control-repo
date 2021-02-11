@@ -1,5 +1,3 @@
-# frozen_string_literal: true
-
 Puppet::Functions.create_function(:'deployments::report_impact_analysis') do
   dispatch :report_impact_analysis do
     required_param 'Hash', :impact_analysis
