@@ -6,7 +6,7 @@ minor_version = ruby_version_segments[0..1].join('.')
 group :development do
   # gem 'onceover', git: 'git@github.com:dylanratcliffe/onceover.git', branch: 'formatter_factset'
   gem 'onceover', '3.19.1'
-  gem 'onceover-codequality'
+  gem 'onceover-codequality', '0.8.0'
   gem 'pry'
   gem 'rake', '12.3.0'
   gem 'ra10ke'
