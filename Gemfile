@@ -5,7 +5,7 @@ minor_version = ruby_version_segments[0..1].join('.')
 
 group :development do
   # gem 'onceover', git: 'git@github.com:dylanratcliffe/onceover.git', branch: 'formatter_factset'
-  gem 'onceover', '3.13.4'
+  gem 'onceover', '3.19.1'
   gem 'onceover-codequality'
   gem 'pry'
   gem 'ra10ke'
@@ -15,7 +15,7 @@ group :development do
   # gem 'rspec-mocks', '=3.8.1'
   # gem 'rspec-expectations', '3.8.4'
   # gem 'rspec-support', '3.8.2'
-  gem 'facter', '2.5.1'
+  gem 'facter', '2.5.7'
   gem "puppet-module-posix-default-r#{minor_version}", '~> 1.0', require: false, platforms: [:ruby]
   gem "puppet-module-posix-dev-r#{minor_version}", '~> 1.0',     require: false, platforms: [:ruby]
   # gem 'rubocop', '1.7.0'
