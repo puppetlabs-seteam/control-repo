@@ -13,7 +13,7 @@ group :development do
   gem 'rest-client'
   gem 'puppet', '6.21.0'
   gem 'puppet-syntax', '3.1.0'
-  gem 'fast_gettext', '1.1.0'
+  gem 'fast_gettext', '~> 1.1'
   # gem 'rspec', '3.8.0'
   # gem 'rspec-core', '3.8.0'
   # gem 'rspec-mocks', '=3.8.1'
@@ -22,7 +22,7 @@ group :development do
   # gem 'facter', '2.5.7'
   gem "puppet-module-posix-default-r#{minor_version}", '~> 1.0', require: false, platforms: [:ruby]
   gem "puppet-module-posix-dev-r#{minor_version}", '~> 1.0',     require: false, platforms: [:ruby]
-  gem 'rubocop', '1.0.0'
+  gem 'rubocop', '1.6.1'
   gem 'rubocop-rspec', '2.2.0'
   # gem 'puppetlabs_spec_helper'
   # gem 'puppet-syntax'
