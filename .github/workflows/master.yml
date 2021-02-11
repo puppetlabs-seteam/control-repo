@@ -24,8 +24,8 @@ jobs:
         bundle install --jobs 4 --retry 3
     - name: Run sytax check
       run: bundle exec rake syntax
-    - name: Run Onceover
-      run: bundle exec onceover run spec --force --parallel --format documentation
+    # - name: Run Onceover
+    #   run: bundle exec onceover run spec --force --parallel --format documentation
     - name: Run Rubocop
       # run: rake rubocop
       run: bundle exec rubocop site-modules/deployments/**/*.rb
