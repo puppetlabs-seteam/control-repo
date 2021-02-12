@@ -1,5 +1,3 @@
-# frozen_string_literal: true
-
 Puppet::Functions.create_function(:'deployments::pipeline_stage_done') do
   dispatch :pipeline_stage_done do
     required_param 'Tuple', :pipeline_stage

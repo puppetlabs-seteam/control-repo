@@ -119,6 +119,7 @@ plan deployments::servicenow_integration(
     $snow_password,
     $report,
     $ia_url,
+    $stage_to_promote_to,
     $promote_stage_number,
     $assignment_group,
     $connection_alias,
