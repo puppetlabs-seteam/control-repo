@@ -29,6 +29,9 @@ RSpec/BeforeAfterAll:
 RSpec/HookArgument:
   Description: Prefer explicit :each argument, matching existing module's style
   EnforcedStyle: each
+Style/FrozenStringLiteralComment:
+  Exclude:
+  - site-modules/deployments/**/*.rb
 Style/BlockDelimiters:
   Description: Prefer braces for chaining. Mostly an aesthetical choice. Better to
     be consistent then.

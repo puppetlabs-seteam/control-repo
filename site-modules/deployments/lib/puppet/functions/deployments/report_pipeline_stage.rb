@@ -8,11 +8,11 @@ Puppet::Functions.create_function(:'deployments::report_pipeline_stage') do
   end
 
   def add2log(content)
-    print(content + "\n")
+    print(content + "\n") # rubocop:disable Style/StringConcatenation
     @report['log'] = if @report['log'] == ''
                        content
                      else
-                       @report['log'] + "\n" + content
+                       @report['log'] + "\n" + content # rubocop:disable Style/StringConcatenation
                      end
   end
 
@@ -37,7 +37,7 @@ Puppet::Functions.create_function(:'deployments::report_pipeline_stage') do
     @report['notes'] = []
     @report['artifacts'] = {}
     @report['log'] = ''
-    @report['build']['full_url'] = ENV['WEB_UI_ENDPOINT'] + '/' + ENV['DEPLOYMENT_OWNER'] + '/repositories/' +
+    @report['build']['full_url'] = ENV['WEB_UI_ENDPOINT'] + '/' + ENV['DEPLOYMENT_OWNER'] + '/repositories/' + # rubocop:disable Style/StringConcatenation
                                    repo_name + '?pipelineId=' + pipeline['pipelineId'] +
                                    '&eventId=' + pipeline['id'].to_s
     @report['build']['number'] = pipeline['id']
@@ -47,12 +47,12 @@ Puppet::Functions.create_function(:'deployments::report_pipeline_stage') do
     @report['build']['repo_name'] = repo_name
     @report['build']['repo_type'] = ENV['REPO_TYPE']
     @report['build']['queue_id'] = stage_number.to_i
-    @report['build']['url'] = '/' + ENV['DEPLOYMENT_OWNER'] + '/repositories/' + repo_name +
+    @report['build']['url'] = '/' + ENV['DEPLOYMENT_OWNER'] + '/repositories/' + repo_name + # rubocop:disable Style/StringConcatenation
                               '?pipelineId=' + pipeline['pipelineId'] + '&eventId=' + pipeline['id'].to_s
-    @report['url'] = ENV['DEPLOYMENT_OWNER'] + '/repositories/' + repo_name +
+    @report['url'] = ENV['DEPLOYMENT_OWNER'] + '/repositories/' + repo_name + # rubocop:disable Style/StringConcatenation
                      '?pipelineId=' + pipeline['pipelineId']
-    add2log('Pipeline #: ' + pipeline['id'].to_s)
-    add2log(' Stage ' + stage_number.to_s + ': ' + pipeline['stageNames'][stage_number])
+    add2log('Pipeline #: ' + pipeline['id'].to_s) # rubocop:disable Style/StringConcatenation
+    add2log(' Stage ' + stage_number.to_s + ': ' + pipeline['stageNames'][stage_number]) # rubocop:disable Style/StringConcatenation
     bln_reporting_job_found = false
     pipeline['eventsByStage'][stage_number].each do |event|
       next unless event['eventType'] == 'DEPLOYMENT'
@@ -61,11 +61,11 @@ Puppet::Functions.create_function(:'deployments::report_pipeline_stage') do
       bln_reporting_job_found = true
     end
     correction = bln_reporting_job_found ? 1 : 0
-    add2log('  Number of events in stage: ' + (pipeline['eventsByStage'][stage_number].count - correction).to_s)
+    add2log('  Number of events in stage: ' + (pipeline['eventsByStage'][stage_number].count - correction).to_s) # rubocop:disable Style/StringConcatenation
     bln_stage_success = true
     pipeline['eventsByStage'][stage_number].each do |event|
       eventinfo = {}
-      if event['eventType'] == 'VMJOB'
+      if event['eventType'] == 'VMJOB' # rubocop:disable Style/CaseLikeIf
         eventinfo['eventName'] = event['jobName']
         eventinfo['eventType'] = 'JOB'
         eventinfo['eventNumber'] = event['vmJobInstanceId']
@@ -73,24 +73,24 @@ Puppet::Functions.create_function(:'deployments::report_pipeline_stage') do
         eventinfo['eventResult'] = jobstatus(event['jobStatus'])
         begin
           eventinfo['startTime'] = event.fetch('jobStartTime', event.fetch('jobEndTime'))
-        rescue
+        rescue # rubocop:disable Style/RescueStandardError
           eventinfo['startTime'] = eventinfo['eventTime']
         end
         begin
           eventinfo['endTime'] = event.fetch('jobEndTime')
-        rescue
+        rescue # rubocop:disable Style/RescueStandardError
           eventinfo['endTime'] = eventinfo['eventTime']
         end
         eventinfo['executionTime'] = (eventinfo['endTime'] - eventinfo['startTime']) / 1000
-        add2log('   Event name: ' + eventinfo['eventName'])
-        add2log('    Event status: ' + eventinfo['eventResult'])
+        add2log('   Event name: ' + eventinfo['eventName']) # rubocop:disable Style/StringConcatenation
+        add2log('    Event status: ' + eventinfo['eventResult']) # rubocop:disable Style/StringConcatenation
         if eventinfo['eventResult'] != 'SUCCESS'
           bln_stage_success = false
         end
       elsif event['eventType'] == 'DEPLOYMENT'
         next if ['deployments::servicenow_integration', 'deployments::servicenow_devops_integration'].include?(event['deploymentPlanName'])
 
-        eventinfo['eventName'] = event['deploymentPlanName'] + ' to ' + event['targetBranch']
+        eventinfo['eventName'] = event['deploymentPlanName'] + ' to ' + event['targetBranch'] # rubocop:disable Style/StringConcatenation
         eventinfo['eventType'] = 'DEPLOY'
         eventinfo['eventNumber'] = event['deploymentId']
         eventinfo['eventTime'] = event['eventTime']
@@ -102,8 +102,8 @@ Puppet::Functions.create_function(:'deployments::report_pipeline_stage') do
                                  end
         eventinfo['endTime'] = event['deploymentEndTime']
         eventinfo['executionTime'] = (eventinfo['endTime'] - eventinfo['startTime']) / 1000
-        add2log('   Deployment name: ' + eventinfo['eventName'])
-        add2log('    Deployment status: ' + eventinfo['eventResult'])
+        add2log('   Deployment name: ' + eventinfo['eventName']) # rubocop:disable Style/StringConcatenation
+        add2log('    Deployment status: ' + eventinfo['eventResult']) # rubocop:disable Style/StringConcatenation
         if eventinfo['eventResult'] != 'DONE'
           bln_stage_success = false
         end
@@ -116,8 +116,8 @@ Puppet::Functions.create_function(:'deployments::report_pipeline_stage') do
         eventinfo['startTime'] = event.fetch('startTime', event['endTime'])
         eventinfo['endTime'] = event['endTime']
         eventinfo['executionTime'] = (eventinfo['endTime'] - eventinfo['startTime']) / 1000
-        add2log('   ' + eventinfo['eventName'])
-        add2log('    Impact Analysis status: ' + eventinfo['eventResult'])
+        add2log('   ' + eventinfo['eventName']) # rubocop:disable Style/StringConcatenation
+        add2log('    Impact Analysis status: ' + eventinfo['eventResult']) # rubocop:disable Style/StringConcatenation
         if eventinfo['eventResult'] != 'DONE'
           bln_stage_success = false
         end
@@ -130,8 +130,8 @@ Puppet::Functions.create_function(:'deployments::report_pipeline_stage') do
         eventinfo['startTime'] = 0
         eventinfo['endTime'] = 0
         eventinfo['executionTime'] = 0
-        add2log('   Event name: ' + eventinfo['eventName'])
-        add2log('    Event status: ' + eventinfo['eventResult'])
+        add2log('   Event name: ' + eventinfo['eventName']) # rubocop:disable Style/StringConcatenation
+        add2log('    Event status: ' + eventinfo['eventResult']) # rubocop:disable Style/StringConcatenation
       end
       @report['build']['events'].append(eventinfo)
     end

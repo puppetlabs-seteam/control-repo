@@ -152,7 +152,7 @@ Puppet::Functions.create_function(:'deployments::servicenow_change_request') do
     # Get sys_id of given assignment_group
     assignment_group_url = "#{endpoint}/api/now/table/sys_user_group?sysparm_query=name=#{assignment_group}"
     assignment_group_response = make_request(assignment_group_url, :get, username, password)
-    raise Puppet::Error, "Received unexpected response from the ServiceNow endpoint: #{assignment_group_response.code} #{assignment_group_response.body}" unless assignment_group_response.is_a?(Net::HTTPOK) # rubocop:disable Metrics/LineLength
+    raise Puppet::Error, "Received unexpected response from the ServiceNow endpoint: #{assignment_group_response.code} #{assignment_group_response.body}" unless assignment_group_response.is_a?(Net::HTTPOK) # rubocop:disable Layout/LineLength
 
     arr_assignment_groups = JSON.parse(assignment_group_response.body)['result']
     raise Puppet::Error, "No Assignment Group named '#{assignment_group}' was found in ServiceNow!" unless arr_assignment_groups.count.positive?
