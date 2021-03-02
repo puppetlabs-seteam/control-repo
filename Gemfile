@@ -8,7 +8,7 @@ group :development do
   gem 'onceover', '3.19.1'
   gem 'onceover-codequality', '0.8.0'
   gem 'pry'
-  gem 'rake', '12.3.0'
+  gem 'rake', '12.3.3'
   gem 'ra10ke'
   gem 'rest-client'
   gem 'puppet', '6.21.0'
