@@ -65,6 +65,7 @@ mod 'puppetlabs-translate', '2.2.0'
 mod 'puppetlabs-vcsrepo', '3.1.1'
 
 # Forge Community Modules
+mod 'puppet-yum', '4.3.0'  # Required for the CD4PE workshop
 mod 'WhatsARanjit-diskspace', '0.2.0'
 mod 'WhatsARanjit-node_manager', '0.7.3'
 #mod 'abuxton-pdk', '0.2.2'  # Do we need this, it is out of date and needs newer stdlib and archive and chocolatey-chocolatey
