@@ -162,6 +162,7 @@ Puppet::Functions.create_function(:'deployments::servicenow_change_request') do
     # Update Change Request with additional info, and start the approval process
     change_req_url = "#{endpoint}/api/sn_chg_rest/v1/change/normal/#{changereq['result']['sys_id']['value']}?state=assess"
     payload = {}.tap do |data|
+      data[:state] = 'assess'
       data[:risk_impact_analysis] = ia_url + "\n" + report['log'] # rubocop:disable Style/StringConcatenation
       data[:assignment_group] = assignment_group_sys_id
       data[:close_notes] = closenotes.to_json
