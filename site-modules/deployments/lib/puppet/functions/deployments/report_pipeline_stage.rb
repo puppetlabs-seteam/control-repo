@@ -65,7 +65,7 @@ Puppet::Functions.create_function(:'deployments::report_pipeline_stage') do
     bln_stage_success = true
     pipeline['eventsByStage'][stage_number].each do |event|
       eventinfo = {}
-      if event['eventType'] == 'VMJOB'
+      if event['eventType'] == 'VMJOB' # rubocop:disable Style/CaseLikeIf
         eventinfo['eventName'] = event['jobName']
         eventinfo['eventType'] = 'JOB'
         eventinfo['eventNumber'] = event['vmJobInstanceId']
@@ -73,12 +73,12 @@ Puppet::Functions.create_function(:'deployments::report_pipeline_stage') do
         eventinfo['eventResult'] = jobstatus(event['jobStatus'])
         begin
           eventinfo['startTime'] = event.fetch('jobStartTime', event.fetch('jobEndTime'))
-        rescue
+        rescue # rubocop:disable Style/RescueStandardError
           eventinfo['startTime'] = eventinfo['eventTime']
         end
         begin
           eventinfo['endTime'] = event.fetch('jobEndTime')
-        rescue
+        rescue # rubocop:disable Style/RescueStandardError
           eventinfo['endTime'] = eventinfo['eventTime']
         end
         eventinfo['executionTime'] = (eventinfo['endTime'] - eventinfo['startTime']) / 1000
