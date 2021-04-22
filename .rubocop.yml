@@ -29,9 +29,6 @@ RSpec/BeforeAfterAll:
 RSpec/HookArgument:
   Description: Prefer explicit :each argument, matching existing module's style
   EnforcedStyle: each
-Style/FrozenStringLiteralComment:
-  Exclude:
-  - site-modules/deployments/**/*.rb
 Style/BlockDelimiters:
   Description: Prefer braces for chaining. Mostly an aesthetical choice. Better to
     be consistent then.
@@ -49,6 +46,9 @@ Style/FormatStringToken:
   Description: Following the main puppet project's style, prefer the simpler template
     tokens over annotated ones.
   EnforcedStyle: template
+Style/FrozenStringLiteralComment:
+  Exclude:
+  - site-modules/deployments/**/*.rb
 Style/Lambda:
   Description: Prefer the keyword for easier discoverability.
   EnforcedStyle: literal
@@ -87,6 +87,9 @@ Style/CollectionMethods:
   Enabled: true
 Style/MethodCalledOnDoEndBlock:
   Enabled: true
+Style/StringConcatenation:
+  Exclude:
+    - site-modules/deployments/**/*.rb
 Style/StringMethods:
   Enabled: true
 Layout/EndOfLine:
