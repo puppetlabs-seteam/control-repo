@@ -8,6 +8,8 @@ plan deployments::servicenow_integration(
   Optional[String] $assignment_group = 'Change Management',
   Optional[String] $connection_alias = 'Puppet_Code',
   Optional[Boolean] $auto_create_ci = false,
+  Optional[String] $proxy_host = undef,
+  Optional[Integer] $proxy_port = undef,
 ){
   # Read relevant CD4PE environment variables
   $repo_type         = system::env('REPO_TYPE')
@@ -28,6 +30,13 @@ plan deployments::servicenow_integration(
       'https://' => $snow_endpoint,
       default    => "https://${snow_endpoint}"
     }
+  }
+
+  # Parse potential proxy server info
+  if $proxy_host and $proxy_port {
+    $proxy = { 'enabled' => true, 'host' => $proxy_host, 'port' => $proxy_port }
+  } else {
+    $proxy = { 'enabled' => false }
   }
 
   # Set the stage number if we need to auto-detect it
@@ -115,6 +124,7 @@ plan deployments::servicenow_integration(
   # Trigger Change Request workflow in ServiceNow DevOps
   deployments::servicenow_change_request(
     $_snow_endpoint,
+    $proxy,
     $snow_username,
     $snow_password,
     $report,
@@ -123,6 +133,6 @@ plan deployments::servicenow_integration(
     $promote_stage_number,
     $assignment_group,
     $connection_alias,
-    $auto_create_ci
+    $auto_create_ci,
   )
 }
