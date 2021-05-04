@@ -29,6 +29,7 @@ profile::app::redis::bind: 127.0.0.1
 # Sample Website
 profile::app::sample_website::linux::enable_monitoring: false
 profile::app::sample_website::windows::enable_monitoring: false
+profile::app::sample_website::windows::webserver_port : 80
 
 ##
 # Sensu
