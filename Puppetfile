@@ -125,6 +125,7 @@ mod 'tse-winntp', '1.0.1'
 # Note, the manifests in profile/manifests/app/cloudshop/sqlserver/ must be refactored to the 
 # incorporate the archive module syntax. Better option might be to move CloudShop App to its own Repo.
 mod 'puppet-staging', '3.2.0' 
+mod 'puppetlabs-wsus_client', '4.0.0'
 
 mod 'demo_cis',
     git: 'https://github.com/ipcrm/ipcrm-demo_cis.git',
