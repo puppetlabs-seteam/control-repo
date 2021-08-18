@@ -1,7 +1,8 @@
 plan deployments::servicenow_integration(
   String $snow_endpoint,
-  String $snow_username,
-  String $snow_password,
+  String $snow_username = '',
+  Sensitive $snow_password = Sensitive(''),
+  Sensitive $snow_oauth_token = Sensitive(''),
   String $stage_to_promote_to = undef,
   Optional[Integer] $max_changes_per_node = 10,
   Optional[String] $report_stage = 'Impact Analysis',
@@ -127,6 +128,7 @@ plan deployments::servicenow_integration(
     $proxy,
     $snow_username,
     $snow_password,
+    $snow_oauth_token,
     $report,
     $ia_url,
     $stage_to_promote_to,
