@@ -53,9 +53,9 @@ mod 'puppetlabs-resource', '1.1.0'
 mod 'puppetlabs-resource_api', '1.1.0'
 mod 'puppetlabs-ruby_task_helper', '0.6.0'
 mod 'puppetlabs-service', '1.3.0'
-mod 'puppetlabs-servicenow_change_requests', '0.2.3'
+mod 'puppetlabs-servicenow_change_requests', '0.3.1'
 mod 'puppetlabs-servicenow_cmdb_integration', '0.2.0'
-mod 'puppetlabs-servicenow_reporting_integration', '0.1.1'
+mod 'puppetlabs-servicenow_reporting_integration', '0.2.1'
 mod 'puppetlabs-splunk_hec', '0.8.1' # Missing requirement of puppetlabs-puppet_metrics_collector
 mod 'puppetlabs-sqlserver', '2.6.2' # Needs updated to support powershell 4.0.0
 mod 'puppetlabs-stdlib', '6.5.0'
