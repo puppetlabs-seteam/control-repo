@@ -165,7 +165,7 @@ Puppet::Functions.create_function(:'deployments::servicenow_change_request') do
     change_req_url = "#{endpoint}/api/sn_chg_rest/v1/change/normal/#{changereq['result']['sys_id']['value']}?state=assess"
     payload = {}.tap do |data|
       data[:state] = 'assess'
-      data[:risk_impact_analysis] = ia_url + "\n" + report['log'] # rubocop:disable Style/StringConcatenation
+      data[:risk_impact_analysis] = ia_url + "\n" + report['log']
       data[:assignment_group] = assignment_group_sys_id
       data[:close_notes] = closenotes.to_json
       data[:priority] = 3.0                           # 1.0 = Critical / 2.0 = High / 3.0 = Moderate / 4.0 = Low
@@ -211,7 +211,7 @@ Puppet::Functions.create_function(:'deployments::servicenow_change_request') do
             proxy['host'],
             proxy['port'],
           )
-          response = proxy_conn.start(uri.host, uri.port, :use_ssl => (uri.scheme == 'https')) do |http|
+          response = proxy_conn.start(uri.host, uri.port, :use_ssl => (uri.scheme == 'https')) do |http| # rubocop:disable Style/HashSyntax
             http.read_timeout = 60
             http.request(request)
           end
