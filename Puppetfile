@@ -24,7 +24,6 @@ mod 'puppetlabs-concat', '6.2.0'
 mod 'puppetlabs-device_manager', '3.0.1'
 mod 'puppetlabs-dism', '1.3.1'
 mod 'puppetlabs-docker', '3.12.1' # Needs updated to support powershell 4.0.0,reboot >3
-mod 'puppetlabs-dsc', '1.9.4' # Needs updated to support reboot > 3.0.0
 mod 'puppetlabs-exec', '0.8.0'
 mod 'puppetlabs-facter_task', '0.7.0'
 mod 'puppetlabs-firewall', '2.7.0'
