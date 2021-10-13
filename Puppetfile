@@ -110,13 +110,13 @@ mod 'tse-time', '1.0.1'
 mod 'tse-winntp', '1.0.1'
 
 # Temporary direct download of CEM modules, to be replaced by Forge download
-mod 'cem_windows', # not published on the forge
-    git: 'https://kreeuwijk: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@github.com/puppetlabs/puppetlabs-cem_windows.git',
-    branch: 'main'
+# mod 'cem_windows', # not published on the forge
+#     git: 'https://<user>:<token>@github.com/puppetlabs/puppetlabs-cem_windows.git',
+#     branch: 'main'
 
-mod 'cem_linux', # not published on the forge
-    git: 'https://kreeuwijk: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@github.com/puppetlabs/puppetlabs-cem_linux.git',
-    branch: 'main'
+# mod 'cem_linux', # not published on the forge
+#     git: 'https://<user>:<token>@github.com/puppetlabs/puppetlabs-cem_linux.git',
+#     branch: 'main'
 
 # Re-added 'puppet-staging' module to enable the existing CloudShop app code to work, 
 # as it provides a good demo for the SQLServer module (a popular customer ask).
