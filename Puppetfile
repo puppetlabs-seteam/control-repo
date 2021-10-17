@@ -108,22 +108,12 @@ mod 'sensu-sensu', '5.3.1'
 mod 'trlinkin-domain_membership', '1.1.2'
 mod 'tse-time', '1.0.1'
 mod 'tse-winntp', '1.0.1'
-
-# Temporary direct download of CEM modules, to be replaced by Forge download
-# mod 'cem_windows', # not published on the forge
-#     git: 'https://<user>:<token>@github.com/puppetlabs/puppetlabs-cem_windows.git',
-#     branch: 'main'
-
-# mod 'cem_linux', # not published on the forge
-#     git: 'https://<user>:<token>@github.com/puppetlabs/puppetlabs-cem_linux.git',
-#     branch: 'main'
-
-# Re-added 'puppet-staging' module to enable the existing CloudShop app code to work, 
-# as it provides a good demo for the SQLServer module (a popular customer ask).
-# TODO: Replace this module with the 'archive' module (already included in this Puppefile)
-# Note, the manifests in profile/manifests/app/cloudshop/sqlserver/ must be refactored to the 
-# incorporate the archive module syntax. Better option might be to move CloudShop App to its own Repo.
 mod 'puppet-staging', '3.2.0' 
+
+# CEM modules
+mod 'puppetlabs-cem_linux', :latest
+mod 'puppetlabs-cem_windows', :latest
+
 
 mod 'demo_cis',
     git: 'https://github.com/ipcrm/ipcrm-demo_cis.git',
