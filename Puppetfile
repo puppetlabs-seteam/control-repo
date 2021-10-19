@@ -111,8 +111,8 @@ mod 'tse-winntp', '1.0.1'
 mod 'puppet-staging', '3.2.0' 
 
 # CEM modules
-mod 'puppetlabs-cem_linux', :latest
-mod 'puppetlabs-cem_windows', :latest
+#mod 'puppetlabs-cem_linux', :latest
+#mod 'puppetlabs-cem_windows', :latest
 
 
 mod 'demo_cis',
