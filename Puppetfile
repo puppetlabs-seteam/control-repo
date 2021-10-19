@@ -110,11 +110,6 @@ mod 'tse-time', '1.0.1'
 mod 'tse-winntp', '1.0.1'
 mod 'puppet-staging', '3.2.0' 
 
-# CEM modules
-#mod 'puppetlabs-cem_linux', :latest
-#mod 'puppetlabs-cem_windows', :latest
-
-
 mod 'demo_cis',
     git: 'https://github.com/ipcrm/ipcrm-demo_cis.git',
     ref: '4e6b63b'
