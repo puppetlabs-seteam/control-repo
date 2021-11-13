@@ -110,10 +110,6 @@ mod 'tse-time', '1.0.1'
 mod 'tse-winntp', '1.0.1'
 mod 'puppet-staging', '3.2.0' 
 
-mod 'demo_cis',
-    git: 'https://github.com/ipcrm/ipcrm-demo_cis.git',
-    ref: '4e6b63b'
-
 # This is missing dependency on mayflower-php, needs updated to use puppet-php at least
 # This is missing dependency on puppet-app_modeling, is it needed?
 mod 'rgbank',
