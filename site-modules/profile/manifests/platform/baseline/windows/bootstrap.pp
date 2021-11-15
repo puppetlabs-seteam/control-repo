@@ -2,7 +2,7 @@ class profile::platform::baseline::windows::bootstrap {
 
   require ::chocolatey
 
-  if versioncmp($::powershell_version, '5.1.0') <= 0 {
+  if versioncmp('5.1.0', $::powershell_version) <= 0 {
     #notify{"version was less than":}
 
     # service needs to be running to install the update
