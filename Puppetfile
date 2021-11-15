@@ -46,7 +46,7 @@ mod 'puppetlabs-powershell', '5.0.0'
 mod 'puppetlabs-puppet_authorization', '0.5.1'
 mod 'puppetlabs-puppetserver_gem', '1.1.1'
 mod 'puppetlabs-pwshlib', '0.10.0'
-mod 'puppetlabs-reboot', '3.1.0'
+mod 'puppetlabs-reboot', '4.1.0'
 mod 'puppetlabs-registry', '4.0.0'
 mod 'puppetlabs-resource', '1.1.0'
 mod 'puppetlabs-resource_api', '1.1.0'
@@ -109,10 +109,6 @@ mod 'trlinkin-domain_membership', '1.1.2'
 mod 'tse-time', '1.0.1'
 mod 'tse-winntp', '1.0.1'
 mod 'puppet-staging', '3.2.0' 
-
-mod 'demo_cis',
-    git: 'https://github.com/ipcrm/ipcrm-demo_cis.git',
-    ref: '4e6b63b'
 
 # This is missing dependency on mayflower-php, needs updated to use puppet-php at least
 # This is missing dependency on puppet-app_modeling, is it needed?
