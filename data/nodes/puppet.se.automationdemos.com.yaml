@@ -1,0 +1,23 @@
+---
+# Credentials for ServiceNow Reporting Integration
+servicenow_reporting_integration::event_management::user: 'admin'
+servicenow_reporting_integration::event_management::password: 'PuppetLabs1'
+
+# Credentials for ServiceNow Reporting Integration
+servicenow_cmdb_integration::user: 'admin'
+servicenow_cmdb_integration::password: 'PuppetLabs1'
+
+# Ensure PuppetDB has enough memory to run
+puppet_enterprise::profile::puppetdb::java_args:
+  Xms: 512m
+  Xmx: 512m
+
+# Device Manager
+device_manager::devices:
+  panos:
+    type: 'panos'
+    credentials:
+      host: 'panos.se.automationdemos.com'
+      user: 'admin'
+      password: 'puppetlabs'
+      ssl: false
