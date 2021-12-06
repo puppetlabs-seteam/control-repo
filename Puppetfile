@@ -19,12 +19,11 @@ mod 'puppetlabs-cd4pe_jobs', '1.5.0'
 mod 'puppetlabs-chocolatey', '6.0.1'
 mod 'puppetlabs-cisco_ios', '1.3.0'
 mod 'puppetlabs-ciscopuppet', '2.1.0'
-mod 'puppetlabs-comply', '2.1.0'
+mod 'puppetlabs-comply', '2.2.0'
 mod 'puppetlabs-concat', '6.2.0'
 mod 'puppetlabs-device_manager', '3.0.1'
 mod 'puppetlabs-dism', '1.3.1'
 mod 'puppetlabs-docker', '4.1.0'
-mod 'puppetlabs-dsc', '1.9.4' # Needs to be migrated to the dsc-* modules
 mod 'puppetlabs-exec', '0.8.0'
 mod 'puppetlabs-facter_task', '0.7.0'
 mod 'puppetlabs-firewall', '3.2.0'
@@ -62,6 +61,9 @@ mod 'puppetlabs-tomcat', '4.2.0'
 mod 'puppetlabs-transition', '0.1.3'
 mod 'puppetlabs-translate', '2.2.0'
 mod 'puppetlabs-vcsrepo', '3.1.1'
+mod 'dsc-networkingdsc', '8.2.0-0-3'
+mod 'dsc-auditpolicydsc', '1.4.0-0-4'
+mod 'dsc-securitypolicydsc', '2.10.0-0-3'
 
 # Forge Community Modules
 mod 'puppet-yum', '4.3.0'  # Required for the CD4PE workshop
@@ -85,7 +87,7 @@ mod 'kogitoapp-gitea', '1.0.4' # Do we need this, it is out of date and requires
                               # profile::puppet::seteam_master
 mod 'lwf-remote_file', '1.1.3'
 mod 'nexcess-auditd', '2.0.0' # Last supported on 2017.  Part of profile::compliance::hippa
-mod 'puppet-archive', '5.0.0'
+mod 'puppet-archive', '6.0.2'
 mod 'puppet-epel', '3.0.1'
 mod 'puppet-firewalld', '4.4.0'
 mod 'puppet-gitlab', '6.0.0'
