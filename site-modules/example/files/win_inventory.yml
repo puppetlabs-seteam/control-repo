@@ -2,13 +2,13 @@ all:
   hosts:
     tmobilepocwin0.se.automationdemos.com:
       ansible_user: puppetinstructor
-      ansible_password: '@Pupp3t1abs'
+      ansible_password: 'Puppet Windows Password'
       ansible_connection: winrm
       ansible_winrm_transport: basic
       ansible_port: 5985
     tmobilepocwin1.se.automationdemos.com:
       ansible_user: puppetinstructor
-      ansible_password: '@Pupp3t1abs'
+      ansible_password: 'Puppet Windows Password'
       ansible_connection: winrm
       ansible_winrm_transport: basic
       ansible_port: 5985
