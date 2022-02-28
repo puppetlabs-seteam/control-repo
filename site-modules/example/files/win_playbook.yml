@@ -1,0 +1,6 @@
+- name: List
+  hosts: all
+
+  tasks:
+    - name: list
+      win_shell: dir
