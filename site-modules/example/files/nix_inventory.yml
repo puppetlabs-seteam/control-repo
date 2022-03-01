@@ -1,0 +1,10 @@
+all:
+  hosts:
+    tmobilepocnix1.se.automationdemos.com:
+      ansible_ssh_extra_args: -o StrictHostKeyChecking=no
+      ansible_ssh_private_key_file: /home/centos/.ssh/prvkey.pem
+      ansible_user: centos
+    tmobilepocnix2.se.automationdemos.com:
+      ansible_ssh_extra_args: -o StrictHostKeyChecking=no
+      ansible_ssh_private_key_file: /home/centos/.ssh/prvkey.pem
+      ansible_user: centos
