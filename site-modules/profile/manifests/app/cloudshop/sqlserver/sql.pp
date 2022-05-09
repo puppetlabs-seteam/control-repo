@@ -30,10 +30,10 @@ class profile::app::cloudshop::sqlserver::sql (
       when => pending,
   }
 
-  service { 'wuauserv':
-    enable => true,
-    before => Windowsfeature['Net-Framework-Core'],
-  }
+  #service { 'wuauserv':
+  #  enable => true,
+  #  before => Windowsfeature['Net-Framework-Core'],
+  #}
 
   windowsfeature { 'Net-Framework-Core':
     ensure => present,
