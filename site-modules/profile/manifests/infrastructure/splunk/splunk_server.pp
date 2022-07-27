@@ -8,9 +8,13 @@
 # @param splunk_server
 #   Specifies a Splunk server if not specified used Fact[fqdn]
 #   setup to be referenced from another profile as `$profile::infrastructure::splunk::splunk_server::splunk_server_fqdn`
+# @param splunk_user
+#   Explicitly sets the user under which splunk will instal and run.
+#   Should default to "splunk", but certain files were having ownership incorrectly set from puppet_splunk module
 #
 class profile::infrastructure::splunk::splunk_server (
 Optional[String]  $splunk_server  = undef,
+String            $splunk_user = 'splunk',
 String            $hec_puppetsummary_token  = 'bba862fd-c09c-43e1-90f7-87221f362296', # needs to be a valid GUID, must match with the GUID you use on PE
 String            $hec_puppetdetailed_token = '7dc49a8f-8f56-4095-9522-e5566f937cfc', # needs to be a valid GUID, must match with the GUID you use on PE
 ){
@@ -24,8 +28,8 @@ String            $hec_puppetdetailed_token = '7dc49a8f-8f56-4095-9522-e5566f937
   }
 
   class { 'splunk::params':
-    version  => '8.0.2.1',
-    build    => 'f002026bad55',
+    version  => '9.0.0',
+    build    => '6818ac46f2ec',
     src_root => 'https://download.splunk.com',
     server   => $splunk_server_fqdn,
   }
@@ -33,7 +37,8 @@ String            $hec_puppetdetailed_token = '7dc49a8f-8f56-4095-9522-e5566f937
   #Install Splunk on standard web port 8000
   class { 'splunk::enterprise':
     seed_password  => true,
-    package_ensure => 'latest'
+    package_ensure => 'latest',
+    splunk_user    => $splunk_user
   }
 
   class { 'firewall': }
@@ -62,8 +67,8 @@ String            $hec_puppetdetailed_token = '7dc49a8f-8f56-4095-9522-e5566f937
   }
 
   splunk::addon { 'TA-puppet-report-viewer':
-    splunkbase_source => 'puppet:///modules/profile/puppet/splunk/puppet-report-viewer_200.tgz',
-    notify            =>  Class['splunk::enterprise::service'],
+    splunkbase_source => 'puppet:///modules/profile/puppet/splunk/TA-puppet-report-viewer-4.0.0.tar.gz',
+    notify            => Class['splunk::enterprise::service'],
     inputs            => {
       'http://puppet:summary'  => {
         'sourcetype' => 'puppet:summary',
@@ -77,10 +82,15 @@ String            $hec_puppetdetailed_token = '7dc49a8f-8f56-4095-9522-e5566f937
       },
     },
   }
+  splunk::addon { 'TA-puppet-alert-actions':
+    splunkbase_source => 'puppet:///modules/profile/puppet/splunk/TA-puppet-alert-actions-0.6.0.tar.gz',
+    notify            => Class['splunk::enterprise::service'],
+  }
+
 
   splunk::addon {
     default:
-      notify            =>  Class['splunk::enterprise::service'],
+      notify            => Class['splunk::enterprise::service'],
     ;
     'slack_alerts':
       splunkbase_source => 'puppet:///modules/profile/puppet/splunk/slack-notification-alert_203.tgz',
