@@ -7,7 +7,7 @@ Facter.add(:info) do
     when 'windows'
       Facter::Core::Execution.exec('type C:\ProgramData\PuppetLabs\puppet\info.txt')
     else
-      'Production'
+      'production'
     end  
   end
 end
