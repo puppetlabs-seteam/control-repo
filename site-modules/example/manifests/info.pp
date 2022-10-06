@@ -2,14 +2,14 @@ class example::info {
 
   # OS Specific
   case $::kernel {
-    'windows': {
+    'Linux': {
        file { '/etc/puppetlabs/puppet/info.txt':
          ensure  => 'present',
          content => "production",
          mode    => '0644',
        }
     }
-    'Linux':   {
+    'windows':   {
        file { 'C:\ProgramData\PuppetLabs\puppet\info.txt':
          ensure  => 'present',
          content => "production",
