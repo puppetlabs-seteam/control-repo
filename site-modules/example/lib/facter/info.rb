@@ -4,8 +4,10 @@ Facter.add(:info) do
     case kernel
     when 'Linux'
       Facter::Core::Execution.exec('cat /etc/puppetlabs/puppet/info.txt')
-    else
+    when 'windows'
       Facter::Core::Execution.exec('type C:\ProgramData\PuppetLabs\puppet\info.txt')
+    else
+      'Production'
     end  
   end
 end
