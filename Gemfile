@@ -22,8 +22,8 @@ group :development do
   # gem 'facter', '2.5.7'
   gem "puppet-module-posix-default-r#{minor_version}", '~> 1.0', require: false, platforms: [:ruby]
   gem "puppet-module-posix-dev-r#{minor_version}", '~> 1.0',     require: false, platforms: [:ruby]
-  gem 'rubocop', '1.39.0'
-  gem 'rubocop-rspec', '2.15.0'
+  gem 'rubocop', '1.6.1'
+  gem 'rubocop-rspec', '2.4.0'
   # gem 'puppetlabs_spec_helper'
   # gem 'puppet-syntax'
 end
