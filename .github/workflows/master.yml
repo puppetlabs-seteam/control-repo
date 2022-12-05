@@ -15,13 +15,12 @@ jobs:
     steps:
     - uses: actions/checkout@master
     - name: Set up Ruby 2.6
-      uses: actions/setup-ruby@v1
+      uses: ruby/setup-ruby@v1
       with:
         ruby-version: 2.6
-    - name: Install bundler and gems
-      run: |
-        gem install bundler -v 2.2.9
-        bundle install --jobs 4 --retry 3
+        bundler: latest
+    - name: Install gems
+      run: bundle install --jobs 4 --retry 3
     - name: Run sytax check
       run: bundle exec rake syntax
     # - name: Run Onceover
