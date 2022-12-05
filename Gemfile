@@ -13,7 +13,7 @@ group :development do
   gem 'rest-client'
   gem 'puppet', '6.28.0'
   gem 'puppet-syntax', '3.2.1'
-  gem 'fast_gettext', '2.2.0'
+  gem 'fast_gettext', '~> 1.1'
   # gem 'rspec', '3.8.0'
   # gem 'rspec-core', '3.8.0'
   # gem 'rspec-mocks', '=3.8.1'
