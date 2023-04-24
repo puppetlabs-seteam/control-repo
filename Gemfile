@@ -11,7 +11,7 @@ group :development do
   gem 'rake', '13.0.6'
   gem 'ra10ke'
   gem 'rest-client'
-  gem 'puppet', '7.21.0'
+  gem 'puppet', '7.22.0'
   gem 'puppet-syntax', '3.2.1'
   gem 'fast_gettext', '~> 2.3'
   # gem 'rspec', '3.8.0'
