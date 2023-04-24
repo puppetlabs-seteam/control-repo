@@ -23,6 +23,6 @@ group :development do
   gem "puppet-module-posix-default-r#{minor_version}", '~> 1.1', require: false, platforms: [:ruby]
   gem "puppet-module-posix-dev-r#{minor_version}", '~> 1.1',     require: false, platforms: [:ruby]
   gem 'rubocop', '~> 1.50'
-  gem 'rubocop-rspec', '2.20.0'
+  gem 'rubocop-rspec', '2.0.1'
   # gem 'puppetlabs_spec_helper'
 end
