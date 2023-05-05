@@ -19,7 +19,7 @@
             <% } -%>
             <h1>System Info </h1>
             <p>fqdn/certname:
-                <%= $::trusted[certname] %>
+                <%= $trusted['certname'] %>
             </p>
             <p>ip address:
                 <%= $facts['networking']['ip'] %>
