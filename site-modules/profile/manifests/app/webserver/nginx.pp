@@ -2,7 +2,7 @@ class profile::app::webserver::nginx(
   Boolean $php = false,
 ){
 
-  if $::kernel == 'windows' {
+  if $facts['kernel'] == 'windows' {
     fail('Unsupported OS')
   }
 

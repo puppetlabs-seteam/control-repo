@@ -1,6 +1,6 @@
 class profile::platform::compliance::hipaa {
 
-  case $::osfamily {
+  case $facts['os']['family'] {
     'windows': {
       include ::profile::platform::compliance::hipaa::windows
     }

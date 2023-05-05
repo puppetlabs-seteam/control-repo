@@ -2,7 +2,7 @@ class profile::app::java (
   $distribution = 'jre',
 ){
 
-  case $::kernel {
+  case $facts['kernel'] {
 
     'windows': {
       class{'::profile::app::java::windows':

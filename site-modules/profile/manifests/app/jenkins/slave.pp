@@ -4,7 +4,7 @@ class profile::app::jenkins::slave (
 
   include ::profile::platform::baseline
 
-  case $::kernel {
+  case $facts['kernel'] {
 
     'Linux': {
       class { '::jenkins::slave':

@@ -1,11 +1,11 @@
 class profile::app::haproxy {
 
-  if $::kernel == 'windows' {
+  if $facts['kernel'] == 'windows' {
     fail('Unsupported OS')
   }
 
   # Use at least 1.5 on all platforms
-  if $::facts['os']['name'] == 'Ubuntu' {
+  if $facts['os']['name'] == 'Ubuntu' {
 
     include ::apt
 
@@ -21,7 +21,7 @@ class profile::app::haproxy {
 
   class { '::haproxy':
     global_options   => {
-      'log'     => "${::ipaddress} local0",
+      'log'     => "${facts['networking']['ip']} local0",
       'chroot'  => '/var/lib/haproxy',
       'pidfile' => '/var/run/haproxy.pid',
       'maxconn' => '4000',

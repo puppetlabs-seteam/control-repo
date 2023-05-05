@@ -14,7 +14,7 @@ class profile::app::sample_website::linux (
   }
 
   # configure apache
-  apache::vhost { $::fqdn:
+  apache::vhost { $facts['networking']['fqdn']:
     port            => $webserver_port,
     docroot         => $doc_root,
     require         => File[$doc_root],

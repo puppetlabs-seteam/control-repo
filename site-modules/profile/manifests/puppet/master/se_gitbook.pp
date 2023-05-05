@@ -36,7 +36,7 @@ class profile::puppet::master::se_gitbook (
     cleanup      => true,
   }
 
-  apache::vhost { $::fqdn:
+  apache::vhost { $facts['networking']['fqdn']:
     port    => $gitbook_port,
     docroot => $gitbook_wwwroot,
   }
