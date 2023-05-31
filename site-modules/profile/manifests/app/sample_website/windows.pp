@@ -1,6 +1,6 @@
 class profile::app::sample_website::windows (
   String $doc_root           = 'C:\inetpub\wwwroot\sample_website',
-  Integer $webserver_port    = 80,
+  Integer $webserver_port    = 80,   # change this default value in Hiera common.yaml
   String $apppool            = 'sample_website',
   String $website_source_dir = 'puppet:///modules/profile/app/sample_website',
   Boolean $enable_monitoring = false,
@@ -25,6 +25,12 @@ class profile::app::sample_website::windows (
     ensure          => 'started',
     physicalpath    => $doc_root,
     applicationpool => $apppool,
+    bindings        => [
+      {
+         'bindinginformation'   => "*:$webserver_port:",
+         'protocol'             => 'http',
+      },
+    ],
     require         => [
       Iis_application_pool['sample_website']
     ],
@@ -37,7 +43,7 @@ class profile::app::sample_website::windows (
     enabled      => true,
     protocol     => 'TCP',
     local_port   => $webserver_port,
-    display_name => 'HTTP Inbound',
+    display_name => "HTTP_$webserver_port", # generate a unique inbound rule. this new rule per port value is just for demo purposes
     description  => 'Inbound rule for HTTP Server',
   }
 
