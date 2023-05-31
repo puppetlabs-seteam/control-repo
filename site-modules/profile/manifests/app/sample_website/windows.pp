@@ -32,7 +32,7 @@ class profile::app::sample_website::windows (
       },
     ],
     require         => [
-      iis_application_pool['sample_website']
+      Iis_application_pool['sample_website']
     ],
   }
 
