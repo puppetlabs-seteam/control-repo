@@ -1,6 +1,6 @@
 class profile::app::puppetdev {
 
-  case $::kernel {
+  case $facts['kernel'] {
 
     'windows': {
       contain ::profile::app::puppetdev::windows

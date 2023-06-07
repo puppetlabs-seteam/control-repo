@@ -9,9 +9,9 @@ class example::wordpress {
     ensure => present,
   }
 
-  apache::vhost { $::fqdn:
+  apache::vhost { $facts['networking']['fqdn']:
     priority   => '10',
-    vhost_name => $::fqdn,
+    vhost_name => $facts['networking']['fqdn'],
     port       => '80',
     docroot    => '/var/www/html',
   }

@@ -1,6 +1,6 @@
 class profile::app::db::mysql::client {
 
-  case $::facts['kernel'] {
+  case $facts['kernel'] {
     'windows': {
       fail('Unsupported OS')
     }

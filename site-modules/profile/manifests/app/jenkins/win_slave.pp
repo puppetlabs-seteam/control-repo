@@ -20,7 +20,7 @@ class profile::app::jenkins::win_slave (
   $executors_flag   = "-executors ${executors}"
   $ui_user_flag     = "-username ${ui_user}"
   $ui_pass_flag     = "-password ${ui_pass}"
-  $slave_alias_flag = "-name ${::fqdn}"
+  $slave_alias_flag = "-name ${facts['networking']['fqdn']}"
   $master_url_flag  = "-master ${masterurl}"
   $labels_flag      = "-labels ${labels}"
 

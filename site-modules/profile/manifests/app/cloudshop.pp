@@ -1,6 +1,6 @@
 class profile::app::cloudshop {
 
-  case $::kernel {
+  case $facts['kernel'] {
     'windows': {
       include profile::app::cloudshop::sqlserver::init
       include profile::app::cloudshop::webapp::db
