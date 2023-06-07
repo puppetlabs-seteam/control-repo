@@ -27,7 +27,6 @@ mod 'puppetlabs-docker', '4.1.0'
 mod 'puppetlabs-exec', '0.8.0'
 mod 'puppetlabs-facter_task', '0.7.0'
 mod 'puppetlabs-firewall', '3.2.0'
-mod 'puppetlabs-gcc', '0.3.0' # Needs updated to support stdlib 6.5
 mod 'puppetlabs-git', '0.5.0'
 mod 'puppetlabs-haproxy', '4.3.0'
 mod 'puppetlabs-hocon', '1.1.0'
