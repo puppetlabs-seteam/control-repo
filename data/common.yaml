@@ -94,6 +94,9 @@ device_manager::devices:
       ssl: false
 
 profile::platform::baseline::enable_monitoring: false
+profile::platform::baseline::linux::packages::pkgs:
+  - wget
+  - unzip
 
 ##
 # Puppet Enterprise
