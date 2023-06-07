@@ -28,7 +28,7 @@ class profile::app::sensu::handlers (
     type    => 'pipe',
     command => 'handler-mailer.rb',
     config  => {
-      admin_gui => "http://${::fqdn}:3000",
+      admin_gui => "http://${facts['networking']['fqdn']}:3000",
       mail_from => $mailer_from,
       mail_to   => $mailer_to,
     },

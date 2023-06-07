@@ -26,7 +26,7 @@ class profile::app::puppet_tomcat (
 
   }
 
-  if $::kernel == 'Linux' {
+  if $facts['kernel'] == 'Linux' {
 
       class {'::profile::app::puppet_tomcat::linux':
         deploy_sample_app     => $deploy_sample_app,
@@ -37,7 +37,7 @@ class profile::app::puppet_tomcat (
       }
 
     }
-    elsif $::kernel == 'windows' {
+    elsif $facts['kernel'] == 'windows' {
 
       class {'::profile::app::puppet_tomcat::windows':
         deploy_sample_app     => $deploy_sample_app,

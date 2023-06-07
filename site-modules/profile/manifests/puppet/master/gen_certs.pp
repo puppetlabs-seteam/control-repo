@@ -1,6 +1,6 @@
 class profile::puppet::master::gen_certs (
   $dns_alt_names = ['puppet','puppetpoc'],
-  $cert_hostname = $::fqdn,
+  $cert_hostname = $facts['networking']['fqdn'],
 ){
 
 

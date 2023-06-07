@@ -1,7 +1,7 @@
 class profile::app::puppetdev::linux {
   include git
 
-  $dev_packages = $::osfamily ? {
+  $dev_packages = $facts['os']['family'] ? {
     'RedHat' => [
       'binutils',
       'bzip2',

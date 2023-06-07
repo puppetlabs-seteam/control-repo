@@ -1,6 +1,6 @@
 class profile::app::entropy {
 
-  if $::kernel == 'windows' {
+  if $facts['kernel'] == 'windows' {
     fail('Unsupported OS')
   }
 

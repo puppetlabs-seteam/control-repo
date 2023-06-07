@@ -3,7 +3,7 @@ class profile::platform::baseline::linux::packages (
   Array[String] $pkgs
 ){
 
-  if $::osfamily == 'RedHat' {
+  if $facts['os']['family'] == 'RedHat' {
     include ::epel
   }
 

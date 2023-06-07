@@ -1,5 +1,5 @@
 class profile::app::cloudshop::webapp::init (
-  $dbserver      = $::hostname, # on Windows / AWS. $::fqdn doesn't work
+  $dbserver      = $facts['netowrking']['hostname'],
   $dbinstance    = 'MYINSTANCE',
   $dbpass        = 'Azure$123',
   $dbuser        = 'CloudShop',
