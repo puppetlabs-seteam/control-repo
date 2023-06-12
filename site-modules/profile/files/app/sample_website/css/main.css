@@ -3,7 +3,7 @@
         margin-left: 60px;
         width: 70%;
         font-family: 'Helvetica', 'Arial', 'Sans-Serif';
-        background: black url(../img/logo.png) no-repeat left top;
+        background: white url(../img/logo.png) no-repeat left top;
     }
     
     a {
@@ -19,7 +19,7 @@
     ul {
         font-size: 1.5em;
         line-height: 0.5em;
-        color: #fff;
+        color: rgb(3, 3, 3);
     }
     
     h1,
@@ -66,3 +66,4 @@
         border-top: 1px solid #d5d5d5;
         font-size: .8em;
     }
+
