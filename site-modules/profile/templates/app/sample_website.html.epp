@@ -21,12 +21,31 @@
             <p>fqdn/certname:
                 <%= $trusted['certname'] %>
             </p>
-            <p>ip address:
-                <%= $facts['networking']['ip'] %>
+            <p>Operating System:
+                <%= $facts['operatingsystem'] %>
             </p>
+          <% if $facts['kernel'] == 'Linux' { -%>
+            <p>Web Server:
+                Apache
+            </p>
+          <% } elsif $facts['kernel'] == 'Windows' { -%>
             <p>total system memory:
                 <%= $facts['memory']['system']['total'] %>
             </p>
+          <% } -%>
+          <% if $facts['kernel'] == 'windows' { -%>
+            <img src="img/training.png" height="128" width="168" alt="Windows" />
+            <p>Training.Puppet.com
+            </p>
+            <p>Puppet Education offers on-demand and instructor led training
+            </P>
+          <% } elsif $facts['kernel'] == 'Linux' { -%>
+            <img src="img/OL-logo.png" height="100" width="298" alt="Linux" />
+            <p>Technical support you can depend on
+            </p>
+            <p>   for all your Open Source software
+            </P>
+          <% } -%>
         </div>
     </div>
 </body>
