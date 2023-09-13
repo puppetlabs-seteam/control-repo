@@ -22,7 +22,7 @@ group :development do
   # gem 'facter', '2.5.7'
   gem "puppet-module-posix-default-r2.7", '~> 1.1.1', require: false, platforms: [:ruby]
   gem "puppet-module-posix-dev-r2.7", '~> 1.1.1',     require: false, platforms: [:ruby]
-  gem 'puppet-strings', '~> 4'
+  gem 'puppet-strings', '>= 2'
   gem 'rubocop', '~> 1.6.1'
   gem 'rubocop-rspec', '2.0.1'
   # gem 'puppetlabs_spec_helper'
