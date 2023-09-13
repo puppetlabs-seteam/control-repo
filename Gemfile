@@ -5,14 +5,14 @@ minor_version = ruby_version_segments[0..1].join('.')
 
 group :development do
   # gem 'onceover', git: 'git@github.com:dylanratcliffe/onceover.git', branch: 'formatter_factset'
-  gem 'onceover', '3.20.0'
-  gem 'onceover-codequality', '0.8.0'
+  gem 'onceover', '3.21.0'
+  gem 'onceover-codequality', '0.10.0'
   gem 'pry'
   gem 'rake', '13.0.6'
   gem 'ra10ke'
   gem 'rest-client'
-  gem 'puppet', '7.22.0'
-  gem 'puppet-syntax', '3.2.1'
+  gem 'puppet', '8.2'
+  gem 'puppet-syntax', '3.3.0'
   gem 'fast_gettext', '~> 2.3'
   # gem 'rspec', '3.8.0'
   # gem 'rspec-core', '3.8.0'
