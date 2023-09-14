@@ -14,7 +14,7 @@ group :development do
   gem 'puppet', '8.2'
   gem 'puppet-syntax', '3.3.0'
   gem 'fast_gettext', '~> 2.3'
-  # gem 'rspec', '3.8.0'
+  gem 'rspec', '3.12.2'
   # gem 'rspec-core', '3.8.0'
   # gem 'rspec-mocks', '=3.8.1'
   # gem 'rspec-expectations', '3.8.4'
