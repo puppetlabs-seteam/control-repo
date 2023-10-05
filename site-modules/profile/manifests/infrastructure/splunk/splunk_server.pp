@@ -20,7 +20,7 @@ String            $hec_puppetdetailed_token = '7dc49a8f-8f56-4095-9522-e5566f937
 ){
   case $splunk_server {
     undef: {
-      $splunk_server_fqdn = $facts['fqdn']
+      $splunk_server_fqdn = $facts['networking']['fqdn']
     }
     default: {
       $splunk_server_fqdn = $splunk_server
