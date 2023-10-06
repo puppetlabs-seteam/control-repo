@@ -84,8 +84,8 @@ class profile::puppet::master::gitea {
   }
 
   firewall{ '100 allow web connections':
-    proto  => 'tcp',
-    dport  => 3000,
-    action => accept,
+    proto => 'tcp',
+    dport => 3000,
+    jump  => accept,
   }
 }

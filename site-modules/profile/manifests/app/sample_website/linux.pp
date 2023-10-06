@@ -26,9 +26,9 @@ class profile::app::sample_website::linux (
   }
 
   firewall { '100 allow http and https access':
-    dport  => $webserver_port,
-    proto  => tcp,
-    action => accept,
+    dport => $webserver_port,
+    proto => tcp,
+    jump  => accept,
   }
 
   file { $website_source_dir:

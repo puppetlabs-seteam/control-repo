@@ -80,9 +80,9 @@ class profile::app::puppet_webapp::webhead::ubuntu (
   }
 
   firewall { "110 allow http ${vhost_port}  access":
-    dport  => $vhost_port,
-    proto  => tcp,
-    action => accept,
+    dport => $vhost_port,
+    proto => tcp,
+    jump  => accept,
   }
 
   @@haproxy::balancermember { "haproxy-${facts['networking']['fqdn']}":

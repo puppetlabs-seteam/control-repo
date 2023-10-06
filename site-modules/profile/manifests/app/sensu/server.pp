@@ -55,9 +55,9 @@ class profile::app::sensu::server (
   }
 
   firewall { '3000 allow Sensu Uchiwa access':
-      dport  => '3000',
-      proto  => tcp,
-      action => accept,
+      dport => '3000',
+      proto => tcp,
+      jump  => accept,
   }
 
 }
