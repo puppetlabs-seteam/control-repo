@@ -22,9 +22,9 @@ class profile::puppet::master::se_gitbook (
   }
 
   firewall { "150 allow http ${gitbook_port}  access":
-    dport  => $gitbook_port,
-    proto  => tcp,
-    action => accept,
+    dport => $gitbook_port,
+    proto => tcp,
+    jump  => accept,
   }
 
   archive { "${gitbook_local}/${gitbook_release}":

@@ -6,20 +6,20 @@ class profile::platform::baseline::linux::firewall_pre {
 
   # Default firewall rules
   firewall { '000 accept all icmp':
-    proto  => 'icmp',
-    action => 'accept',
+    proto => 'icmp',
+    jump  => 'accept',
   }
 
   firewall { '001 accept all to lo interface':
     proto   => 'all',
     iniface => 'lo',
-    action  => 'accept',
+    jump    => 'accept',
   }
 
   firewall { '002 accept related established rules':
-    proto  => 'all',
-    state  => ['RELATED', 'ESTABLISHED'],
-    action => 'accept',
+    proto => 'all',
+    state => ['RELATED', 'ESTABLISHED'],
+    jump  => 'accept',
   }
 
 }

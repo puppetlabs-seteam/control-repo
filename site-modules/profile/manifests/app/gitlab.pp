@@ -18,9 +18,9 @@ class profile::app::gitlab (
   }
 
   firewall { '100 allow gitlab':
-    proto  => 'tcp',
-    dport  => $port,
-    action => 'accept',
+    proto => 'tcp',
+    dport => $port,
+    jump  => 'accept',
   }
 
   class { 'gitlab':

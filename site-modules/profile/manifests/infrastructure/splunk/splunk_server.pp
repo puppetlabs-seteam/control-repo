@@ -46,7 +46,7 @@ String            $hec_puppetdetailed_token = '7dc49a8f-8f56-4095-9522-e5566f937
   firewall { '100 allow splunk ports access':
     dport   => [8000, 8088, 8089, 9997],
     proto   => tcp,
-    action  => accept,
+    jump    => accept,
     require => Class['firewall']
   }
 

@@ -9,8 +9,8 @@ class profile::app::redis (
   }
 
   firewall { '6379 allow redis access':
-      dport  => '6379',
-      proto  => tcp,
-      action => accept,
+      dport => '6379',
+      proto => tcp,
+      jump  => accept,
   }
 }
