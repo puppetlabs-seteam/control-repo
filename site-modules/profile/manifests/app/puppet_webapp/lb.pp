@@ -49,9 +49,9 @@ class profile::app::puppet_webapp::lb (
   Haproxy::Balancermember <<| listening_service == 'prod_bk' |>>
 
   firewall { '111 allow http 80 access':
-    dport  => 80,
-    proto  => tcp,
-    action => accept,
+    dport => 80,
+    proto => tcp,
+    jump  => accept,
   }
 
 }

@@ -21,8 +21,8 @@ class example::wordpress {
   }
 
   firewall { '80 allow apache access':
-      dport  => [80],
-      proto  => tcp,
-      action => accept,
+      dport => [80],
+      proto => tcp,
+      jump  => accept,
   }
 }

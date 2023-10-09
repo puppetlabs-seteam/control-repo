@@ -27,9 +27,9 @@ class profile::app::rabbitmq {
   }
 
   firewall { '5672 allow rabbitmq access':
-      dport  => '5672',
-      proto  => tcp,
-      action => accept,
+      dport => '5672',
+      proto => tcp,
+      jump  => accept,
   }
 
 }

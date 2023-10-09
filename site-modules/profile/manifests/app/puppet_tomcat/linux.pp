@@ -18,9 +18,9 @@ class profile::app::puppet_tomcat::linux (
   }
 
   firewall { '100 allow tomcat access':
-    dport  => [8080],
-    proto  => tcp,
-    action => accept,
+    dport => [8080],
+    proto => tcp,
+    jump  => accept,
   }
 
   if $deploy_sample_app == true {
