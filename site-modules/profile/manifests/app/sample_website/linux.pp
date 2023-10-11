@@ -6,7 +6,7 @@ class profile::app::sample_website::linux (
 ) {
 
   if $enable_monitoring {
-    sensu::subscription { 'apache': }
+    #sensu::subscription { 'apache': }
   }
 
   class {'::profile::app::webserver::apache':

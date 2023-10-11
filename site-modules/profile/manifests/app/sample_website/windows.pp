@@ -7,7 +7,7 @@ class profile::app::sample_website::windows (
 ) {
 
   if $enable_monitoring  {
-    sensu::subscription { 'iis': }
+    #sensu::subscription { 'iis': }
   }
 
   class{'::profile::app::webserver::iis':

@@ -11,26 +11,22 @@ class profile::puppet::master::node_manager {
   }
 
   exec{'refresh_classes':
-    path        => $::path,
+    path        => $facts['path'],
     command     => "/etc/puppetlabs/code/environments/${::environment}/scripts/refresh_classes.sh",
     refreshonly => true,
   }
 
   # Determine if package_inventory is a thing in this version, should be greater or equal to 2017.2
-  $base_ver  = split($::pe_server_version,'[.]')[0] + 0
-  $minor_ver = split($::pe_server_version,'[.]')[1] + 0
+  $base_ver  = split($facts['pe_server_version'],'[.]')[0] + 0
+  $minor_ver = split($facts['pe_server_version'],'[.]')[1] + 0
 
-  if $base_ver >= 2017 and $minor_ver >= 2 {
-
-    node_group { 'PE Agent':
-      ensure               => 'present',
-      classes              => {'puppet_enterprise::profile::agent' => {'package_inventory_enabled' => true}},
-      environment          => 'production',
-      override_environment => false,
-      parent               => 'All Nodes',
-      rule                 => ['and', ['~', ['fact', 'aio_agent_version'], '.+']],
-    }
-
+  node_group { 'PE Agent':
+    ensure               => 'present',
+    classes              => {'puppet_enterprise::profile::agent' => {'package_inventory_enabled' => true}},
+    environment          => 'production',
+    override_environment => false,
+    parent               => 'All Nodes',
+    rule                 => ['and', ['~', ['fact', 'aio_agent_version'], '.+']],
   }
 
   node_group { 'SE Demo Env Conf':
@@ -45,12 +41,12 @@ class profile::puppet::master::node_manager {
     environment          => 'production',
     override_environment => false,
     parent               => 'SE Demo Env Conf',
-    rule                 => ['or', ['=', 'name', $::clientcert]],
+    rule                 => ['or', ['=', 'name', $facts['clientcert']]],
     classes              => {
-      'pe_repo::platform::el_6_x86_64'       => {},
       'pe_repo::platform::el_7_x86_64'       => {},
-      'pe_repo::platform::ubuntu_1404_amd64' => {},
-      'pe_repo::platform::ubuntu_1604_amd64' => {},
+      'pe_repo::platform::el_8_x86_64'       => {},
+      'pe_repo::platform::ubuntu_2004_amd64' => {},
+      'pe_repo::platform::ubuntu_2204_amd64' => {},
       'pe_repo::platform::windows_x86_64'    => {},
       'role::seteam_puppet_master'           => {},
       'profile::puppet::master::se_gitbook'  => {},
