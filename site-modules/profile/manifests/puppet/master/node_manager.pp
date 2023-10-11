@@ -16,10 +16,6 @@ class profile::puppet::master::node_manager {
     refreshonly => true,
   }
 
-  # Determine if package_inventory is a thing in this version, should be greater or equal to 2017.2
-  $base_ver  = split($facts['pe_server_version'],'[.]')[0] + 0
-  $minor_ver = split($facts['pe_server_version'],'[.]')[1] + 0
-
   node_group { 'PE Agent':
     ensure               => 'present',
     classes              => {'puppet_enterprise::profile::agent' => {'package_inventory_enabled' => true}},
