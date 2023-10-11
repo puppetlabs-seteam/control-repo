@@ -18,9 +18,9 @@ class profile::platform::baseline (
   }
 
   # add sensu client
-  if $enable_monitoring {
+  #if $enable_monitoring {
     #include ::profile::app::sensu::client
-  }
+    #}
 
   # OS Specific
   case $facts['kernel'] {
