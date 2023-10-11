@@ -6,9 +6,9 @@ class profile::app::sample_website::windows (
   Boolean $enable_monitoring = false,
 ) {
 
-  if $enable_monitoring  {
+  #if $enable_monitoring  {
     #sensu::subscription { 'iis': }
-  }
+    #}
 
   class{'::profile::app::webserver::iis':
     default_website => false,
