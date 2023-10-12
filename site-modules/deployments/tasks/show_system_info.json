@@ -1,0 +1,8 @@
+{
+    "description": "Cross platform task, to print system info",
+    "input_method": "environment",
+    "implementations": [
+    {"name": "show_system_info_linux.sh", "requirements": ["shell"]},
+    {"name": "show_system_info_windows.ps1", "requirements": ["powershell"]}
+  ]
+}
