@@ -1,0 +1,4 @@
+[CmdletBinding()]
+Param(
+  )
+Get-ComputerInfo
