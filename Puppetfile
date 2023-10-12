@@ -106,7 +106,7 @@ mod 'puppet-windows_env', '4.0.1'
 mod 'puppet-windows_firewall', '4.1.0'
 mod 'puppet-windowsfeature', '4.0.0'
 mod 'reidmv-unzip', '0.1.2'
-mod 'sensu-sensu', '5.11.1'
+#mod 'sensu-sensu', '5.11.1'  # Broken on Puppet 8
 mod 'trlinkin-domain_membership', '1.1.2'
 mod 'tse-time', '1.0.1'
 mod 'tse-winntp', '1.0.1'
