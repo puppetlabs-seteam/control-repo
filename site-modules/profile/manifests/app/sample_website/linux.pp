@@ -5,9 +5,9 @@ class profile::app::sample_website::linux (
   Boolean $enable_monitoring = false,
 ) {
 
-  if $enable_monitoring {
-    sensu::subscription { 'apache': }
-  }
+  #if $enable_monitoring {
+    #sensu::subscription { 'apache': }
+    #}
 
   class {'::profile::app::webserver::apache':
     default_vhost  => false,
