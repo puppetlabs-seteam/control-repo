@@ -1,3 +1,5 @@
+#class: profile::puppet::master::node_manager
+#
 class profile::puppet::master::node_manager {
 
   package { 'puppetclassify':
