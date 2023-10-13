@@ -1,3 +1,5 @@
+#class: profile::app::java::windows
+#
 class profile::app::java::windows (
   $distribution,
 ){
@@ -10,7 +12,7 @@ class profile::app::java::windows (
 
   remote_file { 'c:/temp/jre-8u131-windows-x64.exe':
     ensure => present,
-    source => "http://${::puppet_server}:81/jre/jre-8u131-windows-x64.exe",
+    source => "http://${facts['puppet_server']}:81/jre/jre-8u131-windows-x64.exe",
     #source => 'https://s3-us-west-2.amazonaws.com/tseteam/files/jre-8u131-windows-x64.exe',
     before => Package['Java 8 Update 131 (64-bit)'],
   }
