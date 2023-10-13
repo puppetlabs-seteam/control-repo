@@ -2,9 +2,9 @@
 class profile::puppet::master::clean_certs {
 
   exec{ 'purge-master-cert':
-    path    => $::path,
-    command => "puppet node purge ${::fqdn}",
-    onlyif  => "puppet cert list ${::fqdn} &>/dev/null",
+    path    => $facts['path'],
+    command => "puppet node purge ${$facts['networking']['fqdn']}",
+    onlyif  => "puppet cert list ${$facts['networking']['fqdn']} &>/dev/null",
   }
 
   #Stop PE Services

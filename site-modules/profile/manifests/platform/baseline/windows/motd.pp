@@ -1,8 +1,10 @@
+# class: profile::platform::baseline::windows::motd
+#
 class profile::platform::baseline::windows::motd {
   $motd = @("MOTD"/L)
     ===========================================================
 
-          Welcome to ${::hostname}
+          Welcome to ${facts['networking']['hostname']}
 
     Access  to  and  use of this server is  restricted to those
     activities expressly permitted by the system administration
@@ -10,8 +12,8 @@ class profile::platform::baseline::windows::motd {
 
     ===========================================================
 
-    The operating system is: ${::operatingsystem}
-            The domain is: ${::domain}
+    The operating system is: ${facts['os']['name']}
+            The domain is: ${facts['networking']['domain']}
 
     | MOTD
 

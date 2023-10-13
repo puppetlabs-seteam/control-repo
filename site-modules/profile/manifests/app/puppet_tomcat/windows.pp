@@ -1,3 +1,5 @@
+#class: profile::app::puppet_tomcat::windows
+#
 class profile::app::puppet_tomcat::windows (
   String $plsample_version,
   String $tomcat_version,
@@ -24,7 +26,7 @@ class profile::app::puppet_tomcat::windows (
 
   remote_file { "C:/apache-tomcat-${tomcat_version}.exe":
     ensure => present,
-    source => "http://${::puppet_server}:81/tomcat/apache-tomcat-${tomcat_version}.exe",
+    source => "http://${facts['puppet_server']}:81/tomcat/apache-tomcat-${tomcat_version}.exe",
     before => Package["Apache Tomcat ${tomcat_major_version}.0 Tomcat${tomcat_major_version} (remove only)"],
   }
 
@@ -54,7 +56,7 @@ class profile::app::puppet_tomcat::windows (
     remote_file {
       "C:/Program Files/Apache Software Foundation/Tomcat ${tomcat_major_version}.0/webapps/plsample-${plsample_version}.war":
       ensure  => latest,
-      source  => "http://${::puppet_server}:81/tomcat/plsample-${plsample_version}.war",
+      source  => "http://${facts['puppet_server']}:81/tomcat/plsample-${plsample_version}.war",
       require => Service["tomcat${tomcat_major_version}"],
     }
 
