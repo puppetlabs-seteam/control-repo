@@ -10,8 +10,8 @@ class profile::app::sensu::server (
   include ::profile::app::rabbitmq
   include ::profile::app::redis
 
-  @@host { $facts['fqdn'] :
-    ip           => $facts['ipaddress'],
+  @@host { $facts['networking']['fqdn'] :
+    ip           => $facts['networking']['ipaddress'],
     host_aliases => ['sensu-server.pdx.puppet.vm','sensu-server'],
     tag          => 'sensu-server',
   }
@@ -55,9 +55,9 @@ class profile::app::sensu::server (
   }
 
   firewall { '3000 allow Sensu Uchiwa access':
-      dport  => '3000',
-      proto  => tcp,
-      action => accept,
+      dport => '3000',
+      proto => tcp,
+      jump  => accept,
   }
 
 }

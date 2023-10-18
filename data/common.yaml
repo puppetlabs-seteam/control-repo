@@ -4,6 +4,10 @@ lookup_options:
     convert_to: 'Sensitive'
   '^cd4pe::root_config::ssl_server_private_key$':
     convert_to: 'Sensitive'
+  '^servicenow_reporting_integration::event_management::password$':
+    convert_to: 'Sensitive'
+  '^servicenow_reporting_integration::event_management::oauth_token$':
+    convert_to: 'Sensitive'
 
 ##
 # Hiera
@@ -25,6 +29,7 @@ profile::app::redis::bind: 127.0.0.1
 # Sample Website
 profile::app::sample_website::linux::enable_monitoring: false
 profile::app::sample_website::windows::enable_monitoring: false
+profile::app::sample_website::windows::webserver_port : 80
 
 ##
 # Sensu
@@ -89,6 +94,9 @@ device_manager::devices:
       ssl: false
 
 profile::platform::baseline::enable_monitoring: false
+profile::platform::baseline::linux::packages::pkgs:
+  - wget
+  - unzip
 
 ##
 # Puppet Enterprise
@@ -174,3 +182,35 @@ cd4pe::root_config::ssl_authority_certificate: |
   2Vm5JDfj8N929UBKkskUU/Ar9ZKli1id9lJeSi1hxBjvr5/ruxvXJOn74V5MWpYE
   wXrjkw==
   -----END CERTIFICATE-----
+
+# CEM Windows Ignore Rules (To allow RDP/WinRM & not conflict with baseline profile)
+cem_windows::config:
+  profile: 'member_server'
+  level: '1'
+  ignore: 
+    - 'ensure_access_this_computer_from_the_network__is_set_to_administrators_authenticated_users_ms_only'
+    - 'ensure_deny_access_to_this_computer_from_the_network_to_include_guests_local_account_and_member_of_administrators_group_ms_only'
+    - 'ensure_deny_log_on_through_remote_desktop_services_is_set_to_guests_local_account_ms_only'
+    - 'ensure_windows_firewall_domain_inbound_connections_is_set_to_block_default'
+    - 'ensure_windows_firewall_private_inbound_connections_is_set_to_block_default'
+    - 'ensure_windows_firewall_public_inbound_connections_is_set_to_block_default'
+    - 'ensure_allow_basic_authentication_is_set_to_disabled'
+    - 'ensure_allow_unencrypted_traffic_is_set_to_disabled'
+    - 'ensure_disallow_digest_authentication_is_set_to_enabled'
+    - 'ensure_allow_basic_authentication_is_set_to_disabled'
+    - 'ensure_allow_unencrypted_traffic_is_set_to_disabled'
+    - 'ensure_disallow_winrm_from_storing_runas_credentials_is_set_to_enabled'
+    - 'ensure_configure_automatic_updates_is_set_to_enabled'
+  
+cem_linux::config:
+  profile: 'server'
+  level: '1'
+  ignore:
+    - 'ensure_rsync_is_not_installed_or_the_rsyncd_service_is_masked'
+    - 'ensure_message_of_the_day_is_configured_properly'
+    - 'ensure_permissions_on_etcmotd_are_configured'
+    - 'ensure_permissions_on_etcsshsshd_config_are_configured'
+    - 'ensure_iptables_packages_are_installed'
+    - 'ensure_firewalld_is_installed'
+    - 'ensure_firewalld_service_is_enabled_and_running'
+    - 'ensure_time_synchronization_is_in_use'

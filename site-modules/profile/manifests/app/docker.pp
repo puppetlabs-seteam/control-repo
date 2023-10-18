@@ -1,6 +1,6 @@
 class profile::app::docker {
 
-  if $::kernel == 'windows' {
+  if $facts['kernel'] == 'windows' {
     fail('Unsupported OS')
   }
 

@@ -1,6 +1,6 @@
 class profile::puppet::master::gen_certs (
   $dns_alt_names = ['puppet','puppetpoc'],
-  $cert_hostname = $::fqdn,
+  $cert_hostname = $facts['networking']['fqdn'],
 ){
 
 
@@ -37,7 +37,7 @@ class profile::puppet::master::gen_certs (
     }
 
     exec{"cert-${k}":
-      path    => $::path,
+      path    => $facts['path'],
       command => $command,
       unless  => "test -f /etc/puppetlabs/puppet/ssl/ca/signed/${k}.pem",
       returns => [0,24]
@@ -48,7 +48,7 @@ class profile::puppet::master::gen_certs (
       $sign_cmd = "puppet cert --allow-dns-alt-names sign ${k}"
 
       exec{"cert-sign-${k}":
-        path    => $::path,
+        path    => $facts['path'],
         command => $sign_cmd,
         unless  => "test -f /etc/puppetlabs/puppet/ssl/ca/signed/${k}.pem",
       }
@@ -132,7 +132,7 @@ class profile::puppet::master::gen_certs (
     $outfile = $o[1]
 
     exec {"pk8_${in}":
-      path    => $::path,
+      path    => $facts['path'],
       cwd     => $workdir,
       command => "openssl pkcs8 -topk8 -inform PEM -outform DER -in ${in} -out ${outfile} -nocrypt",
       unless  => "test -f ${outfile}",
@@ -172,33 +172,23 @@ class profile::puppet::master::gen_certs (
 
   File<||>
     -> exec {'chmod_postgresql_certs':
-      path        => $::path,
+      path        => $facts['path'],
       command     => 'chmod 400 /opt/puppetlabs/server/data/postgresql/9.4/data/certs/*',
       refreshonly => true,
     }
 
-
-  $base_ver  = split($::pe_server_version,'[.]')[0] + 0
-  $minor_ver = split($::pe_server_version,'[.]')[1] + 0
-
-  if $base_ver < 2017 and $minor_ver < 5 {
-    $puppet_face = 'enterprise'
-  } else {
-    $puppet_face = 'infrastructure'
-  }
-
   File<||>
-    -> exec {"puppet_${puppet_face}_configure":
-      path    => $::path,
-      command => "puppet ${puppet_face} configure",
+    -> exec {'puppet_infrastructure_configure':
+      path    => $facts['path'],
+      command => 'puppet infrastructure configure',
     }
     -> exec {'run agent':
-      path    => $::path,
+      path    => $facts['path'],
       command => 'puppet agent -t',
       returns => [2],
     }
     -> exec {'run agent console setup':
-      path    => $::path,
+      path    => $facts['path'],
       command => 'puppet agent -t',
       returns => [2],
     }

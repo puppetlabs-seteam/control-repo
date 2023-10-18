@@ -1,0 +1,21 @@
+name: Test control repo # to be defined
+
+on:
+  push:
+    branches:  
+      - 'master'
+
+jobs:
+  sync_to_production:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@master
+
+      - name: Merge master -> production
+        uses: devmasx/merge-branch@v1.3.0
+        with:
+          type: now
+          head_to_merge: master
+          target_branch: production
+          github_token: ${{ github.token }}
+

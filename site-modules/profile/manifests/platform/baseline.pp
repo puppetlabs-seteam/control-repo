@@ -13,13 +13,17 @@ class profile::platform::baseline (
     ensure => $orch_agent,
   }
 
-  # add sensu client
-  if $enable_monitoring {
-    include ::profile::app::sensu::client
+  service { 'puppet':
+    ensure => 'running'
   }
 
+  # add sensu client
+  #if $enable_monitoring {
+    #include ::profile::app::sensu::client
+    #}
+
   # OS Specific
-  case $::kernel {
+  case $facts['kernel'] {
     'windows': {
       include ::profile::platform::baseline::windows
     }

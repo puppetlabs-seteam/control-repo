@@ -1,12 +1,20 @@
 # @summary This profile installs unzip and git as part of the Linux baseline
-class profile::platform::baseline::linux::packages {
+class profile::platform::baseline::linux::packages (
+  Array[String] $pkgs
+){
 
-  $pkgs = ['unzip','wget']
-
-  ensure_packages($pkgs, {ensure => installed})
-
-  if $::osfamily == 'RedHat' {
+  if $facts['os']['family'] == 'RedHat' {
     include ::epel
   }
 
+  ensure_packages($pkgs, {ensure => installed})
+
+  unless getvar('trusted.external.servicenow.u_enforced_packages').empty {
+    $packages = parsejson($trusted['external']['servicenow']['u_enforced_packages'])
+    $packages.each |$package,$ensure|{
+      package { $package:
+        ensure => $ensure
+      }
+    }
+  }
 }

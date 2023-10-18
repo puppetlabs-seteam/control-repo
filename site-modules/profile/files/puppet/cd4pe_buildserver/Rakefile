@@ -101,7 +101,7 @@ def spec_gen(create=false)
       spec_file = "#{File.dirname(__FILE__)}/spec/classes/#{m}/#{c.split('::').join('_')}_spec.rb"
 
       # If no spec file exists, create a blank should compile test file
-      if File.exists?(spec_file)
+      if File.exist?(spec_file)
         puts "Class #{c} - Spec file already exists at #{spec_file}!" if create == true
       else
         if create == true

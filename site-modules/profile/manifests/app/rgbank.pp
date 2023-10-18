@@ -1,6 +1,6 @@
 class profile::app::rgbank {
 
-  if $::osfamily != 'RedHat' {
+  if $facts['os']['family'] != 'RedHat' {
     fail('Unsupported OS')
   }
 
@@ -21,7 +21,7 @@ class profile::app::rgbank {
   }
 
   $default = {
-    'host' => $::fqdn,
+    'host' => $facts['networking']['fqdn'],
     'port' => 8888,
     'ip'   => '127.0.0.1',
   }

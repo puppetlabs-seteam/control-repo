@@ -1,6 +1,6 @@
 class profile::puppet::seteam_master {
 
-  if $::facts['kernel'] != 'Linux' {
+  if $facts['kernel'] != 'Linux' {
     fail('Unsupported OS!')
   }
 

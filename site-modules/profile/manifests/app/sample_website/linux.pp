@@ -5,16 +5,16 @@ class profile::app::sample_website::linux (
   Boolean $enable_monitoring = false,
 ) {
 
-  if $enable_monitoring {
-    sensu::subscription { 'apache': }
-  }
+  #if $enable_monitoring {
+    #sensu::subscription { 'apache': }
+    #}
 
   class {'::profile::app::webserver::apache':
     default_vhost  => false,
   }
 
   # configure apache
-  apache::vhost { $::fqdn:
+  apache::vhost { $facts['networking']['fqdn']:
     port            => $webserver_port,
     docroot         => $doc_root,
     require         => File[$doc_root],
@@ -26,9 +26,9 @@ class profile::app::sample_website::linux (
   }
 
   firewall { '100 allow http and https access':
-    dport  => $webserver_port,
-    proto  => tcp,
-    action => accept,
+    dport => $webserver_port,
+    proto => tcp,
+    jump  => accept,
   }
 
   file { $website_source_dir:

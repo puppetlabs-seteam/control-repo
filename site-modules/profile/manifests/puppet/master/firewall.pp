@@ -2,9 +2,9 @@ class profile::puppet::master::firewall {
 
   # Puppet master firewall rules
   Firewall {
-    chain  => 'INPUT',
-    proto  => 'tcp',
-    action => 'accept',
+    chain => 'INPUT',
+    proto => 'tcp',
+    jump  => 'accept',
   }
 
   firewall { '110 allow PE Console access':           dport => '443';   }

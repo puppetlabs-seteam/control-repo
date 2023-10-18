@@ -64,8 +64,8 @@ class profile::app::nagios::server {
     subscribe => File['/etc/httpd/conf.d/nagios.conf'],
   }
 
-  @@host { $::fqdn:
-    ip => $::ipaddress,
+  @@host { $facts['networking']['fqdn']:
+    ip => $facts['networking']['ip'],
   }
 
   Host <<||>>

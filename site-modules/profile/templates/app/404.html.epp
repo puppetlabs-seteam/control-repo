@@ -10,12 +10,12 @@
 <body>
     <div class="container">
         <div class="blurb">
-          <% if $::kernel == 'windows' { -%>
-            <img src="img/windows.png" height="128" width="128" />
-          <% } elsif $::kernel == 'Linux' { -%>
-            <img src="img/tux.png" height="128" width="128" />
-            <% } elsif $::kernel == 'Darwin' { -%>
-              <img src="img/apple.png" height="128" width="128" />
+          <% if $facts['kernel'] == 'windows' { -%>
+            <img src="img/windows.png" height="128" width="128" alt="Windows" />
+          <% } elsif $facts['kernel'] == 'Linux' { -%>
+            <img src="img/tux.png" height="128" width="128" alt="Linux" />
+            <% } elsif $facts['kernel'] == 'Darwin' { -%>
+              <img src="img/apple.png" height="128" width="128" alt="MacOS" />
             <% } -%>
             <h1 class="error">404 Not Found Error</h1>
         </div>

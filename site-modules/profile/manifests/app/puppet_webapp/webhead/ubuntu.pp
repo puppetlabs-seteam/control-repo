@@ -2,7 +2,7 @@ class profile::app::puppet_webapp::webhead::ubuntu (
   $app_name = 'webui',
   $app_version = '0.1.12',
   $dist_file = "https://github.com/ipcrm/puppet_webapp/releases/download/${app_version}/puppet_webapp-${app_version}.tar.gz",
-  $vhost_name = $::fqdn,
+  $vhost_name = $facts['networking']['fqdn'],
   $vhost_port = '8008',
   $doc_root = '/var/www/flask',
   $app_env  = pick_default($::appenv,'dev')
@@ -80,16 +80,16 @@ class profile::app::puppet_webapp::webhead::ubuntu (
   }
 
   firewall { "110 allow http ${vhost_port}  access":
-    dport  => $vhost_port,
-    proto  => tcp,
-    action => accept,
+    dport => $vhost_port,
+    proto => tcp,
+    jump  => accept,
   }
 
-  @@haproxy::balancermember { "haproxy-${::fqdn}":
+  @@haproxy::balancermember { "haproxy-${facts['networking']['fqdn']}":
     listening_service => "${app_env}_bk",
     ports             => $vhost_port,
-    server_names      => $::hostname,
-    ipaddresses       => $::ipaddress,
+    server_names      => $facts['networking']['hostname'],
+    ipaddresses       => $facts['networking']['ip'],
     options           => 'check',
   }
 

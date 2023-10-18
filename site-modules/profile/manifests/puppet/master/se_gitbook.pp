@@ -22,9 +22,9 @@ class profile::puppet::master::se_gitbook (
   }
 
   firewall { "150 allow http ${gitbook_port}  access":
-    dport  => $gitbook_port,
-    proto  => tcp,
-    action => accept,
+    dport => $gitbook_port,
+    proto => tcp,
+    jump  => accept,
   }
 
   archive { "${gitbook_local}/${gitbook_release}":
@@ -36,7 +36,7 @@ class profile::puppet::master::se_gitbook (
     cleanup      => true,
   }
 
-  apache::vhost { $::fqdn:
+  apache::vhost { $facts['networking']['fqdn']:
     port    => $gitbook_port,
     docroot => $gitbook_wwwroot,
   }

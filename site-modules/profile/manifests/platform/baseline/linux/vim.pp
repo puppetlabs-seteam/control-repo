@@ -6,7 +6,7 @@ class profile::platform::baseline::linux::vim {
     'root'  => '/root',
   }
 
-  case $::osfamily {
+  case $facts['os']['family'] {
     'Debian': {
       $package = 'vim-nox'
     }

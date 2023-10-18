@@ -2,20 +2,12 @@
 # Server 2012. This will be useful for apps connecting to a database.
 class profile::app::cloudshop::webapp::iis {
 
-  if Integer($::operatingsystemrelease[0,4]) >= 2016 {
-    $app_server_features = [
+  $app_server_features = [
       'WAS',
       'WAS-Process-Model',
       'WAS-NET-Environment',
       'WAS-Config-APIs',
-    ]
-  } else {
-    $app_server_features = [
-      'Application-Server',
-      'AS-NET-Framework',
-      'AS-Web-Support',
-    ]
-  }
+  ]
 
   $iis_features = [
       'Web-Server',

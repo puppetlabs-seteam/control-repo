@@ -2,11 +2,11 @@ class profile::app::webserver::apache (
   $default_vhost = true,
 ){
 
-  if $::kernel == 'windows' {
+  if $facts['kernel'] == 'windows' {
     fail('Unsupported OS')
   }
 
-  case $::osfamily {
+  case $facts['os']['family'] {
     'Debian':{
       $mpm = 'itk'
     }

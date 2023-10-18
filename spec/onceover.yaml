@@ -9,10 +9,7 @@ classes:
   - role::puppet_tomcat
   - role::seteam_puppet_master
   - role::cloudshop
-  - role::cd4pe_buildserver
-  - role::sensu_server
   - role::jenkins_master
-  - role::cd4pe_server
   - role::puppet_master
 
 # Nodes to tests classes on, this refers to a 'factset' or 'nodeset'
@@ -26,20 +23,16 @@ class_groups:
   windows_roles:
 
   unix_roles:
-    - role::cd4pe_server
     - role::git_server
     - role::jenkins_master
     - role::puppet_webapp::lb
     - role::puppet_webapp::webhead
     - role::puppet_master
     - role::rgbank_standalone
-    - role::sensu_server
     - role::jenkins_slave
     - role::seteam_puppet_master
 
   either_roles:
-    # role::cd4pe_buildserver doesn't for multiple reasons and needs to be fixed
-    # - role::cd4pe_buildserver
     # The roles below fail tests with the following error:
     #   wrong number of arguments (given 1, expected 0)
     #
@@ -77,6 +70,16 @@ functions:
     returns:
       - facts:
           fqdn: 'something'
+  pe_empty:
+    returns: |
+      value = args[0]
+      if value.is_a?(Numeric)
+        return false
+      else
+        result = value.empty?
+        return result
+      end
+
 
 # Since we are using the acl module we need to stub out the symlink method as
 # per this issue: https://github.com/rodjek/rspec-puppet/issues/665

@@ -27,9 +27,9 @@ class profile::puppet::master::gitea {
       service_mode           => '0644',
       configuration_sections => {
         'server'     => {
-          'DOMAIN'           => $::fqdn,
+          'DOMAIN'           => $facts['networking']['fqdn'],
           'HTTP_PORT'        => 3000,
-          'ROOT_URL'         => "https://${::fqdn}/",
+          'ROOT_URL'         => "https://${facts['networking']['fqdn']}/",
           'HTTP_ADDR'        => '0.0.0.0',
           'DISABLE_SSH'      => false,
           'SSH_PORT'         => '22',
@@ -84,8 +84,8 @@ class profile::puppet::master::gitea {
   }
 
   firewall{ '100 allow web connections':
-    proto  => 'tcp',
-    dport  => 3000,
-    action => accept,
+    proto => 'tcp',
+    dport => 3000,
+    jump  => accept,
   }
 }
