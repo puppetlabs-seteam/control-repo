@@ -80,7 +80,7 @@ mod 'herculesteam-augeasproviders_ssh', '4.0.0'
 mod 'hunner-wordpress', '1.0.0'
 mod 'ipcrm-echo', '0.1.8'
 mod 'jdowning-rbenv', '3.0.0'
-mod 'jpadams-puppet_vim_env', '2.4.0' # There is a bug in 2.4.1
+#mod 'jpadams-puppet_vim_env', '2.4.0' # There is a bug in 2.4.1
 mod 'kogitoapp-gitea', '1.0.4' # Do we need this, it is out of date and requires very old inifile and stdlib; part of 
                               # profile::puppet::seteam_master
 mod 'lwf-remote_file', '1.1.3'
