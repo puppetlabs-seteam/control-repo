@@ -1,3 +1,5 @@
+# class: profile::platform::baseline::linux::vim
+#
 class profile::platform::baseline::linux::vim {
 
   require ::git
@@ -17,13 +19,5 @@ class profile::platform::baseline::linux::vim {
 
   package { $package:
     ensure => installed,
-  }
-
-  $users.each |$user, $homedir| {
-    puppet_vim_env::install { "default vim for ${user}":
-      homedir     => $homedir,
-      owner       => $user,
-      colorscheme => 'elflord',
-    }
   }
 }
