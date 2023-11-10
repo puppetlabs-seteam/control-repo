@@ -1,5 +1,5 @@
+#
 class profile::platform::baseline::users::linux {
-
   user { 'PuppetSE':
     ensure   => 'present',
     comment  => 'SE Demo Account',
@@ -9,5 +9,4 @@ class profile::platform::baseline::users::linux {
     shell    => '/bin/bash',
     uid      => '1010',
   }
-
 }
