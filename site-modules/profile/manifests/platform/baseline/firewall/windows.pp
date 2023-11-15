@@ -19,11 +19,9 @@ class profile::platform::baseline::firewall::windows (
   # Set the default outbound action
   $outbound_policy = $allow_egress ? { true => 'allowoutbound', false => 'blockoutbound' }
   windows_firewall_profile { ['domain','public','private']:
-    inboundusernotification    => 'disable',
-    firewallpolicy             => "blockinbound,${outbound_policy}",
-    remotemanagement           => 'disable',
-    state                      => true,
-    unicastresponsetomulticast => 'disable',
+    inboundusernotification => 'disable',
+    firewallpolicy          => "blockinbound,${outbound_policy}",
+    state                   => true,
   }
 
   if ($allow_ingress_icmpv4) {
@@ -33,8 +31,8 @@ class profile::platform::baseline::firewall::windows (
       action       => 'allow',
       enabled      => true,
       protocol     => 'icmpv4',
-      display_name => 'Permit ICMPv4',
-      description  => 'Permit ICMPv4',
+      display_name => 'Permit ICMPv4 - Inbound - Puppet Managed',
+      description  => 'Permit ICMPv4 - Inbound - Puppet Managed',
     }
   }
 
