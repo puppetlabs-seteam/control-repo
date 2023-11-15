@@ -36,7 +36,7 @@ mod 'puppetlabs-java', '10.1.2'
 mod 'saz-limits', '3.1.0'
 mod 'puppetlabs-motd', '7.1.0'
 mod 'puppetlabs-mount_iso', '4.0.3' # Needs updated to support powershell 4.0.0
-mod 'puppetlabs-mysql', '15.0.0'
+#mod 'puppetlabs-mysql', '15.0.0' # breaks "puppet resource --types"
 mod 'puppetlabs-netdev_stdlib', '0.23.0'
 mod 'puppetlabs-ntp', '10.1.0'
 mod 'puppetlabs-panos', '2.0.0'
@@ -47,7 +47,7 @@ mod 'puppetlabs-pwshlib', '1.0.0'
 mod 'puppetlabs-reboot', '5.0.0'
 mod 'puppetlabs-registry', '5.0.1'
 mod 'puppetlabs-resource', '1.1.0'
-mod 'puppetlabs-resource_api', '1.1.0'
+#mod 'puppetlabs-resource_api', '1.1.0' # built into product. No longer needed for a long long time.
 mod 'puppetlabs-ruby_task_helper', '0.6.1'
 mod 'puppetlabs-terraform', '0.7.0'
 mod 'puppetlabs-ruby_plugin_helper', '0.2.0'
@@ -69,8 +69,8 @@ mod 'dsc-securitypolicydsc', '2.10.0-0-5'
 mod 'puppet-yum', '7.1.0'  # Required for the CD4PE workshop
 mod 'WhatsARanjit-diskspace', '0.2.0'
 mod 'WhatsARanjit-node_manager', '0.8.0'
-mod 'aristanetworks-eos', '1.5.0'
-mod 'aristanetworks-netdev_stdlib_eos', '1.2.0'
+#mod 'aristanetworks-eos', '1.5.0'                  # breaks "puppet resource --types"
+#mod 'aristanetworks-netdev_stdlib_eos', '1.2.0'    # breaks "puppet resource --types"
 mod 'ayohrling-local_security_policy', '1.1.1'
 mod 'bodgit-rngd', '3.0.1'
 mod 'computology-packagecloud', '0.3.2'
@@ -88,7 +88,7 @@ mod 'lwf-remote_file', '1.1.3'
 mod 'nexcess-auditd', '4.2.0' # Part of profile::compliance::hippa
 mod 'puppet-archive', '7.0.0'
 mod 'puppet-epel', '5.0.0'
-mod 'puppet-firewalld', '4.5.1'
+mod 'puppet-firewalld', '5.0.0'
 mod 'puppet-gitlab', '8.1.0'
 mod 'puppet-hiera', '5.0.1'
 mod 'puppet-jenkins', '4.0.0' # Do we need this, it is out of date and requires java < 5.0.0, and zypprepo

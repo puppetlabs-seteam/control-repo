@@ -20,7 +20,7 @@ class profile::platform::baseline::firewall::ufw (
     purge_unmanaged_routes => true,
     service_ensure         => 'running',
   }
-  $allow_ingress.each | Integer $idx, Hash $in | {
+  $allow_ingress.each | Hash $in | {
     ufw_rule { $in['name']:
       ensure       => present,
       action       => 'allow',

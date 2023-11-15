@@ -1,14 +1,14 @@
 #
 # Rules for iptables
 #
-# @param allow_icmpv4
+# @param allow_ingress_icmpv4
 #   Allow ICMP v4 protocol (ping, traceroute, etc.)
 # @param allow_ingress
 #  Hash of ingress rules to allow, see parent profile class for syntax
 #
 class profile::platform::baseline::firewall::iptables::iptables_pre (
-  Boolean $allow_icmpv4 = profile::platform::baseline::firewall::iptables::allow_icmpv4,
-  Array[Hash] $allow_ingress = profile::platform::baseline::firewall::iptables::allow_ingress,
+  Boolean $allow_ingress_icmpv4 = $profile::platform::baseline::firewall::iptables::allow_ingress_icmpv4,
+  Array[Hash] $allow_ingress = $profile::platform::baseline::firewall::iptables::allow_ingress,
 ) {
   Firewall { require => undef, }
 
@@ -20,7 +20,7 @@ class profile::platform::baseline::firewall::iptables::iptables_pre (
   }
 
   # ICMPv4
-  if ($allow_icmpv4) {
+  if ($allow_ingress_icmpv4) {
     firewall { '000 accept icmpv4 protocol':
       proto => 'icmp',
       jump  => 'accept',
@@ -35,8 +35,8 @@ class profile::platform::baseline::firewall::iptables::iptables_pre (
   }
 
   # Loop through ingress rules
-  $allow_ingress.each | Integer $idx, Hash $in | {
-    firewall { "${idx+100} accept ${in['name']} ${in['protocol'].downcase()}-${in['port']}":
+  $allow_ingress.each | Hash $in | {
+    firewall { "100 accept ${in['name']} ${in['protocol'].downcase()}-${in['port']}":
       proto => $in['protocol'].downcase(),
       dport => $in['port'],
       jump  => 'accept',

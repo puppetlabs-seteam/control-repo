@@ -35,7 +35,7 @@ class profile::platform::baseline::firewall::windows (
     }
   }
 
-  $allow_ingress.each | Integer $idx, Hash $in | {
+  $allow_ingress.each | Hash $in | {
     windows_firewall::exception { $in['name']:
       ensure       => present,
       direction    => 'in',

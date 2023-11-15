@@ -84,9 +84,9 @@ class profile::platform::baseline::firewall (
 }
 
 # Disable CEM enforcement of firewall to resolve conflicts. This profile takes precedence.
-if defined(Class['profile::platform::baseline::firewall']) and defined(Class['cem_linux']) {
-  Class['cem_linux'] { cem_linux::config::firewall_type => 'unmanaged' }
-}
-if defined(Class['profile::platform::baseline::firewall']) and defined(Class['cem_windows']) {
-  Class['cem_windows'] { cem_windows::config::firewall_type => 'unmanaged' }
-}
+# if defined(Class['profile::platform::baseline::firewall']) and defined(Class['cem_linux']) {
+#   Class['cem_linux'] { cem_linux::config::firewall_type => 'unmanaged' }
+# }
+# if defined(Class['profile::platform::baseline::firewall']) and defined(Class['cem_windows']) {
+#   Class['cem_windows'] { cem_windows::config::firewall_type => 'unmanaged' }
+# }

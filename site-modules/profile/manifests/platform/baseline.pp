@@ -11,8 +11,10 @@ class profile::platform::baseline (
   Array   $timeservers = ['0.pool.ntp.org','1.pool.ntp.org'],
 ) {
   ## Global baseline settings
-  class { 'time':
-    servers => $timeservers,
+  if !$facts['os']['name'] == 'RedHat' and !$facts['os']['version']['major'] >= 8 {
+    class { 'time':
+      servers => $timeservers,
+    }
   }
 
   class { 'profile::puppet::orch_agent':

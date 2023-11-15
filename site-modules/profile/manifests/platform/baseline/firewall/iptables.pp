@@ -18,7 +18,30 @@ class profile::platform::baseline::firewall::iptables (
     require => Class['profile::platform::baseline::firewall::iptables::iptables_pre'],
   }
 
-  class {['firewall','profile::platform::baseline::firewall::iptables::iptables_pre', 'profile::platform::baseline::firewall::iptables::iptables_post']: } #lint:ignore:140chars
+  class {['profile::platform::baseline::firewall::iptables::iptables_pre', 'profile::platform::baseline::firewall::iptables::iptables_post']: } #lint:ignore:140chars
+
+  class { 'firewall':
+    service_name_v6 => undef,
+  }
 
   resources { 'firewall': purge => true, }
+  resources { 'firewallchain': purge => true, }
+
+  firewallchain { 'INPUT:filter:IPv4':
+    ensure => present,
+    policy => drop,
+    before => undef,
+  }
+  firewallchain { 'FORWARD:filter:IPv4':
+    ensure => present,
+    policy => drop,
+    before => undef,
+  }
+
+  $egress_policy = $allow_egress ? { true => 'accept', false => 'drop' }
+  firewallchain { 'OUTPUT:filter:IPv4':
+    ensure => present,
+    policy => $egress_policy,
+    before => undef,
+  }
 }

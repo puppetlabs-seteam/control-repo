@@ -14,7 +14,7 @@ class profile::platform::baseline::firewall::firewalld (
   Array[Hash] $allow_ingress    = $profile::platform::baseline::firewall::allow_ingress_linux_default + $profile::platform::baseline::firewall::allow_ingress, #lint:ignore:140chars
 ) {
   class { 'firewalld':
-    service_ensure            => true,
+    service_ensure            => running,
     service_enable            => true,
     purge_direct_rules        => true,
     purge_direct_chains       => true,
@@ -35,7 +35,7 @@ class profile::platform::baseline::firewall::firewalld (
     masquerade           => false,
   }
 
-  $allow_ingress.each | Integer $idx, Hash $in | {
+  $allow_ingress.each | Hash $in | {
     firewalld_port { $in['name']:
       ensure   => present,
       zone     => 'public',
