@@ -3,9 +3,6 @@
 # Disable filebucket by default for all File resources:
 File { backup => false }
 
-# The baseline profile contains security items which must always be applied (such as host firewall rules)
-include profile::platform::baseline
-
 node default {
   # Check if we've set the role for this node via trusted fact, pp_role.  If yes; include that role directly here.
   if !empty( $trusted['extensions']['pp_role'] ) {
