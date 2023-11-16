@@ -18,6 +18,7 @@ class profile::platform::baseline::firewall::firewalld (
   class { 'firewalld':
     service_ensure            => running,
     service_enable            => true,
+    manage_package            => false,
     purge_direct_rules        => true,
     purge_direct_chains       => true,
     purge_direct_passthroughs => true,
