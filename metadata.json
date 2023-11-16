@@ -1,8 +1,8 @@
 {
-  "name": "tse-control-repo",
-  "version": "0.0.1",
-  "author": "tse",
-  "summary": "TSE Control-Repo",
+  "name": "control-repo",
+  "version": "0.0.2",
+  "author": "puppetlabs-seteam",
+  "summary": "Default SE Control-Repo",
   "license": "Apache-2.0",
   "source": "https://github.com/puppetlabs-seteam/control-repo",
   "project_page": "https://github.com/puppetlabs-seteam/control-repo",
@@ -10,35 +10,62 @@
   "dependencies": [
     {
       "name": "puppetlabs-stdlib",
-      "version_requirement": ">= 4.12.0"
+      "version_requirement": ">= 9.0.0"
     }
   ],
   "operatingsystem_support": [
     {
+      "operatingsystem": "Rocky",
+      "operatingsystemrelease": [
+        "8",
+        "9"
+      ]
+    },
+    {
+      "operatingsystem": "Alma",
+      "operatingsystemrelease": [
+        "8",
+        "9"
+      ]
+    },
+    {
+      "operatingsystem": "OracleLinux",
+      "operatingsystemrelease": [
+        "7",
+        "8",
+        "9"
+      ]
+    },
+    {
       "operatingsystem": "RedHat",
       "operatingsystemrelease": [
-        "6",
-        "7"
+        "7",
+        "8",
+        "9"
       ]
     },
     {
       "operatingsystem": "CentOS",
       "operatingsystemrelease": [
-        "6",
-        "7"
+        "7",
+        "9"
       ]
     },
     {
       "operatingsystem": "Ubuntu",
       "operatingsystemrelease": [
-        "14.04",
-        "16.04"
+        "20.04",
+        "22.04"
       ]
     },
     {
       "operatingsystem": "windows",
       "operatingsystemrelease": [
-        "2012 R2"
+        "10",
+        "11",
+        "2016",
+        "2019",
+        "2022"
       ]
     }
   ]
