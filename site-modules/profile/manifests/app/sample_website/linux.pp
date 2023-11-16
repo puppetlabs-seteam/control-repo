@@ -55,8 +55,9 @@ class profile::app::sample_website::linux (
   }
 
   # Automatically open firewall port to allow access
-  case $profile::platform::baseline::firewall::firewall_type {
-    'iptables':  {
+  $firewall_type = profile::firewall_type($facts['os']['name'], $facts['os']['release']['major'])
+  case $firewall_type {
+    'iptables': {
       firewall { '200 Allow Website access':
         dport => $webserver_port,
         proto => tcp,
@@ -71,7 +72,7 @@ class profile::app::sample_website::linux (
         protocol => 'tcp',
       }
     }
-    'ufw':       {
+    'ufw': {
       ufw_rule { 'Allow Website access':
         ensure       => present,
         action       => 'allow',
@@ -81,8 +82,6 @@ class profile::app::sample_website::linux (
         proto        => 'tcp',
       }
     }
-    default:     {
-      fail("Linux 'sample_website' module could not determine proper firewall type. Is 'profile::platform::baseline' applied?")
-    }
+    default: { fail("Firewall type could not be determined for '${facts['os']['name']} ${facts['os']['release']['major']}'") }
   }
 }

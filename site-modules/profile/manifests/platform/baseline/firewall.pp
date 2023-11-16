@@ -27,43 +27,8 @@ class profile::platform::baseline::firewall (
   Array[Hash] $allow_ingress_linux_default = [],
 ) {
   # Host based firewall management varies by OS type/version, we need to determine the firewall type to manage
-  $os_firewalls = {
-    'alma' => {
-      '8' => 'firewalld',
-      '9' => 'firewalld',
-    },
-    'centos' => {
-      '7' => 'iptables',
-      '8' => 'firewalld',
-    },
-    'oraclelinux' => {
-      '7' => 'iptables',
-      '8' => 'firewalld',
-      '9' => 'firewalld',
-    },
-    'redhat' => {
-      '7' => 'iptables',
-      '8' => 'firewalld',
-      '9' => 'firewalld',
-    },
-    'rocky' => {
-      '8' => 'firewalld',
-      '9' => 'firewalld',
-    },
-    'ubuntu' => {
-      '20.04' => 'ufw',
-      '22.04' => 'ufw',
-    },
-    'windows' => {
-      '10'   => 'windows',
-      '11'   => 'windows',
-      '2016' => 'windows',
-      '2019' => 'windows',
-      '2022' => 'windows',
-    },
-  }
 
-  $firewall_type = $os_firewalls[$facts['os']['name'].downcase()][$facts['os']['release']['major']]
+  $firewall_type = profile::firewall_type($facts['os']['name'], $facts['os']['release']['major'])
 
   # Apply the applicable firewall type
   case $firewall_type {
