@@ -1,38 +1,43 @@
+#
+# Main baseline class for all platforms
+#
+# @param orch_agent
+#    Ensure parameter handed to the profile::puppet::orch_agent module
+# @param timeservers
+#    Array of time servers to use for NTP or Windown Time
+#
 class profile::platform::baseline (
   Boolean $orch_agent  = false,
   Array   $timeservers = ['0.pool.ntp.org','1.pool.ntp.org'],
-  Boolean $enable_monitoring = false,
-){
-
-  # Global
-  class {'::time':
-    servers => $timeservers,
+) {
+  ## Global baseline settings
+  if !$facts['os']['name'] == 'RedHat' and !$facts['os']['version']['major'] >= 8 {
+    class { 'time':
+      servers => $timeservers,
+    }
   }
 
-  class {'::profile::puppet::orch_agent':
+  class { 'profile::puppet::orch_agent':
     ensure => $orch_agent,
   }
 
-  service { 'puppet':
-    ensure => 'running'
-  }
+  ensure_resource('service','puppet', {
+      ensure => 'running',
+      enable => true,
+  })
 
-  # add sensu client
-  #if $enable_monitoring {
-    #include ::profile::app::sensu::client
-    #}
+  include profile::platform::baseline::firewall
 
-  # OS Specific
+  ## Platform specific baselines settings
   case $facts['kernel'] {
     'windows': {
-      include ::profile::platform::baseline::windows
+      include profile::platform::baseline::windows
     }
     'Linux':   {
-      include ::profile::platform::baseline::linux
+      include profile::platform::baseline::linux
     }
     default: {
-      fail('Unsupported operating system!')
+      fail("Kernel type '${facts['kernel']}' does not have an associated baseline profile.")
     }
   }
-
 }

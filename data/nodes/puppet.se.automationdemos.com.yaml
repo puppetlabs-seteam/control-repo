@@ -21,3 +21,37 @@ device_manager::devices:
       user: 'admin'
       password: 'puppetlabs'
       ssl: false
+
+profile::platform::baseline::firewall::allow_ingress:
+  - name: sshd
+    port: 22
+    protocol: tcp
+    description: Secure Shell
+  - name: pe-console-services_nginx
+    port: 443
+    protocol: tcp
+    description: Puppet Enterprise - Console Services - Nginx Webserver (HTTPS)
+  - name: pe-console-services_classifier
+    port: 4433
+    protocol: tcp
+    description: Puppet Enterprise - Console Services - Classifier Service
+  - name: pe-postgresql
+    port: 5432
+    protocol: tcp
+    description: Puppet Enterprise - PostGRE SQL Server
+  - name: pe-puppetdb
+    port: 8081
+    protocol: tcp
+    description: Puppet Enterprise - PuppetDB Service
+  - name: pe-puppetserver
+    port: 8140
+    protocol: tcp
+    description: Puppet Enterprise - Puppet Server - Agent Connection Services
+  - name: pe-orchestration-services
+    port: 8142
+    protocol: tcp
+    description: Puppet Enterprise - Orchestration Services (PXP Broker)
+  - name: pe-puppetserver_code-manager
+    port: 8170
+    protocol: tcp
+    description: Puppet Enterprise - Pupper Server - Code Manager Service
