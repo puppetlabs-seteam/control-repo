@@ -114,7 +114,7 @@ mod 'reidmv-unzip', '0.1.2'
 mod 'trlinkin-domain_membership', '1.1.2'
 mod 'tse-time', '1.0.1'
 mod 'tse-winntp', '1.0.1'
-mod 'puppet-staging', '3.2.0' 
+mod 'puppet-staging', '3.2.0'
 mod 'artsir-ansible_config', '1.1.3'
 
 # This is missing dependency on mayflower-php, needs updated to use puppet-php at least
