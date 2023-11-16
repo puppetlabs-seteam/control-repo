@@ -23,16 +23,8 @@ class profile::platform::baseline::firewall (
   Boolean $allow_egress = true,
   Boolean $allow_ingress_icmpv4 = true,
   Array[Hash] $allow_ingress = [],
-  Array[Hash] $allow_ingress_windows_default = [
-    #lint:ignore:140chars
-    { 'name' => 'WinRM',  'port' => 5985, 'protocol' => 'tcp', 'description' => 'Allow Windows Remote Management (WinRM) inbound' },
-    { 'name' => 'WinRMS', 'port' => 5986, 'protocol' => 'tcp', 'description' => 'Allow Windows Remote Management (WinRM) over SSL inbound' },
-    { 'name' => 'RDP',    'port' => 3389, 'protocol' => 'tcp', 'description' => 'Allow Remote Desktop Protocol (RDP) inbound' },
-    #lint:endignore
-  ],
-  Array[Hash] $allow_ingress_linux_default = [
-    { 'name' => 'SSH', 'port' => 22, 'protocol' => 'tcp', 'description' => 'Allow Secure Shell (SSH) inbound' },
-  ],
+  Array[Hash] $allow_ingress_windows_default = [],
+  Array[Hash] $allow_ingress_linux_default = [],
 ) {
   # Host based firewall management varies by OS type/version, we need to determine the firewall type to manage
   $os_firewalls = {

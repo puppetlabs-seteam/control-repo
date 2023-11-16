@@ -23,6 +23,10 @@ device_manager::devices:
       ssl: false
 
 profile::platform::baseline::firewall::allow_ingress:
+  - name: sshd
+    port: 22
+    protocol: tcp
+    description: Secure Shell
   - name: pe-console-services_nginx
     port: 443
     protocol: tcp
