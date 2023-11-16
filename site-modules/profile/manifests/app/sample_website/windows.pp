@@ -15,7 +15,7 @@ class profile::app::sample_website::windows (
   String  $app_pool           = 'sample_website',
   String  $website_source_dir = 'puppet:///modules/profile/app/sample_website',
 ) {
-  # Include the IIS classification
+  # Include the main IIS webserver management classification
   class { 'profile::app::webserver::iis':
     default_website => false,
   }
@@ -43,18 +43,6 @@ class profile::app::sample_website::windows (
     ],
   }
 
-  # Add a firewall rule to permit access to the Website Port
-  windows_firewall_rule { 'IIS':
-    ensure       => present,
-    direction    => 'inbound',
-    action       => 'allow',
-    enabled      => true,
-    protocol     => 'tcp',
-    local_port   => $webserver_port,
-    display_name => "HTTP_${webserver_port}", # generate a unique inbound rule. this new rule per port value is just for demo purposes
-    description  => 'Inbound rule for HTTP Server',
-  }
-
   # Configure the doc_root folder for the Website
   file { $website_source_dir:
     ensure  => directory,
@@ -67,5 +55,17 @@ class profile::app::sample_website::windows (
   file { "${doc_root}/index.html":
     ensure  => file,
     content => epp('profile/app/sample_website.html.epp'),
+  }
+
+  # Add a firewall rule to permit access to the Website Port
+  windows_firewall_rule { 'IIS':
+    ensure       => present,
+    direction    => 'inbound',
+    action       => 'allow',
+    enabled      => true,
+    protocol     => 'tcp',
+    local_port   => $webserver_port,
+    display_name => "HTTP_${webserver_port}", # generate a unique inbound rule. this new rule per port value is just for demo purposes
+    description  => 'Inbound rule for HTTP Server',
   }
 }
