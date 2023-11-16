@@ -31,7 +31,7 @@ class profile::app::sample_website::windows (
   iis_site { 'sample_website':
     ensure          => 'started',
     physicalpath    => $doc_root,
-    applicationpool => $apppool,
+    applicationpool => $app_pool,
     bindings        => [
       {
         'bindinginformation' => "*:${webserver_port}:",
@@ -64,7 +64,7 @@ class profile::app::sample_website::windows (
     action       => 'allow',
     enabled      => true,
     protocol     => 'tcp',
-    local_port   => $webserver_port,
+    local_port   => String($webserver_port),
     display_name => "HTTP_${webserver_port}", # generate a unique inbound rule. this new rule per port value is just for demo purposes
     description  => 'Inbound rule for HTTP Server',
   }
