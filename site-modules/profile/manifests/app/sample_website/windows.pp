@@ -58,14 +58,5 @@ class profile::app::sample_website::windows (
   }
 
   # Add a firewall rule to permit access to the Website Port
-  windows_firewall_rule { 'IIS':
-    ensure       => present,
-    direction    => 'inbound',
-    action       => 'allow',
-    enabled      => true,
-    protocol     => 'tcp',
-    local_port   => String($webserver_port),
-    display_name => "HTTP_${webserver_port}", # generate a unique inbound rule. this new rule per port value is just for demo purposes
-    description  => 'Inbound rule for HTTP Server',
-  }
+  profile::firewall_open_port('IIS','tcp',$webserver_port,'Inbound rule for HTTP Server')
 }

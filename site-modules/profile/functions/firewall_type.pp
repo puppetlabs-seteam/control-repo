@@ -34,5 +34,10 @@ function profile::firewall_type(String $os, String $version) >> String {
       '2022' => 'windows',
     },
   }
-  $os_firewalls[$os][$version]
+
+  if $os != undef and $version != undef {
+    $firewall_type = $os_firewalls[$os.downcase()][$version]
+  } else {
+    ''
+  }
 }
