@@ -13,13 +13,17 @@ class profile::platform::baseline::firewall::firewalld (
   Boolean $allow_ingress_icmpv4 = $profile::platform::baseline::firewall::allow_ingress_icmpv4,
   Array[Hash] $allow_ingress    = $profile::platform::baseline::firewall::allow_ingress_linux_default + $profile::platform::baseline::firewall::allow_ingress, #lint:ignore:140chars
 ) {
+  ensure_resource('package','firewalld', { ensure => present })
+
   class { 'firewalld':
     service_ensure            => running,
     service_enable            => true,
+    manage_package            => false,
     purge_direct_rules        => true,
     purge_direct_chains       => true,
     purge_direct_passthroughs => true,
     purge_unknown_ipsets      => true,
+    require                   => Package['firewalld'],
   }
 
   $icmp_block_inversion = $allow_ingress_icmpv4 ? { true => false, false => true }
