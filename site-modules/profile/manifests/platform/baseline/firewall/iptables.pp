@@ -25,7 +25,6 @@ class profile::platform::baseline::firewall::iptables (
   }
 
   resources { 'firewall': purge => true, }
-  resources { 'firewallchain': purge => true, }
 
   firewallchain { 'INPUT:filter:IPv4':
     ensure => present,
