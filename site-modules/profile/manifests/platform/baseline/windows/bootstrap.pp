@@ -4,7 +4,7 @@ class profile::platform::baseline::windows::bootstrap {
 
   # service needs to be running to install the update
   service { 'wuauserv':
-    ensure => 'running',
+    #ensure => 'running',
     enable => true,
   }
 
