@@ -97,6 +97,7 @@ profile::platform::baseline::enable_monitoring: false
 profile::platform::baseline::linux::packages::pkgs:
   - wget
   - unzip
+  - cron
 
 ##
 # Puppet Enterprise
