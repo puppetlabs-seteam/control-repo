@@ -9,13 +9,33 @@ jobs:
   sync_to_production:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@master
+      - uses: actions/checkout@v3
 
       - name: Merge master -> production
-        uses: devmasx/merge-branch@v1.3.0
+        uses: devmasx/merge-branch@v1.4.0
         with:
           type: now
           head_to_merge: master
           target_branch: production
           github_token: ${{ github.token }}
-
+      - name: Merge master -> development
+        uses: devmasx/merge-branch@v1.4.0
+        with:
+          type: now
+          head_to_merge: master
+          target_branch: development
+          github_token: ${{ github.token }}
+      - name: Merge master -> cd4pe_development
+        uses: devmasx/merge-branch@v1.4.0
+        with:
+          type: now
+          head_to_merge: master
+          target_branch: cd4pe_development
+          github_token: ${{ github.token }}
+      - name: Merge master -> cd4pe_production
+        uses: devmasx/merge-branch@v1.4.0
+        with:
+          type: now
+          head_to_merge: master
+          target_branch: cd4pe_production
+          github_token: ${{ github.token }}
