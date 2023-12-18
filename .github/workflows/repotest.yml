@@ -18,13 +18,6 @@ jobs:
           head_to_merge: master
           target_branch: production
           github_token: ${{ github.token }}
-      - name: Merge master -> development
-        uses: devmasx/merge-branch@v1.3.0
-        with:
-          type: now
-          head_to_merge: master
-          target_branch: development
-          github_token: ${{ github.token }}
       - name: Merge master -> cd4pe_development
         uses: devmasx/merge-branch@v1.3.0
         with:
@@ -38,4 +31,11 @@ jobs:
           type: now
           head_to_merge: master
           target_branch: cd4pe_production
+          github_token: ${{ github.token }}
+      - name: Merge master -> development
+        uses: devmasx/merge-branch@v1.3.0
+        with:
+          type: now
+          head_to_merge: master
+          target_branch: development
           github_token: ${{ github.token }}

@@ -1,0 +1,6 @@
+---
+# Ubuntu (particularly 2022.04) requires cron to be installed for cron-provider
+profile::platform::baseline::linux::packages::pkgs:
+  - wget
+  - unzip
+  - cron
