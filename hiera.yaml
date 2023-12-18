@@ -12,11 +12,12 @@ hierarchy:
   - name: 'Environment data'
     lookup_key: eyaml_lookup_key
     paths:
-      - 'nodes/%{::fqdn}.yaml'
+      - 'nodes/%{facts.networking.fqdn}.yaml'
       - 'location/%{::location}/%{::role}.yaml'
       - 'role/%{::tier}/%{::role}.yaml'
       - 'role/%{::role}.yaml'
       - 'location/%{::location}.yaml'
+      - 'os/%{facts.os.name}.yaml'
       - 'common.yaml'
   - name: 'Local data'
     lookup_key: eyaml_lookup_key
