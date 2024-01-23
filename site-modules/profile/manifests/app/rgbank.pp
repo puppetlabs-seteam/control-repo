@@ -1,4 +1,6 @@
-class profile::app::rgbank {
+class profile::app::rgbank (
+  $db_password,
+) {
 
   if $facts['os']['family'] != 'RedHat' {
     fail('Unsupported OS')
@@ -9,14 +11,14 @@ class profile::app::rgbank {
 
   rgbank::db {'default':
     user     => 'rgbank',
-    password => 'rgbank',
+    password => $db_password,
   }
 
   rgbank::web {'default':
     db_name     => 'rgbank-default',
     db_host     => 'localhost',
     db_user     => 'rgbank',
-    db_password => 'rgbank',
+    db_password => $db_password,
     listen_port => 8888,
   }
 
