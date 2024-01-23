@@ -1,9 +1,9 @@
 #Class to install SQL Server, set its configuration, create an
 # instance, as well as a sample DB.
 class profile::app::cloudshop::sqlserver::sql (
+  $sa_pass,
   $source      = 'F:\\',
   $db_instance = 'MYINSTANCE',
-  $sa_pass     = 'Password$123$',
 ) {
   case $profile::app::cloudshop::sqlserver::init::sqlserver_version {
     '2012':  {
