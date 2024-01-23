@@ -20,6 +20,8 @@ hierarchy:
       - 'role/%{::role}.yaml'
       - 'location/%{::location}.yaml'
       - 'os/%{facts.os.name}.yaml'
+      - 'cem/%{facts.os.name}/%{facts.os.release.major}.yaml'
+      - 'cem/cem_defaults.yaml'      
       - 'common.yaml'
   - name: 'Local data'
     paths:
