@@ -1,8 +1,10 @@
 #
-class profile::platform::baseline::windows::users {
+class profile::platform::baseline::windows::users (
+  $password,
+) {
   user { 'Sample Demo':
     ensure   => present,
-    password => 'Puppet4Life!17',
+    password => $password,
     groups   => ['Administrators'],
   }
 }

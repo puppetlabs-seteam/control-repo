@@ -1,6 +1,6 @@
 class profile::app::cloudshop::webapp::db (
+  $dbpass,
   $dbinstance    = 'MYINSTANCE',
-  $dbpass        = 'Azure$123',
   $dbuser        = 'CloudShop',
   $dbname        = 'AdventureWorks2012',
   $dbserver      = $facts['networking']['hostname'],

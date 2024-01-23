@@ -2,6 +2,7 @@ class profile::app::jenkins::win_slave (
   $masterurl,
   $ui_user,
   $ui_pass,
+  $owner_pass,
   $labels        = undef,
   $slave_home    = 'C:/jenkins',
   $slave_version = '2.0',
@@ -32,7 +33,7 @@ class profile::app::jenkins::win_slave (
   user { $jenkins_owner:
     ensure     => present,
     home       => $slave_home,
-    password   => 'S3cr3tP@$$w0rd',
+    password   => $owner_pass,
     managehome => true,
     groups     => ['Administrators'],
     comment    => 'Jenkins User',
