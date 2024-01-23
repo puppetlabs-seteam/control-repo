@@ -1,4 +1,5 @@
 class profile::app::jenkins::slave (
+  $ui_pass,
   $master_url = 'http://localhost:8080',
 ){
 
@@ -10,7 +11,7 @@ class profile::app::jenkins::slave (
       class { '::jenkins::slave':
         masterurl    => $master_url,
         ui_user      => 'admin',
-        ui_pass      => 'password',
+        ui_pass      => $ui_pass,
         labels       => ['tse-slave-linux','tse-control-repo'],
         slave_groups => 'wheel',
       }
@@ -22,7 +23,7 @@ class profile::app::jenkins::slave (
       class { '::profile::app::jenkins::win_slave':
         masterurl => $master_url,
         ui_user   => 'admin',
-        ui_pass   => 'password',
+        ui_pass   => $ui_pass,
         labels    => 'tse-slave-windows',
       }
 
