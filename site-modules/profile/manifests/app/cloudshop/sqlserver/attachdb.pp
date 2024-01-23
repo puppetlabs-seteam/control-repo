@@ -2,12 +2,12 @@
 # mdf & ldf files into a new database within MS SQL Server 2012.
 define profile::app::cloudshop::sqlserver::attachdb (
   $file_source,
+  $dbpass,
   $mdf_file      = 'AdventureWorks2012_Data.mdf',
   $ldf_file      = 'AdventureWorks2012_log.ldf',
   $zip_file      = 'AdventureWorks2012_Data.zip',
   $dbinstance    = 'MYINSTANCE',
   $owner         = 'CloudShop',
-  $dbpass        = 'Azure$123',
 ) {
   case $::profile::app::cloudshop::sqlserver::init::sqlserver_version {
     '2012':  {
