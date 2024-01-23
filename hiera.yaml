@@ -2,7 +2,10 @@
 version: 5
 defaults:
   datadir: data
-  data_hash: yaml_data
+  lookup_key: eyaml_lookup_key
+  options:
+    pkcs7_private_key: /etc/puppetlabs/puppet/keys/private_key.pkcs7.pem
+    pkcs7_public_key: /etc/puppetlabs/puppet/keys/public_key.pkcs7.pem
 
 hierarchy:
   - name: "ServiceNow Hiera data"
@@ -10,7 +13,6 @@ hierarchy:
     options:
       var: trusted.external.servicenow.hiera_data
   - name: 'Environment data'
-    lookup_key: eyaml_lookup_key
     paths:
       - 'nodes/%{facts.networking.fqdn}.yaml'
       - 'location/%{::location}/%{::role}.yaml'
@@ -20,9 +22,5 @@ hierarchy:
       - 'os/%{facts.os.name}.yaml'
       - 'common.yaml'
   - name: 'Local data'
-    lookup_key: eyaml_lookup_key
     paths:
       - '/etc/puppetlabs/puppet/local.yaml'
-    options:
-      pkcs7_private_key: '/etc/puppetlabs/puppet/keys/private_key.pkcs7.pem'
-      pkcs7_public_key:  '/etc/puppetlabs/puppet/keys/public_key.pkcs7.pem'

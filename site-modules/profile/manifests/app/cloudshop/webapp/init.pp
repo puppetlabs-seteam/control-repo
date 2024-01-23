@@ -1,7 +1,7 @@
 class profile::app::cloudshop::webapp::init (
+  $dbpass,
   $dbserver      = $facts['netowrking']['hostname'],
   $dbinstance    = 'MYINSTANCE',
-  $dbpass        = 'Azure$123',
   $dbuser        = 'CloudShop',
   $dbname        = 'AdventureWorks2012',
   $iis_site      = 'Default Web Site',
