@@ -1,0 +1,11 @@
+##########################################################################
+##
+## WARNING - This is a Puppet Managed File
+##
+##########################################################################
+##  This file is actively managed by Puppet.
+##  Do not make changes here, your changes will not persist.
+##  Follow proper change control procedure for Puppet controlled changes.
+##########################################################################
+
+<%= user %>  ALL=(ALL)       ALL
