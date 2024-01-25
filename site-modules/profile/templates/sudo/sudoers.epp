@@ -24,10 +24,14 @@ Defaults	mail_badpass
 Defaults	secure_path="/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/snap/bin"
 Defaults	use_pty
 
-root	  ALL=(ALL) 	  ALL
-%wheel  ALL=(ALL)	    ALL
-%admin  ALL=(ALL)     ALL
-%sudo   ALL=(ALL:ALL) ALL
+root  ALL=(ALL) ALL
+%wheel  ALL=(ALL) ALL
+%admin  ALL=(ALL) ALL
+%sudo ALL=(ALL:ALL) ALL
 
-<% if $facts['os']['name'] =~ /^(Debian|Ubuntu)$/ { %>@<% } -%>
-includedir /etc/sudoers.d
+<% if $facts['os']['name'] =~ /^(Debian|Ubuntu)$/ { %>
+@includedir /etc/sudoers.d
+<% } else { %>
+#Note: the # in the following line is not a comment and is required.
+#includedir /etc/sudoers.d
+<% } %>
