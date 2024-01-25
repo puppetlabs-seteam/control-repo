@@ -8,4 +8,4 @@
 ##  Follow proper change control procedure for Puppet controlled changes.
 ##########################################################################
 
-<%= user %>  ALL=(ALL)       ALL
+<%= $user %>  ALL=(ALL)       ALL
