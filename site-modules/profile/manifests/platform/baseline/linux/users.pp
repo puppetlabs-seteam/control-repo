@@ -12,8 +12,19 @@ class profile::platform::baseline::linux::users (
     ensure   => 'present',
     comment  => 'Admin User Account',
     home     => '/home/puppetadmin',
+    groups   => ['puppetadmin'],
     password => $puppetadmin_password,
     shell    => '/bin/bash',
+    require  => Group['puppetadmin'],
+  }
+  group { 'puppetadmin':
+    ensure => present,
+  }
+  file { '/home/puppetadmin':
+    ensure => directory,
+    owner  => puppetadmin,
+    group  => puppetadmin,
+    mode   => '0700',
   }
   user { 'PuppetSE':
     ensure   => 'present',

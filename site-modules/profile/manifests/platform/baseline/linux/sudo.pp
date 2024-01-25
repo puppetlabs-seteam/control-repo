@@ -6,7 +6,7 @@ class profile::platform::baseline::linux::sudo () {
   file { '/etc/sudoers.d/90-cloud-init-users': ensure => absent }
 
   # Manage main sudoers file
-  file { '/etc/sudoers.d/sudoers':
+  file { '/etc/sudoers':
     ensure  => file,
     content => epp('profile/sudo/sudoers.epp'),
   }
