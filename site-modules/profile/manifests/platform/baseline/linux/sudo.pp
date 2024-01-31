@@ -6,9 +6,11 @@ class profile::platform::baseline::linux::sudo () {
   file { '/etc/sudoers.d/90-cloud-init-users': ensure => absent }
 
   # Manage main sudoers file
-  file { '/etc/sudoers':
-    ensure  => file,
-    content => epp('profile/sudo/sudoers.epp'),
+  if !defined(Class['cem_linux']) {
+    file { '/etc/sudoers':
+      ensure  => file,
+      content => epp('profile/sudo/sudoers.epp'),
+    }
   }
 
   # Add entried for explicet sudo allowed users
