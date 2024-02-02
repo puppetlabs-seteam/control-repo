@@ -1,6 +1,3 @@
-#
-forge 'http://forge.puppetlabs.com'
-
 # Modules from the Puppet Forge
 # Versions should be updated to be the latest at the time you start
 mod 'puppetlabs-augeas_core', '1.4.1'
@@ -36,7 +33,6 @@ mod 'puppetlabs-java', '10.1.2'
 mod 'saz-limits', '3.1.0'
 mod 'puppetlabs-motd', '7.1.0'
 mod 'puppetlabs-mount_iso', '4.0.3' # Needs updated to support powershell 4.0.0
-#mod 'puppetlabs-mysql', '15.0.0' # breaks "puppet resource --types"
 mod 'puppetlabs-netdev_stdlib', '0.23.0'
 mod 'puppetlabs-ntp', '10.1.0'
 mod 'puppetlabs-panos', '2.0.0'
@@ -47,7 +43,6 @@ mod 'puppetlabs-pwshlib', '1.0.1'
 mod 'puppetlabs-reboot', '5.0.0'
 mod 'puppetlabs-registry', '5.0.1'
 mod 'puppetlabs-resource', '1.1.0'
-#mod 'puppetlabs-resource_api', '1.1.0' # built into product. No longer needed for a long long time.
 mod 'puppetlabs-ruby_task_helper', '0.6.1'
 mod 'puppetlabs-terraform', '0.7.1'
 mod 'puppetlabs-ruby_plugin_helper', '0.2.0'
@@ -56,7 +51,6 @@ mod 'puppetlabs-servicenow_change_requests', '0.4.1'
 mod 'puppetlabs-servicenow_cmdb_integration', '0.2.0'
 mod 'puppetlabs-servicenow_reporting_integration', '1.0.0'
 mod 'puppetlabs-splunk_hec', '1.4.0' # Missing requirement of puppetlabs-puppet_metrics_collector
-#mod 'puppetlabs-sqlserver', '4.1.0' # Uncomment if needed for a SQL Demo
 mod 'puppetlabs-stdlib', '9.4.1'
 mod 'puppetlabs-tomcat', '7.1.0'
 mod 'puppetlabs-transition', '2.0.0'
@@ -69,8 +63,6 @@ mod 'dsc-securitypolicydsc', '2.10.0-0-9'
 mod 'puppet-yum', '7.1.0'  # Required for the CD4PE workshop
 mod 'WhatsARanjit-diskspace', '0.2.0'
 mod 'WhatsARanjit-node_manager', '0.8.0'
-#mod 'aristanetworks-eos', '1.5.0'                  # breaks "puppet resource --types"
-#mod 'aristanetworks-netdev_stdlib_eos', '1.2.0'    # breaks "puppet resource --types"
 mod 'ayohrling-local_security_policy', '1.1.1'
 mod 'bodgit-rngd', '3.0.1'
 mod 'computology-packagecloud', '0.3.2'
@@ -81,8 +73,7 @@ mod 'herculesteam-augeasproviders_ssh', '4.0.0'
 mod 'hunner-wordpress', '1.0.0'
 mod 'ipcrm-echo', '0.1.8'
 mod 'jdowning-rbenv', '3.0.0'
-#mod 'jpadams-puppet_vim_env', '2.4.0' # There is a bug in 2.4.1
-mod 'kogitoapp-gitea', '1.0.4' # Do we need this, it is out of date and requires very old inifile and stdlib; part of 
+mod 'kogitoapp-gitea', '1.0.4' # Do we need this, it is out of date and requires very old inifile and stdlib; part of
                               # profile::puppet::seteam_master
 mod 'lwf-remote_file', '1.1.3'
 mod 'nexcess-auditd', '4.2.0' # Part of profile::compliance::hippa
@@ -106,11 +97,9 @@ mod 'puppet-selinux', '4.1.0'
 mod 'puppet-splunk', '9.1.1'
 mod 'puppet-systemd', '6.3.0'
 mod 'puppet-windows_env', '4.0.1'
-#mod 'puppet-windows_firewall', '4.1.0'
 mod 'webalex-windows_firewall', '1.4.2'
 mod 'puppet-windowsfeature', '4.0.0'
 mod 'reidmv-unzip', '0.1.2'
-#mod 'sensu-sensu', '5.11.1'  # Broken on Puppet 8
 mod 'trlinkin-domain_membership', '1.1.2'
 mod 'tse-time', '1.0.1'
 mod 'tse-winntp', '1.0.1'
