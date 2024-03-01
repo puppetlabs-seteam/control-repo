@@ -1,4 +1,6 @@
 ---
+##
+# Sensitive parameters are not stored in the database.  This is an example for keeping sensitive data from leaking.
 lookup_options:
   '^cd4pe::root_config::root_password$':
     convert_to: 'Sensitive'
@@ -7,6 +9,8 @@ lookup_options:
   '^servicenow_reporting_integration::event_management::password$':
     convert_to: 'Sensitive'
   '^servicenow_reporting_integration::event_management::oauth_token$':
+    convert_to: 'Sensitive'
+  '^profile::platform:baseline::linux::users::.*password$':
     convert_to: 'Sensitive'
 
 ##

@@ -2,11 +2,14 @@
 # Define default users on linux systems
 #
 # @param password
-# Default password for puppet user accounts.
+# Default password for puppet user accounts.  Marking as Sensitive stops it from being stored in
+# puppetdb and prevents leaking
 # @param puppetadmin_password
+# Default password for puppetadmin account.  Marking as Sensitive stops it from being stored in
+# puppetdb and prevents leaking
 class profile::platform::baseline::linux::users (
-  String $password, # This should be a password hash for use in /etc/shadow.
-  String $puppetadmin_password,
+  Sensitive[String] $password, # This should be a password hash for use in /etc/shadow.
+  Sensitive[String] $puppetadmin_password,
 ) {
   user { 'puppetadmin':
     ensure   => 'present',
