@@ -9,7 +9,7 @@ jobs:
   sync_to_production:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
 
       - name: Merge master -> production
         uses: devmasx/merge-branch@v1.3.0
