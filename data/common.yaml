@@ -10,7 +10,7 @@ lookup_options:
     convert_to: 'Sensitive'
   '^servicenow_reporting_integration::event_management::oauth_token$':
     convert_to: 'Sensitive'
-  '^profile::platform:baseline::linux::users::.*password$':
+  "^profile::platform:baseline::linux::users::.*password$":
     convert_to: 'Sensitive'
 
 ##
