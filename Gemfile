@@ -1,28 +1,28 @@
 source 'https://rubygems.org'
 
-ruby_version_segments = Gem::Version.new(RUBY_VERSION.dup).segments
-minor_version = ruby_version_segments[0..1].join('.')
-
 group :development do
-  # gem 'onceover', git: 'git@github.com:dylanratcliffe/onceover.git', branch: 'formatter_factset'
-  gem 'onceover', '3.20.0'
-  gem 'onceover-codequality', '0.8.0'
-  gem 'pry'
-  gem 'rake', '13.0.6'
-  gem 'ra10ke'
+  # Replacements for puppet-module-posix-*
+  gem 'json', '~> 2.7'
+  gem 'voxpupuli-puppet-lint-plugins', '~> 5.0'
+  gem "facterdb", '~> 1.23'
+  gem "metadata-json-lint", '~> 4.0'
+  gem "puppetlabs_spec_helper",'~> 7.1'
+  gem "rspec-puppet-facts", '~> 2.0'
+  gem "dependency_checker", '~> 1.0'
+  gem "parallel_tests", '~> 4.5'
+  gem "pry", '~> 0.14'
+  gem "simplecov-console", '~> 0.9'
+  gem "puppet-debugger", '~> 1.4'
+
+  gem 'onceover', '3.22.0'
+  gem 'onceover-codequality', '0.12.0'
+  gem 'rake', '13.1.0'
+  gem 'ra10ke', '~> 3.0'
   gem 'rest-client'
-  gem 'puppet', '7.22.0'
-  gem 'puppet-syntax', '3.2.1'
+  gem 'puppet', '7.29.1'
+  gem 'puppet-syntax', '~> 4.1'
   gem 'fast_gettext', '~> 2.3'
-  # gem 'rspec', '3.8.0'
-  # gem 'rspec-core', '3.8.0'
-  # gem 'rspec-mocks', '=3.8.1'
-  # gem 'rspec-expectations', '3.8.4'
-  # gem 'rspec-support', '3.8.2'
-  # gem 'facter', '2.5.7'
-  gem "puppet-module-posix-default-r#{minor_version}", '~> 1.1', require: false, platforms: [:ruby]
-  gem "puppet-module-posix-dev-r#{minor_version}", '~> 1.1',     require: false, platforms: [:ruby]
-  gem 'rubocop', '~> 1.6.1'
-  gem 'rubocop-rspec', '2.0.1'
-  # gem 'puppetlabs_spec_helper'
+  gem 'rubocop', '~> 1.62'
+  gem 'rubocop-performance', '~> 1.20.2'
+  gem 'rb-readline', '~> 0.5.5'
 end
