@@ -17,6 +17,8 @@ class profile::platform::baseline (
     }
   }
 
+  include puppet_agent
+
   class { 'profile::puppet::orch_agent':
     ensure => $orch_agent,
   }

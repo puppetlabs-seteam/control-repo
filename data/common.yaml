@@ -25,6 +25,18 @@ hiera::cmdpath:
 # Enable Package Inventory by default
 puppet_enterprise::profile::agent::package_inventory_enabled: true
 
+# Add legacy facts and allow increased facts limits
+puppet_agent::config:
+  - section: main
+    setting: fact_value_length_soft_limit
+    value: "32767"
+  - section: agent
+    setting: number_of_facts_soft_limit
+    value: "10240"
+  - section: main
+    setting: include_legacy_facts
+    value: "true"
+
 ##
 # Redis
 profile::app::redis::bind: 127.0.0.1
