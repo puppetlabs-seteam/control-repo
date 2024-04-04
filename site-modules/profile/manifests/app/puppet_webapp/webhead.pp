@@ -5,9 +5,8 @@ class profile::app::puppet_webapp::webhead (
   $vhost_name  = $facts['networking']['fqdn'],
   $vhost_port  = '8008',
   $doc_root    = '/var/www/flask',
-  $app_env     = pick_default($::appenv,'dev')
+  $app_env     = pick_default($facts['appenv'],'dev')
 ) {
-
   $options = {
     app_name    => $app_name,
     app_version => $app_version,
@@ -19,15 +18,14 @@ class profile::app::puppet_webapp::webhead (
   }
 
   case $facts['os']['family'] {
-
     'Debian': {
-      class {'::profile::app::puppet_webapp::webhead::ubuntu':
+      class { 'profile::app::puppet_webapp::webhead::ubuntu':
         * => $options,
       }
     }
 
     'RedHat': {
-      class {'::profile::app::puppet_webapp::webhead::rhel':
+      class { 'profile::app::puppet_webapp::webhead::rhel':
         * => $options,
       }
     }
@@ -35,6 +33,5 @@ class profile::app::puppet_webapp::webhead (
     default: {
       fail('Unsupported OS')
     }
-
   }
 }

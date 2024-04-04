@@ -1,25 +1,22 @@
 class profile::app::haproxy {
-
   if $facts['kernel'] == 'windows' {
     fail('Unsupported OS')
   }
 
   # Use at least 1.5 on all platforms
   if $facts['os']['name'] == 'Ubuntu' {
-
-    include ::apt
+    include apt
 
     apt::ppa { 'ppa:vbernat/haproxy-1.5':
       package_manage => true,
     }
-
   }
 
-  package {'socat':
+  package { 'socat':
     ensure => present,
   }
 
-  class { '::haproxy':
+  class { 'haproxy':
     global_options   => {
       'log'     => "${facts['networking']['ip']} local0",
       'chroot'  => '/var/lib/haproxy',
@@ -48,5 +45,4 @@ class profile::app::haproxy {
       'maxconn' => '8000',
     },
   }
-
 }

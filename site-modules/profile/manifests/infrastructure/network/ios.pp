@@ -6,7 +6,6 @@ class profile::infrastructure::network::ios (
   Hash $vlans = {},
   Hash $commands = {},
 ) {
-
   # Manage banner 
   banner { 'default':
     motd => 'Welcome to IOS!',
@@ -45,9 +44,7 @@ class profile::infrastructure::network::ios (
   # Level 3 interface configuration
 
   $vlans.each |$vlan, $parameters| {
-
     if $parameters[ipaddress] {
-
       $if_command = @("EOT")
         interface Vlan${vlan}
          ip address ${parameters[ipaddress]} ${parameters[broadcast]}
@@ -59,7 +56,6 @@ class profile::infrastructure::network::ios (
       }
     }
   }
-
 
   # Switch port configuration
 
@@ -92,5 +88,4 @@ class profile::infrastructure::network::ios (
       idempotent_regex => $regex,
     }
   }
-
 }

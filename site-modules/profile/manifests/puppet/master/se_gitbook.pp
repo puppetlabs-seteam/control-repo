@@ -2,10 +2,9 @@ class profile::puppet::master::se_gitbook (
   $gitbook_port    = '4000',
   $gitbook_wwwroot = '/var/www/se_gitbook',
   $gitbook_source  = 'https://s3-us-west-2.amazonaws.com/tse-builds/gitbooks/',
-  $gitbook_release = pick_default($::gitbook_file,'se_gitbook_latest.tar'),
+  $gitbook_release = pick_default($facts['gitbook_file'],'se_gitbook_latest.tar'),
   $gitbook_local   = '/etc/gitbooks',
 ) {
-
   file { $gitbook_local:
     ensure => directory,
     mode   => '0755',
@@ -40,5 +39,4 @@ class profile::puppet::master::se_gitbook (
     port    => $gitbook_port,
     docroot => $gitbook_wwwroot,
   }
-
 }

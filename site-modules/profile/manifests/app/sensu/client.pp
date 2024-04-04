@@ -5,13 +5,12 @@ class profile::app::sensu::client (
   String $rabbitmq_vhost,
   String $rabbitmq_host,
   Array[String] $subscriptions,
-){
-
+) {
   include profile::app::sensu::plugins
 
   Host  <<| tag == 'sensu-server' |>>
 
-  class { '::sensu':
+  class { 'sensu':
     rabbitmq_user     => $rabbitmq_user,
     rabbitmq_password => $rabbitmq_password,
     rabbitmq_vhost    => $rabbitmq_vhost,
@@ -19,5 +18,4 @@ class profile::app::sensu::client (
     client            => true,
     subscriptions     => $subscriptions,
   }
-
 }

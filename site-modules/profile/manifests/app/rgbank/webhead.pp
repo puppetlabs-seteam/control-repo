@@ -1,6 +1,5 @@
 class profile::app::rgbank::webhead {
-
-  class{'::profile::app::webserver::nginx':
+  class { 'profile::app::webserver::nginx':
     php => true,
   }
 
@@ -11,6 +10,5 @@ class profile::app::rgbank::webhead {
     notify  => Service['nginx'],
   }
 
-  include ::profile::app::db::mysql::client
-
+  include profile::app::db::mysql::client
 }

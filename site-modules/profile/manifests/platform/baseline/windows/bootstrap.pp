@@ -1,6 +1,5 @@
 class profile::platform::baseline::windows::bootstrap {
-
-  require ::chocolatey
+  require chocolatey
 
   # service needs to be running to install the update
   service { 'wuauserv':
@@ -23,7 +22,7 @@ class profile::platform::baseline::windows::bootstrap {
     provider => chocolatey,
   }
 
-  reboot {'dsc_install':
+  reboot { 'dsc_install':
     subscribe => Package['powershell'],
     apply     => 'immediately',
     timeout   => 0,
@@ -37,9 +36,8 @@ class profile::platform::baseline::windows::bootstrap {
     notify => Service['WinRM'],
   }
 
-  service {'WinRM':
+  service { 'WinRM':
     ensure => 'running',
     enable => true,
   }
-
 }

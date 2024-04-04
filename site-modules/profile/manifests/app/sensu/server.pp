@@ -5,10 +5,9 @@ class profile::app::sensu::server (
   String $rabbitmq_vhost,
   String $rabbitmq_host,
   Array[String] $subscriptions,
-){
-
-  include ::profile::app::rabbitmq
-  include ::profile::app::redis
+) {
+  include profile::app::rabbitmq
+  include profile::app::redis
 
   @@host { $facts['networking']['fqdn'] :
     ip           => $facts['networking']['ipaddress'],
@@ -17,7 +16,7 @@ class profile::app::sensu::server (
   }
   Host  <<| tag == 'sensu-server' |>>
 
-  class { '::sensu':
+  class { 'sensu':
     rabbitmq_user     => $rabbitmq_user,
     rabbitmq_password => $rabbitmq_password,
     rabbitmq_vhost    => $rabbitmq_vhost,
@@ -46,18 +45,17 @@ class profile::app::sensu::server (
     require              => Rabbitmq_user[$rabbitmq_user],
   }
 
-  class { '::uchiwa':
+  class { 'uchiwa':
     user         => $rabbitmq_user,
     pass         => $rabbitmq_password,
     port         => 3000,
     install_repo => false,
-    require      => Class['::sensu']
+    require      => Class['sensu']
   }
 
   firewall { '3000 allow Sensu Uchiwa access':
-      dport => '3000',
-      proto => tcp,
-      jump  => accept,
+    dport => '3000',
+    proto => tcp,
+    jump  => accept,
   }
-
 }

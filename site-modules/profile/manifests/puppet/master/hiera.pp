@@ -30,7 +30,6 @@ class profile::puppet::master::hiera {
       manage_eyaml_package => true,
       provider             => 'puppetserver_gem',
     }
-
   } else {
     # Older versions of PE only support Hiera 3
     class { 'hiera':
@@ -52,7 +51,5 @@ class profile::puppet::master::hiera {
         'common',
       ],
     }
-
   }
-
 }

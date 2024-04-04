@@ -7,16 +7,15 @@ class profile::app::sensu::handlers (
   String $hipchat_room,
   String $hipchat_from,
   String $hipchat_message_template,
-){
-
+) {
   package { 'mailx':
-      ensure   => 'present',
-      provider => 'yum'
+    ensure   => 'present',
+    provider => 'yum',
   }
 
   sensu::handler { 'default':
     type     => 'set',
-    handlers => [ 'stdout', 'mailer', 'hipchat'],
+    handlers => ['stdout', 'mailer', 'hipchat'],
   }
 
   sensu::handler { 'stdout':
@@ -32,11 +31,11 @@ class profile::app::sensu::handlers (
       mail_from => $mailer_from,
       mail_to   => $mailer_to,
     },
-    filters => [ 'state-change-only' ],
+    filters => ['state-change-only'],
   }
 
   file { '/opt/sensu_template.erb':
-    ensure  => 'present',
+    ensure  => 'file',
     content => $hipchat_message_template,
     replace => 'no',
     mode    => '0644',
@@ -50,9 +49,9 @@ class profile::app::sensu::handlers (
       'apiversion'       => 'v2',
       'room'             => $hipchat_room,
       'from'             => $hipchat_from,
-      'message_template' => '/opt/sensu_template.erb'
+      'message_template' => '/opt/sensu_template.erb',
     },
-    filters => [ 'state-change-only' ],
+    filters => ['state-change-only'],
   }
 
   sensu::filter { 'state-change-only':

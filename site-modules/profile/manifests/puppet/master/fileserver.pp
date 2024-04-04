@@ -2,12 +2,11 @@ class profile::puppet::master::fileserver (
   $user  = 'root',
   $group = 'root',
 ) {
-
-  class { '::profile::app::webserver::apache':
+  class { 'profile::app::webserver::apache':
     default_vhost => false,
   }
 
-  ensure_resource('file', '/opt/tse-files', { 'ensure' => 'directory', 'owner' => $user, 'group' => $group})
+  ensure_resource('file', '/opt/tse-files', { 'ensure' => 'directory', 'owner' => $user, 'group' => $group })
 
   apache::vhost { 'fileserver':
     vhost_name    => '*',
@@ -25,7 +24,6 @@ class profile::puppet::master::fileserver (
     jump  => 'accept',
   }
 
-  include ::profile::puppet::master::fileserver::jdk
-  include ::profile::puppet::master::fileserver::tomcat
-
+  include profile::puppet::master::fileserver::jdk
+  include profile::puppet::master::fileserver::tomcat
 }

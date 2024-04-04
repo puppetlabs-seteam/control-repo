@@ -17,7 +17,6 @@ class profile::platform::baseline::windows::motd {
 
     | MOTD
 
-
   # Check if we have a hiera override for the MOTD, otherwise use the default
   $message = lookup('motd', String, 'first', $motd)
 
@@ -32,6 +31,4 @@ class profile::platform::baseline::windows::motd {
     type   => string,
     data   => $message,
   }
-
 }
-

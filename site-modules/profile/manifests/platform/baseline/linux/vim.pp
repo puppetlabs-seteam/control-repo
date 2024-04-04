@@ -1,8 +1,7 @@
 # class: profile::platform::baseline::linux::vim
 #
 class profile::platform::baseline::linux::vim {
-
-  require ::git
+  require git
 
   $users = {
     'root'  => '/root',

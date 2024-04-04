@@ -11,17 +11,17 @@ class profile::app::cloudshop::sqlserver::mount (
     timeout => 600, # default 300
   }
 
-  $iso_path = "${::staging::path}/${module_name}/${iso}"
+  $iso_path = "${staging::path}/${module_name}/${iso}"
 
   acl { $iso_path :
     permissions => [
       {
         identity => 'Everyone',
-        rights   => [ 'full' ]
+        rights   => ['full']
       },
       {
-        identity => $::staging::owner,
-        rights   => [ 'full' ]
+        identity => $staging::owner,
+        rights   => ['full']
       },
     ],
     require     => Staging::File[$iso],
@@ -31,5 +31,4 @@ class profile::app::cloudshop::sqlserver::mount (
   mount_iso { $iso_path :
     drive_letter => $iso_drive,
   }
-
 }

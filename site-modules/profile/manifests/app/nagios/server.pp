@@ -1,5 +1,4 @@
 class profile::app::nagios::server {
-
   if $facts['os']['family'] != 'redhat' {
     fail('This class is only for EL family')
   }
@@ -75,5 +74,4 @@ class profile::app::nagios::server {
   Nagios_service <<||>> {
     notify => Service['nagios','httpd'],
   }
-
 }

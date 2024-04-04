@@ -1,9 +1,8 @@
 class profile::app::puppet_webapp::lb (
   $dev_hostname = 'devapp.puppet.vm',
   $prod_hostname = 'prodapp.puppet.vm',
-){
-
-  require ::profile::app::haproxy
+) {
+  require profile::app::haproxy
 
   haproxy::mapfile { 'domains-to-backends':
     ensure   => 'present',
@@ -53,5 +52,4 @@ class profile::app::puppet_webapp::lb (
     proto => tcp,
     jump  => accept,
   }
-
 }

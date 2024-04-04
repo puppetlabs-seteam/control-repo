@@ -1,7 +1,6 @@
 class profile::app::gitlab (
   Boolean $ssl = false,
 ) {
-
   if ($facts[kernel] != 'Linux') {
     fail('Unsupported OS')
   }
@@ -33,13 +32,13 @@ class profile::app::gitlab (
 
   file { "/etc/gitlab/ssl/${trusted[certname]}.key" :
     ensure => file,
-    source => "${::settings::privatekeydir}/${trusted[certname]}.pem",
+    source => "${settings::privatekeydir}/${trusted[certname]}.pem",
     notify => Class['gitlab::service'],
   }
 
   file { "/etc/gitlab/ssl/${trusted[certname]}.crt" :
     ensure => file,
-    source => "${::settings::certdir}/${trusted[certname]}.pem",
+    source => "${settings::certdir}/${trusted[certname]}.pem",
     notify => Class['gitlab::service'],
   }
 

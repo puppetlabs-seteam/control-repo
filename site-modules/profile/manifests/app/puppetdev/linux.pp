@@ -34,7 +34,7 @@ class profile::app::puppetdev::linux {
     ],
   }
 
-  ensure_packages($dev_packages,{ensure => present})
+  ensure_packages($dev_packages, { ensure => present })
 
   class { 'rbenv':
     manage_deps => false,
@@ -42,5 +42,4 @@ class profile::app::puppetdev::linux {
 
   rbenv::plugin { 'rbenv/ruby-build': }
   rbenv::build { '2.3.1': global    => true }
-
 }

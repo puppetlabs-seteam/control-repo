@@ -9,9 +9,8 @@ class profile::app::jenkins::win_slave (
   $client_jar    = 'swarm-client-2.0-jar-with-dependencies.jar',
   $jenkins_owner = 'jenkins',
   $executors     = 1,
-){
-
-  include ::profile::platform::baseline
+) {
+  include profile::platform::baseline
 
   $client_url = "https://repo.jenkins-ci.org/releases/org/jenkins-ci/plugins/swarm-client/${slave_version}/"
 
@@ -48,10 +47,10 @@ class profile::app::jenkins::win_slave (
 
   acl { $slave_home:
     permissions                => [
-      { identity => 'S-1-5-32-544',  rights => [ 'full' ] }, # BUILTIN\Administrators
-      { identity => 'S-1-5-18',      rights => [ 'full' ] }, # NT AUTHORITY\SYSTEM
-      { identity => 'Administrator', rights => [ 'full' ] },
-      { identity => $jenkins_owner,  rights => [ 'full' ] },
+      { identity => 'S-1-5-32-544',  rights => ['full'] }, # BUILTIN\Administrators
+      { identity => 'S-1-5-18',      rights => ['full'] }, # NT AUTHORITY\SYSTEM
+      { identity => 'Administrator', rights => ['full'] },
+      { identity => $jenkins_owner,  rights => ['full'] },
     ],
     inherit_parent_permissions => false,
     require                    => File[$slave_home],
@@ -59,7 +58,7 @@ class profile::app::jenkins::win_slave (
 
   exec { 'download-swarm-client':
     command => "wget.exe -O ${slave_home}/${client_jar} ${client_url}/${client_jar}",
-    path    => "c:/programdata/chocolatey/bin;${::path}",
+    path    => "c:/programdata/chocolatey/bin;${facts['path']}",
     creates => "${slave_home}/${client_jar}",
     notify  => Exec['uninstall-jenkins-service'],
   }
@@ -135,11 +134,9 @@ class profile::app::jenkins::win_slave (
     require   => Package['git'],
   }
 
-
   service { 'jenkins-slave':
     ensure  => running,
     enable  => true,
     require => Exec['install-jenkins-service'],
   }
-
 }

@@ -1,5 +1,4 @@
 class profile::platform::compliance::hipaa::windows {
-
   # HIPAA Administrative Simplification Regulation Text
   # https://www.hhs.gov/sites/default/files/hipaa-simplification-201303.pdf?language=es
 
@@ -20,12 +19,12 @@ class profile::platform::compliance::hipaa::windows {
   #Purge any unmanaged users.
   purge { 'user':
     unless      => [
-      [ 'name', '==', 'Administrator' ],
-      [ 'name', '==', 'Guest' ],
-      [ 'name', '==', 'DefaultAccount' ],
-      [ 'name', '==', 'Local Admin 1' ],
-      [ 'name', '==', 'Local Admin 2' ],
-    ]
+      ['name', '==', 'Administrator'],
+      ['name', '==', 'Guest'],
+      ['name', '==', 'DefaultAccount'],
+      ['name', '==', 'Local Admin 1'],
+      ['name', '==', 'Local Admin 2'],
+    ],
   }
 
   # (iii) Automatic logoff (Addressable)

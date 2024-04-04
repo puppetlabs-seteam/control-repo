@@ -32,7 +32,7 @@ class profile::infrastructure::network::panos::interfaces {
                       </entry>
                     </units>
                   </loopback>',
-      require => Panos_arbitrary_commands['devices/entry/network/profiles/interface-management-profile']
+      require => Panos_arbitrary_commands['devices/entry/network/profiles/interface-management-profile'],
   }
 
   panos_virtual_router { 'default':
@@ -47,6 +47,6 @@ class profile::infrastructure::network::panos::interfaces {
     ad_ibgp        => '200',
     ad_ebgp        => '20',
     ad_rip         => '120',
-    require        => Panos_arbitrary_commands['devices/entry/network/interface/loopback']
+    require        => Panos_arbitrary_commands['devices/entry/network/interface/loopback'],
   }
 }

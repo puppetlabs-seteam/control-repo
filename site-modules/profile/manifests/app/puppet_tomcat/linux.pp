@@ -7,14 +7,13 @@ class profile::app::puppet_tomcat::linux (
   Array  $tomcat_other_versions,
   Boolean $deploy_sample_app = true,
 ) {
+  include profile::app::entropy
 
-  include ::profile::app::entropy
-
-  class {'::profile::app::java':
+  class { 'profile::app::java':
     distribution => 'jre',
   }
 
-  class { '::tomcat':
+  class { 'tomcat':
     catalina_home => $catalina_dir,
     before        => Class['java'],
   }
@@ -26,8 +25,7 @@ class profile::app::puppet_tomcat::linux (
   }
 
   if $deploy_sample_app == true {
-
-    tomcat::instance{ "tomcat${tomcat_version}":
+    tomcat::instance { "tomcat${tomcat_version}":
       install_from_source    => true,
       source_url             => "http://${facts['puppet_server']}:81/tomcat/apache-tomcat-${tomcat_version}.tar.gz",
       source_strip_first_dir => true,
@@ -52,46 +50,37 @@ class profile::app::puppet_tomcat::linux (
       service_name  => 'plsample',
       subscribe     => Tomcat::War["plsample-${plsample_version}.war"],
     }
-
   } else {
-
-    tomcat::instance{ "tomcat${tomcat_version}":
+    tomcat::instance { "tomcat${tomcat_version}":
       install_from_source    => true,
       source_url             => "http://${facts['puppet_server']}:81/tomcat/apache-tomcat-${tomcat_version}.tar.gz",
       source_strip_first_dir => true,
       catalina_base          => $catalina_dir,
       catalina_home          => $catalina_dir,
     }
-
   }
 
   $tomcat_other_versions.each |String $version| {
     if $deploy_sample_app == true {
-
-      service {"tomcat-plsample-tomcat${version}":
+      service { "tomcat-plsample-tomcat${version}":
         ensure => stopped,
         status => "ps aux | grep \'catalina.base=/opt/apache-tomcat${version}\' | grep -v grep",
         stop   => "su -s /bin/bash -c \'/opt/apache-tomcat${version}/bin/catalina.sh stop tomcat\'",
         before => File["/opt/apache-tomcat${version}"],
       }
 
-      file {"/opt/apache-tomcat${version}":
+      file { "/opt/apache-tomcat${version}":
         ensure => absent,
         force  => true,
         backup => false,
         before => Tomcat::Service["plsample-tomcat${tomcat_version}"],
       }
-
     } else {
-
-      file {"/opt/apache-tomcat${version}":
+      file { "/opt/apache-tomcat${version}":
         ensure => absent,
         force  => true,
         backup => false,
       }
-
     }
-
   }
-
 }

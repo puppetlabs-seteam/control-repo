@@ -9,7 +9,7 @@ define profile::app::cloudshop::sqlserver::attachdb (
   $dbinstance    = 'MYINSTANCE',
   $owner         = 'CloudShop',
 ) {
-  case $::profile::app::cloudshop::sqlserver::init::sqlserver_version {
+  case $profile::app::cloudshop::sqlserver::init::sqlserver_version {
     '2012':  {
       $data_path  = "C:\\Program Files\\Microsoft SQL Server\\MSSQL11.${$dbinstance}\\MSSQL\\DATA"
       $sqlps_path = 'C:\Program Files (x86)\Microsoft SQL Server\110\Tools\PowerShell\Modules\SQLPS'
@@ -26,7 +26,7 @@ define profile::app::cloudshop::sqlserver::attachdb (
     source => "${file_source}\\${zip_file}",
   }
   unzip { "SQL Data ${zip_file}":
-    source    => "${::staging_windir}\\${module_name}\\${zip_file}",
+    source    => "${facts['staging_windir']}\\${module_name}\\${zip_file}",
     creates   => "${data_path}\\${mdf_file}",
     subscribe => Staging::File[$zip_file],
   }
@@ -42,7 +42,7 @@ define profile::app::cloudshop::sqlserver::attachdb (
     unless    => "import-module \'${sqlps_path}\'; if(invoke-sqlcmd -Query \"select suser_sname(owner_sid) from sys.databases where [name] = \'${title}\';\" -ServerInstance \"${facts['networking']['hostname']}\\${dbinstance}\" | where-object \"Column1\" -eq \"${owner}\") { exit 0 } else { exit 1 }",
     subscribe => Exec["Attach ${title}"],
   }
-  sqlserver::login{ $owner:
+  sqlserver::login { $owner:
     instance => $dbinstance,
     password => $dbpass,
     notify   => Exec["Attach ${title}"],

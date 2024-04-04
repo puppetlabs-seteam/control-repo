@@ -15,13 +15,11 @@ class profile::puppet::splunk_hec (
   String $splunk_server,
   String $splunk_hec_token = 'bba862fd-c09c-43e1-90f7-87221f362296', # must match the value for splunk_input['hec_puppetsummary_token']
 ) {
-
   # resources
-  class {'splunk_hec':
+  class { 'splunk_hec':
     url            => "https://${splunk_server}:8088/services/collector",
     token          => $splunk_hec_token,
     enable_reports => true,
-    manage_routes  => true
+    manage_routes  => true,
   }
-
 }

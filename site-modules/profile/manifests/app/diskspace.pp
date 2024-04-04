@@ -3,7 +3,7 @@
 #
 class profile::app::diskspace (
   $threshold = 80
-){
+) {
   # resources
   $disks_to_check = [
     'diskspace_c',

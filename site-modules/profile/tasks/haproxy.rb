@@ -13,11 +13,10 @@ class TaskError < ArgumentError
 
   def get_result
     { _error: {
-        kind: "haproxy-error",
+      kind: 'haproxy-error',
         msg: @message,
         details: @details
-      }
-    }
+    } }
   end
 end
 
@@ -30,21 +29,21 @@ def socket_command(path, cmd)
     end
   end
 
-  if result[0] =~ /Unknown command/
-    raise TaskError.new("Unkown HAProxy command: #{cmd}", {command: cmd})
+  if %r{Unknown command}.match?(result[0])
+    raise TaskError.new("Unkown HAProxy command: #{cmd}", { command: cmd })
   end
 
-  return result
+  result
 end
 
 def get_stat(socket, backend, server, stat)
   stats = socket_command(socket, 'show stat').map { |l| l.split(',') }
 
   idx = stats[0].index(stat)
-  raise TaskError.new("Could not find stat: #{stat}", {stats: stats}) unless idx
+  raise TaskError.new("Could not find stat: #{stat}", { stats: stats }) unless idx
 
   row = stats.index { |r| r[0] == backend && r[1] == server }
-  raise TaskError.new("Could not find entry for: #{backend}/#{server}", {stats: stats}) unless row
+  raise TaskError.new("Could not find entry for: #{backend}/#{server}", { stats: stats }) unless row
 
   stats[row][idx]
 end
@@ -52,7 +51,7 @@ end
 def set_state(socket, backend, server, state)
   cmd = "set server #{backend}/#{server} state #{state}"
   r = socket_command(socket, cmd)
-  raise TaskError.new("Failed to set #{state} state: #{r[0]}", {result: r.join("\n")}) unless r.empty?
+  raise TaskError.new("Failed to set #{state} state: #{r[0]}", { result: r.join("\n") }) unless r.empty?
 end
 
 def wait_for_empty(socket, backend, server, timeout)
@@ -63,12 +62,12 @@ def wait_for_empty(socket, backend, server, timeout)
     sleep(1)
     count += 1
   end
-  return conns
+  conns
 end
 
 def get_param(params, key)
   unless val = params[key]
-    raise TaskError.new("Missing required key '#{key}' for #{params['action']}.", {key: key})
+    raise TaskError.new("Missing required key '#{key}' for #{params['action']}.", { key: key })
   end
   val
 end
@@ -85,24 +84,23 @@ def run_action(params)
     case action
     when 'drain'
       set_state(socket, backend, server, 'drain')
-      return {success: true}
+      return { success: true }
     when 'add'
       set_state(socket, backend, server, 'ready')
-      return {success: true}
+      return { success: true }
     when 'drain_wait'
       timeout = params['timeout'] || 60
       set_state(socket, backend, server, 'drain')
       conns = wait_for_empty(socket, backend, server, timeout)
-      return {success: conns == 0, conns: conns }
+      return { success: conns == 0, conns: conns }
     when 'get_stat'
       stat = get_param(params, 'stat')
-      return {stat_val: get_stat(socket, backend, server, stat)}
+      return { stat_val: get_stat(socket, backend, server, stat) }
     end
   end
   # metadata should prevent this
-  raise TaskError.new("Unknown action: #{action}")
+  raise TaskError, "Unknown action: #{action}"
 end
-
 
 begin
   params = JSON.parse(STDIN.read)

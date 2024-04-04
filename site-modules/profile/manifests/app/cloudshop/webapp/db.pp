@@ -5,7 +5,7 @@ class profile::app::cloudshop::webapp::db (
   $dbname        = 'AdventureWorks2012',
   $dbserver      = $facts['networking']['hostname'],
   $file_source   = 'https://s3-us-west-2.amazonaws.com/tseteam/files/sqlwebapp',
-){
+) {
   profile::app::cloudshop::sqlserver::attachdb { $dbname:
     file_source => $file_source,
     dbinstance  => $dbinstance,

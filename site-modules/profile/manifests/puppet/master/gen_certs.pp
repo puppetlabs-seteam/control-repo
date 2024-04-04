@@ -1,11 +1,9 @@
 class profile::puppet::master::gen_certs (
   $dns_alt_names = ['puppet','puppetpoc'],
   $cert_hostname = $facts['networking']['fqdn'],
-){
-
-
+) {
   Exec {
-    timeout => 0
+    timeout => 0,
   }
 
   pe_ini_setting { 'clientcert':
@@ -28,7 +26,6 @@ class profile::puppet::master::gen_certs (
   }
 
   $new_certs.each |$k,$v| {
-
     if empty($v) {
       $command = "puppet cert generate ${k}"
     } else {
@@ -36,111 +33,103 @@ class profile::puppet::master::gen_certs (
       $command = "puppet cert generate ${k} --dns_alt_names=${dns_names}"
     }
 
-    exec{"cert-${k}":
+    exec { "cert-${k}":
       path    => $facts['path'],
       command => $command,
       unless  => "test -f /etc/puppetlabs/puppet/ssl/ca/signed/${k}.pem",
-      returns => [0,24]
+      returns => [0,24],
     }
 
     if !empty($v) {
-
       $sign_cmd = "puppet cert --allow-dns-alt-names sign ${k}"
 
-      exec{"cert-sign-${k}":
+      exec { "cert-sign-${k}":
         path    => $facts['path'],
         command => $sign_cmd,
         unless  => "test -f /etc/puppetlabs/puppet/ssl/ca/signed/${k}.pem",
       }
     }
-
   }
 
-  file{'/etc/puppetlabs/puppet/ssl/crl.pem':
+  file { '/etc/puppetlabs/puppet/ssl/crl.pem':
     source => '/etc/puppetlabs/puppet/ssl/ca/ca_crl.pem',
     owner  => 'pe-puppet',
     group  => 'pe-puppet',
     mode   => '0644',
   }
 
-
-
   $copy_files = {
-    "/etc/puppetlabs/puppet/ssl/certs/${cert_hostname}.pem" =>
+    "/etc/puppetlabs/puppet/ssl/certs/${cert_hostname}.pem" => 
       "/etc/puppetlabs/puppet/ssl/ca/signed/${cert_hostname}.pem",
-    "/opt/puppetlabs/server/data/postgresql/9.4/data/certs/${cert_hostname}.cert.pem" =>
+    "/opt/puppetlabs/server/data/postgresql/9.4/data/certs/${cert_hostname}.cert.pem" => 
       "/etc/puppetlabs/puppet/ssl/certs/${cert_hostname}.pem",
-    "/opt/puppetlabs/server/data/postgresql/9.4/data/certs/${cert_hostname}.public_key.pem" =>
+    "/opt/puppetlabs/server/data/postgresql/9.4/data/certs/${cert_hostname}.public_key.pem" => 
       "/etc/puppetlabs/puppet/ssl/public_keys/${cert_hostname}.pem",
-    "/opt/puppetlabs/server/data/postgresql/9.4/data/certs/${cert_hostname}.private_key.pem" =>
+    "/opt/puppetlabs/server/data/postgresql/9.4/data/certs/${cert_hostname}.private_key.pem" => 
       "/etc/puppetlabs/puppet/ssl/private_keys/${cert_hostname}.pem",
-    '/etc/puppetlabs/orchestration-services/ssl/pe-internal-orchestrator.cert.pem' =>
+    '/etc/puppetlabs/orchestration-services/ssl/pe-internal-orchestrator.cert.pem' => 
       '/etc/puppetlabs/puppet/ssl/certs/pe-internal-orchestrator.pem',
-    '/etc/puppetlabs/orchestration-services/ssl/pe-internal-orchestrator.public_key.pem' =>
+    '/etc/puppetlabs/orchestration-services/ssl/pe-internal-orchestrator.public_key.pem' => 
       '/etc/puppetlabs/puppet/ssl/public_keys/pe-internal-orchestrator.pem',
-    '/etc/puppetlabs/orchestration-services/ssl/pe-internal-orchestrator.private_key.pem' =>
+    '/etc/puppetlabs/orchestration-services/ssl/pe-internal-orchestrator.private_key.pem' => 
       '/etc/puppetlabs/puppet/ssl/private_keys/pe-internal-orchestrator.pem',
-    "/etc/puppetlabs/orchestration-services/ssl/${cert_hostname}.cert.pem" =>
+    "/etc/puppetlabs/orchestration-services/ssl/${cert_hostname}.cert.pem" => 
       "/etc/puppetlabs/puppet/ssl/certs/${cert_hostname}.pem",
-    "/etc/puppetlabs/orchestration-services/ssl/${cert_hostname}.public_key.pem" =>
+    "/etc/puppetlabs/orchestration-services/ssl/${cert_hostname}.public_key.pem" => 
       "/etc/puppetlabs/puppet/ssl/public_keys/${cert_hostname}.pem",
-    "/etc/puppetlabs/orchestration-services/ssl/${cert_hostname}.private_key.pem" =>
+    "/etc/puppetlabs/orchestration-services/ssl/${cert_hostname}.private_key.pem" => 
       "/etc/puppetlabs/puppet/ssl/private_keys/${cert_hostname}.pem",
-    '/opt/puppetlabs/server/data/console-services/certs/pe-internal-classifier.cert.pem' =>
+    '/opt/puppetlabs/server/data/console-services/certs/pe-internal-classifier.cert.pem' => 
       '/etc/puppetlabs/puppet/ssl/certs/pe-internal-classifier.pem',
-    '/opt/puppetlabs/server/data/console-services/certs/pe-internal-classifier.public_key.pem' =>
+    '/opt/puppetlabs/server/data/console-services/certs/pe-internal-classifier.public_key.pem' => 
       '/etc/puppetlabs/puppet/ssl/public_keys/pe-internal-classifier.pem',
-    '/opt/puppetlabs/server/data/console-services/certs/pe-internal-classifier.private_key.pem' =>
+    '/opt/puppetlabs/server/data/console-services/certs/pe-internal-classifier.private_key.pem' => 
       '/etc/puppetlabs/puppet/ssl/private_keys/pe-internal-classifier.pem',
-    "/opt/puppetlabs/server/data/console-services/certs/${cert_hostname}.cert.pem" =>
+    "/opt/puppetlabs/server/data/console-services/certs/${cert_hostname}.cert.pem" => 
       "/etc/puppetlabs/puppet/ssl/certs/${cert_hostname}.pem",
-    "/opt/puppetlabs/server/data/console-services/certs/${cert_hostname}.public_key.pem" =>
+    "/opt/puppetlabs/server/data/console-services/certs/${cert_hostname}.public_key.pem" => 
       "/etc/puppetlabs/puppet/ssl/public_keys/${cert_hostname}.pem",
-    "/opt/puppetlabs/server/data/console-services/certs/${cert_hostname}.private_key.pem" =>
+    "/opt/puppetlabs/server/data/console-services/certs/${cert_hostname}.private_key.pem" => 
       "/etc/puppetlabs/puppet/ssl/private_keys/${cert_hostname}.pem",
-    '/opt/puppetlabs/server/data/console-services/certs/pe-internal-dashboard.cert.pem' =>
+    '/opt/puppetlabs/server/data/console-services/certs/pe-internal-dashboard.cert.pem' => 
       '/etc/puppetlabs/puppet/ssl/certs/pe-internal-dashboard.pem',
-    '/opt/puppetlabs/server/data/console-services/certs/pe-internal-dashboard.public_key.pem' =>
+    '/opt/puppetlabs/server/data/console-services/certs/pe-internal-dashboard.public_key.pem' => 
       '/etc/puppetlabs/puppet/ssl/public_keys/pe-internal-dashboard.pem',
-    '/opt/puppetlabs/server/data/console-services/certs/pe-internal-dashboard.private_key.pem' =>
+    '/opt/puppetlabs/server/data/console-services/certs/pe-internal-dashboard.private_key.pem' => 
       '/etc/puppetlabs/puppet/ssl/private_keys/pe-internal-dashboard.pem',
-    "/etc/puppetlabs/puppetdb/ssl/${cert_hostname}.cert.pem" =>
+    "/etc/puppetlabs/puppetdb/ssl/${cert_hostname}.cert.pem" => 
       "/etc/puppetlabs/puppet/ssl/certs/${cert_hostname}.pem",
-    "/etc/puppetlabs/puppetdb/ssl/${cert_hostname}.public_key.pem" =>
+    "/etc/puppetlabs/puppetdb/ssl/${cert_hostname}.public_key.pem" => 
       "/etc/puppetlabs/puppet/ssl/public_keys/${cert_hostname}.pem",
-    "/etc/puppetlabs/puppetdb/ssl/${cert_hostname}.private_key.pem" =>
+    "/etc/puppetlabs/puppetdb/ssl/${cert_hostname}.private_key.pem" => 
       "/etc/puppetlabs/puppet/ssl/private_keys/${cert_hostname}.pem",
   }
 
   $copy_files.each |$t,$s| {
     file { $t:
-      ensure => present,
+      ensure => file,
       source => $s,
     }
   }
 
   $pk8_create = {
-    "/etc/puppetlabs/puppetdb/ssl/${cert_hostname}.private_key.pk8"               =>
-      ['/etc/puppetlabs/puppetdb/ssl', "/etc/puppetlabs/puppetdb/ssl/${cert_hostname}.private_key.pem"],
-    "/etc/puppetlabs/orchestration-services/ssl/${cert_hostname}.private_key.pk8" =>
-      ['/etc/puppetlabs/orchestration-services/ssl',"/etc/puppetlabs/puppetdb/ssl/${cert_hostname}.private_key.pem"],
+    "/etc/puppetlabs/puppetdb/ssl/${cert_hostname}.private_key.pk8"               => ['/etc/puppetlabs/puppetdb/ssl', "/etc/puppetlabs/puppetdb/ssl/${cert_hostname}.private_key.pem"],
+    "/etc/puppetlabs/orchestration-services/ssl/${cert_hostname}.private_key.pk8" => ['/etc/puppetlabs/orchestration-services/ssl',"/etc/puppetlabs/puppetdb/ssl/${cert_hostname}.private_key.pem"],
   }
 
   $pk8_create.each |$in,$o| {
-
     $workdir = $o[0]
     $outfile = $o[1]
 
-    exec {"pk8_${in}":
+    exec { "pk8_${in}":
       path    => $facts['path'],
       cwd     => $workdir,
       command => "openssl pkcs8 -topk8 -inform PEM -outform DER -in ${in} -out ${outfile} -nocrypt",
       unless  => "test -f ${outfile}",
     }
-
   }
 
-  file {'/opt/puppetlabs/server/data/postgresql/9.4/data/certs/':
+  file { '/opt/puppetlabs/server/data/postgresql/9.4/data/certs/':
     ensure  => directory,
     owner   => 'pe-postgres',
     group   => 'pe-postgres',
@@ -148,22 +137,21 @@ class profile::puppet::master::gen_certs (
     notify  => Exec['chmod_postgresql_certs'],
   }
 
-
-  file {'/etc/puppetlabs/puppetdb/ssl':
+  file { '/etc/puppetlabs/puppetdb/ssl':
     ensure  => directory,
     owner   => 'pe-puppetdb',
     group   => 'pe-puppetdb',
     recurse => true,
   }
 
-  file {'/opt/puppetlabs/server/data/console-services/certs/':
+  file { '/opt/puppetlabs/server/data/console-services/certs/':
     ensure  => directory,
     owner   => 'pe-console-services',
     group   => 'pe-console-services',
     recurse => true,
   }
 
-  file {'/etc/puppetlabs/orchestration-services/ssl/':
+  file { '/etc/puppetlabs/orchestration-services/ssl/':
     ensure  => directory,
     owner   => 'pe-orchestration-services',
     group   => 'pe-orchestration-services',
@@ -171,26 +159,25 @@ class profile::puppet::master::gen_certs (
   }
 
   File<||>
-    -> exec {'chmod_postgresql_certs':
-      path        => $facts['path'],
-      command     => 'chmod 400 /opt/puppetlabs/server/data/postgresql/9.4/data/certs/*',
-      refreshonly => true,
-    }
+  -> exec { 'chmod_postgresql_certs':
+    path        => $facts['path'],
+    command     => 'chmod 400 /opt/puppetlabs/server/data/postgresql/9.4/data/certs/*',
+    refreshonly => true,
+  }
 
   File<||>
-    -> exec {'puppet_infrastructure_configure':
-      path    => $facts['path'],
-      command => 'puppet infrastructure configure',
-    }
-    -> exec {'run agent':
-      path    => $facts['path'],
-      command => 'puppet agent -t',
-      returns => [2],
-    }
-    -> exec {'run agent console setup':
-      path    => $facts['path'],
-      command => 'puppet agent -t',
-      returns => [2],
-    }
-
+  -> exec { 'puppet_infrastructure_configure':
+    path    => $facts['path'],
+    command => 'puppet infrastructure configure',
+  }
+  -> exec { 'run agent':
+    path    => $facts['path'],
+    command => 'puppet agent -t',
+    returns => [2],
+  }
+  -> exec { 'run agent console setup':
+    path    => $facts['path'],
+    command => 'puppet agent -t',
+    returns => [2],
+  }
 }

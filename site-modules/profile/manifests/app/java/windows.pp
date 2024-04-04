@@ -2,8 +2,7 @@
 #
 class profile::app::java::windows (
   $distribution,
-){
-
+) {
   # Distribution Var to be implemented
   file { 'c:/temp':
     ensure => directory,
@@ -22,5 +21,4 @@ class profile::app::java::windows (
     source          => 'c:/temp/jre-8u131-windows-x64.exe',
     install_options => ['INSTALL_SILENT=Enable'],
   }
-
 }

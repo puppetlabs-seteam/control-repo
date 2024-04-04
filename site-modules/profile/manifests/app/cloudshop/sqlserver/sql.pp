@@ -27,7 +27,7 @@ class profile::app::cloudshop::sqlserver::sql (
   }
 
   reboot { 'before install':
-      when => pending,
+    when => pending,
   }
 
   service { 'wuauserv':
@@ -39,7 +39,7 @@ class profile::app::cloudshop::sqlserver::sql (
     ensure => present,
   }
 
-  sqlserver_instance{ $db_instance:
+  sqlserver_instance { $db_instance:
     ensure                => present,
     features              => ['SQL'],
     source                => $source,
@@ -55,7 +55,7 @@ class profile::app::cloudshop::sqlserver::sql (
     require  => WindowsFeature['Net-Framework-Core'],
   }
 
-  sqlserver::config{ $db_instance:
+  sqlserver::config { $db_instance:
     admin_user => 'sa',
     admin_pass => $sa_pass,
   }
@@ -79,5 +79,4 @@ class profile::app::cloudshop::sqlserver::sql (
     display_name => 'MSSQL Access',
     description  => "MS SQL Server Inbound Access, enabled by Puppet in ${module_name}",
   }
-
 }

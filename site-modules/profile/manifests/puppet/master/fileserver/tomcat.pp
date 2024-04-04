@@ -1,7 +1,6 @@
 class profile::puppet::master::fileserver::tomcat (
   $srv_root = '/opt/tse-files',
 ) {
-
   $directories = [
     "${srv_root}/tomcat",
     "${srv_root}/war",

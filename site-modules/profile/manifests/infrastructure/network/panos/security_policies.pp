@@ -38,7 +38,7 @@ class profile::infrastructure::network::panos::security_policies {
     disable_server_response_inspection => false,
     disable                            => false,
     insert_after                       => '',
-    require                            => [ Panos_zone['Internet'], Panos_zone['LAN'], Panos_arbitrary_commands['devices/entry/vsys/entry/application-filter'] ]
+    require                            => [Panos_zone['Internet'], Panos_zone['LAN'], Panos_arbitrary_commands['devices/entry/vsys/entry/application-filter']],
   }
 
   panos_security_policy_rule { 'Data Center Applications':

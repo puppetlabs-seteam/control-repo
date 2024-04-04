@@ -13,11 +13,11 @@
 #   Should default to "splunk", but certain files were having ownership incorrectly set from puppet_splunk module
 #
 class profile::infrastructure::splunk::splunk_server (
-Optional[String]  $splunk_server  = undef,
-String            $splunk_user = 'splunk',
-String            $hec_puppetsummary_token  = 'bba862fd-c09c-43e1-90f7-87221f362296', # needs to be a valid GUID, must match with the GUID you use on PE
-String            $hec_puppetdetailed_token = '7dc49a8f-8f56-4095-9522-e5566f937cfc', # needs to be a valid GUID, must match with the GUID you use on PE
-){
+  Optional[String]  $splunk_server  = undef,
+  String            $splunk_user = 'splunk',
+  String            $hec_puppetsummary_token  = 'bba862fd-c09c-43e1-90f7-87221f362296', # needs to be a valid GUID, must match with the GUID you use on PE
+  String            $hec_puppetdetailed_token = '7dc49a8f-8f56-4095-9522-e5566f937cfc', # needs to be a valid GUID, must match with the GUID you use on PE
+) {
   case $splunk_server {
     undef: {
       $splunk_server_fqdn = $facts['networking']['fqdn']
@@ -38,7 +38,7 @@ String            $hec_puppetdetailed_token = '7dc49a8f-8f56-4095-9522-e5566f937
   class { 'splunk::enterprise':
     seed_password  => true,
     package_ensure => 'latest',
-    splunk_user    => $splunk_user
+    splunk_user    => $splunk_user,
   }
 
   class { 'firewall': }
@@ -47,7 +47,7 @@ String            $hec_puppetdetailed_token = '7dc49a8f-8f56-4095-9522-e5566f937
     dport   => [8000, 8088, 8089, 9997],
     proto   => tcp,
     jump    => accept,
-    require => Class['firewall']
+    require => Class['firewall'],
   }
 
   $default_indexes = [
@@ -63,7 +63,7 @@ String            $hec_puppetdetailed_token = '7dc49a8f-8f56-4095-9522-e5566f937
   ]
 
   splunk_indexes { $default_indexes:
-    value => 1024
+    value => 1024,
   }
 
   splunk::addon { 'TA-puppet-report-viewer':
@@ -87,44 +87,42 @@ String            $hec_puppetdetailed_token = '7dc49a8f-8f56-4095-9522-e5566f937
     notify            => Class['splunk::enterprise::service'],
   }
 
-
   splunk::addon {
     default:
       notify            => Class['splunk::enterprise::service'],
-    ;
+      ;
     'slack_alerts':
       splunkbase_source => 'puppet:///modules/profile/puppet/splunk/slack-notification-alert_203.tgz',
   }
 
   file { '/opt/splunk/etc/apps/splunk_httpinput/local':
     ensure  => directory,
-    require => Class['splunk']
+    require => Class['splunk'],
   }
 
   splunk_input {
     default:
       context => 'apps/splunk_httpinput/local',
       require => File['/opt/splunk/etc/apps/splunk_httpinput/local']
-    ;
+      ;
     'http/disabled':
-    value   => 0,
-    ;
+      value   => 0,
+      ;
     'http/enableSSL':
-    value   => 1,
+      value   => 1,
   }
 
   file {
     default:
-      ensure  => present,
+      ensure  => file,
       require => Splunk::Addon['TA-puppet-report-viewer'],
       notify  => Class['splunk::enterprise::service']
-    ;
+      ;
     '/opt/splunk/etc/apps/TA-puppet-report-viewer/local/savedsearches.conf':
       replace => false,
       source  => 'puppet:///modules/profile/puppet/splunk/localsavedsearches.conf',
-    ;
+      ;
     '/opt/splunk/etc/apps/TA-puppet-report-viewer/default/savedsearches.conf':
       source  => 'puppet:///modules/profile/puppet/splunk/defaultsavedsearches.conf',
   }
-
 }

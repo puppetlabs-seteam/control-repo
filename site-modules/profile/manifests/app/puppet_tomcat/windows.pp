@@ -6,10 +6,9 @@ class profile::app::puppet_tomcat::windows (
   Array  $tomcat_other_versions,
   Boolean $deploy_sample_app = true,
 ) {
-
   $tomcat_major_version = split($tomcat_version, '[.]')[0]
 
-  class {'::profile::app::java':
+  class { 'profile::app::java':
     distribution => 'jre',
   }
 
@@ -52,13 +51,11 @@ class profile::app::puppet_tomcat::windows (
   }
 
   if $deploy_sample_app == true {
-
     remote_file {
       "C:/Program Files/Apache Software Foundation/Tomcat ${tomcat_major_version}.0/webapps/plsample-${plsample_version}.war":
-      ensure  => latest,
-      source  => "http://${facts['puppet_server']}:81/tomcat/plsample-${plsample_version}.war",
-      require => Service["tomcat${tomcat_major_version}"],
+        ensure  => latest,
+        source  => "http://${facts['puppet_server']}:81/tomcat/plsample-${plsample_version}.war",
+        require => Service["tomcat${tomcat_major_version}"],
     }
-
   }
 }

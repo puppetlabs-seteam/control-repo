@@ -1,11 +1,9 @@
 #
-class profile::app::sensu::checks::windows
-{
-
+class profile::app::sensu::checks::windows {
   Sensu::Check {
     interval    => 30,
     standalone  => false,
-    subscribers => [ 'windows' ],
+    subscribers => ['windows'],
   }
 
   sensu::check { 'check-windows-cpu-load':
@@ -23,7 +21,6 @@ class profile::app::sensu::checks::windows
   sensu::check { 'iis':
     command     => 'c:\\opt\\sensu\\embedded\\bin\\check-http.rb.bat -u http://localhost --response-code 200',
     interval    => 5,
-    subscribers => [ 'iis' ],
+    subscribers => ['iis'],
   }
-
 }

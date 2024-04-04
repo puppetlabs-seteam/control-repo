@@ -5,33 +5,32 @@ class profile::app::puppet_webapp::webhead::rhel (
   $vhost_name = $facts['networking']['fqdn'],
   $vhost_port = '8008',
   $doc_root = '/var/www/flask',
-  $app_env  = pick_default($::appenv,'dev')
-){
+  $app_env  = pick_default($facts['appenv'],'dev')
+) {
+  require profile::platform::baseline
 
-  require ::profile::platform::baseline
-
-  class {'::profile::app::webserver::apache':
+  class { 'profile::app::webserver::apache':
     default_vhost => false,
   }
 
   $_local_archive = basename($dist_file)
 
-  package{'python-pip':
+  package { 'python-pip':
     ensure => present,
   }
 
-  package{'flask':
+  package { 'flask':
     ensure   => present,
     provider => 'pip',
     require  => Package['python-pip'],
   }
 
-  file {'/var/www':
+  file { '/var/www':
     ensure => directory,
     mode   => '0755',
   }
 
-  file {$doc_root:
+  file { $doc_root:
     ensure => directory,
     mode   => '0755',
   }
@@ -63,8 +62,8 @@ class profile::app::puppet_webapp::webhead::rhel (
     },
   }
 
-  exec {'retrieve sdist':
-    path    => $::path,
+  exec { 'retrieve sdist':
+    path    => $facts['path'],
     command => "curl -L -o /usr/local/src/${_local_archive} \'${dist_file}\'",
     creates => "/usr/local/src/${_local_archive}",
   }
@@ -102,5 +101,4 @@ class profile::app::puppet_webapp::webhead::rhel (
     ipaddresses       => $facts['networking']['ip'],
     options           => 'check',
   }
-
 }

@@ -2,12 +2,10 @@ plan profile::rolling_update (
   $lb          = 'ubuntu1404a.pdx.puppet.vm',
   $app_servers = 'centos7b.pdx.puppet.vm',
   $backend     = 'dev_bk',
-){
-
+) {
   profile::puts("Start perform rolling upgrade for backend ${backend} on ${lb}...")
 
   $app_servers.split(',').each |$a| {
-
     profile::puts("\tDrain connections from member ${backend}:${a}")
     if run_task('profile::haproxy', "pcp://${lb}",
       action  => drain,
@@ -20,22 +18,18 @@ plan profile::rolling_update (
       fail("\tCouldn't drain connections from member ${backend}:${a}!")
     }
 
-
     profile::puts("\tRunning update (via puppet) on ${a}...")
     $output = run_task('profile::puppetagent', "pcp://${a}")
 
     if $output.ok() == true {
-
       profile::puts("\n")
       $output.values[0]['message'].split('\n').each |$o| {
         profile::puts("\tpuppet-agent: ${o}")
       }
       profile::puts("\n")
-
     } else {
       fail("${a} failed to run Puppet, failing...")
     }
-
 
     profile::puts("\tRunning healthcheck on ${a}...")
     if run_task('profile::healthcheck', "pcp://${a}",
@@ -47,7 +41,6 @@ plan profile::rolling_update (
       fail("\tHealthcheck failed for ${a}!")
     }
 
-
     profile::puts("\tRe-addding ${a} to backend ${backend}...")
     if run_task('profile::haproxy', "pcp://${lb}",
       action  => add,
@@ -58,13 +51,6 @@ plan profile::rolling_update (
       profile::puts("\tRe-addded ${a} to backend ${backend} successfully!")
     } else {
       fail("\tFailed to re-add ${a} to backend ${backend}!")
-    }
+  } }
 
-
-  }
-
-  profile::puts("Finished performing rolling upgrade for backend ${backend} on ${lb}!")
-
-
-
-}
+profile::puts("Finished performing rolling upgrade for backend ${backend} on ${lb}!") }

@@ -2,7 +2,6 @@ class profile::infrastructure::network::nexus (
   Hash $interfaces = {},
   Hash $vlans = {},
 ) {
-
   include ciscopuppet::install
 
   $vlans.each |$vlan, $parameters| {
@@ -41,7 +40,7 @@ class profile::infrastructure::network::nexus (
     source_interface  => 'loopback1',
   }
 
-  cisco_vxlan_vtep_vni {'nve1 10000':
+  cisco_vxlan_vtep_vni { 'nve1 10000':
     ensure              => present,
     assoc_vrf           => false,
     ingress_replication => 'static',
@@ -51,7 +50,7 @@ class profile::infrastructure::network::nexus (
   cisco_command_config { 'features':
     command => "
       feature bgp
-    "
+    ",
   }
 
   cisco_bgp { '65001 default':

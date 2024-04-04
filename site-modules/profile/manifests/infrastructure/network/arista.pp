@@ -1,7 +1,6 @@
 class profile::infrastructure::network::arista (
   Hash $interfaces = {},
 ) {
-
   package { 'rbeapi':
     ensure   => 'installed',
     provider => 'puppet_gem',

@@ -1,14 +1,12 @@
 class profile::app::jenkins::slave (
   $ui_pass,
   $master_url = 'http://localhost:8080',
-){
-
-  include ::profile::platform::baseline
+) {
+  include profile::platform::baseline
 
   case $facts['kernel'] {
-
     'Linux': {
-      class { '::jenkins::slave':
+      class { 'jenkins::slave':
         masterurl    => $master_url,
         ui_user      => 'admin',
         ui_pass      => $ui_pass,
@@ -16,25 +14,21 @@ class profile::app::jenkins::slave (
         slave_groups => 'wheel',
       }
 
-      include ::profile::app::puppetdev
+      include profile::app::puppetdev
     }
 
     'windows': {
-      class { '::profile::app::jenkins::win_slave':
+      class { 'profile::app::jenkins::win_slave':
         masterurl => $master_url,
         ui_user   => 'admin',
         ui_pass   => $ui_pass,
         labels    => 'tse-slave-windows',
       }
 
-      include ::profile::app::puppetdev
+      include profile::app::puppetdev
     }
 
     default:{
       fail('Unsupported OS')
     }
-
-  }
-
-
-}
+} }

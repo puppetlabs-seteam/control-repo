@@ -5,23 +5,21 @@ class profile::app::puppet_webapp::webhead::ubuntu (
   $vhost_name = $facts['networking']['fqdn'],
   $vhost_port = '8008',
   $doc_root = '/var/www/flask',
-  $app_env  = pick_default($::appenv,'dev')
-){
-
-
-  package {'apache2':
+  $app_env  = pick_default($facts['appenv'],'dev')
+) {
+  package { 'apache2':
     ensure   => purged,
     provider => 'apt',
   }
 
   $_local_archive = basename($dist_file)
 
-  file {'/var/www':
+  file { '/var/www':
     ensure => directory,
     mode   => '0755',
   }
 
-  file {$doc_root:
+  file { $doc_root:
     ensure => directory,
     mode   => '0755',
   }
@@ -32,7 +30,7 @@ class profile::app::puppet_webapp::webhead::ubuntu (
     content => template('profile/app/puppet_webapp_wsgi.py.erb'),
   }
 
-  class { '::python' :
+  class { 'python' :
     version    => 'system',
     pip        => 'present',
     dev        => 'present',
@@ -40,7 +38,7 @@ class profile::app::puppet_webapp::webhead::ubuntu (
     gunicorn   => 'present',
   }
 
-  package {'flask':
+  package { 'flask':
     ensure   => present,
     provider => 'pip',
     require  => Class['python'],
@@ -54,8 +52,8 @@ class profile::app::puppet_webapp::webhead::ubuntu (
     appmodule => 'webui:webui',
   }
 
-  exec {'retrieve sdist':
-    path    => $::path,
+  exec { 'retrieve sdist':
+    path    => $facts['path'],
     command => "curl -L -o /usr/local/src/${_local_archive} \'${dist_file}\'",
     creates => "/usr/local/src/${_local_archive}",
   }
@@ -92,5 +90,4 @@ class profile::app::puppet_webapp::webhead::ubuntu (
     ipaddresses       => $facts['networking']['ip'],
     options           => 'check',
   }
-
 }

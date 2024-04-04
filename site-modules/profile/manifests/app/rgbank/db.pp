@@ -1,5 +1,3 @@
 class profile::app::rgbank::db {
-
-  include ::profile::app::db::mysql::server
-
+  include profile::app::db::mysql::server
 }

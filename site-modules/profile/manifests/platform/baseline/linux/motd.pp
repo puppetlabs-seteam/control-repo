@@ -17,21 +17,17 @@ class profile::platform::baseline::linux::motd {
 
     | MOTD
 
-
   # Check if we have a hiera override for the MOTD, otherwise use the default
   $message = lookup('motd', String, 'first', $motd)
 
-  class { '::motd':
+  class { 'motd':
     content => $message,
   }
 
-  if !defined(File['/etc/issue']){
-
+  if !defined(File['/etc/issue']) {
     file { '/etc/issue':
       ensure  => file,
       content => $message,
     }
-
   }
-
 }

@@ -1,7 +1,6 @@
 # A class to clean up certs
 class profile::puppet::master::clean_certs {
-
-  exec{ 'purge-master-cert':
+  exec { 'purge-master-cert':
     path    => $facts['path'],
     command => "puppet node purge ${$facts['networking']['fqdn']}",
     onlyif  => "puppet cert list ${$facts['networking']['fqdn']} &>/dev/null",
@@ -18,7 +17,7 @@ class profile::puppet::master::clean_certs {
     'pe-console-services',
     'pe-nginx',
     'pe-orchestration-services',
-    'pxp-agent'
+    'pxp-agent',
   ]
 
   File {
@@ -63,22 +62,21 @@ class profile::puppet::master::clean_certs {
   }
 
   file {[
-    '/etc/puppetlabs/nginx/conf.d/proxy.conf',
-    '/etc/puppetlabs/console-services/conf.d/console.conf',
-  ]:
-    ensure => absent,
+      '/etc/puppetlabs/nginx/conf.d/proxy.conf',
+      '/etc/puppetlabs/console-services/conf.d/console.conf',
+    ]:
+      ensure => absent,
   }
 
   File <||>
-    -> package {'pe-activemq':
-      ensure    => absent,
-    }
+  -> package { 'pe-activemq':
+    ensure    => absent,
+  }
 
-    file { '/etc/puppetlabs/activemq':
-      ensure  => absent,
-      recurse => true,
-      purge   => true,
-      force   => true,
-    }
-
+  file { '/etc/puppetlabs/activemq':
+    ensure  => absent,
+    recurse => true,
+    purge   => true,
+    force   => true,
+  }
 }

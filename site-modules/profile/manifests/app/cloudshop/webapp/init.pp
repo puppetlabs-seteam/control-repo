@@ -16,13 +16,13 @@ class profile::app::cloudshop::webapp::init (
     source => "${file_source}/CloudShop.zip",
   }
   unzip { 'Unzip webapp CloudShop':
-    source      => "${::staging_windir}/${module_name}/CloudShop.zip",
+    source      => "${facts['staging_windir']}/${module_name}/CloudShop.zip",
     creates     => "${docroot}/CloudShop/Web.config",
     destination => "${docroot}/CloudShop",
     require     => Staging::File['CloudShop.zip'],
   }
   file { "${docroot}/CloudShop/Web.config":
-    ensure  => present,
+    ensure  => file,
     content => template('profile/cloudshop/Web.config.erb'),
     require => Unzip['Unzip webapp CloudShop'],
     notify  => Exec['ConvertAPP'],

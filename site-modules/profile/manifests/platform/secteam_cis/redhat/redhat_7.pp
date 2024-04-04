@@ -14,7 +14,6 @@ class profile::platform::secteam_cis::redhat::redhat_7 (
   String  $password_length = '15',
 
 ) {
-
   # 1.1.2 Ensure /tmp is configured (Scored)
   # 1.1.3 Ensure nodev option set on /tmp partition (Scored)
   # 1.1.4 Ensure nosuid option set on /tmp partition (Scored)
@@ -34,7 +33,7 @@ class profile::platform::secteam_cis::redhat::redhat_7 (
   class { 'yum':
     config_options => {
       gpgcheck    => true,
-      },
+    },
     tag            => ['CIS_RHEL_1'],
   }
 
@@ -84,7 +83,7 @@ class profile::platform::secteam_cis::redhat::redhat_7 (
   service { 'rsyncd':
     ensure => 'stopped',
     enable => 'false',
-    tag      => ['CIS_RHEL_2'],
+    tag    => ['CIS_RHEL_2'],
   }
 
   # 3.4.2.2 Ensure nftables is not enabled (Scored)
@@ -108,6 +107,4 @@ class profile::platform::secteam_cis::redhat::redhat_7 (
 #    enable => 'true',
 #    tag    => ['CIS_RHEL_4'],
 #  }
-
 }
-

@@ -1,7 +1,6 @@
 class profile::app::webserver::iis (
   Boolean $default_website = true,
-){
-
+) {
   if $facts['kernel'] != 'windows' {
     fail('Unsupported OS')
   }
@@ -23,5 +22,4 @@ class profile::app::webserver::iis (
       ensure => 'absent',
     }
   }
-
 }

@@ -8,13 +8,13 @@ params = JSON.parse(STDIN.read)
 target = URI("http://#{params['target']}:#{params['port']}")
 
 begin
-  resp= Net::HTTP::get_response(target)
+  resp = Net::HTTP.get_response(target)
   success = resp.code == '200'
-  result =  { :success => success, status: resp.code }
+  result =  { success: success, status: resp.code }
   puts result.to_json
 rescue Exception => e
   success = false
-  result =  {success: false, _error: {kind: 'haproxy/request_failed', msg: e.message}}
+  result =  { success: false, _error: { kind: 'haproxy/request_failed', msg: e.message } }
   puts result.to_json
 end
 if success

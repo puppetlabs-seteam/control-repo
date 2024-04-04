@@ -1,5 +1,4 @@
 class profile::app::cloudshop {
-
   case $facts['kernel'] {
     'windows': {
       include profile::app::cloudshop::sqlserver::init
@@ -10,5 +9,4 @@ class profile::app::cloudshop {
       fail('Unsupported OS')
     }
   }
-
 }

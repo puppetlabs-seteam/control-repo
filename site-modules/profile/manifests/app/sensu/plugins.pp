@@ -1,7 +1,7 @@
 #
 class profile::app::sensu::plugins (
   Array $plugin_list,
-){
+) {
   case $facts['os']['family'] {
     'RedHat': {
       $packages = ['gcc', 'gcc-c++']
@@ -11,13 +11,13 @@ class profile::app::sensu::plugins (
         provider => sensu_gem,
       }
       package { $plugin_list:
-        require  => Class['gcc']
+        require  => Class['gcc'],
       }
     }
     'windows': {
       package { ['sensu-plugins-windows','sensu-plugins-http']:
         ensure   => 'installed',
-        provider => sensu_gem
+        provider => sensu_gem,
       }
     }
     default: {

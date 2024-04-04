@@ -1,5 +1,4 @@
 class profile::app::jenkins::master {
-
   if $facts['kernel'] == 'windows' {
     fail('Unsupported OS')
   }
@@ -12,7 +11,6 @@ class profile::app::jenkins::master {
   docker::run { 'jenkins_demo':
     image            => 'ipcrm/jenkins_demo:latest',
     ports            => ['8080:8080','50000:50000'],
-    extra_parameters => [ '--restart=always' ],
+    extra_parameters => ['--restart=always'],
   }
-
 }

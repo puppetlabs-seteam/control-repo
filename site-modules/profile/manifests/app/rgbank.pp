@@ -1,20 +1,19 @@
 class profile::app::rgbank (
   $db_password,
 ) {
-
   if $facts['os']['family'] != 'RedHat' {
     fail('Unsupported OS')
   }
 
-  require ::profile::app::rgbank::db
-  require ::profile::app::rgbank::webhead
+  require profile::app::rgbank::db
+  require profile::app::rgbank::webhead
 
-  rgbank::db {'default':
+  rgbank::db { 'default':
     user     => 'rgbank',
     password => $db_password,
   }
 
-  rgbank::web {'default':
+  rgbank::web { 'default':
     db_name     => 'rgbank-default',
     db_host     => 'localhost',
     db_user     => 'rgbank',
@@ -28,9 +27,6 @@ class profile::app::rgbank (
     'ip'   => '127.0.0.1',
   }
 
-  rgbank::load {'default':
-    balancermembers => [ $default, ],
-  }
-
-
-}
+  rgbank::load { 'default':
+    balancermembers => [$default,],
+} }

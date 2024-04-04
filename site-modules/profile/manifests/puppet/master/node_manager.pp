@@ -1,7 +1,6 @@
 #class: profile::puppet::master::node_manager
 #
 class profile::puppet::master::node_manager {
-
   package { 'puppetclassify':
     ensure   => present,
     provider => puppet_gem,
@@ -12,15 +11,15 @@ class profile::puppet::master::node_manager {
     require => Package['puppetclassify'],
   }
 
-  exec{'refresh_classes':
+  exec { 'refresh_classes':
     path        => $facts['path'],
-    command     => "/etc/puppetlabs/code/environments/${::environment}/scripts/refresh_classes.sh",
+    command     => "/etc/puppetlabs/code/environments/${facts['environment']}/scripts/refresh_classes.sh",
     refreshonly => true,
   }
 
   node_group { 'PE Agent':
     ensure               => 'present',
-    classes              => {'puppet_enterprise::profile::agent' => {'package_inventory_enabled' => true}},
+    classes              => { 'puppet_enterprise::profile::agent' => { 'package_inventory_enabled' => true } },
     environment          => 'production',
     override_environment => false,
     parent               => 'All Nodes',
@@ -28,10 +27,10 @@ class profile::puppet::master::node_manager {
   }
 
   node_group { 'SE Demo Env Conf':
-      ensure               => 'present',
-      environment          => 'production',
-      override_environment => false,
-      parent               => 'All Nodes',
+    ensure               => 'present',
+    environment          => 'production',
+    override_environment => false,
+    parent               => 'All Nodes',
   }
 
   node_group { 'SE Puppet role::seteam_puppet_master':
@@ -62,5 +61,4 @@ class profile::puppet::master::node_manager {
       'profile::platform::baseline::windows::firewall'  => {},
     },
   }
-
 }

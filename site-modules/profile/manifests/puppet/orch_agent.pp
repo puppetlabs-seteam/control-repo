@@ -1,7 +1,6 @@
 class profile::puppet::orch_agent (
   Boolean $ensure = false,
-)
-{
+) {
   $puppet_conf = $facts['kernel'] ? {
     'windows' => 'C:/ProgramData/PuppetLabs/puppet/etc/puppet.conf',
     default   => '/etc/puppetlabs/puppet/puppet.conf',
@@ -21,5 +20,4 @@ class profile::puppet::orch_agent (
     value   => 'true',
     # lint:endignore
   }
-
 }

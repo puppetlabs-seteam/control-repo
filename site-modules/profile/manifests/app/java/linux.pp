@@ -1,9 +1,7 @@
 class profile::app::java::linux (
   $distribution,
-){
-
-  class { '::java':
+) {
+  class { 'java':
     distribution => $distribution,
   }
-
 }

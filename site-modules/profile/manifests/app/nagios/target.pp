@@ -1,5 +1,4 @@
 class profile::app::nagios::target {
-
   # add hostname/ip exported resrouce here for server to collect
 
   @@host { $facts['networking']['fqdn']:
@@ -21,5 +20,4 @@ class profile::app::nagios::target {
   }
 
   Host <<||>>
-
 }

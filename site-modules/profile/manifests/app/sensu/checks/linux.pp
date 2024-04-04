@@ -1,11 +1,9 @@
 #
-class profile::app::sensu::checks::linux
-{
-
+class profile::app::sensu::checks::linux {
   Sensu::Check {
     interval    => 30,
     standalone  => false,
-    subscribers => [ 'linux' ],
+    subscribers => ['linux'],
   }
 
   sensu::check { 'diskspace':
@@ -27,7 +25,6 @@ class profile::app::sensu::checks::linux
   sensu::check { 'apache':
     command     => 'check-http.rb -u http://localhost --response-code 200',
     interval    => 5,
-    subscribers => [ 'apache' ],
+    subscribers => ['apache'],
   }
-
 }

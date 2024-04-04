@@ -24,5 +24,4 @@ class profile::puppet::master::fileserver::jdk (
     mode    => '0644',
     require => File["${srv_root}/jre"],
   }
-
 }
