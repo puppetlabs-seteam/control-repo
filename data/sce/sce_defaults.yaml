@@ -1,6 +1,6 @@
 ---
-# CEM Windows Ignore Rules (To allow RDP/WinRM & not conflict with baseline profile)
-cem_windows::config:
+# SCE Windows Ignore Rules (To allow RDP/WinRM & not conflict with baseline profile)
+sce_windows::config:
   profile: 'member_server'
   level: '1'
   firewall_type: 'unmanaged'
@@ -19,8 +19,8 @@ cem_windows::config:
     - 'ensure_disallow_winrm_from_storing_runas_credentials_is_set_to_enabled'
     - 'ensure_configure_automatic_updates_is_set_to_enabled'
   
-# CEM Linux defaults
-cem_linux::config:
+# SCE Linux defaults
+sce_linux::config:
   profile: 'server'
   level: '1'
   firewall_type: 'unmanaged'
