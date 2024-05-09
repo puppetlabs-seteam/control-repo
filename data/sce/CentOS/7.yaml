@@ -1,5 +1,5 @@
-# CEM Linux for CentOS 7
-cem_linux::config:
+# SCE Linux for CentOS 7
+sce_linux::config:
   profile: 'server'
   level: '1'
   firewall_type: 'unmanaged'
