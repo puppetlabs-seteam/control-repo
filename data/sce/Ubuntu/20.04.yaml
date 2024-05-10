@@ -1,0 +1,20 @@
+# SCE Linux for Ubuntu 20.04
+sce_linux::config:
+  profile: 'server'
+  level: '1'
+  firewall_type: 'unmanaged'
+  control_configs:
+    ensure_password_creation_requirements_are_configured:
+      password_auth_file: 'password-auth-ac'
+      system_auth_file: 'system-auth-ac'
+      password_auth_symlink: 'password-auth'
+      system_auth_symlink: 'system-auth'  
+  ignore:
+    - 'ensure_rsync_is_not_installed_or_the_rsyncd_service_is_masked'
+    - 'ensure_message_of_the_day_is_configured_properly'
+    - 'ensure_permissions_on_etcmotd_are_configured'
+    - 'ensure_permissions_on_etcsshsshd_config_are_configured'
+    - 'ensure_iptables_packages_are_installed'
+    - 'ensure_firewalld_is_installed'
+    - 'ensure_firewalld_service_is_enabled_and_running'
+    - 'ensure_time_synchronization_is_in_use'
