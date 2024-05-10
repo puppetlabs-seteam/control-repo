@@ -21,7 +21,7 @@ hierarchy:
       - 'location/%{::location}.yaml'
       - 'os/%{facts.os.name}.yaml'
       - 'sce/%{facts.os.name}/%{facts.os.release.major}.yaml'
-      - 'sce/cem_defaults.yaml'      
+      - 'sce/sce_defaults.yaml'      
       - 'common.yaml'
   - name: 'Local data'
     paths:

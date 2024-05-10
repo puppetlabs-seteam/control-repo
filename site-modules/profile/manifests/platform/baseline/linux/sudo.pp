@@ -6,7 +6,7 @@ class profile::platform::baseline::linux::sudo () {
   file { '/etc/sudoers.d/90-cloud-init-users': ensure => absent }
 
   # Manage main sudoers file
-  if !defined(Class['cem_linux']) {
+  if !defined(Class['sce_linux']) {
     file { '/etc/sudoers':
       ensure  => file,
       content => epp('profile/sudo/sudoers.epp'),
