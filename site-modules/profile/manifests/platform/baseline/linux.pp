@@ -11,7 +11,7 @@ class profile::platform::baseline::linux {
     include profile::platform::baseline::linux::sudo
   }
 
-  if !defined(Class['Sce_linux']) {
+  if !defined(Class['sce_linux']) {
     include profile::platform::baseline::linux::motd
   }
 }
