@@ -12,7 +12,7 @@ class profile::platform::baseline::linux::ssh () {
     'generic',default: {
       # Disable and remove SSH Server to reduce attack vectors on generic servers.
       # We don't need SSH server services when managing with Puppet.
-      if !defined(Class['cem_linux']) {
+      if !defined(Class['sce_linux']) {
         include profile::platform::baseline::linux::sshd::sshd_remove
       } else {
         if $facts['os']['name'] == 'RedHat' {
@@ -20,7 +20,7 @@ class profile::platform::baseline::linux::ssh () {
             ensure => present,
             before => [
               Service['sshd'],
-              Class['cem_linux'],
+              Class['sce_linux'],
               File_line['remove_sysconfig_openssh_crypto_policies']
             ],
           }
@@ -28,7 +28,7 @@ class profile::platform::baseline::linux::ssh () {
         else {
           package { 'openssh-server':
             ensure => present,
-            before => [Service['sshd'],Class['cem_linux']],
+            before => [Service['sshd'],Class['sce_linux']],
           }
         }
       }
