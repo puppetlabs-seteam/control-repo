@@ -132,17 +132,6 @@ profile::app::sensu::server::subscriptions:
   - sensu-server
   - "%{::kernel}"
 
-##
-# Device Manager
-device_manager::devices:
-  panos:
-    type: 'panos'
-    credentials:
-      host: 'panos.classroom.puppet.com'
-      user: 'admin'
-      password: ENC[PKCS7,MIIBeQYJKoZIhvcNAQcDoIIBajCCAWYCAQAxggEhMIIBHQIBADAFMAACAQEwDQYJKoZIhvcNAQEBBQAEggEAhYeep334k+QvyfpiSB70DHZ55vcbL5HrQ7a31KLhqVsTlUsGCOGV4vYDhlDyq7W8nBQFvm6dLBB2snzWfQu/PnxwxLTv7xUCl9xTStee8+9hvUYQds+75boS/RQkm1ly6ePQGKU+n6kO0FvgutPnnfX8Piqp+SwsXq8zPiWwo9OadEMjVp6Y0im1wV6ISFXgD0nedYW/3fazjzQOzfFAH8oDLbloY51Dhc0t4bXF+08ayPTjpyQWUzu4tXW2LM6A3UiU016+F8wx0LESGwyF4y/DTUiGDFo2ci6V3GgaLAHwbiwEeI0/YMPluZkKbmQzxlIWEnehjRgzhycWrIsItTA8BgkqhkiG9w0BBwEwHQYJYIZIAWUDBAEqBBCC+lgne4bfWUUtcNPoLLRzgBBMbbo7TMPae9cs8cJRQwE+]
-      ssl: false
-
 profile::platform::baseline::enable_monitoring: false
 profile::platform::baseline::linux::packages::pkgs:
   - wget
