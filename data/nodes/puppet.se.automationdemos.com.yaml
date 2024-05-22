@@ -12,16 +12,6 @@ puppet_enterprise::profile::puppetdb::java_args:
   Xms: 512m
   Xmx: 512m
 
-# Device Manager
-device_manager::devices:
-  panos:
-    type: 'panos'
-    credentials:
-      host: 'panos.se.automationdemos.com'
-      user: 'admin'
-      password: ENC[PKCS7,MIIBeQYJKoZIhvcNAQcDoIIBajCCAWYCAQAxggEhMIIBHQIBADAFMAACAQEwDQYJKoZIhvcNAQEBBQAEggEAnvLiBEoit7oKkYTX0cDokpUSHxj5WR8IfmEJKcjrpLvXqRoJ8ViPgkHti0vJwofeVPz3dM/ZUEqQKK7u4n3BaOugGpnyjoY8OE4DZBquywjjx8ifMJChGVPMsbD7FtANpkIN/E11We0hBGlgC+W7MgYNy5tpyncNzpLaskMgqITtHmObfoi4rIgYFTZgn+DL1pzAYTBVBYA5rwgPq/H+VyAotWguVkv5NyMQ/QwQ9el8DCeUYCbXrgebxUGplHFQm2LFWgouiuPIVnAKRWrpBEBToYnB7np/fv+kFw8m2ut2zfUMhouuFysDQ3aszYDwjGREFxvTBSzQnK/EEWbQYDA8BgkqhkiG9w0BBwEwHQYJYIZIAWUDBAEqBBAt2mNqypERJPrKdOo2nNBtgBCLtEUNg+3mvapaCfOg8LgY]
-      ssl: false
-
 profile::platform::baseline::firewall::allow_ingress:
   - name: sshd
     port: 22
