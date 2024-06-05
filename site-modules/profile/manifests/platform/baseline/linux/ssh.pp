@@ -1,11 +1,10 @@
-#
 class profile::platform::baseline::linux::ssh () {
   # Determine the type of node which will drive which settings are applied
   case $facts['certname'] {
     /^.*(cd4pe|comply).*/: { $node_type = 'puppet_application_manager' }
     /^puppet.*/: { $node_type = 'puppet_server' }
     /^.*gitlab.*/: { $node_type = 'gitlab' }
-    /^.*(rhel|ubu|nix).*$/, default: { $node_type = 'generic' }
+    /^.*(rhel|ubu|nix|alma|al2023|ol8|rocky|deb|suse).*$/, default: { $node_type = 'generic' }
   }
 
   case $node_type {
