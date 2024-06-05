@@ -1,11 +1,12 @@
-class profile::platform::baseline::windows::packages {
+class profile::platform::baseline::windows::packages (
+  Array[String] $pkgs
+){
 
   Package {
     provider => chocolatey,
   }
 
-  $predefined_packages = [ 'notepadplusplus', '7zip', 'git', 'uniextract' ]
-  package { $predefined_packages:
+  package { $pkgs:
     ensure => present
   }
 
