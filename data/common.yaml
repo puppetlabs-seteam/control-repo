@@ -136,6 +136,11 @@ profile::platform::baseline::enable_monitoring: false
 profile::platform::baseline::linux::packages::pkgs:
   - wget
   - unzip
+profile::platform::baseline::windows::packages::pkgs:
+  - notepadplusplus
+  - 7zip
+  - git
+  - uniextract
 
 ##
 # Puppet Enterprise
