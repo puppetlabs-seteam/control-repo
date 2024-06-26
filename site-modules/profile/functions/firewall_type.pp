@@ -1,6 +1,6 @@
 function profile::firewall_type(String $os, String $version) >> String {
   $os_firewalls = {
-    'alma' => {
+    'almalinux' => {
       '8' => 'firewalld',
       '9' => 'firewalld',
     },
