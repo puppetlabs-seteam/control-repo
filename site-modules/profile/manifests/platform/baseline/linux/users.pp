@@ -25,8 +25,8 @@ class profile::platform::baseline::linux::users (
   }
   file { '/home/puppetadmin':
     ensure => directory,
-    owner  => puppetadmin,
-    group  => puppetadmin,
+    owner  => 'puppetadmin',
+    group  => 'puppetadmin',
     mode   => '0700',
   }
   user { 'puppetse':
