@@ -25,11 +25,11 @@ class profile::platform::baseline::linux::users (
   }
   file { '/home/puppetadmin':
     ensure => directory,
-    owner  => puppetadmin,
-    group  => puppetadmin,
+    owner  => 'puppetadmin',
+    group  => 'puppetadmin',
     mode   => '0700',
   }
-  user { 'PuppetSE':
+  user { 'puppetse':
     ensure   => 'present',
     comment  => 'SE Demo Account',
     gid      => '100',
