@@ -86,7 +86,6 @@ mod 'puppet-logrotate', '7.0.1'
 mod 'puppet-nginx', '5.0.0'
 mod 'puppet-php', '10.1.0' # Requires zypprepo
 mod 'puppet-python', '7.1.0'
-mod 'puppet-redis', '9.3.0'
 mod 'puppet-selinux', '4.1.0'
 mod 'puppet-splunk', '9.1.1'
 mod 'puppet-systemd', '6.3.0'
