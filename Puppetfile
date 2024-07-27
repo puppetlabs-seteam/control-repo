@@ -80,6 +80,7 @@ mod 'puppet-firewalld',     # Using a custom fork of the firewalld for proper pa
     git: 'https://github.com/puppetlabs-seteam/puppet-firewalld.git',
     branch: 'master'
 
+mod 'puppet-grafana', '14.1.0'
 mod 'puppet-gitlab', '8.1.0'
 mod 'puppet-hiera', '5.0.1'
 mod 'puppet-logrotate', '7.0.1'
