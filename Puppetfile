@@ -30,7 +30,7 @@ mod 'puppetlabs-java', '11.0.0'
 mod 'saz-limits', '4.0.1'
 mod 'puppetlabs-motd', '7.1.0'
 mod 'puppetlabs-mount_iso', '4.0.3' # Needs updated to support powershell 4.0.0
-mod 'puppetlabs-node_manager', '1.0.01'
+mod 'puppetlabs-node_manager', '1.0.1'
 mod 'puppetlabs-ntp', '10.1.0'
 mod 'puppetlabs-powershell', '6.0.0'
 mod 'puppetlabs-puppet_authorization', '1.0.0'
