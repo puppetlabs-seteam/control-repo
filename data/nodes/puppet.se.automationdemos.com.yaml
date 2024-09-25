@@ -45,3 +45,7 @@ profile::platform::baseline::firewall::allow_ingress:
     port: 8170
     protocol: tcp
     description: Puppet Enterprise - Pupper Server - Code Manager Service
+  - name: pe-puppet_data_connector
+    port: 9100
+    protocol: tcp
+    description: Puppet Enterprise - Pupper Server - Puppet Data Connector Metrics
