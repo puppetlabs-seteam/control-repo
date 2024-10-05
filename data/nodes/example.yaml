@@ -1,0 +1,10 @@
+---
+profile::platform::baseline::firewall::allow_ingress:
+  - name: prometheus
+    port: 9090
+    protocol: tcp
+    description: prometheus
+  - name: grafana
+    port: 3000
+    protocol: tcp
+    description: grafana
