@@ -14,6 +14,7 @@ hierarchy:
       var: trusted.external.servicenow.hiera_data
   - name: 'Environment data'
     paths:
+      - 'nodes/%{facts.clientcert}.yaml'
       - 'nodes/%{facts.networking.fqdn}.yaml'
       - 'location/%{::location}/%{::role}.yaml'
       - 'role/%{::tier}/%{::role}.yaml'
