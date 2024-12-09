@@ -1,0 +1,11 @@
+{
+    "description": "Setup the Workshop, Apply after SCM connected to PE",
+    "input_method": "environment",
+    "parameters": {
+        "password": {
+            "description": "Puppet Admin Password",
+            "type": "String[1]",
+            "sensitive": true
+        }
+    }
+}
