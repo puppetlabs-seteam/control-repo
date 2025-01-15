@@ -29,7 +29,7 @@ mod 'puppetlabs-inifile', '6.1.1'
 mod 'puppetlabs-java', '11.0.0'
 mod 'saz-limits', '4.0.1'
 mod 'puppetlabs-motd', '7.1.0'
-mod 'puppetlabs-mount_iso', '4.0.3' # Needs updated to support powershell 4.0.0
+#mod 'puppetlabs-mount_iso', '4.0.3' # Needs updated to support powershell 4.0.0
 mod 'puppetlabs-node_manager', '1.0.1'
 mod 'puppetlabs-ntp', '10.1.0'
 mod 'puppetlabs-powershell', '6.0.0'
@@ -63,11 +63,11 @@ mod 'computology-packagecloud', '0.3.2'
 mod 'crayfishx-purge', '1.2.1'
 mod 'ghoneycutt-ssh', '5.0.0'
 mod 'puppet-augeasproviders_core', '4.1.0'
-mod 'hunner-wordpress', '1.0.0'
-mod 'ipcrm-echo', '0.1.8'
-mod 'kogitoapp-gitea', '1.0.4' # Do we need this, it is out of date and requires very old inifile and stdlib; part of
+#mod 'hunner-wordpress', '1.0.0'
+#mod 'ipcrm-echo', '0.1.8'
+#mod 'kogitoapp-gitea', '1.0.4' # Do we need this, it is out of date and requires very old inifile and stdlib; part of
                               # profile::puppet::seteam_master
-mod 'lwf-remote_file', '1.1.3'
+#mod 'lwf-remote_file', '1.1.3'
 mod 'nexcess-auditd', '4.2.0' # Part of profile::compliance::hippa
 mod 'puppet-archive', '7.1.0'
 mod 'puppet-epel', '5.0.0'
@@ -98,11 +98,11 @@ mod 'artsir-ansible_config', '1.1.3'
 
 # This is missing dependency on mayflower-php, needs updated to use puppet-php at least
 # This is missing dependency on puppet-app_modeling, is it needed?
-mod 'rgbank',
-    git:            'https://github.com/puppetlabs-seteam/puppetlabs-rgbank.git',
-    branch:         :control_branch,
-    default_branch: 'master'
+#mod 'rgbank',
+#    git:            'https://github.com/puppetlabs-seteam/puppetlabs-rgbank.git',
+#    branch:         :control_branch,
+#    default_branch: 'master'
 
-mod 'netstat',
-    git: 'https://github.com/ipcrm/ipcrm-netstat.git',
-    ref: '64bcee0'
+#mod 'netstat',
+#    git: 'https://github.com/ipcrm/ipcrm-netstat.git',
+#    ref: '64bcee0'
