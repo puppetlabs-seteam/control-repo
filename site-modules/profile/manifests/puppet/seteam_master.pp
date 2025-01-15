@@ -4,7 +4,6 @@ class profile::puppet::seteam_master {
     fail('Unsupported OS!')
   }
 
-  include ::profile::puppet::master::gitea
   include ::profile::puppet::master::autosign
   include ::profile::puppet::master::fileserver
   include ::profile::puppet::master::firewall
