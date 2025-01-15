@@ -43,8 +43,6 @@ mod 'puppetlabs-ruby_task_helper', '0.6.1'
 mod 'puppetlabs-terraform', '0.7.1'
 mod 'puppetlabs-ruby_plugin_helper', '0.2.0'
 mod 'puppetlabs-service', '3.0.0'
-mod 'puppetlabs-servicenow_change_requests', '0.4.1'
-mod 'puppetlabs-servicenow_cmdb_integration', '0.2.0'
 mod 'puppetlabs-servicenow_reporting_integration', '1.0.0'
 mod 'puppetlabs-splunk_hec', '2.0.0' # Missing requirement of puppetlabs-puppet_metrics_collector
 mod 'puppetlabs-stdlib', '9.6.0'
