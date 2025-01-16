@@ -22,7 +22,6 @@ class profile::platform::baseline::firewall::firewalld (
     purge_direct_chains       => true,
     purge_direct_passthroughs => true,
     purge_unknown_ipsets      => true,
-    require                   => Package['firewalld'],
   }
 
   $icmp_block_inversion = $allow_ingress_icmpv4 ? { true => false, false => true }
