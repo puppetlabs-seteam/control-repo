@@ -2,12 +2,6 @@
 #
 class profile::platform::baseline::linux::vim {
 
-  require ::git
-
-  $users = {
-    'root'  => '/root',
-  }
-
   case $facts['os']['family'] {
     'Debian': {
       $package = 'vim-nox'
