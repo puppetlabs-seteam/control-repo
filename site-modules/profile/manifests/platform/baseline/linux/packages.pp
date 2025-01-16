@@ -9,11 +9,13 @@ class profile::platform::baseline::linux::packages (
 
   ensure_packages($pkgs, {ensure => installed})
 
-  unless getvar('trusted.external.servicenow.u_enforced_packages').empty {
-    $packages = parsejson($trusted['external']['servicenow']['u_enforced_packages'])
-    $packages.each |$package,$ensure|{
-      package { $package:
-        ensure => $ensure
+  if defined(Class['servicenow_cmdb_integration']) {
+    unless getvar('trusted.external.servicenow.u_enforced_packages').empty {
+      $packages = parsejson($trusted['external']['servicenow']['u_enforced_packages'])
+      $packages.each |$package,$ensure|{
+        package { $package:
+          ensure => $ensure
+        }
       }
     }
   }
