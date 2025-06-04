@@ -43,8 +43,10 @@ class profile::puppet::master::node_manager {
     classes              => {
       'pe_repo::platform::el_7_x86_64'       => {},
       'pe_repo::platform::el_8_x86_64'       => {},
+      'pe_repo::platform::el_9_x86_64'       => {},
       'pe_repo::platform::ubuntu_2004_amd64' => {},
       'pe_repo::platform::ubuntu_2204_amd64' => {},
+      'pe_repo::platform::ubuntu_2404_amd64' => {},
       'pe_repo::platform::windows_x86_64'    => {},
       'role::seteam_puppet_master'           => {},
       'profile::puppet::master::se_gitbook'  => {},
