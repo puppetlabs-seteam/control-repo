@@ -26,7 +26,6 @@ mod 'puppet-hiera', '6.0.0'
 mod 'puppetlabs-apt', '10.0.0'
 mod 'puppetlabs-puppet_agent', '4.21.0'
 mod 'puppet-yum', '7.2.0' # Required for CD4PE workshop
-#mod 'computology-packagecloud', '0.3.2' # likely unused, uncomment and run code deploy if needed
 mod 'puppet-archive', '7.1.0'
 mod 'puppet-zypprepo', '5.0.0'
 
@@ -35,7 +34,6 @@ mod 'puppetlabs-cd4pe_jobs', '1.7.1'
 mod 'puppetlabs-comply', '3.3.1'
 mod 'puppetlabs-puppet_authorization', '1.0.0'
 mod 'puppetlabs-puppetserver_gem', '1.1.1'     # gem package provider for puppetserver specific gems
-#mod 'puppetlabs-cd4pe', '3.3.0'               # No longer required since PE 2019. Remove in a future revision.
 
 ## Linux OS & Featrue Management Modules
 mod 'puppetlabs-firewall', '8.1.3'
