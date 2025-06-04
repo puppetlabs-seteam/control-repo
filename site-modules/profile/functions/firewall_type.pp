@@ -25,6 +25,7 @@ function profile::firewall_type(String $os, String $version) >> String {
     'ubuntu' => {
       '20.04' => 'ufw',
       '22.04' => 'ufw',
+      '24.04' => 'ufw',
     },
     'windows' => {
       '10'   => 'windows',
