@@ -24,8 +24,8 @@ mod 'puppet-hiera', '6.0.0'
 
 ## Package & Archive Management
 mod 'puppetlabs-apt', '10.0.0'
-mod 'puppetlabs-puppet_agent', '4.21.0'
-mod 'puppet-yum', '7.2.0' # Required for CD4PE workshop
+mod 'puppetlabs-puppet_agent', '4.23.0'
+mod 'puppet-yum', '7.3.0' # Required for CD4PE workshop
 mod 'puppet-archive', '7.1.0'
 mod 'puppet-zypprepo', '5.0.0'
 
@@ -45,7 +45,7 @@ mod 'saz-limits', '5.0.0'
 mod 'ghoneycutt-ssh', '5.1.1'
 mod 'puppet-epel', '5.0.0'
 mod 'puppet-firewalld', '5.0.0'
-mod 'puppet-logrotate', '7.1.0'
+mod 'puppet-logrotate', '8.0.0'
 mod 'puppet-selinux', '4.1.0' # 5.0.0+ is available, however sce_linux requires '< 5.0.0', *might* work regardless, should be tested and updated, if so.
 mod 'puppet-systemd', '8.1.0' # 8.1.0+ is available, however sce_linux requires '< 7.0.0', *might* work regardless, should be tested and updated, if so.
 # mod 'nexcess-auditd', '4.2.0' # Part of `profile::compliance::hippa`. Likely unused. Uncomment if needed and run code deploy.
@@ -54,7 +54,7 @@ mod 'puppet-systemd', '8.1.0' # 8.1.0+ is available, however sce_linux requires 
 mod 'puppetlabs-acl', '5.0.2'
 mod 'puppetlabs-dism', '1.3.1'
 mod 'puppetlabs-iis', '10.0.1'
-mod 'puppetlabs-powershell', '6.0.1'
+mod 'puppetlabs-powershell', '6.0.2'
 mod 'puppetlabs-registry', '5.0.2'
 mod 'dsc-networkingdsc', '9.0.0-0-8'
 mod 'dsc-auditpolicydsc', '1.4.0-0-9'
@@ -86,18 +86,18 @@ mod 'artsir-ansible_config', '1.1.3'   # likely unused. Should be reviewed at a 
 #mod 'tse-winntp', '1.0.1'             # Likely ununsed. Uncomment and run code deploy if needed.
 
 ## Application & Middleware Modules
-mod 'puppetlabs-apache', '12.2.0'
-mod 'puppetlabs-chocolatey', '8.0.1'
-mod 'puppetlabs-docker', '10.1.0'
-mod 'puppetlabs-haproxy', '8.1.0'
+mod 'puppetlabs-apache', '12.3.1'
+mod 'puppetlabs-chocolatey', '8.0.2'
+mod 'puppetlabs-docker', '10.3.0'
+mod 'puppetlabs-haproxy', '8.2.0'
 mod 'puppetlabs-java', '11.1.0'
 mod 'puppetlabs-terraform', '0.7.1'
 mod 'puppetlabs-tomcat', '7.4.0'
 mod 'puppet-grafana', '14.1.0'
-mod 'puppet-gitlab', '10.1.0'
+mod 'puppet-gitlab', '10.3.0'
 mod 'puppet-nginx', '6.0.1'
-mod 'puppet-php', '10.2.0'
-mod 'puppet-prometheus', '16.0.0'
+mod 'puppet-php', '11.0.0'
+mod 'puppet-prometheus', '16.3.1'
 mod 'puppet-python', '7.4.0'
 
 ## ServiceNOW Integrations 
