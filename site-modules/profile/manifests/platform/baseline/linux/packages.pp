@@ -3,7 +3,7 @@ class profile::platform::baseline::linux::packages (
   Array[String] $pkgs
 ){
 
-  if $facts['os']['family'] == 'RedHat' {
+  if $facts['os']['family'] == 'RedHat' and $facts['os']['name'] != 'Amazon' {
     include ::epel
   }
 
