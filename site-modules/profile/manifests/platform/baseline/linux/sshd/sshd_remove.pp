@@ -9,8 +9,8 @@ class profile::platform::baseline::linux::sshd::sshd_remove {
       -> package { 'openssh-server': ensure => absent, }
     }
     default: {
-      service { 'sshd': ensure => stopped, enable => false, }
-      -> package { 'openssh-server': ensure => absent, }
+      # service { 'sshd': ensure => stopped, enable => false, }
+      # -> package { 'openssh-server': ensure => absent, }
     }
   }
 }
