@@ -31,7 +31,7 @@ mod 'puppet-zypprepo', '5.0.0'
 
 ## Puppet Application Specific Modules
 mod 'puppetlabs-cd4pe_jobs', '1.7.1'
-mod 'puppetlabs-comply', '3.4.0'
+mod 'puppetlabs-comply', '3.5.0'
 mod 'puppetlabs-puppet_authorization', '1.0.0'
 mod 'puppetlabs-puppetserver_gem', '1.1.1'     # gem package provider for puppetserver specific gems
 
