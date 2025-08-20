@@ -98,6 +98,7 @@ mod 'puppet-nginx', '6.0.1'
 mod 'puppet-php', '11.0.0'
 mod 'puppet-prometheus', '16.3.1'
 mod 'puppet-python', '7.4.0'
+mod 'psreed-containerlab', :latest
 
 ## ServiceNOW Integrations 
 ## NOTE: These are disabled by default, uncomment and run code deploy if needed for a specific demo
