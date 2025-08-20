@@ -75,7 +75,7 @@ mod 'puppetlabs-node_manager', '1.1.0'
 mod 'puppetlabs-reboot', '5.0.0'
 mod 'puppetlabs-vcsrepo', '6.1.0'
 mod 'puppetlabs-node_encrypt', '3.1.0'
-mod 'artsir-ansible_config', '1.1.3'   # likely unused. Should be reviewed at a future revision. 
+#mod 'artsir-ansible_config', '1.1.3'   # likely unused. Should be reviewed at a future revision. 
 #mod 'puppetlabs-resource', '1.1.0'    # deprecated: likely unused. Uncomment if needed. Remove in future revision.
 #mod 'puppetlabs-service', '3.1.0'     # likely ununsed, there is a service task already packaged with PE. Uncomment if needed.
 #mod 'WhatsARanjit-diskspace', '0.2.0' # likely ununsed, there are core facts now available for this. Uncomment if needed.
