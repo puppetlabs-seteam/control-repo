@@ -1,26 +1,24 @@
 function profile::firewall_type(String $os, String $version) >> String {
   $os_firewalls = {
     'almalinux' => {
-      '8' => 'firewalld',
-      '9' => 'firewalld',
-    },
-    'centos' => {
-      '7' => 'iptables',
-      '8' => 'firewalld',
+      '8'  => 'firewalld',
+      '9'  => 'firewalld',
+      '10' => 'firewalld',
     },
     'oraclelinux' => {
-      '7' => 'iptables',
-      '8' => 'firewalld',
-      '9' => 'firewalld',
+      '8'  => 'firewalld',
+      '9'  => 'firewalld',
+      '10' => 'firewalld',
     },
     'redhat' => {
-      '7' => 'iptables',
-      '8' => 'firewalld',
-      '9' => 'firewalld',
+      '8'  => 'firewalld',
+      '9'  => 'firewalld',
+      '10' => 'firewalld',
     },
     'rocky' => {
-      '8' => 'firewalld',
-      '9' => 'firewalld',
+      '8'  => 'firewalld',
+      '9'  => 'firewalld',
+      '10' => 'firewalld',
     },
     'ubuntu' => {
       '20.04' => 'ufw',
@@ -33,6 +31,7 @@ function profile::firewall_type(String $os, String $version) >> String {
       '2016' => 'windows',
       '2019' => 'windows',
       '2022' => 'windows',
+      '2025' => 'windows',
     },
   }
 
