@@ -67,7 +67,7 @@ mod 'puppet-windowsfeature', '5.0.0'
 
 ## Common OS & Feature Modules
 mod 'puppetlabs-motd', '7.2.0'
-mod 'puppetlabs-pwshlib', '1.2.2'
+mod 'puppetlabs-pwshlib', '2.0.1'
 
 ## Utility modules
 mod 'puppetlabs-facter_task', '2.1.0'
