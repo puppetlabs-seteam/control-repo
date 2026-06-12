@@ -7,7 +7,8 @@ class profile::platform::baseline::linux {
   include profile::platform::baseline::linux::users
 
   if $facts['deployment_status'] == 'Complete' {
-    #include profile::platform::baseline::linux::ssh
+# SSH baseline intentionally disabled; re-enable when SSH lockdown is ready to deploy.
+# include profile::platform::baseline::linux::ssh
     include profile::platform::baseline::linux::sudo
   }
 
