@@ -33,4 +33,3 @@ sce_linux::config:
     - 'ensure_firewalld_is_installed'
     - 'ensure_firewalld_service_is_enabled_and_running'
     - 'ensure_time_synchronization_is_in_use'
-    - 'ensure__rpc_is_not_installed'
