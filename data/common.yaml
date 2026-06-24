@@ -208,15 +208,13 @@ cd4pe::root_config::ssl_authority_certificate: >
   RX36jCNx5SRFXin1ZFYA6SdRn6K9eneiidOSaTgwfCgG/3DaFVb6Oj409doP
   dR5cloXN579+9cEXYl5QRLYRlroKMgEg==]
 
-# Allow firewall access code - comment out, deploy code and run
-#profile::platform::baseline::firewall::allow_ingress:
-#  - name: SSH
-#    port: 22
-#    protocol: tcp
-#    description: Secure Shell Access
-    
-#profile::platform::baseline::firewall::allow_ingress:
-#  - name: RDP
-#    port: 3389
-#    protocol: tcp
+# Allow local firewall access for SSH and RDP, override at node level if you need more ports open
+profile::platform::baseline::firewall::allow_ingress:
+ - name: SSH
+   port: 22
+   protocol: tcp
+   description: Secure Shell Access
+ - name: RDP
+   port: 3389
+   protocol: tcp
 
