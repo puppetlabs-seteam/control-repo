@@ -16,7 +16,7 @@ mod 'puppetlabs-hocon', '2.0.0'
 mod 'puppetlabs-exec', '3.1.0'
 mod 'puppetlabs-ruby_task_helper', '1.0.0'
 mod 'puppetlabs-ruby_plugin_helper', '0.3.0'
-mod 'puppetlabs-stdlib', '9.7.0'
+mod 'puppetlabs-stdlib', '10.0.1'
 mod 'puppetlabs-transition', '2.0.0'
 mod 'ipcrm-echo', '0.1.8'
 mod 'puppet-hiera', '6.0.0'
@@ -31,7 +31,7 @@ mod 'puppet-zypprepo', '5.0.0'
 
 ## Puppet Application Specific Modules
 mod 'puppetlabs-cd4pe_jobs', '1.7.1'
-mod 'puppetlabs-comply', '3.8.0'
+mod 'puppetlabs-comply', '3.8.1'
 mod 'puppetlabs-puppet_authorization', '1.0.0'
 mod 'puppetlabs-puppetserver_gem', '1.1.1'     # gem package provider for puppetserver specific gems
 
