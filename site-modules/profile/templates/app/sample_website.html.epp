@@ -64,19 +64,6 @@
           <% } -%>
         </dl>
 
-      <% if $facts['kernel'] == 'windows' { -%>
-        <div style="text-align: center; margin-top: 30px;">
-            <img src="img/training.png" height="96" width="129" alt="Training" />
-            <p>Training.Puppet.com</p>
-            <p>Puppet Education offers on-demand and instructor led training.</p>
-        </div>
-      <% } elsif $facts['kernel'] == 'Linux' { -%>
-        <div style="text-align: center; margin-top: 30px;">
-            <img src="img/OL-logo.png" height="80" width="238" alt="Linux" />
-            <p>Technical support you can depend on</p>
-            <p>for all your Open Source software</p>
-        </div>
-      <% } -%>
     </div>
 
     <footer>
