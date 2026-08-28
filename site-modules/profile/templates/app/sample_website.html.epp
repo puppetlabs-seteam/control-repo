@@ -2,52 +2,86 @@
 <html>
 
 <head>
-    <title>Sample Website</title>
+    <title>Perforce Puppet - Desired State Automation</title>
     <link rel="stylesheet" type="text/css" href="css/main.css">
     <link rel="icon" type="image/x-icon" href="img/favicon.ico">
 </head>
 
 <body>
-    <div class="container">
-        <div class="blurb">
-          <% if $facts['kernel'] == 'windows' { -%>
-            <img src="img/windows.png" height="128" width="128" alt="Windows" />
-          <% } elsif $facts['kernel'] == 'Linux' { -%>
-            <img src="img/tux.png" height="128" width="128" alt="Linux" />
-            <% } elsif $facts['kernel'] == 'Darwin' { -%>
-              <img src="img/apple.png" height="128" width="128" alt="MacOS" />
-            <% } -%>
-            <h1>System Info </h1>
-            <p>fqdn/certname:
-                <%= $trusted['certname'] %>
-            </p>
-            <p>Operating System:
-                <%= $facts['operatingsystem'] %>
-            </p>
-          <% if $facts['kernel'] == 'Linux' { -%>
-            <p>Web Server:
-                Apache
-            </p>
-          <% } elsif $facts['kernel'] == 'Windows' { -%>
-            <p>total system memory:
-                <%= $facts['memory']['system']['total'] %>
-            </p>
-          <% } -%>
-          <% if $facts['kernel'] == 'windows' { -%>
-            <img src="img/training.png" height="128" width="168" alt="Windows" />
-            <p>Training.Puppet.com
-            </p>
-            <p>Puppet Education offers on-demand and instructor led training
-            </P>
-          <% } elsif $facts['kernel'] == 'Linux' { -%>
-            <img src="img/OL-logo.png" height="100" width="298" alt="Linux" />
-            <p>Technical support you can depend on
-            </p>
-            <p>   for all your Open Source software
-            </P>
-          <% } -%>
+    <header class="site-header">
+        <img src="img/logo.svg" alt="Puppet" />
+        <span>Perforce Puppet</span>
+    </header>
+
+    <div class="hero">
+        <h1>Desired State Automation</h1>
+        <p class="tagline">Streamline &amp; Secure Operations</p>
+        <p>This node is managed by Puppet and reflects its current desired state below.</p>
+    </div>
+
+    <div class="features">
+        <div class="feature-card">
+            <img src="img/icon-simple-shield-check.svg" alt="Security &amp; Compliance" />
+            <h3>Security &amp; Compliance</h3>
+            <p>Continuously enforce policy and catch drift before it becomes risk.</p>
+        </div>
+        <div class="feature-card">
+            <img src="img/icon-simple-synchronize-refresh-arrow.svg" alt="Drift Prevention" />
+            <h3>Drift Prevention</h3>
+            <p>Automatically reconcile configuration back to its desired state.</p>
+        </div>
+        <div class="feature-card">
+            <img src="img/icon-simple-performance-increase.svg" alt="Scale with Confidence" />
+            <h3>Scale with Confidence</h3>
+            <p>Manage infrastructure consistently across every environment.</p>
         </div>
     </div>
+
+    <div class="system-info">
+        <div class="blurb" style="text-align: center; margin-bottom: 20px;">
+          <% if $facts['kernel'] == 'windows' { -%>
+            <img src="img/windows.png" height="96" width="96" alt="Windows" />
+          <% } elsif $facts['kernel'] == 'Linux' { -%>
+            <img src="img/tux.png" height="96" width="96" alt="Linux" />
+          <% } elsif $facts['kernel'] == 'Darwin' { -%>
+            <img src="img/apple.png" height="96" width="96" alt="MacOS" />
+          <% } -%>
+        </div>
+        <h2>System Info</h2>
+        <dl>
+            <dt>fqdn/certname</dt>
+            <dd><%= $trusted['certname'] %></dd>
+            <dt>Operating System</dt>
+            <dd><%= $facts['operatingsystem'] %></dd>
+          <% if $facts['kernel'] == 'Linux' { -%>
+            <dt>Web Server</dt>
+            <dd>Apache</dd>
+          <% } elsif $facts['kernel'] == 'windows' { -%>
+            <dt>Web Server</dt>
+            <dd>IIS</dd>
+            <dt>Total System Memory</dt>
+            <dd><%= $facts['memory']['system']['total'] %></dd>
+          <% } -%>
+        </dl>
+
+      <% if $facts['kernel'] == 'windows' { -%>
+        <div style="text-align: center; margin-top: 30px;">
+            <img src="img/training.png" height="96" width="129" alt="Training" />
+            <p>Training.Puppet.com</p>
+            <p>Puppet Education offers on-demand and instructor led training.</p>
+        </div>
+      <% } elsif $facts['kernel'] == 'Linux' { -%>
+        <div style="text-align: center; margin-top: 30px;">
+            <img src="img/OL-logo.png" height="80" width="238" alt="Linux" />
+            <p>Technical support you can depend on</p>
+            <p>for all your Open Source software</p>
+        </div>
+      <% } -%>
+    </div>
+
+    <footer>
+        <p>Powered by Perforce Puppet &mdash; Desired State Automation</p>
+    </footer>
 </body>
 
 </html>
