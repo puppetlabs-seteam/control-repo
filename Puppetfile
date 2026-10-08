@@ -62,6 +62,9 @@ mod 'dsc-securitypolicydsc', '2.10.0-0-9'
 mod 'ayohrling-local_security_policy', '1.1.1'
 mod 'webalex-windows_firewall', '1.7.0'
 mod 'puppet-windowsfeature', '5.0.0'
+# DSC Replacement Modules for SCE
+mod 'puppetlabs-security_policy', '1.2.0'
+mod 'puppetlabs-audit_policy', '1.2.1'
 #mod 'reidmv-unzip', '0.1.2' # likely unused. `puppet-archive` should support unzip for windows. Uncomment if needed.
 #mod 'trlinkin-domain_membership', '1.1.2' # likley unused. DSC methods should be used currently. Uncomment if needed.
 
