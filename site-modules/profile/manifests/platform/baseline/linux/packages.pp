@@ -3,7 +3,8 @@ class profile::platform::baseline::linux::packages (
   Array[String] $pkgs
 ){
 
-  if $facts['os']['family'] == 'RedHat' {
+  # EPEL is not supported on Amazon Linux 2023
+  if $facts['os']['family'] == 'RedHat' and $facts['os']['name'] != 'Amazon' {
     include ::epel
   }
 
