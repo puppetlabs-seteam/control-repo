@@ -1,5 +1,8 @@
 function profile::firewall_type(String $os, String $version) >> String {
   $os_firewalls = {
+    'amazon' => {
+      '2023' => 'firewalld',
+    },
     'almalinux' => {
       '8'  => 'firewalld',
       '9'  => 'firewalld',
@@ -35,9 +38,6 @@ function profile::firewall_type(String $os, String $version) >> String {
     },
   }
 
-  if $os != undef and $version != undef {
-    $firewall_type = $os_firewalls[$os.downcase()][$version]
-  } else {
-    ''
-  }
+  # Unknown OS or version returns '' so callers can skip the firewall instead of failing
+  $os_firewalls.dig($os.downcase(), $version).lest || { '' }
 }

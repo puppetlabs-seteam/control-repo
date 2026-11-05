@@ -36,6 +36,6 @@ class profile::platform::baseline::firewall (
     'iptables':  { include profile::platform::baseline::firewall::iptables }
     'firewalld': { include profile::platform::baseline::firewall::firewalld }
     'ufw':       { include profile::platform::baseline::firewall::ufw }
-    default:     { fail("Platform baseline firewall type could not be determined based on OS Name: '${facts['os']['name']}' and Major Version: '${facts['os']['release']['major']}'.") } #lint:ignore:140chars
+    default:     { warning("Platform baseline firewall type could not be determined based on OS Name: '${facts['os']['name']}' and Major Version: '${facts['os']['release']['major']}', host firewall not managed.") } #lint:ignore:140chars
   }
 }

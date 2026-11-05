@@ -38,7 +38,7 @@ function profile::firewall_open_port(String $name, String $protocol, Integer $po
         description  => $description,
       }
     }
-    default: { fail("Firewall type could not be determined for '${facts['os']['name']} ${facts['os']['release']['major']}'") }
+    default: { warning("Firewall type could not be determined for '${facts['os']['name']} ${facts['os']['release']['major']}', not opening port ${port}") } #lint:ignore:140chars
   }
   true
 }

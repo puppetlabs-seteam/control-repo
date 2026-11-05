@@ -43,7 +43,7 @@ mod 'bodgit-rngd', '3.0.1'  # potentially unused, review in a future revision
 mod 'kogitoapp-ufw', '1.0.3'
 mod 'saz-limits', '5.0.0'
 mod 'ghoneycutt-ssh', '5.1.1'
-mod 'puppet-epel', '5.0.0'
+mod 'puppet-epel', '6.0.0' # 6.0.0 adds EL10. Its metadata lists only OpenVox >= 8.19, but it was verified on PE with RHEL 10.
 mod 'puppet-firewalld', '5.0.0'
 mod 'puppet-logrotate', '8.0.0'
 mod 'puppet-selinux', '4.1.0' # 5.0.0+ is available, however sce_linux requires '< 5.0.0', *might* work regardless, should be tested and updated, if so.

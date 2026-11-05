@@ -55,5 +55,17 @@ class profile::app::sample_website::linux (
   }
 
   # Automatically open firewall port to allow access
-  profile::firewall_open_port('Website Access','tcp',$webserver_port,'Webserver Access')
+  $firewall_type = profile::firewall_type($facts['os']['name'], $facts['os']['release']['major'])
+  if $firewall_type == 'firewalld' {
+    # The baseline is no longer applied, so install and start firewalld here before
+    # opening the port. No purge options: existing zones, ports and rules are left alone.
+    include firewalld
+    profile::firewall_open_port('Website Access','tcp',$webserver_port,'Webserver Access')
+    Class['firewalld'] -> Firewalld_port['Allow Website Access']
+  } else {
+    # Not a firewalld OS, so no firewalld_port: firewalld may not be installed here.
+    # ufw/iptables nodes still get a rule of their own type; on an OS unknown to
+    # profile::firewall_type, firewall_open_port only logs a warning.
+    profile::firewall_open_port('Website Access','tcp',$webserver_port,'Webserver Access')
+  }
 }
