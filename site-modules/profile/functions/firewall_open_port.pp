@@ -14,6 +14,7 @@ function profile::firewall_open_port(String $name, String $protocol, Integer $po
         zone     => 'public',
         port     => $port,
         protocol => $protocol.downcase(),
+        require  => Class['firewalld'],
       }
     }
     'ufw': {
