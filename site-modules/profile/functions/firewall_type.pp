@@ -5,6 +5,9 @@ function profile::firewall_type(String $os, String $version) >> String {
       '9'  => 'firewalld',
       '10' => 'firewalld',
     },
+    'amazon' => {
+      '2023' => 'firewalld',
+    },    
     'oraclelinux' => {
       '8'  => 'firewalld',
       '9'  => 'firewalld',
