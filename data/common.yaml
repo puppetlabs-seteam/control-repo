@@ -217,4 +217,8 @@ profile::platform::baseline::firewall::allow_ingress:
   - name: RDP
     port: 3389
     protocol: tcp
+  - name: WinRM
+    port: 5985
+    protocol: tcp
+
 
