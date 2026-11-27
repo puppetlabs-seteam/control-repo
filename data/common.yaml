@@ -70,7 +70,8 @@ profile::platform::baseline::windows::packages::pkgs:
   - notepadplusplus
   - 7zip
   - git
-  - uniextract
+# Commenting out uniextract due to 403 failures on install
+#  - uniextract
 
 ##
 # Puppet Enterprise
